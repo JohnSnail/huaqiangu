@@ -9,7 +9,13 @@
 #ifndef huaqiangu_PrefixHeader_pch
 #define huaqiangu_PrefixHeader_pch
 
-// Include any system framework and library headers here that should be included in all compilation units.
-// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#import "mainHead.h"
+
+#import "TrackModel.h"
+#import <STKAudioPlayer.h>
+#import <MJRefresh/MJRefresh.h>
+#import "CommUtils.h"
+#import "LMButton.h"
+#import "HistoryList.h"
 
 #endif

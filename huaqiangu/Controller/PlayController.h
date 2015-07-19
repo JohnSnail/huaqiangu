@@ -8,6 +8,27 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PlayController : UIViewController
+@interface PlayController : UIViewController<STKAudioPlayerDelegate>
+
+@property (strong, nonatomic) IBOutlet UIView *PlayHeadView;
+@property (weak, nonatomic) IBOutlet UIImageView *bgImageView;
+@property (weak, nonatomic) IBOutlet UIButton *backBtn;
+@property (weak, nonatomic) IBOutlet UILabel *albTitle;
+@property (weak, nonatomic) IBOutlet UILabel *trackTitle;
+
+@property (weak, nonatomic) IBOutlet UISlider *playSlider;
+@property (nonatomic, strong) TrackModel *playTrack;
+@property (weak, nonatomic) IBOutlet UIButton *lastBtn;
+@property (weak, nonatomic) IBOutlet UIButton *playBtn;
+@property (weak, nonatomic) IBOutlet UIButton *nextBtn;
+@property (weak, nonatomic) IBOutlet UILabel *playRightLabel;
+@property (weak, nonatomic) IBOutlet UILabel *playLeftLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *albumImageView;
+
+@property (nonatomic, strong) NSArray *playArr;
+@property NSInteger playIndex;
+
++(instancetype)sharedPlayController;
+-(void)pushArr:(NSArray *)arr andIndex:(NSInteger)index andAlbumTitle:(NSString *)albTitle;
 
 @end

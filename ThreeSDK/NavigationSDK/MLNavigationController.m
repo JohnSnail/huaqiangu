@@ -10,7 +10,6 @@
 
 #import "MLNavigationController.h"
 #import <QuartzCore/QuartzCore.h>
-#include "LoginVC.h"
 
 @interface MLNavigationController ()
 {
@@ -200,10 +199,6 @@
             }];
             
         }
-        
-        TLog(@"输出试图%@",self.viewControllers);
-        
-        
         
         return;
         

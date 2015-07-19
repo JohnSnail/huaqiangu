@@ -10,4 +10,10 @@
 
 @interface TrackModel : NSObject
 
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *playUrl64;
+@property (nonatomic, copy) NSString *hisProgress;
+
+- (instancetype)initWithDict:(NSDictionary *)dict;
+
 @end

@@ -10,4 +10,20 @@
 
 @implementation TrackModel
 
+- (instancetype)initWithDict:(NSDictionary *)dict
+{
+    self = [super init];
+    if (self) {
+        [dict enumerateKeysAndObjectsUsingBlock:^(NSString *key, id obj, BOOL *stop) {
+            if (![obj isKindOfClass:[NSNull class]]) {
+                SEL se = NSSelectorFromString(key);
+                if ([self respondsToSelector:se]) {
+                    [self setValue:obj forKey:key];
+                }
+            }
+        }];
+    }
+    return self;
+}
+
 @end
