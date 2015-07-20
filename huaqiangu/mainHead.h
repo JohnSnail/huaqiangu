@@ -53,7 +53,7 @@ return _shared##classname; \
 #pragma mark -
 #pragma mark - UMengKey
 
-#define umAppKey @"5374e10e56240b391301d819"
+#define umAppKey @"55ac9a0767e58e4bb3000b21"
 
 #pragma mark - 
 #pragma mark - appdelegate
