@@ -30,5 +30,8 @@
 
 +(instancetype)sharedPlayController;
 -(void)pushArr:(NSArray *)arr andIndex:(NSInteger)index andAlbumTitle:(NSString *)albTitle;
+-(void)playAction;
+-(void)laseAction;
+-(void)nextAction;
 
 @end

@@ -45,6 +45,10 @@ return _shared##classname; \
 //苹果id
 #define AppStoreAppId @"1018139994"
 
+#pragma mark -
+#pragma mark - albumTitle
+
+
 #pragma mark - 
 #pragma mark - appdelegate
 

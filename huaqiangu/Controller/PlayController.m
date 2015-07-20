@@ -171,6 +171,8 @@ SINGLETON_CLASS(PlayController);
     
     //保存正在播放的节目
     [CommUtils saveIndex:self.playIndex];
+    
+    [self performSelector:@selector(setLockScreenInfo) withObject:nil afterDelay:2.0];
 }
 
 -(void) setupTimer
@@ -208,6 +210,7 @@ SINGLETON_CLASS(PlayController);
     AppDelegate *appDe = appDelegate;
     [appDe.PlayingInfoCenter setObject:[NSNumber numberWithDouble:[STKAudioPlayer sharedManager].progress] forKey:MPNowPlayingInfoPropertyElapsedPlaybackTime];
     [appDe.PlayingInfoCenter setObject:[NSNumber numberWithDouble:[STKAudioPlayer sharedManager].duration] forKey:MPMediaItemPropertyPlaybackDuration];
+    [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:appDe.PlayingInfoCenter];
     
     [self updateControls];
 }
@@ -228,19 +231,14 @@ SINGLETON_CLASS(PlayController);
     [appDe.PlayingInfoCenter setObject:lockContent forKey:MPMediaItemPropertyTitle];
     
     //锁屏专辑名称
-    lockContent = self.playTrack.title;
+    lockContent = playAlbumTitle;
     [appDe.PlayingInfoCenter setObject:lockContent forKey:MPMediaItemPropertyAlbumTitle];
     
     //锁屏图片
-    UIImageView *imageView = [[UIImageView alloc]init];
+    //锁屏显示的其他内容
+    MPMediaItemArtwork *albumArt = [[MPMediaItemArtwork alloc] initWithImage:self.albumImageView.image];
     
-    if (self.playTrack.coverLarge) {
-        [imageView sd_setImageWithURL:[NSURL URLWithString:self.playTrack.coverLarge] placeholderImage:[UIImage imageNamed:@"main_otherplace"]];
-        //锁屏显示的其他内容
-        MPMediaItemArtwork *albumArt = [[MPMediaItemArtwork alloc] initWithImage:imageView.image];
-        
-        [appDe.PlayingInfoCenter setObject:albumArt forKey:MPMediaItemPropertyArtwork];
-    }
+    [appDe.PlayingInfoCenter setObject:albumArt forKey:MPMediaItemPropertyArtwork];
     
     [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:appDe.PlayingInfoCenter];
 }
