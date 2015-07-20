@@ -7,6 +7,7 @@
 //
 
 #import "PlayController.h"
+#import "AppDelegate.h"
 
 @interface PlayController ()
 {
@@ -203,13 +204,45 @@ SINGLETON_CLASS(PlayController);
     [[HistoryList sharedManager] saveContent:self.playTrack];
     
     
-//    self.playTimeLabel.text = [CommUtils progressValue:[STKAudioPlayer sharedManager].duration - [STKAudioPlayer sharedManager].progress];
+    //锁屏播放
+    AppDelegate *appDe = appDelegate;
+    [appDe.PlayingInfoCenter setObject:[NSNumber numberWithDouble:[STKAudioPlayer sharedManager].progress] forKey:MPNowPlayingInfoPropertyElapsedPlaybackTime];
+    [appDe.PlayingInfoCenter setObject:[NSNumber numberWithDouble:[STKAudioPlayer sharedManager].duration] forKey:MPMediaItemPropertyPlaybackDuration];
     
-//    //修改锁屏播放进度-yinlinlin@duotin.com
-//    AppDelegate *appDe = appDelegate;
-//    [appDe.PlayingInfoCenter setObject:[NSNumber numberWithDouble:[AudioPlayer sharedManager].progress] forKey:MPNowPlayingInfoPropertyElapsedPlaybackTime];
-//    [appDe.PlayingInfoCenter setObject:[NSNumber numberWithDouble:[AudioPlayer sharedManager].duration] forKey:MPMediaItemPropertyPlaybackDuration];
     [self updateControls];
+}
+
+
+#pragma mark - 
+#pragma mark - 锁屏播放
+
+- (void)setLockScreenInfo
+{
+    AppDelegate * appDe = appDelegate;
+    //移除之前的
+    [appDe.PlayingInfoCenter removeAllObjects];
+    
+    NSString *lockContent = self.playTrack.title;
+   
+    //锁屏显示的节目名称
+    [appDe.PlayingInfoCenter setObject:lockContent forKey:MPMediaItemPropertyTitle];
+    
+    //锁屏专辑名称
+    lockContent = self.playTrack.title;
+    [appDe.PlayingInfoCenter setObject:lockContent forKey:MPMediaItemPropertyAlbumTitle];
+    
+    //锁屏图片
+    UIImageView *imageView = [[UIImageView alloc]init];
+    
+    if (self.playTrack.coverLarge) {
+        [imageView sd_setImageWithURL:[NSURL URLWithString:self.playTrack.coverLarge] placeholderImage:[UIImage imageNamed:@"main_otherplace"]];
+        //锁屏显示的其他内容
+        MPMediaItemArtwork *albumArt = [[MPMediaItemArtwork alloc] initWithImage:imageView.image];
+        
+        [appDe.PlayingInfoCenter setObject:albumArt forKey:MPMediaItemPropertyArtwork];
+    }
+    
+    [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:appDe.PlayingInfoCenter];
 }
 
 #pragma mark - 播放的代理方法

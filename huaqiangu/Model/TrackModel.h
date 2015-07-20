@@ -13,6 +13,7 @@
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *playUrl64;
 @property (nonatomic, copy) NSString *hisProgress;
+@property (nonatomic, copy) NSString *coverLarge;
 
 - (instancetype)initWithDict:(NSDictionary *)dict;
 
