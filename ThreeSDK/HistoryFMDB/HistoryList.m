@@ -89,7 +89,7 @@
     [query appendFormat:@" %@ VALUES%@",
      [keys stringByReplacingOccurrencesOfString:@",)" withString:@")"],
      [values stringByReplacingOccurrencesOfString:@",)" withString:@")"]];
-    //    NSLog(@"%@",query);
+    //    TLog(@"%@",query);
     //[AppDelegate showStatusWithText:@"插入一条数据" duration:2.0];
     [_db executeUpdate:query withArgumentsInArray:arguments];
 }
@@ -119,7 +119,7 @@
     
     [temp appendString:@")"];
     query = [query stringByAppendingFormat:@"%@ WHERE title = '%@'",[temp stringByReplacingOccurrencesOfString:@",)" withString:@""],trackModel.title];
-    //    NSLog(@"%@",query);
+    //    TLog(@"%@",query);
     
     //[AppDelegate showStatusWithText:@"修改一条数据" duration:2.0];
     [_db executeUpdate:query];

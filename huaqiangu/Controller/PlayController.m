@@ -13,7 +13,6 @@
 {
     NSString *hisProgress;
     NSTimer *timer;
-    NSString *playAlbumTitle;
 }
 @end
 
@@ -124,11 +123,10 @@ SINGLETON_CLASS(PlayController);
     LM_POP;
 }
 
--(void)pushArr:(NSArray *)arr andIndex:(NSInteger)index andAlbumTitle:(NSString *)albTitle
+-(void)pushArr:(NSArray *)arr andIndex:(NSInteger)index
 {
     self.playArr = arr;
     self.playIndex = index;
-    playAlbumTitle = albTitle;
     
     [self playMusic];
 }
@@ -148,8 +146,10 @@ SINGLETON_CLASS(PlayController);
     if (self.playArr.count != 0) {
         self.playTrack = self.playArr[self.playIndex];
         
-        self.albTitle.text = playAlbumTitle;
+        self.albTitle.text = ALBUMTITLE;
         self.trackTitle.text = self.playTrack.title;
+        
+        [self.albumImageView sd_setImageWithURL:[NSURL URLWithString:self.playTrack.coverLarge] placeholderImage:[UIImage imageNamed:@"main_otherplace"]];
     }
     
     NSString *strTrackId = (NSString *)[[STKAudioPlayer sharedManager] currentlyPlayingQueueItemId];
@@ -231,7 +231,7 @@ SINGLETON_CLASS(PlayController);
     [appDe.PlayingInfoCenter setObject:lockContent forKey:MPMediaItemPropertyTitle];
     
     //锁屏专辑名称
-    lockContent = playAlbumTitle;
+    lockContent = ALBUMTITLE;
     [appDe.PlayingInfoCenter setObject:lockContent forKey:MPMediaItemPropertyAlbumTitle];
     
     //锁屏图片

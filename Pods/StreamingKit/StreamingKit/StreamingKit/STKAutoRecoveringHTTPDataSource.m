@@ -192,7 +192,7 @@ static void PopulateOptionsWithDefault(STKAutoRecoveringHTTPDataSourceOptions* o
             {
                 serial++;
                 
-                NSLog(@"timeoutTimerTick %lld/%lld", self.position, self.length);
+                TLog(@"timeoutTimerTick %lld/%lld", self.position, self.length);
                 
                 [self attemptReconnectWithSerial:@(serial)];
             }
@@ -261,7 +261,7 @@ static void PopulateOptionsWithDefault(STKAutoRecoveringHTTPDataSourceOptions* o
 
 -(void) dealloc
 {
-    NSLog(@"STKAutoRecoveringHTTPDataSource dealloc");
+    TLog(@"STKAutoRecoveringHTTPDataSource dealloc");
     
     self.innerDataSource.delegate = nil;
     
@@ -282,7 +282,7 @@ static void PopulateOptionsWithDefault(STKAutoRecoveringHTTPDataSourceOptions* o
     {
         waitingForNetwork = NO;
         
-        NSLog(@"reachabilityChanged %lld/%lld", self.position, self.length);
+        TLog(@"reachabilityChanged %lld/%lld", self.position, self.length);
         
         serial++;
         
@@ -311,7 +311,7 @@ static void PopulateOptionsWithDefault(STKAutoRecoveringHTTPDataSourceOptions* o
         return;
     }
     
-    NSLog(@"attemptReconnect %lld/%lld", self.position, self.length);
+    TLog(@"attemptReconnect %lld/%lld", self.position, self.length);
     
 	if (self.innerDataSource.eventsRunLoop)
 	{
@@ -357,7 +357,7 @@ static void PopulateOptionsWithDefault(STKAutoRecoveringHTTPDataSourceOptions* o
 
 -(void) dataSourceEof:(STKDataSource*)dataSource
 {
-	NSLog(@"dataSourceEof");
+	TLog(@"dataSourceEof");
 	
     if ([self position] < [self length])
     {
@@ -371,7 +371,7 @@ static void PopulateOptionsWithDefault(STKAutoRecoveringHTTPDataSourceOptions* o
 
 -(void) dataSourceErrorOccured:(STKDataSource*)dataSource
 {
-    NSLog(@"dataSourceErrorOccured");
+    TLog(@"dataSourceErrorOccured");
     
     if (self.innerDataSource.httpStatusCode == 416 /* Range out of bounds */)
     {

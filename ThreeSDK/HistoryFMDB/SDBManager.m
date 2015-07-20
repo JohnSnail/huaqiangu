@@ -35,9 +35,9 @@ static SDBManager * _sharedDBManager;
     if (self) {
         int state = [self initializeDBWithName:kDefaultDBName];
         if (state == -1) {
-//            NSLog(@"数据库初始化失败");
+//            TLog(@"数据库初始化失败");
         } else {
-//            NSLog(@"数据库初始化成功");
+//            TLog(@"数据库初始化成功");
         }
     }
     return self;
@@ -73,7 +73,7 @@ static SDBManager * _sharedDBManager;
 		_dataBase = [[FMDatabase alloc] initWithPath:_name];
 	}
 	if (![_dataBase open]) {
-//		NSLog(@"不能打开数据库");
+//		TLog(@"不能打开数据库");
 	}
 }
 /// 关闭连接

@@ -81,7 +81,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="420"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gu" id="tND-aQ-yfu">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_otherplace" id="tND-aQ-yfu">
                     <rect key="frame" x="20" y="90" width="150" height="150"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
@@ -114,8 +114,8 @@
     </objects>
     <resources>
         <image name="back" width="44" height="44"/>
-        <image name="gu" width="290" height="290"/>
         <image name="last" width="120" height="120"/>
+        <image name="main_otherplace" width="93" height="93"/>
         <image name="next" width="120" height="120"/>
         <image name="pause" width="62" height="62"/>
         <image name="play" width="62" height="62"/>

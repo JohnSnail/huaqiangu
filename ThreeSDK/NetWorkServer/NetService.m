@@ -40,11 +40,11 @@
         NSHTTPURLResponse *httpResponse =(NSHTTPURLResponse *)task.response;
         NSData *doubi = responseObject;
         NSString *shabi =  [[NSString alloc]initWithData:doubi encoding:NSUTF8StringEncoding];
-        NSLog(@"输出傻逼%@",shabi);
-        NSLog(@"输出%ld",(long)httpResponse.statusCode);
+        TLog(@"输出傻逼%@",shabi);
+        TLog(@"输出%ld",(long)httpResponse.statusCode);
         if (httpResponse.statusCode==200) {
             dispatch_async(dispatch_get_main_queue(),^{
-                //NSLog(@"输出返回的内容%@",responseObject);
+                //TLog(@"输出返回的内容%@",responseObject);
                 completion(responseObject,nil);
             });
         }else
@@ -58,7 +58,7 @@
         });
     }];
 //    [self reachablityStatus:^(int netStatus){
-//        NSLog(@"成功");
+//        TLog(@"成功");
 //    } fail:^(int errStatus) {
 //        [[[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"请检查您的网络" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil] show];
 //    }];
@@ -68,11 +68,11 @@
     [self POST:path parameters:parameters success:^(NSURLSessionDataTask *task,id responseObject){
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         NSHTTPURLResponse *httpResponse =(NSHTTPURLResponse *)task.response;
-        NSLog(@"输出%ld",(long)httpResponse.statusCode);
+        TLog(@"输出%ld",(long)httpResponse.statusCode);
         
         if (httpResponse.statusCode==200) {
             dispatch_async(dispatch_get_main_queue(),^{
-                NSLog(@"输出返回的内容%@",responseObject);
+                TLog(@"输出返回的内容%@",responseObject);
                 completion(responseObject,nil);
             });
         }else
@@ -83,7 +83,7 @@
     } failure:^(NSURLSessionDataTask *task,NSError *error){
         dispatch_async(dispatch_get_main_queue(), ^{
             NSHTTPURLResponse *httpResponse =(NSHTTPURLResponse *)task.response;
-            NSLog(@"输出%@",httpResponse);
+            TLog(@"输出%@",httpResponse);
             completion(nil,error);
         });
     }];
@@ -103,16 +103,16 @@
     [manager POST:@"http://www.ytimd.com/amd/clientPicture_upload.action" parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         [formData appendPartWithFileData :imageData name:@"image" fileName:@"image.png" mimeType:@"image/jpeg"];
     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
-         NSLog(@"Error: %@", operation);
-         NSLog(@"Success: %@", responseObject);
+         TLog(@"Error: %@", operation);
+         TLog(@"Success: %@", responseObject);
 //        NSString *dataStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
 //        NSData *newData = [dataStr dataUsingEncoding:NSUTF8StringEncoding];
 //        NSDictionary *userDatadic = [NSJSONSerialization JSONObjectWithData:newData options:0 error:nil];
-//        NSLog(@"输出返回的内容%@",userDatadic);
+//        TLog(@"输出返回的内容%@",userDatadic);
         //NSDictionary *userDic = userDatadic[@"data"];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", operation);
-        NSLog(@"Error: %@", error);
+        TLog(@"Error: %@", operation);
+        TLog(@"Error: %@", error);
     }];
     
 
@@ -126,13 +126,13 @@
         [formData appendPartWithFileData:dimageData name:@"image" fileName:@"image.png" mimeType:@"image/jpeg"];
     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //success
-        NSLog(@"成功%@",operation);
-        NSLog(@"Success: %@", responseObject);
+        TLog(@"成功%@",operation);
+        TLog(@"Success: %@", responseObject);
         success(responseObject);
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         // failure
-        NSLog(@"失败%@",error);
+        TLog(@"失败%@",error);
         failure(error);
     }];
     op.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"application/json",@"text/json",@"text/javascript", @"text/plain",nil];//[NSSet setWithObject:@"text/html"];
@@ -144,20 +144,20 @@
 - (void)reachablityStatus:(void (^)(int))success fail:(void (^) (int))fail
 {
     [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-        NSLog(@"Reachability: %@", AFStringFromNetworkReachabilityStatus(status));
+        TLog(@"Reachability: %@", AFStringFromNetworkReachabilityStatus(status));
         switch (status) {
             case AFNetworkReachabilityStatusReachableViaWWAN:
-                NSLog(@"3G");
+                TLog(@"3G");
                 success(AFNetworkReachabilityStatusReachableViaWWAN);
             case AFNetworkReachabilityStatusReachableViaWiFi:
-                NSLog(@"无线");
+                TLog(@"无线");
                 success(AFNetworkReachabilityStatusReachableViaWiFi);
                 break;
             case AFNetworkReachabilityStatusNotReachable:
-                NSLog(@"没有网络");
+                TLog(@"没有网络");
                 fail(AFNetworkReachabilityStatusNotReachable);
             default:
-                NSLog(@"无线");
+                TLog(@"无线");
                 break;
         }
     }];

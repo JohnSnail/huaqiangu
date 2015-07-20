@@ -70,6 +70,7 @@ static NSInteger i = 0;
     // Do any additional setup after loading the view from its nib.
     
     self.navigationItem.leftBarButtonItem = [LMButton setNavright:@"好评" andcolor:[UIColor whiteColor] andSelector:@selector(pushAppStore) andTarget:self];
+    self.navigationItem.titleView = [CommUtils navTittle:ALBUMTITLE];
     
     pageId = 1;
     _mainMuArray = [NSMutableArray arrayWithCapacity:0];
@@ -90,7 +91,7 @@ static NSInteger i = 0;
     PlayController *playVC = [PlayController sharedPlayController];
     playVC.hidesBottomBarWhenPushed = YES;
     if (self.mainMuArray.count != 0) {
-        [playVC pushArr:self.mainMuArray andIndex:[CommUtils getPlayIndex] andAlbumTitle:albumTitle];
+        [playVC pushArr:self.mainMuArray andIndex:[CommUtils getPlayIndex]];
     }
     [self.navigationController pushViewController:playVC animated:YES];
 }
@@ -130,10 +131,6 @@ static NSInteger i = 0;
     
     __weak typeof(self) bSelf = self;
     [AFService postMethod:postStr andDict:nil completion:^(NSDictionary *results,NSError *error){
-        
-        albumTitle = [[results objectForKey:@"album"] objectForKey:@"title"];
-        bSelf.navigationItem.titleView = [CommUtils navTittle:albumTitle];
-        
         totalPage = [[[results objectForKey:@"tracks"] objectForKey:@"maxPageId"] integerValue];
         
         NSArray *arr = [[results objectForKey:@"tracks"] objectForKey:@"list"];
@@ -193,7 +190,7 @@ static NSInteger i = 0;
 {
     PlayController *playVC = [PlayController sharedPlayController];
     playVC.hidesBottomBarWhenPushed = YES;
-    [playVC pushArr:self.mainMuArray andIndex:indexPath.row andAlbumTitle:albumTitle];
+    [playVC pushArr:self.mainMuArray andIndex:indexPath.row];
     [self.navigationController pushViewController:playVC animated:YES];
 }
 

@@ -29,7 +29,7 @@
 @property NSInteger playIndex;
 
 +(instancetype)sharedPlayController;
--(void)pushArr:(NSArray *)arr andIndex:(NSInteger)index andAlbumTitle:(NSString *)albTitle;
+-(void)pushArr:(NSArray *)arr andIndex:(NSInteger)index;
 -(void)playAction;
 -(void)laseAction;
 -(void)nextAction;

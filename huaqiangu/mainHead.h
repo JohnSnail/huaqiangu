@@ -46,6 +46,11 @@ return _shared##classname; \
 #define AppStoreAppId @"1018139994"
 
 #pragma mark -
+#pragma mark - AlbumTitle
+
+#define ALBUMTITLE @"华胥引"
+
+#pragma mark -
 #pragma mark - UMengKey
 
 #define umAppKey @"5374e10e56240b391301d819"

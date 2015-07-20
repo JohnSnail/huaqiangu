@@ -104,7 +104,7 @@
 
 -(void) dealloc
 {
-    NSLog(@"STKHTTPDataSource dealloc");
+    TLog(@"STKHTTPDataSource dealloc");
 }
 
 -(NSURL*) url
