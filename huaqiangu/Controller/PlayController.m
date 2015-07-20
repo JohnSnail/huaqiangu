@@ -13,6 +13,7 @@
 {
     NSString *hisProgress;
     NSTimer *timer;
+    AutoRunLabel *trackLabel;
 }
 @end
 
@@ -29,7 +30,6 @@ SINGLETON_CLASS(PlayController);
     self.albumImageView.frame = CGRectMake(20 * VIEWWITH, 90 * VIEWWITH, 150 * VIEWWITH, 150 * VIEWWITH);
     self.backBtn.frame = CGRectMake(20 * VIEWWITH, 20 * VIEWWITH, 44 * VIEWWITH, 44 * VIEWWITH);
     self.albTitle.frame = CGRectMake(22 * VIEWWITH, 248 * VIEWWITH, 148 * VIEWWITH, 29 * VIEWWITH);
-    self.trackTitle.frame = CGRectMake(22 * VIEWWITH, 285 * VIEWWITH, 148 * VIEWWITH, 21 * VIEWWITH);
     self.PlayHeadView.frame = CGRectMake(0, 0, 320 * VIEWWITH, 420 * VIEWWITH);
     self.playBtn.frame = CGRectMake(135 * VIEWWITH, 453 * VIEWWITH, 50 * VIEWWITH, 50 * VIEWWITH);
     self.nextBtn.frame = CGRectMake(221 * VIEWWITH, 448 * VIEWWITH, 60 * VIEWWITH, 60 * VIEWWITH);
@@ -50,7 +50,22 @@ SINGLETON_CLASS(PlayController);
     // Do any additional setup after loading the view from its nib.
     [self setFrameView];
     [self addHeadView];
+    [self setTrackScrollerLabel];
     [self playMusic];
+}
+
+
+#pragma mark - 
+#pragma mark - 节目title滚动
+
+-(void)setTrackScrollerLabel
+{
+    trackLabel = [[AutoRunLabel alloc]init];
+    trackLabel.frame = CGRectMake(22 * VIEWWITH, 285 * VIEWWITH, 148 * VIEWWITH, 21 * VIEWWITH);
+    trackLabel.backgroundColor = [UIColor clearColor];  //设置Label背景透明
+    trackLabel.textColor = RGB(187, 186, 194);
+    trackLabel.font = [UIFont systemFontOfSize:16];
+    [self.PlayHeadView addSubview:trackLabel];
 }
 
 #pragma mark - 播放暂停
@@ -147,7 +162,16 @@ SINGLETON_CLASS(PlayController);
         self.playTrack = self.playArr[self.playIndex];
         
         self.albTitle.text = ALBUMTITLE;
-        self.trackTitle.text = self.playTrack.title;
+        NSMutableString *muStr = nil;
+        if (self.playTrack.title) {
+            muStr = [NSMutableString stringWithString:self.playTrack.title];
+        }
+        if (muStr.length > 8) {
+            trackLabel.moveSpeech = -50.0f;
+        }else{
+            trackLabel.moveSpeech = 0;
+        }
+        trackLabel.text = muStr;
         
         [self.albumImageView sd_setImageWithURL:[NSURL URLWithString:self.playTrack.coverLarge] placeholderImage:[UIImage imageNamed:@"main_otherplace"]];
     }
@@ -210,7 +234,7 @@ SINGLETON_CLASS(PlayController);
     AppDelegate *appDe = appDelegate;
     [appDe.PlayingInfoCenter setObject:[NSNumber numberWithDouble:[STKAudioPlayer sharedManager].progress] forKey:MPNowPlayingInfoPropertyElapsedPlaybackTime];
     [appDe.PlayingInfoCenter setObject:[NSNumber numberWithDouble:[STKAudioPlayer sharedManager].duration] forKey:MPMediaItemPropertyPlaybackDuration];
-    [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:appDe.PlayingInfoCenter];
+    [MPNowPlayingInfoCenter defaultCenter].nowPlayingInfo = appDe.PlayingInfoCenter;
     
     [self updateControls];
 }
@@ -241,6 +265,7 @@ SINGLETON_CLASS(PlayController);
     [appDe.PlayingInfoCenter setObject:albumArt forKey:MPMediaItemPropertyArtwork];
     
     [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:appDe.PlayingInfoCenter];
+    [MPNowPlayingInfoCenter defaultCenter].nowPlayingInfo = appDe.PlayingInfoCenter;
 }
 
 #pragma mark - 播放的代理方法

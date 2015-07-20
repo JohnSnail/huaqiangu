@@ -20,4 +20,7 @@
 
 //正在播放
 + (void)navigationPlayButtonItem:(UIButton *)btn;
+
+//滚动label
++(UIView *)labelView:(NSString *)title andLabel:(UILabel *)newLabel;
 @end

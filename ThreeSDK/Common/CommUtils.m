@@ -10,6 +10,30 @@
 
 @implementation CommUtils
 
+
+#pragma mark - 
+#pragma mark - 滚动label
+
++(UIView *)labelView:(NSString *)title andLabel:(UILabel *)newLabel
+{
+    AutoRunLabel * navLabel = [[AutoRunLabel alloc]init];
+
+    CGRect newFrame = newLabel.frame;
+    newFrame.origin.x = 0;
+    newFrame.origin.y = 0;
+    navLabel.frame = newFrame;
+    
+    navLabel.textColor = newLabel.textColor;
+    navLabel.font = newLabel.font;
+    navLabel.backgroundColor = [UIColor clearColor];  //设置Label背景透明
+    navLabel.moveSpeech = -50.0f;
+    navLabel.text = title;
+    
+//    CGSize _textSize = [title sizeWithFont:navLabel.font forWidth:NSIntegerMax lineBreakMode:NSLineBreakByClipping];
+    
+    return (UIView *)navLabel;
+}
+
 +(UILabel *)navTittle:(NSString *)title
 {
     UILabel *titleText = [[UILabel alloc] initWithFrame: CGRectMake(0, 0, 200, 44)];

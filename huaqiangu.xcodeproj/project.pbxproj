@@ -27,6 +27,7 @@
 		BC1FB6821B5A258E00D06876 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC1FB6811B5A258E00D06876 /* AVFoundation.framework */; };
 		BC1FB68E1B5A736500D06876 /* HistoryList.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1FB68D1B5A736500D06876 /* HistoryList.m */; };
 		BC1FB6911B5A745200D06876 /* SDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1FB6901B5A745200D06876 /* SDBManager.m */; };
+		BCCA4C581B5CE8EE00C73442 /* AutoRunLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA4C571B5CE8EE00C73442 /* AutoRunLabel.m */; };
 		D9EAA2A68928814866571895 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 69F6B3FFC1B8F381DD1A30C9 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +86,8 @@
 		BC1FB68D1B5A736500D06876 /* HistoryList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HistoryList.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		BC1FB68F1B5A745200D06876 /* SDBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDBManager.h; sourceTree = "<group>"; };
 		BC1FB6901B5A745200D06876 /* SDBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SDBManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		BCCA4C561B5CE8EE00C73442 /* AutoRunLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoRunLabel.h; sourceTree = "<group>"; };
+		BCCA4C571B5CE8EE00C73442 /* AutoRunLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoRunLabel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -246,6 +249,8 @@
 		BC1FB6671B5A093000D06876 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				BCCA4C561B5CE8EE00C73442 /* AutoRunLabel.h */,
+				BCCA4C571B5CE8EE00C73442 /* AutoRunLabel.m */,
 				BC1FB6681B5A097E00D06876 /* CommUtils.h */,
 				BC1FB6691B5A097E00D06876 /* CommUtils.m */,
 			);
@@ -423,6 +428,7 @@
 				BC1FB5BD1B595E9C00D06876 /* AppDelegate.m in Sources */,
 				BC1FB65A1B59E69500D06876 /* AFService.m in Sources */,
 				BC1FB5BA1B595E9C00D06876 /* main.m in Sources */,
+				BCCA4C581B5CE8EE00C73442 /* AutoRunLabel.m in Sources */,
 				BC1FB67E1B5A0BF600D06876 /* LMButton.m in Sources */,
 				BC1FB6911B5A745200D06876 /* SDBManager.m in Sources */,
 				BC1FB6641B59F47400D06876 /* PlayController.m in Sources */,

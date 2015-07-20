@@ -18,7 +18,6 @@
                 <outlet property="playLeftLabel" destination="97M-IS-Nf9" id="ypC-dJ-iav"/>
                 <outlet property="playRightLabel" destination="Urh-rW-iXS" id="XjQ-fT-5Yr"/>
                 <outlet property="playSlider" destination="gOG-wu-NDt" id="fqs-Aa-Qj5"/>
-                <outlet property="trackTitle" destination="Ywp-yJ-tnn" id="0PY-rZ-e5a"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -97,13 +96,6 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ywp-yJ-tnn">
-                    <rect key="frame" x="22" y="285" width="148" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                    <color key="textColor" red="0.67843137254901964" green="0.6705882352941176" blue="0.70980392156862748" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>

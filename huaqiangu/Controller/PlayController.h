@@ -14,7 +14,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *bgImageView;
 @property (weak, nonatomic) IBOutlet UIButton *backBtn;
 @property (weak, nonatomic) IBOutlet UILabel *albTitle;
-@property (weak, nonatomic) IBOutlet UILabel *trackTitle;
 
 @property (weak, nonatomic) IBOutlet UISlider *playSlider;
 @property (nonatomic, strong) TrackModel *playTrack;

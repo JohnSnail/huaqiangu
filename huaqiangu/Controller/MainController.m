@@ -178,6 +178,7 @@ static NSInteger i = 0;
     TrackModel *track = self.mainMuArray[indexPath.row];
     cell.textLabel.font = [UIFont systemFontOfSize:16];
     cell.textLabel.text = track.title;
+    
     if (indexPath.row == [CommUtils getPlayIndex]) {
         cell.textLabel.textColor = RGB(76, 193, 211);
     }else{
