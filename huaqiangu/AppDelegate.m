@@ -11,6 +11,7 @@
 #import "MLNavigationController.h"
 #import <AVFoundation/AVFoundation.h>
 #import "PlayController.h"
+#import <MobClick.h>
 
 @interface AppDelegate ()
 
@@ -18,6 +19,15 @@
 
 @implementation AppDelegate
 
+
+#pragma mark -
+#pragma mark - 友盟统计
+
+-(void)umengAtion
+{
+    //友盟统计
+    [MobClick startWithAppkey:umAppKey];
+}
 
 //后台播放音乐
 
@@ -49,6 +59,8 @@
     [self backPlayMusic];
     
     [self lockScrollerView];
+    
+    [self umengAtion];
     
     MainController *viewCtrl = [[MainController alloc]init];
     
