@@ -42,18 +42,24 @@ return _shared##classname; \
 #define LM_POP    [self.navigationController popViewControllerAnimated:YES]
 
 
+
+//*****************************************
+//替换版本时需更换的内容
+
 //苹果id
-#define AppStoreAppId @"879096197"
+#define AppStoreAppId @"879059095"
 
 #pragma mark -
 #pragma mark - AlbumTitle
 
-#define ALBUMTITLE @"庶女有毒"
+#define ALBUMTITLE @"张嘉佳合集"
 
 #pragma mark -
 #pragma mark - UMengKey
 
 #define umAppKey @"5399ab8356240b396d0460e2"
+
+//**************** end ***********************
 
 #pragma mark - 
 #pragma mark - appdelegate
