@@ -22,9 +22,9 @@
     
     NSString *formatteTime = nil;
     if (h == 0) {
-        formatteTime = [NSString stringWithFormat:@"%02u:%02u",m,s];
+        formatteTime = [NSString stringWithFormat:@"%02lu:%02lu",(unsigned long)m,(unsigned long)s];
     } else {
-        formatteTime = [NSString stringWithFormat:@"%u:%02u:%02u",h,m,s];
+        formatteTime = [NSString stringWithFormat:@"%lu:%02lu:%02lu",(unsigned long)h,(unsigned long)m,(unsigned long)s];
     }
     return formatteTime;
 }

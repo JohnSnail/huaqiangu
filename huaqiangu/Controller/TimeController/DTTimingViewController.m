@@ -58,6 +58,8 @@
     
     [self.tbvTiming performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:YES];
     
+    self.tbvTiming.backgroundColor = RGB(230, 227, 219);
+
     self.navigationItem.leftBarButtonItem=[LMButton setNavleftComboButtonWithImg:@"back" andSelector:@selector(backMethod) andTarget:self];
 }
 
