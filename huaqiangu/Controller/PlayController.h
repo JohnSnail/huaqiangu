@@ -23,6 +23,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *playRightLabel;
 @property (weak, nonatomic) IBOutlet UILabel *playLeftLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *albumImageView;
+@property (weak, nonatomic) IBOutlet UIButton *timeBtn;
+@property (weak, nonatomic) IBOutlet UILabel *countLabel;
 
 @property (nonatomic, strong) NSArray *playArr;
 @property NSInteger playIndex;

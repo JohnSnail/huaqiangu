@@ -8,6 +8,8 @@
 
 #import "PlayController.h"
 #import "AppDelegate.h"
+#import "DTTimingViewController.h"
+#import "DTTimingManager.h"
 
 @interface PlayController ()
 {
@@ -37,6 +39,8 @@ SINGLETON_CLASS(PlayController);
     self.playSlider.frame = CGRectMake(48 * VIEWWITH, 514 * VIEWWITH, 224 * VIEWWITH, 31 * VIEWWITH);
     self.playLeftLabel.frame = CGRectMake(0, 518 * VIEWWITH, 42 * VIEWWITH, 21 * VIEWWITH);
     self.playRightLabel.frame = CGRectMake(278 * VIEWWITH, 518 * VIEWWITH, 42 * VIEWWITH, 21 * VIEWWITH);
+    self.timeBtn.frame = CGRectMake(274 * VIEWWITH, 27 * VIEWWITH, 30 * VIEWWITH, 30 * VIEWWITH);
+    self.countLabel.frame = CGRectMake(200 * VIEWWITH, 248 * VIEWWITH, 112 * VIEWWITH, 29 * VIEWWITH);
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -52,6 +56,18 @@ SINGLETON_CLASS(PlayController);
     [self addHeadView];
     [self setTrackScrollerLabel];
     [self playMusic];
+    
+    [DTTimingManager sharedDTTimingManager].timingBlk = ^(NSNumber *timing) {
+        if (timing.integerValue == 0) {
+            
+            self.countLabel.text = @" ";
+            if ([DTTimingManager sharedDTTimingManager].timingState != TimingStateNone) {
+                [[STKAudioPlayer sharedManager] pause];
+            }
+        }else{
+            self.countLabel.text = [CommUtils formatIntoDateWithSecond:timing];
+        }
+    };
 }
 
 
@@ -121,7 +137,17 @@ SINGLETON_CLASS(PlayController);
     [self.playBtn addTarget:self action:@selector(playAction) forControlEvents:UIControlEventTouchUpInside];
     [self.nextBtn addTarget:self action:@selector(nextAction) forControlEvents:UIControlEventTouchUpInside];
     [self.lastBtn addTarget:self action:@selector(laseAction) forControlEvents:UIControlEventTouchUpInside];
-    
+    [self.timeBtn addTarget:self action:@selector(timeAction) forControlEvents:UIControlEventTouchUpInside];
+}
+
+#pragma mark - 
+#pragma mark - 定时按钮触发方法
+
+-(void)timeAction
+{
+    DTTimingViewController *timeVC = [[DTTimingViewController alloc] initWithNibName:@"DTTimingViewController" bundle:nil];
+    timeVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:timeVC animated:YES];
 }
 
 //拖动滑动条

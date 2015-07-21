@@ -12,12 +12,14 @@
                 <outlet property="albumImageView" destination="tND-aQ-yfu" id="a1N-VC-UMW"/>
                 <outlet property="backBtn" destination="mK9-Dg-NBB" id="uPh-lR-cVj"/>
                 <outlet property="bgImageView" destination="m0N-Wl-W3k" id="yg3-S9-Bf2"/>
+                <outlet property="countLabel" destination="LCa-z7-oYC" id="5Y1-Fz-cof"/>
                 <outlet property="lastBtn" destination="FaP-Qe-WHK" id="UXS-W9-gOj"/>
                 <outlet property="nextBtn" destination="f3k-TJ-jjR" id="u3Z-93-IHY"/>
                 <outlet property="playBtn" destination="cF6-8K-PnT" id="IMs-x4-lle"/>
                 <outlet property="playLeftLabel" destination="97M-IS-Nf9" id="ypC-dJ-iav"/>
                 <outlet property="playRightLabel" destination="Urh-rW-iXS" id="XjQ-fT-5Yr"/>
                 <outlet property="playSlider" destination="gOG-wu-NDt" id="fqs-Aa-Qj5"/>
+                <outlet property="timeBtn" destination="adL-vf-JQT" id="WgP-Gy-lAx"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -98,6 +100,20 @@
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="adL-vf-JQT">
+                    <rect key="frame" x="274" y="27" width="30" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" image="time">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LCa-z7-oYC">
+                    <rect key="frame" x="200" y="248" width="112" height="29"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                    <color key="textColor" red="0.24313725490196078" green="0.69803921568627447" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -111,6 +127,7 @@
         <image name="next" width="120" height="120"/>
         <image name="pause" width="62" height="62"/>
         <image name="play" width="62" height="62"/>
+        <image name="time" width="48" height="46"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

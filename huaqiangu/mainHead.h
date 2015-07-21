@@ -48,12 +48,12 @@ return _shared##classname; \
 #pragma mark -
 #pragma mark - AlbumTitle
 
-#define ALBUMTITLE @"岳云鹏相声"
+#define ALBUMTITLE @"庶女有毒"
 
 #pragma mark -
 #pragma mark - UMengKey
 
-#define umAppKey @"5374e10e56240b391301d819"
+#define umAppKey @"5399ab8356240b396d0460e2"
 
 #pragma mark - 
 #pragma mark - appdelegate

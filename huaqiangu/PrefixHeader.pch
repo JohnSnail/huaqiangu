@@ -21,5 +21,6 @@
 #import <MediaPlayer/MPMediaItem.h>
 #import <UIImageView+WebCache.h>
 #import "AutoRunLabel.h"
+#import <UIAlertView+Blocks.h>
 
 #endif

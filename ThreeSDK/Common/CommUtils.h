@@ -23,4 +23,10 @@
 
 //滚动label
 +(UIView *)labelView:(NSString *)title andLabel:(UILabel *)newLabel;
+
+//分割线
++ (UIImageView *)cuttingLineWithOriginx:(CGFloat)x andOriginY:(CGFloat)y;
+
+//倒计时
++ (NSString *)formatIntoDateWithSecond:(NSNumber *)sec;
 @end

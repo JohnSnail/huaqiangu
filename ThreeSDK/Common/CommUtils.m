@@ -12,6 +12,35 @@
 
 
 #pragma mark - 
+#pragma mark - 倒计时转化
+
++ (NSString *)formatIntoDateWithSecond:(NSNumber *)sec
+{
+    NSUInteger h = [sec unsignedIntegerValue] / 3600;
+    NSUInteger m = ([sec unsignedIntegerValue] / 60) % 60;
+    NSUInteger s = [sec unsignedIntegerValue] % 60;
+    
+    NSString *formatteTime = nil;
+    if (h == 0) {
+        formatteTime = [NSString stringWithFormat:@"%02u:%02u",m,s];
+    } else {
+        formatteTime = [NSString stringWithFormat:@"%u:%02u:%02u",h,m,s];
+    }
+    return formatteTime;
+}
+
+#pragma mark - 
+#pragma mark - 分割线
+
++ (UIImageView *)cuttingLineWithOriginx:(CGFloat)x andOriginY:(CGFloat)y;
+{
+    UIImageView * lineImg = [[UIImageView alloc]initWithFrame:CGRectMake(x, y, mainscreenwidth - 2 * x, 0.5)];
+    lineImg.image = [UIImage imageNamed:@"setting_list_line"];
+    lineImg.backgroundColor = [UIColor darkGrayColor];
+    return lineImg;
+}
+
+#pragma mark - 
 #pragma mark - 滚动label
 
 +(UIView *)labelView:(NSString *)title andLabel:(UILabel *)newLabel

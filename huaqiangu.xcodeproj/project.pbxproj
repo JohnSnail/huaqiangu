@@ -27,6 +27,9 @@
 		BC1FB6821B5A258E00D06876 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC1FB6811B5A258E00D06876 /* AVFoundation.framework */; };
 		BC1FB68E1B5A736500D06876 /* HistoryList.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1FB68D1B5A736500D06876 /* HistoryList.m */; };
 		BC1FB6911B5A745200D06876 /* SDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1FB6901B5A745200D06876 /* SDBManager.m */; };
+		BC9CEDBB1B5DFAD3004FC9F3 /* DTTimingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9CEDB71B5DFAD3004FC9F3 /* DTTimingManager.m */; };
+		BC9CEDBC1B5DFAD3004FC9F3 /* DTTimingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9CEDB91B5DFAD3004FC9F3 /* DTTimingViewController.m */; };
+		BC9CEDBD1B5DFAD3004FC9F3 /* DTTimingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9CEDBA1B5DFAD3004FC9F3 /* DTTimingViewController.xib */; };
 		BCCA4C581B5CE8EE00C73442 /* AutoRunLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA4C571B5CE8EE00C73442 /* AutoRunLabel.m */; };
 		D9EAA2A68928814866571895 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 69F6B3FFC1B8F381DD1A30C9 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -86,6 +89,11 @@
 		BC1FB68D1B5A736500D06876 /* HistoryList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HistoryList.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		BC1FB68F1B5A745200D06876 /* SDBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDBManager.h; sourceTree = "<group>"; };
 		BC1FB6901B5A745200D06876 /* SDBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SDBManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		BC9CEDB61B5DFAD3004FC9F3 /* DTTimingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTTimingManager.h; sourceTree = "<group>"; };
+		BC9CEDB71B5DFAD3004FC9F3 /* DTTimingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTTimingManager.m; sourceTree = "<group>"; };
+		BC9CEDB81B5DFAD3004FC9F3 /* DTTimingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTTimingViewController.h; sourceTree = "<group>"; };
+		BC9CEDB91B5DFAD3004FC9F3 /* DTTimingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTTimingViewController.m; sourceTree = "<group>"; };
+		BC9CEDBA1B5DFAD3004FC9F3 /* DTTimingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DTTimingViewController.xib; sourceTree = "<group>"; };
 		BCCA4C561B5CE8EE00C73442 /* AutoRunLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoRunLabel.h; sourceTree = "<group>"; };
 		BCCA4C571B5CE8EE00C73442 /* AutoRunLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoRunLabel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -215,6 +223,7 @@
 		BC1FB5ED1B59680E00D06876 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				BC9CEDB51B5DFAB6004FC9F3 /* TimeController */,
 				BC1FB5EE1B59684000D06876 /* MainController.h */,
 				BC1FB5EF1B59684000D06876 /* MainController.m */,
 				BC1FB5F01B59684000D06876 /* MainController.xib */,
@@ -280,6 +289,18 @@
 				BC1FB68D1B5A736500D06876 /* HistoryList.m */,
 			);
 			path = HistoryFMDB;
+			sourceTree = "<group>";
+		};
+		BC9CEDB51B5DFAB6004FC9F3 /* TimeController */ = {
+			isa = PBXGroup;
+			children = (
+				BC9CEDB61B5DFAD3004FC9F3 /* DTTimingManager.h */,
+				BC9CEDB71B5DFAD3004FC9F3 /* DTTimingManager.m */,
+				BC9CEDB81B5DFAD3004FC9F3 /* DTTimingViewController.h */,
+				BC9CEDB91B5DFAD3004FC9F3 /* DTTimingViewController.m */,
+				BC9CEDBA1B5DFAD3004FC9F3 /* DTTimingViewController.xib */,
+			);
+			path = TimeController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -368,6 +389,7 @@
 				BC1FB5F21B59684000D06876 /* MainController.xib in Resources */,
 				BC1FB5C31B595E9C00D06876 /* Main.storyboard in Resources */,
 				BC1FB5C51B595E9C00D06876 /* Images.xcassets in Resources */,
+				BC9CEDBD1B5DFAD3004FC9F3 /* DTTimingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,10 +443,12 @@
 				BC1FB5F11B59684000D06876 /* MainController.m in Sources */,
 				BC1FB65B1B59E69500D06876 /* NetService.m in Sources */,
 				BC1FB6001B597B0600D06876 /* TrackModel.m in Sources */,
+				BC9CEDBC1B5DFAD3004FC9F3 /* DTTimingViewController.m in Sources */,
 				BC1FB6801B5A0BF600D06876 /* LMLable.m in Sources */,
 				BC1FB5E31B59616900D06876 /* MLNavigationController.m in Sources */,
 				BC1FB68E1B5A736500D06876 /* HistoryList.m in Sources */,
 				BC1FB66A1B5A097E00D06876 /* CommUtils.m in Sources */,
+				BC9CEDBB1B5DFAD3004FC9F3 /* DTTimingManager.m in Sources */,
 				BC1FB5BD1B595E9C00D06876 /* AppDelegate.m in Sources */,
 				BC1FB65A1B59E69500D06876 /* AFService.m in Sources */,
 				BC1FB5BA1B595E9C00D06876 /* main.m in Sources */,
@@ -483,8 +507,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: liangliang cui (D3Q94XSJH5)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: liangliang cui (D3Q94XSJH5)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Li Meng (H855M397P9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Li Meng (H855M397P9)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -506,7 +530,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "c8e109f5-e510-43e3-a873-3f7acd492a09";
+				PROVISIONING_PROFILE = "bc600c21-f465-41bc-9b56-ed98f8f761b2";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -528,8 +552,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: liangliang cui (D3Q94XSJH5)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: liangliang cui (D3Q94XSJH5)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Li Meng (H855M397P9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Li Meng (H855M397P9)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -544,7 +568,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "c8e109f5-e510-43e3-a873-3f7acd492a09";
+				PROVISIONING_PROFILE = "bc600c21-f465-41bc-9b56-ed98f8f761b2";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -556,14 +580,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: liangliang cui (D3Q94XSJH5)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: liangliang cui (D3Q94XSJH5)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Li Meng (H855M397P9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Li Meng (H855M397P9)";
 				GCC_PREFIX_HEADER = huaqiangu/PrefixHeader.pch;
 				INFOPLIST_FILE = huaqiangu/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c8e109f5-e510-43e3-a873-3f7acd492a09";
+				PROVISIONING_PROFILE = "bc600c21-f465-41bc-9b56-ed98f8f761b2";
 			};
 			name = Debug;
 		};
@@ -573,14 +597,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: liangliang cui (D3Q94XSJH5)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: liangliang cui (D3Q94XSJH5)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Li Meng (H855M397P9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Li Meng (H855M397P9)";
 				GCC_PREFIX_HEADER = huaqiangu/PrefixHeader.pch;
 				INFOPLIST_FILE = huaqiangu/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c8e109f5-e510-43e3-a873-3f7acd492a09";
+				PROVISIONING_PROFILE = "bc600c21-f465-41bc-9b56-ed98f8f761b2";
 			};
 			name = Release;
 		};
