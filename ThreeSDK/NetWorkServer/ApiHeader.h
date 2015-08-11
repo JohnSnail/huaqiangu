@@ -11,7 +11,7 @@
 
 //#define kMainHeader   @"http://mobile.ximalaya.com/mobile/others/ca/album/track/360163/true/1/30?device=iPhone"
 
-#define kMainHeader   @"http://mobile.ximalaya.com/mobile/others/ca/album/track/239463/true/"
+#define kMainHeader   @"http://mobile.ximalaya.com/mobile/others/ca/album/track/327536/true/"
 #define kDevice @"?device=iPhone"
 
 #endif

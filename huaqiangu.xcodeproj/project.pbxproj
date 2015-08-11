@@ -357,6 +357,7 @@
 					};
 					BC1FB5CC1B595E9C00D06876 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = JD2W4XYSND;
 						TestTargetID = BC1FB5B31B595E9C00D06876;
 					};
 				};
@@ -586,6 +587,40 @@
 				INFOPLIST_FILE = huaqiangu/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"MobClickLibrary\"",
+					"-l\"Pods-AFNetworking\"",
+					"-l\"Pods-FMDB\"",
+					"-l\"Pods-JSONKit-NoWarning\"",
+					"-l\"Pods-MJRefresh\"",
+					"-l\"Pods-SDWebImage\"",
+					"-l\"Pods-SGNavigationProgress\"",
+					"-l\"Pods-StreamingKit\"",
+					"-l\"Pods-UIActionSheet+Blocks\"",
+					"-l\"Pods-UIAlertView+Blocks\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AudioToolbox\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreFoundation\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "c8e109f5-e510-43e3-a873-3f7acd492a09";
 			};
@@ -603,6 +638,40 @@
 				INFOPLIST_FILE = huaqiangu/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"MobClickLibrary\"",
+					"-l\"Pods-AFNetworking\"",
+					"-l\"Pods-FMDB\"",
+					"-l\"Pods-JSONKit-NoWarning\"",
+					"-l\"Pods-MJRefresh\"",
+					"-l\"Pods-SDWebImage\"",
+					"-l\"Pods-SGNavigationProgress\"",
+					"-l\"Pods-StreamingKit\"",
+					"-l\"Pods-UIActionSheet+Blocks\"",
+					"-l\"Pods-UIAlertView+Blocks\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AudioToolbox\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreFoundation\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "c8e109f5-e510-43e3-a873-3f7acd492a09";
 			};
@@ -612,6 +681,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -623,6 +694,7 @@
 				INFOPLIST_FILE = huaqianguTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/huaqiangu.app/huaqiangu";
 			};
 			name = Debug;
@@ -631,6 +703,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -638,6 +712,7 @@
 				INFOPLIST_FILE = huaqianguTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/huaqiangu.app/huaqiangu";
 			};
 			name = Release;

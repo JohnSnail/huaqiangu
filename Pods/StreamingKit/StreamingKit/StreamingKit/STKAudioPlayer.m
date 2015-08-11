@@ -290,8 +290,40 @@ static void AudioFileStreamPacketsProc(void* clientData, UInt32 numberBytes, UIn
     static dispatch_once_t predicate;
     dispatch_once(&predicate, ^{
         sharedAccountManagerInstance = [[self alloc] init];
+        [sharedAccountManagerInstance backPlayMusic];
     });
     return sharedAccountManagerInstance;
+}
+
+
+//后台播放音乐
+
+#pragma mark -
+#pragma mark - 后台播放音乐
+
+-(void)backPlayMusic
+{
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    NSError *setCategoryError = nil;
+    [session setCategory:AVAudioSessionCategoryPlayback error:&setCategoryError];
+    NSError *activationError = nil;
+    [session setActive:YES error:&activationError];
+    [[AVAudioSession sharedInstance] setDelegate:self];
+    AudioSessionInitialize(NULL, NULL, NULL, NULL);
+    AudioSessionAddPropertyListener(kAudioSessionProperty_AudioRouteChange, audioRouteChangeCallback, (__bridge void *)(self));
+}
+
+void audioRouteChangeCallback(void *inClientData, AudioSessionPropertyID inID, UInt32 inDataSize, const void *inData)
+{
+    SInt32 routeChangeReason;
+    CFDictionaryRef routeChangeDictionary = inData;
+    CFNumberRef routeChangeReasonRef = CFDictionaryGetValue(routeChangeDictionary, CFSTR(kAudioSession_AudioRouteChangeKey_Reason));
+    
+    CFNumberGetValue(routeChangeReasonRef, kCFNumberSInt32Type, &routeChangeReason);
+    
+    if (routeChangeReason == kAudioSessionRouteChangeReason_OldDeviceUnavailable) {  //拔掉
+        [[STKAudioPlayer sharedManager] pause];
+    }
 }
 
 +(void) initialize
@@ -3168,6 +3200,31 @@ static OSStatus OutputRenderCallback(void* inRefCon, AudioUnitRenderActionFlags*
 -(void) setEqualizerEnabled:(BOOL)value
 {
     self->equalizerEnabled = value;
+}
+
+
+#pragma mark -
+#pragma AVAudioSessionDelegate
+
+static bool interruptedWhilePlaying = NO;
+
+- (void)beginInterruption
+{
+    NSLog(@"~~~~~~~~~~~~~~~~beginInterruption");
+    if ([self state] == STKAudioPlayerStatePlaying) {
+        interruptedWhilePlaying = YES;
+        [self pause];
+    }
+}
+
+- (void)endInterruption
+{
+    NSLog(@"~~~~~~~~~~~~~~~~endInterruption");
+    if (interruptedWhilePlaying) {
+        [[AVAudioSession sharedInstance] setActive:YES error:NULL];
+        [self resume];
+        interruptedWhilePlaying = NO;
+    }
 }
 
 

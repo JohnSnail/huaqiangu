@@ -21,6 +21,8 @@
 #define mainscreenhight [UIScreen mainScreen].bounds.size.height
 #define mainscreenwidth [UIScreen mainScreen].bounds.size.width
 #define IS_IOS_7 ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0)?YES:NO
+#define IS_IPHONE_5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(320,568), [[UIScreen mainScreen] currentMode].size) || (CGSizeEqualToSize(CGSizeMake(750, 1334), [[UIScreen mainScreen] currentMode].size) || CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size)) || (CGSizeEqualToSize(CGSizeMake(1125, 2001), [[UIScreen mainScreen] currentMode].size) || CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size)) : NO)
+
 #define VIEWWITH (mainscreenwidth/320.0)
 
 //单例
@@ -47,17 +49,23 @@ return _shared##classname; \
 //替换版本时需更换的内容
 
 //苹果id
-#define AppStoreAppId @"1021533857"
+#define AppStoreAppId @"893612120"
 
 #pragma mark -
 #pragma mark - AlbumTitle
 
-#define ALBUMTITLE @"罗辑思维"
+#define ALBUMTITLE @"平凡的世界"
 
 #pragma mark -
 #pragma mark - UMengKey
 
-#define umAppKey @"55ae0ac4e0f55a71c4004ebb"
+#define umAppKey @"53ac346e56240b86fe03ff17"
+
+//**************** 多盟广告 ***********************
+
+#define kPublisherId @"56OJ20kYuN2vTttX+l"
+
+#define kPlacementId @"16TLPJzaApqIcNUvlf4YOT3s"
 
 //**************** end ***********************
 

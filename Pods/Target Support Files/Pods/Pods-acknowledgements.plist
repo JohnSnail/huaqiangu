@@ -41,6 +41,14 @@ THE SOFTWARE.
 		</dict>
 		<dict>
 			<key>FooterText</key>
+			<string>LICENSE  &#169;2015 Domob, Inc. All rights reserved</string>
+			<key>Title</key>
+			<string>DomobAdSDK</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>FooterText</key>
 			<string>If you are using FMDB in your project, I'd love to hear about it.  Let Gus know
 by sending an email to gus@flyingmeat.com.
 

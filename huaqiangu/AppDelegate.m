@@ -29,20 +29,6 @@
     [MobClick startWithAppkey:umAppKey];
 }
 
-//后台播放音乐
-
-#pragma mark - 
-#pragma mark - 后台播放音乐
-
--(void)backPlayMusic
-{
-    AVAudioSession *session = [AVAudioSession sharedInstance];
-    NSError *setCategoryError = nil;
-    [session setCategory:AVAudioSessionCategoryPlayback error:&setCategoryError];
-    NSError *activationError = nil;
-    [session setActive:YES error:&activationError];
-}
-
 #pragma mark - 
 #pragma mark - 锁屏播放设置
 -(void)lockScrollerView
@@ -55,9 +41,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
-    [self backPlayMusic];
-    
+        
     [self lockScrollerView];
     
     [self umengAtion];

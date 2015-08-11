@@ -39,6 +39,7 @@
 #import <pthread.h>
 #import "STKDataSource.h"
 #import <AudioToolbox/AudioToolbox.h>
+#import <AVFoundation/AVFoundation.h>
 
 #if TARGET_OS_IPHONE
 #include "UIKit/UIApplication.h"
@@ -131,7 +132,7 @@ typedef void(^STKFrameFilter)(UInt32 channelsPerFrame, UInt32 bytesPerFrame, UIn
 
 @end
 
-@interface STKAudioPlayer : NSObject<STKDataSourceDelegate>
+@interface STKAudioPlayer : NSObject<STKDataSourceDelegate,AVAudioSessionDelegate>
 
 /// Gets or sets the volume (ranges 0 - 1.0).
 /// On iOS the STKAudioPlayerOptionEnableMultichannelMixer option must be enabled for volume to work.

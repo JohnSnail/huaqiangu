@@ -137,6 +137,9 @@ static NSInteger i = 0;
 
         for (int i = 0; i < arr.count; i++) {
             TrackModel *track = [[TrackModel alloc]initWithDict:arr[i]];
+//            NSString *strTitle = [NSString stringWithFormat:@"七星鲁王宫%@",track.title];
+//            track.title = strTitle;
+            
             [bSelf.mainMuArray addObject:track];
         }
         [bSelf.mainTbView reloadData];

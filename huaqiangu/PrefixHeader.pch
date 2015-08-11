@@ -22,5 +22,6 @@
 #import <UIImageView+WebCache.h>
 #import "AutoRunLabel.h"
 #import <UIAlertView+Blocks.h>
+#import <DMAdView.h>
 
 #endif
