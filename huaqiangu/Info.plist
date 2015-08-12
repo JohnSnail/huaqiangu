@@ -7,11 +7,11 @@
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.weitingcui.pfdsj</string>
+	<string>com.myself.fanyin</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>7.0</string>
 	<key>CFBundleName</key>
-	<string>平凡的世界</string>
+	<string>佛教音乐</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>

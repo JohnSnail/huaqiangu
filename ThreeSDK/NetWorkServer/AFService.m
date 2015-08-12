@@ -40,7 +40,7 @@
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"application/json",@"text/json",@"text/javascript", @"text/plain",nil];//如果报接受类型不一致请替换一致text/html或别的
     //manager.requestSerializer=[AFJSONRequestSerializer serializer];//申明请求的数据是json类型
     [manager POST:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        TLog(@"%@", responseObject);
+//        TLog(@"%@", responseObject);
         dispatch_async(dispatch_get_main_queue(),^{
             TLog(@"输出返回的内容%@",responseObject);
             completion(responseObject,nil);
