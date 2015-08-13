@@ -38,11 +38,12 @@ static NSInteger i = 0;
 {
     if (i == 0) {
         if ([CommUtils getPlayIndex] < self.mainMuArray.count) {
-            NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:[CommUtils getPlayIndex] inSection:0];
-            [self.mainTbView scrollToRowAtIndexPath:scrollIndexPath
-                                   atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
-            i++;
+            ;
         }
+        NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:[CommUtils getPlayIndex] inSection:0];
+        [self.mainTbView scrollToRowAtIndexPath:scrollIndexPath
+                               atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+        i++;
     }
 }
 
