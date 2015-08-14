@@ -213,7 +213,7 @@ SINGLETON_CLASS(PlayController);
 
 -(void)pushArr:(NSArray *)arr andIndex:(NSInteger)index
 {
-//    [self initDomobView];
+    [self initDomobView];
 
     self.playArr = arr;
     self.playIndex = index;

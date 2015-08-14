@@ -49,23 +49,23 @@ return _shared##classname; \
 //替换版本时需更换的内容
 
 //苹果id
-#define AppStoreAppId @"879077957"
+#define AppStoreAppId @"879059095"
 
 #pragma mark -
 #pragma mark - AlbumTitle
 
-#define ALBUMTITLE @"小强来了"
+#define ALBUMTITLE @"庶女有毒"
 
 #pragma mark -
 #pragma mark - UMengKey
 
-#define umAppKey @"5374d69956240b1a3f003186"
+#define umAppKey @"5399ab8356240b396d0460e2"
 
 //**************** 多盟广告 ***********************
 
-#define kPublisherId @"56OJ20kYuN2vTttX+l"
+#define kPublisherId @"56OJ20kYuN2Sle4Ajp"
 
-#define kPlacementId @"16TLPJzaApqIcNUvlf4YOT3s"
+#define kPlacementId @"16TLPJzaApqawNUvM0zJFPjk"
 
 //**************** end ***********************
 
