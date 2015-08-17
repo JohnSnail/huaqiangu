@@ -49,24 +49,28 @@ return _shared##classname; \
 //替换版本时需更换的内容
 
 //苹果id
-#define AppStoreAppId @"879059095"
+#define AppStoreAppId @"1021175598"
 
 #pragma mark -
 #pragma mark - AlbumTitle
 
-#define ALBUMTITLE @"庶女有毒"
+#define ALBUMTITLE @"华胥引"
 
 #pragma mark -
 #pragma mark - UMengKey
 
-#define umAppKey @"5399ab8356240b396d0460e2"
+#define umAppKey @"55ac9a0767e58e4bb3000b21"
 
-//**************** 多盟广告 ***********************
+//**************** 百度广告 ***********************
 
-#define kPublisherId @"56OJ20kYuN2Sle4Ajp"
+#define kBaiduId @"ec7ad5ef"
+#define kBaiduBanner @"2010399"
+#define kBaiduSplash @"2010402"
 
-#define kPlacementId @"16TLPJzaApqawNUvM0zJFPjk"
-
+//**************** 岳云鹏 ***********************
+//#define kBaiduId @"e89aefee"
+//#define kBaiduBanner @"2010416"
+//#define kBaiduSplash @"2006257"
 //**************** end ***********************
 
 #pragma mark - 

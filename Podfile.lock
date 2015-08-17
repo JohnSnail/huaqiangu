@@ -20,7 +20,6 @@ PODS:
   - AFNetworking/UIKit (2.5.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - DomobAdSDK (4.4.8)
   - FMDB (2.5):
     - FMDB/standard (= 2.5)
   - FMDB/common (2.5)
@@ -39,7 +38,6 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5.4)
-  - DomobAdSDK (~> 4.4.8)
   - FMDB (~> 2.3)
   - JSONKit-NoWarning (~> 1.2)
   - MJRefresh (~> 2.2.1)
@@ -52,7 +50,6 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
-  DomobAdSDK: 356ff5eb607fce20bf4050a7ca5621a03d2fc272
   FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
   JSONKit-NoWarning: 3d27e6f9e6846ecf741e8c64dcadd7d5aa7193cb
   MJRefresh: c3fa0387e8e97a11a9666639d2f815607edd1c2f

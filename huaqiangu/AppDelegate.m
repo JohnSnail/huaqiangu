@@ -12,8 +12,10 @@
 #import <AVFoundation/AVFoundation.h>
 #import "PlayController.h"
 #import <MobClick.h>
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
-@interface AppDelegate ()
+@interface AppDelegate ()<BaiduMobAdSplashDelegate>
 
 @end
 
@@ -27,6 +29,52 @@
 {
     //友盟统计
     [MobClick startWithAppkey:umAppKey];
+}
+
+#pragma mark -
+#pragma mark - 百度开屏广告
+
+-(void)baiduSplash
+{
+    BaiduMobAdSplash *splash = [[BaiduMobAdSplash alloc] init];
+    splash.delegate = self;
+    splash.AdUnitTag = kBaiduSplash;
+    splash.canSplashClick = YES;
+    //    splash.useCache = NO;
+    [splash loadAndDisplayUsingKeyWindow:self.window];
+}
+
+- (NSString *)publisherId {
+    return kBaiduId; //your_own_app_id
+}
+
+/**
+ *  启动位置信息
+ */
+-(BOOL) enableLocation{
+    return NO;
+}
+
+
+/**
+ *  广告展示成功
+ */
+- (void)splashSuccessPresentScreen:(BaiduMobAdSplash *)splash{
+    NSLog(@"广告展示成功");
+}
+
+/**
+ *  广告展示失败
+ */
+- (void)splashlFailPresentScreen:(BaiduMobAdSplash *)splash withError:(BaiduMobFailReason) reason{
+    NSLog(@"广告展示失败%u",reason);
+}
+
+/**
+ *  广告展示结束
+ */
+- (void)splashDidDismissScreen:(BaiduMobAdSplash *)splash{
+    NSLog(@"广告展示结束");
 }
 
 #pragma mark - 
@@ -54,7 +102,11 @@
     
     self.window.rootViewController = navCtrl;
     [self.window makeKeyAndVisible];
+    
+    //添加百度开屏
+//    [self baiduSplash];
 
+    [Fabric with:@[CrashlyticsKit]];
     return YES;
 }
 

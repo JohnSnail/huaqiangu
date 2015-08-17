@@ -71,7 +71,7 @@ static NSInteger i = 0;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.navigationItem.leftBarButtonItem = [LMButton setNavright:@"好评" andcolor:[UIColor whiteColor] andSelector:@selector(pushAppStore) andTarget:self];
+    self.navigationItem.leftBarButtonItem = [LMButton setNavright:@"反馈" andcolor:[UIColor whiteColor] andSelector:@selector(pushAppStore) andTarget:self];
     self.navigationItem.titleView = [CommUtils navTittle:ALBUMTITLE];
     
     pageId = 1;
@@ -139,7 +139,7 @@ static NSInteger i = 0;
 
         for (int i = 0; i < arr.count; i++) {
             TrackModel *track = [[TrackModel alloc]initWithDict:arr[i]];
-//            NSString *strTitle = [NSString stringWithFormat:@"七星鲁王宫%@",track.title];
+//            NSString *strTitle = [NSString stringWithFormat:@"步步惊心%@",track.title];
 //            track.title = strTitle;
             
             [bSelf.mainMuArray addObject:track];

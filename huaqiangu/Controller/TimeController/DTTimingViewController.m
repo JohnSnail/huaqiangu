@@ -10,8 +10,10 @@
 #import "DTTimingManager.h"
 #import "PlayController.h"
 
-@interface DTTimingViewController ()
-
+@interface DTTimingViewController ()<BaiduMobAdViewDelegate>
+{
+    BaiduMobAdView *sharedAdView;
+}
 @end
 
 @implementation DTTimingViewController
@@ -39,6 +41,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    [self initBaiduAdView];
+    
     [self layoutUI];
     _timingData = [NSMutableArray arrayWithCapacity:0];
     [_timingData addObject:@{@"content": @"不开启",
@@ -128,5 +133,77 @@
     
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+#pragma mark -
+#pragma mark - 百度广告
+
+-(void)initBaiduAdView
+{
+    //使用嵌入广告的方法实例。
+    sharedAdView = [[BaiduMobAdView alloc] init];
+    //把在mssp.baidu.com上创建后获得的广告位id写到这里
+    sharedAdView.AdUnitTag = kBaiduBanner;
+    sharedAdView.AdType = BaiduMobAdViewTypeBanner;
+    sharedAdView.frame = CGRectMake(0, (mainscreenhight - 50), 320 * VIEWWITH, 50 * VIEWWITH);
+    sharedAdView.delegate = self;
+    [self.view addSubview:sharedAdView];
+    [sharedAdView start];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    sharedAdView.delegate = nil;
+    sharedAdView = nil;
+}
+
+- (NSString *)publisherId {
+    return kBaiduId; //@"your_own_app_id";
+}
+
+-(BOOL) enableLocation {
+    //启⽤用location会有⼀一次alert提⽰示,请根据系统进⾏行相关配置
+    return NO;
+}
+/**
+ *  广告将要被载入
+ */
+-(void) willDisplayAd:(BaiduMobAdView*) adview
+{
+    NSLog(@"will display ad");
+}
+
+/**
+ *  广告载入失败
+ */
+-(void) failedDisplayAd:(BaiduMobFailReason) reason;
+{
+    NSLog(@"failedDisplayAd %d", reason);
+}
+
+/**
+ *  本次广告展示成功时的回调
+ */
+-(void) didAdImpressed
+{
+    NSLog(@"didAdImpressed");
+}
+
+/**
+ *  本次广告展示被用户点击时的回调
+ */
+-(void) didAdClicked
+{
+    NSLog(@"didAdClicked");
+}
+
+/**
+ *  在用户点击完广告条出现全屏广告页面以后，用户关闭广告时的回调
+ */
+-(void) didDismissLandingPage
+{
+    NSLog(@"didDismissLandingPage");
+}
+
 
 @end

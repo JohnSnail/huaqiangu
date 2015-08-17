@@ -11,12 +11,12 @@
 #import "DTTimingViewController.h"
 #import "DTTimingManager.h"
 
-@interface PlayController ()<DMAdViewDelegate>
+@interface PlayController ()<BaiduMobAdViewDelegate>
 {
     NSString *hisProgress;
     NSTimer *timer;
     AutoRunLabel *trackLabel;
-    DMAdView *_dmAdView;
+    BaiduMobAdView *sharedAdView;
 }
 @end
 
@@ -27,6 +27,7 @@ SINGLETON_CLASS(PlayController);
 
 #pragma mark - 
 #pragma mark - 适配iPhone6
+
 -(void)setFrameView
 {
     NSLog(@"ios = %d", IS_IPHONE_5);
@@ -46,59 +47,89 @@ SINGLETON_CLASS(PlayController);
     self.playRightLabel.frame = CGRectMake(278 * VIEWWITH, (IS_IPHONE_5?518:418) * VIEWWITH, 42 * VIEWWITH, 21 * VIEWWITH);
     self.timeBtn.frame = CGRectMake(274 * VIEWWITH, 27 * VIEWWITH, 30 * VIEWWITH, 30 * VIEWWITH);
     self.countLabel.frame = CGRectMake(200 * VIEWWITH, 248 * VIEWWITH, 112 * VIEWWITH, 29 * VIEWWITH);
-    
-    _dmAdView.frame = CGRectMake(0, (IS_IPHONE_5?420:320) * VIEWWITH - 50 * VIEWWITH, 320 * VIEWWITH, 50 * VIEWWITH);
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    _dmAdView.delegate = nil;
-    _dmAdView.rootViewController = nil;
     self.navigationController.navigationBarHidden = YES;
 }
 
--(void)initDomobView
+- (void)viewWillDisappear:(BOOL)animated
 {
-    _dmAdView.delegate = self; // 设置 Delegate
-    _dmAdView.rootViewController = self; // 设置 RootViewController
-    [self.PlayHeadView addSubview:_dmAdView]; // 将⼲⼴广告视图添加到⽗父视图中
-    [_dmAdView loadAd]; // 开始加载⼲⼴广告}
+    [super viewWillDisappear:animated];
+    sharedAdView.delegate = nil;
+    sharedAdView = nil;
 }
 
-- (void)viewDidUnload {
-    [super viewDidUnload];
-    [_dmAdView removeFromSuperview]; // 将⼲⼴广告试图从⽗父视图中移除
+#pragma mark -
+#pragma mark - 百度广告
+
+-(void)initBaiduAdView
+{
+    //使用嵌入广告的方法实例。
+    sharedAdView = [[BaiduMobAdView alloc] init];
+    //把在mssp.baidu.com上创建后获得的广告位id写到这里
+    sharedAdView.AdUnitTag = kBaiduBanner;
+    sharedAdView.AdType = BaiduMobAdViewTypeBanner;
+    sharedAdView.frame = CGRectMake(0, (IS_IPHONE_5?420:320) * VIEWWITH - 50 * VIEWWITH, 320 * VIEWWITH, 50 * VIEWWITH);
+    sharedAdView.delegate = self;
+    [self.PlayHeadView addSubview:sharedAdView];
+    [sharedAdView start];
 }
 
-#pragma mark - 
-#pragma mark - dmadDelegate
-
-// 成功加载⼲⼴广告后,回调该⽅方法
-- (void)dmAdViewSuccessToLoadAd:(DMAdView *)adView{
-    NSLog(@"111111111");
-    
+- (NSString *)publisherId {
+    return kBaiduId; //@"your_own_app_id";
 }
 
-// 加载⼲⼴广告失败后,回调该⽅方法
-- (void)dmAdViewFailToLoadAd:(DMAdView *)adView withError:(NSError *)error{
-    NSLog(@"222222222");
+-(BOOL) enableLocation {
+    //启⽤用location会有⼀一次alert提⽰示,请根据系统进⾏行相关配置
+    return NO;
 }
-// 当将要呈现出 Modal View 时,回调该⽅方法。如打开内置浏览器。
-- (void)dmWillPresentModalViewFromAd:(DMAdView *)adView{
-    NSLog(@"333333333");
+/**
+ *  广告将要被载入
+ */
+-(void) willDisplayAd:(BaiduMobAdView*) adview
+{
+    NSLog(@"will display ad");
 }
-// 当呈现的 Modal View 被关闭后,回调该⽅方法。如内置浏览器被关闭。
-- (void)dmDidDismissModalViewFromAd:(DMAdView *)adView{
-    NSLog(@"444444444");
+
+/**
+ *  广告载入失败
+ */
+-(void) failedDisplayAd:(BaiduMobFailReason) reason;
+{
+    NSLog(@"failedDisplayAd %d", reason);
 }
-// 当因⽤用户的操作(如点击下载类⼲⼴广告,需要跳转到Store),需要离开当前应⽤用时,回调该⽅方法 - (void)dmApplicationWillEnterBackgroundFromAd:(DMAdView *)adView;
+
+/**
+ *  本次广告展示成功时的回调
+ */
+-(void) didAdImpressed
+{
+    NSLog(@"didAdImpressed");
+}
+
+/**
+ *  本次广告展示被用户点击时的回调
+ */
+-(void) didAdClicked
+{
+    NSLog(@"didAdClicked");
+}
+
+/**
+ *  在用户点击完广告条出现全屏广告页面以后，用户关闭广告时的回调
+ */
+-(void) didDismissLandingPage
+{
+    NSLog(@"didDismissLandingPage");
+}
 
 -(void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    _dmAdView = [[DMAdView alloc] initWithPublisherId:kPublisherId placementId:kPlacementId];
-
+    
     [self setFrameView];
     [self addHeadView];
     [self setTrackScrollerLabel];
@@ -178,7 +209,6 @@ SINGLETON_CLASS(PlayController);
     [self.playSlider setThumbImage:[UIImage imageNamed:@"play_point"] forState:UIControlStateHighlighted];
     [self.playSlider addTarget:self action:@selector(valueChange) forControlEvents:UIControlEventValueChanged];
     
-    
     //返回和播放按钮
     [self.backBtn addTarget:self action:@selector(backMethod) forControlEvents:UIControlEventTouchUpInside];
     [self.playBtn addTarget:self action:@selector(playAction) forControlEvents:UIControlEventTouchUpInside];
@@ -213,7 +243,7 @@ SINGLETON_CLASS(PlayController);
 
 -(void)pushArr:(NSArray *)arr andIndex:(NSInteger)index
 {
-    [self initDomobView];
+    [self initBaiduAdView];
 
     self.playArr = arr;
     self.playIndex = index;
