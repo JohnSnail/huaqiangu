@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC13E4B31B82D82700222CD2 /* NSMutableDictionary+SafeValue.m in Sources */ = {isa = PBXBuildFile; fileRef = BC13E4B21B82D82700222CD2 /* NSMutableDictionary+SafeValue.m */; };
+		BC13E4B61B82E70D00222CD2 /* KKNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC13E4B51B82E70D00222CD2 /* KKNavigationController.m */; };
 		BC15672C1B7DA2870018F5BE /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC15672A1B7DA2870018F5BE /* Fabric.framework */; };
 		BC15672D1B7DA2870018F5BE /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC15672B1B7DA2870018F5BE /* Crashlytics.framework */; };
 		BC1FB5BA1B595E9C00D06876 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1FB5B91B595E9C00D06876 /* main.m */; };
@@ -14,7 +16,7 @@
 		BC1FB5C31B595E9C00D06876 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC1FB5C11B595E9C00D06876 /* Main.storyboard */; };
 		BC1FB5C51B595E9C00D06876 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC1FB5C41B595E9C00D06876 /* Images.xcassets */; };
 		BC1FB5D41B595E9C00D06876 /* huaqianguTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1FB5D31B595E9C00D06876 /* huaqianguTests.m */; };
-		BC1FB5E31B59616900D06876 /* MLNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1FB5E21B59616900D06876 /* MLNavigationController.m */; };
+		BC1FB5E31B59616900D06876 /* MLNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1FB5E21B59616900D06876 /* MLNavigationController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BC1FB5F11B59684000D06876 /* MainController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1FB5EF1B59684000D06876 /* MainController.m */; };
 		BC1FB5F21B59684000D06876 /* MainController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC1FB5F01B59684000D06876 /* MainController.xib */; };
 		BC1FB6001B597B0600D06876 /* TrackModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1FB5FF1B597B0600D06876 /* TrackModel.m */; };
@@ -68,6 +70,10 @@
 		69F6B3FFC1B8F381DD1A30C9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		73BEAAB2371013C5EC7DF00F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		7C353B9F2465C658A8882D7F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		BC13E4B11B82D82700222CD2 /* NSMutableDictionary+SafeValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+SafeValue.h"; sourceTree = "<group>"; };
+		BC13E4B21B82D82700222CD2 /* NSMutableDictionary+SafeValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSMutableDictionary+SafeValue.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		BC13E4B41B82E70D00222CD2 /* KKNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKNavigationController.h; sourceTree = "<group>"; };
+		BC13E4B51B82E70D00222CD2 /* KKNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKNavigationController.m; sourceTree = "<group>"; };
 		BC15672A1B7DA2870018F5BE /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		BC15672B1B7DA2870018F5BE /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		BC1FB5B41B595E9C00D06876 /* huaqiangu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = huaqiangu.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,7 +101,7 @@
 		BC1FB6591B59E69500D06876 /* NetService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = NetService.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		BC1FB6601B59ED2800D06876 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		BC1FB6611B59F47400D06876 /* PlayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayController.h; sourceTree = "<group>"; };
-		BC1FB6621B59F47400D06876 /* PlayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayController.m; sourceTree = "<group>"; };
+		BC1FB6621B59F47400D06876 /* PlayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PlayController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		BC1FB6631B59F47400D06876 /* PlayController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayController.xib; sourceTree = "<group>"; };
 		BC1FB6681B5A097E00D06876 /* CommUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommUtils.h; sourceTree = "<group>"; };
 		BC1FB6691B5A097E00D06876 /* CommUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommUtils.m; sourceTree = "<group>"; };
@@ -305,6 +311,8 @@
 			children = (
 				BC1FB5E11B59616900D06876 /* MLNavigationController.h */,
 				BC1FB5E21B59616900D06876 /* MLNavigationController.m */,
+				BC13E4B41B82E70D00222CD2 /* KKNavigationController.h */,
+				BC13E4B51B82E70D00222CD2 /* KKNavigationController.m */,
 			);
 			path = NavigationSDK;
 			sourceTree = "<group>";
@@ -347,6 +355,8 @@
 		BC1FB6671B5A093000D06876 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				BC13E4B11B82D82700222CD2 /* NSMutableDictionary+SafeValue.h */,
+				BC13E4B21B82D82700222CD2 /* NSMutableDictionary+SafeValue.m */,
 				BCCA4C561B5CE8EE00C73442 /* AutoRunLabel.h */,
 				BCCA4C571B5CE8EE00C73442 /* AutoRunLabel.m */,
 				BC1FB6681B5A097E00D06876 /* CommUtils.h */,
@@ -568,6 +578,7 @@
 				BC1FB5F11B59684000D06876 /* MainController.m in Sources */,
 				BC1FB65B1B59E69500D06876 /* NetService.m in Sources */,
 				BC1FB6001B597B0600D06876 /* TrackModel.m in Sources */,
+				BC13E4B61B82E70D00222CD2 /* KKNavigationController.m in Sources */,
 				BC9CEDBC1B5DFAD3004FC9F3 /* DTTimingViewController.m in Sources */,
 				BC1FB6801B5A0BF600D06876 /* LMLable.m in Sources */,
 				BC1FB5E31B59616900D06876 /* MLNavigationController.m in Sources */,
@@ -575,6 +586,7 @@
 				BC1FB66A1B5A097E00D06876 /* CommUtils.m in Sources */,
 				BC9CEDBB1B5DFAD3004FC9F3 /* DTTimingManager.m in Sources */,
 				BC1FB5BD1B595E9C00D06876 /* AppDelegate.m in Sources */,
+				BC13E4B31B82D82700222CD2 /* NSMutableDictionary+SafeValue.m in Sources */,
 				BC1FB65A1B59E69500D06876 /* AFService.m in Sources */,
 				BC1FB5BA1B595E9C00D06876 /* main.m in Sources */,
 				BCCA4C581B5CE8EE00C73442 /* AutoRunLabel.m in Sources */,

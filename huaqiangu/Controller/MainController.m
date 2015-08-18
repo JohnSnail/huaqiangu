@@ -36,9 +36,6 @@ static NSInteger i = 0;
 
 -(void)scrollViewToIndex
 {
-    while ([CommUtils getPlayIndex] + 1 >self.mainMuArray.count) {
-        [self loadMoreData];
-    }
     if (i == 0) {
         NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:[CommUtils getPlayIndex] inSection:0];
         [self.mainTbView scrollToRowAtIndexPath:scrollIndexPath
@@ -149,7 +146,7 @@ static NSInteger i = 0;
         [bSelf.mainTbView.footer endRefreshing];
         
         if (bSelf.mainMuArray.count != 0) {
-            if (bSelf.mainMuArray.count >= [CommUtils getPlayIndex]) {
+            if (bSelf.mainMuArray.count > [CommUtils getPlayIndex]) {
                 [bSelf scrollViewToIndex];
             }else{
                 [self loadMoreData];

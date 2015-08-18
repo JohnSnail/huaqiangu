@@ -96,7 +96,8 @@
     
     MainController *viewCtrl = [[MainController alloc]init];
     
-    MLNavigationController *navCtrl = [[MLNavigationController alloc]initWithRootViewController:viewCtrl];
+//    MLNavigationController *navCtrl = [[MLNavigationController alloc]initWithRootViewController:viewCtrl];
+    KKNavigationController *navCtrl = [[KKNavigationController alloc]initWithRootViewController:viewCtrl];
     
     [navCtrl.navigationBar setBarTintColor:RGB(76, 193, 211)];
     

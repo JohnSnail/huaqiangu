@@ -25,5 +25,6 @@
 #import "BaiduMobAdView.h"
 #import "BaiduMobAdSplash.h"
 #import "NSMutableDictionary+SafeValue.h"
+#import "KKNavigationController.h"
 
 #endif
