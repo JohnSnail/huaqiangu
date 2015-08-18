@@ -133,6 +133,8 @@ SINGLETON_CLASS(PlayController);
     [self setFrameView];
     [self addHeadView];
     [self setTrackScrollerLabel];
+    
+    [self initBaiduAdView];
     [self playMusic];
     
     [DTTimingManager sharedDTTimingManager].timingBlk = ^(NSNumber *timing) {

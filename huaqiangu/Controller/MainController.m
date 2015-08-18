@@ -30,6 +30,7 @@ static NSInteger i = 0;
 
     self.mainTbView.backgroundColor = RGB(230, 227, 219);
     self.navigationController.navigationBarHidden = NO;
+    [self.mainTbView reloadData];
     [self playAnimation];
 }
 
@@ -206,13 +207,20 @@ static NSInteger i = 0;
             if (buttonIndex == [alertView cancelButtonIndex]) {
                 return ;
             }else{
-                PlayController *playVC = [PlayController sharedPlayController];
-                playVC.hidesBottomBarWhenPushed = YES;
-                [playVC pushArr:self.mainMuArray andIndex:indexPath.row];
-                [self.navigationController pushViewController:playVC animated:YES];
+                [self pushPlayVC:indexPath.row];
             }
         }];
+    }else{
+        [self pushPlayVC:indexPath.row];
     }
+}
+
+-(void)pushPlayVC:(NSInteger)indexPlay
+{
+    PlayController *playVC = [PlayController sharedPlayController];
+    playVC.hidesBottomBarWhenPushed = YES;
+    [playVC pushArr:self.mainMuArray andIndex:indexPlay];
+    [self.navigationController pushViewController:playVC animated:YES];
 }
 
 @end
