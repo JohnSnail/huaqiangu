@@ -97,12 +97,18 @@ static NSInteger i = 0;
 #pragma mark - 正在播放
 -(void)playingAction
 {
-    PlayController *playVC = [PlayController sharedPlayController];
-    playVC.hidesBottomBarWhenPushed = YES;
-    if (self.mainMuArray.count != 0) {
-        [playVC pushArr:self.mainMuArray andIndex:[CommUtils getPlayIndex]];
+    //判断网络环境，数据流量下不播放
+    if ([CommUtils checkNetworkStatus] != ReachableViaWiFi) {
+        [UIAlertView showWithTitle:@"温馨提示" message:@"当前处于非Wi-Fi网络，在线播放可能会消耗您的流量，是否继续？" cancelButtonTitle:@"取消" otherButtonTitles:@[@"继续"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+            if (buttonIndex == [alertView cancelButtonIndex]) {
+                return ;
+            }else{
+                [self pushPlayVC:[CommUtils getPlayIndex]];
+            }
+        }];
+    }else{
+        [self pushPlayVC:[CommUtils getPlayIndex]];
     }
-    [self.navigationController pushViewController:playVC animated:YES];
 }
 
 #pragma mark - 给好评
@@ -219,7 +225,9 @@ static NSInteger i = 0;
 {
     PlayController *playVC = [PlayController sharedPlayController];
     playVC.hidesBottomBarWhenPushed = YES;
-    [playVC pushArr:self.mainMuArray andIndex:indexPlay];
+    if (self.mainMuArray.count != 0) {
+        [playVC pushArr:self.mainMuArray andIndex:indexPlay];
+    }
     [self.navigationController pushViewController:playVC animated:YES];
 }
 
