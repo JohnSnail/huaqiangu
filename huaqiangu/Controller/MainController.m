@@ -36,13 +36,14 @@ static NSInteger i = 0;
 
 -(void)scrollViewToIndex
 {
+    while ([CommUtils getPlayIndex] + 1 >self.mainMuArray.count) {
+        [self loadMoreData];
+    }
     if (i == 0) {
-        if ([CommUtils getPlayIndex] < self.mainMuArray.count) {
-            NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:[CommUtils getPlayIndex] inSection:0];
-            [self.mainTbView scrollToRowAtIndexPath:scrollIndexPath
-                                   atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
-            i++;
-        }
+        NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:[CommUtils getPlayIndex] inSection:0];
+        [self.mainTbView scrollToRowAtIndexPath:scrollIndexPath
+                               atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+        i++;
     }
 }
 

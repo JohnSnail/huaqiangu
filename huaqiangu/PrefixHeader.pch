@@ -24,5 +24,6 @@
 #import <UIAlertView+Blocks.h>
 #import "BaiduMobAdView.h"
 #import "BaiduMobAdSplash.h"
+#import "NSMutableDictionary+SafeValue.h"
 
 #endif
