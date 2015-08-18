@@ -200,10 +200,19 @@ static NSInteger i = 0;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PlayController *playVC = [PlayController sharedPlayController];
-    playVC.hidesBottomBarWhenPushed = YES;
-    [playVC pushArr:self.mainMuArray andIndex:indexPath.row];
-    [self.navigationController pushViewController:playVC animated:YES];
+    //判断网络环境，数据流量下不播放
+    if ([CommUtils checkNetworkStatus] != ReachableViaWiFi) {
+        [UIAlertView showWithTitle:@"温馨提示" message:@"当前处于非Wi-Fi网络，在线播放可能会消耗您的流量，是否继续？" cancelButtonTitle:@"取消" otherButtonTitles:@[@"继续"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+            if (buttonIndex == [alertView cancelButtonIndex]) {
+                return ;
+            }else{
+                PlayController *playVC = [PlayController sharedPlayController];
+                playVC.hidesBottomBarWhenPushed = YES;
+                [playVC pushArr:self.mainMuArray andIndex:indexPath.row];
+                [self.navigationController pushViewController:playVC animated:YES];
+            }
+        }];
+    }
 }
 
 @end

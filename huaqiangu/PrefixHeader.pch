@@ -26,5 +26,6 @@
 #import "BaiduMobAdSplash.h"
 #import "NSMutableDictionary+SafeValue.h"
 #import "KKNavigationController.h"
+#import "Reachability.h"
 
 #endif

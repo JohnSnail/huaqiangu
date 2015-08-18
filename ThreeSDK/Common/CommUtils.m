@@ -117,4 +117,40 @@
     }
 }
 
+/**
+ * @函数名称：checkNetworkStatus
+ * @函数描述：检测网络状态
+ * @输入参数：N/A
+ * @输出参数：N/A
+ */
+#pragma mark
+#pragma mark 检查当前网络是属于哪一种
++(NSInteger)checkNetworkStatus
+{
+    Reachability *currentReach = [Reachability reachabilityWithHostName:@"www.baidu.com"];
+    switch ([currentReach currentReachabilityStatus])
+    {
+        case NotReachable:
+        {
+                //            NSLog(@"2.网络中断");
+            return NotReachable;
+            break;
+        }  
+        case ReachableViaWWAN:
+        {
+                //            NSLog(@"正在使用3G网络");
+            return ReachableViaWWAN;
+            break;
+        }
+        case ReachableViaWiFi:
+        {
+                //            NSLog(@"正在使用wifi网络");
+            return ReachableViaWiFi;
+            break;
+        }
+    }
+    
+    return -1;
+}
+
 @end

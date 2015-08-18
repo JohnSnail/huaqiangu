@@ -29,4 +29,7 @@
 
 //倒计时
 + (NSString *)formatIntoDateWithSecond:(NSNumber *)sec;
+
+//检测网络
++(NSInteger)checkNetworkStatus;
 @end

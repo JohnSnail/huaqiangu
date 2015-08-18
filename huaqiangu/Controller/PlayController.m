@@ -300,7 +300,7 @@ SINGLETON_CLASS(PlayController);
     }
     
     [[STKAudioPlayer sharedManager] play:self.playTrack.playUrl64];
-
+    
     [self setupTimer];
     
     //保存正在播放的节目

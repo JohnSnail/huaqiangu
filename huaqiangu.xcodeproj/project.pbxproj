@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		BC13E4B31B82D82700222CD2 /* NSMutableDictionary+SafeValue.m in Sources */ = {isa = PBXBuildFile; fileRef = BC13E4B21B82D82700222CD2 /* NSMutableDictionary+SafeValue.m */; };
 		BC13E4B61B82E70D00222CD2 /* KKNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC13E4B51B82E70D00222CD2 /* KKNavigationController.m */; };
+		BC13E4BD1B83302D00222CD2 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC13E4BA1B83302D00222CD2 /* Reachability.m */; };
 		BC15672C1B7DA2870018F5BE /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC15672A1B7DA2870018F5BE /* Fabric.framework */; };
 		BC15672D1B7DA2870018F5BE /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC15672B1B7DA2870018F5BE /* Crashlytics.framework */; };
 		BC1FB5BA1B595E9C00D06876 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1FB5B91B595E9C00D06876 /* main.m */; };
@@ -73,6 +74,8 @@
 		BC13E4B21B82D82700222CD2 /* NSMutableDictionary+SafeValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSMutableDictionary+SafeValue.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		BC13E4B41B82E70D00222CD2 /* KKNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKNavigationController.h; sourceTree = "<group>"; };
 		BC13E4B51B82E70D00222CD2 /* KKNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKNavigationController.m; sourceTree = "<group>"; };
+		BC13E4B91B83302D00222CD2 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		BC13E4BA1B83302D00222CD2 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		BC15672A1B7DA2870018F5BE /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		BC15672B1B7DA2870018F5BE /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		BC1FB5B41B595E9C00D06876 /* huaqiangu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = huaqiangu.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -227,6 +230,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		BC13E4B71B83302D00222CD2 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				BC13E4B91B83302D00222CD2 /* Reachability.h */,
+				BC13E4BA1B83302D00222CD2 /* Reachability.m */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
 		BC1FB5AB1B595E9C00D06876 = {
 			isa = PBXGroup;
 			children = (
@@ -293,6 +305,7 @@
 		BC1FB5DF1B59613400D06876 /* ThreeSDK */ = {
 			isa = PBXGroup;
 			children = (
+				BC13E4B71B83302D00222CD2 /* Reachability */,
 				BC338E4E1B80872900EC72D4 /* ios_api */,
 				BC1FB68B1B5A734700D06876 /* HistoryFMDB */,
 				BC1FB6761B5A0BF600D06876 /* LMView */,
@@ -580,6 +593,7 @@
 				BC1FB66A1B5A097E00D06876 /* CommUtils.m in Sources */,
 				BC9CEDBB1B5DFAD3004FC9F3 /* DTTimingManager.m in Sources */,
 				BC1FB5BD1B595E9C00D06876 /* AppDelegate.m in Sources */,
+				BC13E4BD1B83302D00222CD2 /* Reachability.m in Sources */,
 				BC13E4B31B82D82700222CD2 /* NSMutableDictionary+SafeValue.m in Sources */,
 				BC1FB65A1B59E69500D06876 /* AFService.m in Sources */,
 				BC1FB5BA1B595E9C00D06876 /* main.m in Sources */,
@@ -711,8 +725,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Wei Jiang (JD2W4XYSND)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Wei Jiang (JD2W4XYSND)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Li Meng (H855M397P9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Li Meng (H855M397P9)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -760,7 +774,7 @@
 					"\"SystemConfiguration\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "091247f7-00d8-4bcc-86f8-cb29ae853598";
+				PROVISIONING_PROFILE = "bc600c21-f465-41bc-9b56-ed98f8f761b2";
 			};
 			name = Debug;
 		};
@@ -770,8 +784,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Wei Jiang (JD2W4XYSND)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Wei Jiang (JD2W4XYSND)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Li Meng (H855M397P9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Li Meng (H855M397P9)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -819,7 +833,7 @@
 					"\"SystemConfiguration\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "091247f7-00d8-4bcc-86f8-cb29ae853598";
+				PROVISIONING_PROFILE = "bc600c21-f465-41bc-9b56-ed98f8f761b2";
 			};
 			name = Release;
 		};
