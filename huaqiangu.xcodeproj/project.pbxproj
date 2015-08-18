@@ -16,7 +16,6 @@
 		BC1FB5C31B595E9C00D06876 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC1FB5C11B595E9C00D06876 /* Main.storyboard */; };
 		BC1FB5C51B595E9C00D06876 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC1FB5C41B595E9C00D06876 /* Images.xcassets */; };
 		BC1FB5D41B595E9C00D06876 /* huaqianguTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1FB5D31B595E9C00D06876 /* huaqianguTests.m */; };
-		BC1FB5E31B59616900D06876 /* MLNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1FB5E21B59616900D06876 /* MLNavigationController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BC1FB5F11B59684000D06876 /* MainController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1FB5EF1B59684000D06876 /* MainController.m */; };
 		BC1FB5F21B59684000D06876 /* MainController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC1FB5F01B59684000D06876 /* MainController.xib */; };
 		BC1FB6001B597B0600D06876 /* TrackModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1FB5FF1B597B0600D06876 /* TrackModel.m */; };
@@ -86,8 +85,6 @@
 		BC1FB5CD1B595E9C00D06876 /* huaqianguTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = huaqianguTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC1FB5D21B595E9C00D06876 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC1FB5D31B595E9C00D06876 /* huaqianguTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = huaqianguTests.m; sourceTree = "<group>"; };
-		BC1FB5E11B59616900D06876 /* MLNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLNavigationController.h; sourceTree = "<group>"; };
-		BC1FB5E21B59616900D06876 /* MLNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MLNavigationController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		BC1FB5EE1B59684000D06876 /* MainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainController.h; sourceTree = "<group>"; };
 		BC1FB5EF1B59684000D06876 /* MainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainController.m; sourceTree = "<group>"; };
 		BC1FB5F01B59684000D06876 /* MainController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainController.xib; sourceTree = "<group>"; };
@@ -309,8 +306,6 @@
 		BC1FB5E01B59616900D06876 /* NavigationSDK */ = {
 			isa = PBXGroup;
 			children = (
-				BC1FB5E11B59616900D06876 /* MLNavigationController.h */,
-				BC1FB5E21B59616900D06876 /* MLNavigationController.m */,
 				BC13E4B41B82E70D00222CD2 /* KKNavigationController.h */,
 				BC13E4B51B82E70D00222CD2 /* KKNavigationController.m */,
 			);
@@ -581,7 +576,6 @@
 				BC13E4B61B82E70D00222CD2 /* KKNavigationController.m in Sources */,
 				BC9CEDBC1B5DFAD3004FC9F3 /* DTTimingViewController.m in Sources */,
 				BC1FB6801B5A0BF600D06876 /* LMLable.m in Sources */,
-				BC1FB5E31B59616900D06876 /* MLNavigationController.m in Sources */,
 				BC1FB68E1B5A736500D06876 /* HistoryList.m in Sources */,
 				BC1FB66A1B5A097E00D06876 /* CommUtils.m in Sources */,
 				BC9CEDBB1B5DFAD3004FC9F3 /* DTTimingManager.m in Sources */,
@@ -644,8 +638,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Li Meng (EKT7TDBE5W)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Li Meng (EKT7TDBE5W)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Wei Jiang (JD2W4XYSND)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Wei Jiang (JD2W4XYSND)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -667,7 +661,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "291d7fd8-fea2-496d-a4eb-d03c6f2aba24";
+				PROVISIONING_PROFILE = "091247f7-00d8-4bcc-86f8-cb29ae853598";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -689,8 +683,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Li Meng (EKT7TDBE5W)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Li Meng (EKT7TDBE5W)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Wei Jiang (JD2W4XYSND)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Wei Jiang (JD2W4XYSND)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -705,7 +699,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "291d7fd8-fea2-496d-a4eb-d03c6f2aba24";
+				PROVISIONING_PROFILE = "091247f7-00d8-4bcc-86f8-cb29ae853598";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -717,8 +711,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Li Meng (EKT7TDBE5W)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Li Meng (EKT7TDBE5W)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Wei Jiang (JD2W4XYSND)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Wei Jiang (JD2W4XYSND)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -766,7 +760,7 @@
 					"\"SystemConfiguration\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "291d7fd8-fea2-496d-a4eb-d03c6f2aba24";
+				PROVISIONING_PROFILE = "091247f7-00d8-4bcc-86f8-cb29ae853598";
 			};
 			name = Debug;
 		};
@@ -776,8 +770,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Li Meng (EKT7TDBE5W)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Li Meng (EKT7TDBE5W)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Wei Jiang (JD2W4XYSND)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Wei Jiang (JD2W4XYSND)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -825,7 +819,7 @@
 					"\"SystemConfiguration\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "291d7fd8-fea2-496d-a4eb-d03c6f2aba24";
+				PROVISIONING_PROFILE = "091247f7-00d8-4bcc-86f8-cb29ae853598";
 			};
 			name = Release;
 		};

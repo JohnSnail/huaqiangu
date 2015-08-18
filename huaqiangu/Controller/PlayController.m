@@ -182,6 +182,8 @@ SINGLETON_CLASS(PlayController);
     }
     
     [self playMusic];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadAction" object:nil];
 }
 
 #pragma mark - 上一首
@@ -191,6 +193,8 @@ SINGLETON_CLASS(PlayController);
         self.playIndex --;
     }
     [self playMusic];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadAction" object:nil];
 }
 
 -(void)addHeadView
@@ -278,8 +282,8 @@ SINGLETON_CLASS(PlayController);
         }
         trackLabel.text = muStr;
         
-//        [self.albumImageView sd_setImageWithURL:[NSURL URLWithString:self.playTrack.coverLarge] placeholderImage:[UIImage imageNamed:@"main_otherplace"]];
-        self.albumImageView.image = [UIImage imageNamed:@"gu"];
+        [self.albumImageView sd_setImageWithURL:[NSURL URLWithString:self.playTrack.coverLarge] placeholderImage:[UIImage imageNamed:@"main_otherplace"]];
+//        self.albumImageView.image = [UIImage imageNamed:@"gu"];
     }
     
     NSString *strTrackId = (NSString *)[[STKAudioPlayer sharedManager] currentlyPlayingQueueItemId];

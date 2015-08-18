@@ -11,7 +11,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <math.h>
 
-@interface KKNavigationController ()
+@interface KKNavigationController ()<UIGestureRecognizerDelegate>
 {
     CGPoint startTouch;
     
@@ -60,7 +60,7 @@
     
     UIPanGestureRecognizer *recognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self
                                                                                 action:@selector(paningGestureReceive:)];
-    [recognizer setDelegate:self];
+    recognizer.delegate = self;
     [recognizer delaysTouchesBegan];
     [self.view addGestureRecognizer:recognizer];
 }
@@ -120,7 +120,7 @@
     
     blackMask.alpha = alpha;
     
-    CGFloat aa = abs(startBackViewX)/kkBackViewWidth;
+    CGFloat aa = fabs(startBackViewX)/kkBackViewWidth;
     CGFloat y = x*aa;
     
     UIImage *lastScreenShot = [self.screenShotsList lastObject];

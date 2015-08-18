@@ -30,7 +30,6 @@ static NSInteger i = 0;
 
     self.mainTbView.backgroundColor = RGB(230, 227, 219);
     self.navigationController.navigationBarHidden = NO;
-    [self.mainTbView reloadData];
     [self playAnimation];
 }
 
@@ -82,7 +81,16 @@ static NSInteger i = 0;
         // 进入刷新状态后会自动调用这个block
         [self loadMoreData];
     }];
+    
+    //上下一曲通知更新列表
+    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(reloadMainList) name: @"reloadAction" object: nil];
 }
+
+-(void)reloadMainList
+{
+    [self.mainTbView reloadData];
+}
+
 
 #pragma mark - 
 #pragma mark - 正在播放
