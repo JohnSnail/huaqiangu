@@ -49,17 +49,17 @@ return _shared##classname; \
 //替换版本时需更换的内容
 
 //苹果id
-#define AppStoreAppId @"1021533857"
+#define AppStoreAppId @"864024415"
 
 #pragma mark -
 #pragma mark - AlbumTitle
 
-#define ALBUMTITLE @"罗辑思维"
+#define ALBUMTITLE @"佛教音乐"
 
 #pragma mark -
 #pragma mark - UMengKey
 
-#define umAppKey @"55ae0ac4e0f55a71c4004ebb"
+#define umAppKey @"534950a556240b186b0b1b79"
 
 //**************** 百度广告 ***********************
 
