@@ -49,23 +49,31 @@ return _shared##classname; \
 //替换版本时需更换的内容
 
 //苹果id
-#define AppStoreAppId @"864024415"
+#define AppStoreAppId @"879059095"
 
 #pragma mark -
 #pragma mark - AlbumTitle
 
-#define ALBUMTITLE @"佛教音乐"
+#define ALBUMTITLE @"庶女有毒"
 
 #pragma mark -
 #pragma mark - UMengKey
 
-#define umAppKey @"534950a556240b186b0b1b79"
+#define umAppKey @"5399ab8356240b396d0460e2"
+
+//#define kCommenColor RGB(183, 136, 87)
+#define kCommenColor RGB(88,185,201)
 
 //**************** 百度广告 ***********************
 
 #define kBaiduId @"ec7ad5ef"
 #define kBaiduBanner @"2010399"
 #define kBaiduSplash @"2010402"
+
+//**************** 测试 ***********************
+
+//#define kBaiduId @"ccb60059"
+//#define kBaiduSplash @"2006257"
 
 //**************** 岳云鹏 ***********************
 //#define kBaiduId @"e89aefee"

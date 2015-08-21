@@ -12,6 +12,7 @@
 @property (strong, nonatomic) NSMutableDictionary* PlayingInfoCenter;
 
 
+@property (strong, nonatomic) UIView *customSplashView;
 @property (strong, nonatomic) UIWindow *window;
 
 @end

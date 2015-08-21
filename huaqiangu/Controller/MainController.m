@@ -198,7 +198,7 @@ static NSInteger i = 0;
     cell.textLabel.text = track.title;
     
     if (indexPath.row == [CommUtils getPlayIndex]) {
-        cell.textLabel.textColor = RGB(76, 193, 211);
+        cell.textLabel.textColor = kCommenColor;
     }else{
         cell.textLabel.textColor = [UIColor blackColor];
     }
