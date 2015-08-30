@@ -1,6 +1,6 @@
+pod 'AFNetworking', '~> 2.6.0'
 pod 'FMDB', '~> 2.3'
 pod 'MJRefresh', '~> 2.2.1'
-pod 'AFNetworking', '~> 2.5.4'
 pod 'StreamingKit', '~> 0.1.25'
 pod 'JSONKit-NoWarning', '~> 1.2'
 pod 'SDWebImage', '~> 3.7.1'
