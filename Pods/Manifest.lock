@@ -34,7 +34,7 @@ PODS:
   - StreamingKit (0.1.25)
   - UIActionSheet+Blocks (0.9)
   - UIAlertView+Blocks (0.8.1)
-  - UMengAnalytics (3.4.6)
+  - UMengAnalytics (3.5.12)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.6.0)
@@ -46,7 +46,7 @@ DEPENDENCIES:
   - StreamingKit (~> 0.1.25)
   - UIActionSheet+Blocks (~> 0.9)
   - UIAlertView+Blocks (~> 0.8.1)
-  - UMengAnalytics (~> 3.4.6)
+  - UMengAnalytics (~> 3.5.12)
 
 SPEC CHECKSUMS:
   AFNetworking: 79f7eb1a0fcfa7beb409332b2ca49afe9ce53b05
@@ -58,6 +58,6 @@ SPEC CHECKSUMS:
   StreamingKit: f00c054cfd0f59d88c8be7a2270e208302ce48c4
   UIActionSheet+Blocks: e180b7dad0a721ab7f212ac9742af799008bb358
   UIAlertView+Blocks: 45c3d3b7194906702d3e9a14c7ece5581505646d
-  UMengAnalytics: 24c06f0ea07295d2f1c093f0fe12d196fd801ea4
+  UMengAnalytics: 370056af10f202b57b83ff3d0d458ac5183b629f
 
 COCOAPODS: 0.38.2

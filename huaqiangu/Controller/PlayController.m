@@ -346,6 +346,8 @@ SINGLETON_CLASS(PlayController);
     AppDelegate *appDe = appDelegate;
     [appDe.PlayingInfoCenter setSafeObject:[NSNumber numberWithDouble:[STKAudioPlayer sharedManager].progress] forKey:MPNowPlayingInfoPropertyElapsedPlaybackTime];
     [appDe.PlayingInfoCenter setSafeObject:[NSNumber numberWithDouble:[STKAudioPlayer sharedManager].duration] forKey:MPMediaItemPropertyPlaybackDuration];
+    
+    [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:appDe.PlayingInfoCenter];
     [MPNowPlayingInfoCenter defaultCenter].nowPlayingInfo = appDe.PlayingInfoCenter;
     
     [self updateControls];
