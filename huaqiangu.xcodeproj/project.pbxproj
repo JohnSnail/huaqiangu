@@ -12,9 +12,11 @@
 		3F155CB51BA8381D00C91E25 /* libBaiduMobAdSdk64bit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F155CB31BA8381D00C91E25 /* libBaiduMobAdSdk64bit.a */; };
 		3F155CB71BA8388000C91E25 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F155CB61BA8388000C91E25 /* libz.dylib */; };
 		3F155CB91BA83AEF00C91E25 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F155CB81BA83AEF00C91E25 /* StoreKit.framework */; };
-		3F6B71A01C157BAA006CF1F4 /* HSDownloadManager in Resources */ = {isa = PBXBuildFile; fileRef = 3F6B719F1C157BAA006CF1F4 /* HSDownloadManager */; };
 		3F88CDC61B92BB8C00AAF479 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F88CDC41B92BB8C00AAF479 /* Crashlytics.framework */; };
 		3F88CDC71B92BB8C00AAF479 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F88CDC51B92BB8C00AAF479 /* Fabric.framework */; };
+		3F96726F1C15AEAA00A1C71A /* HSDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F96726B1C15AEAA00A1C71A /* HSDownloadManager.m */; };
+		3F9672701C15AEAA00A1C71A /* HSSessionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F96726D1C15AEAA00A1C71A /* HSSessionModel.m */; };
+		3F9672711C15AEAA00A1C71A /* MD5 in Resources */ = {isa = PBXBuildFile; fileRef = 3F96726E1C15AEAA00A1C71A /* MD5 */; };
 		42262C9FD77F0E61345D2EB8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 815A5AE3989CEB41ADA3F948 /* libPods.a */; };
 		BC13E4B31B82D82700222CD2 /* NSMutableDictionary+SafeValue.m in Sources */ = {isa = PBXBuildFile; fileRef = BC13E4B21B82D82700222CD2 /* NSMutableDictionary+SafeValue.m */; };
 		BC13E4B61B82E70D00222CD2 /* KKNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC13E4B51B82E70D00222CD2 /* KKNavigationController.m */; };
@@ -84,9 +86,13 @@
 		3F155CB31BA8381D00C91E25 /* libBaiduMobAdSdk64bit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBaiduMobAdSdk64bit.a; sourceTree = "<group>"; };
 		3F155CB61BA8388000C91E25 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		3F155CB81BA83AEF00C91E25 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		3F6B719F1C157BAA006CF1F4 /* HSDownloadManager */ = {isa = PBXFileReference; lastKnownFileType = folder; path = HSDownloadManager; sourceTree = "<group>"; };
 		3F88CDC41B92BB8C00AAF479 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		3F88CDC51B92BB8C00AAF479 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		3F96726A1C15AEAA00A1C71A /* HSDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSDownloadManager.h; sourceTree = "<group>"; };
+		3F96726B1C15AEAA00A1C71A /* HSDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSDownloadManager.m; sourceTree = "<group>"; };
+		3F96726C1C15AEAA00A1C71A /* HSSessionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSSessionModel.h; sourceTree = "<group>"; };
+		3F96726D1C15AEAA00A1C71A /* HSSessionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSSessionModel.m; sourceTree = "<group>"; };
+		3F96726E1C15AEAA00A1C71A /* MD5 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MD5; sourceTree = "<group>"; };
 		73BEAAB2371013C5EC7DF00F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		7C353B9F2465C658A8882D7F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		815A5AE3989CEB41ADA3F948 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -216,6 +222,18 @@
 			path = ios_api;
 			sourceTree = "<group>";
 		};
+		3F9672691C15AE8F00A1C71A /* DownloadManager */ = {
+			isa = PBXGroup;
+			children = (
+				3F96726A1C15AEAA00A1C71A /* HSDownloadManager.h */,
+				3F96726B1C15AEAA00A1C71A /* HSDownloadManager.m */,
+				3F96726C1C15AEAA00A1C71A /* HSSessionModel.h */,
+				3F96726D1C15AEAA00A1C71A /* HSSessionModel.m */,
+				3F96726E1C15AEAA00A1C71A /* MD5 */,
+			);
+			path = DownloadManager;
+			sourceTree = "<group>";
+		};
 		50937BF299FB3A659205E707 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -327,7 +345,7 @@
 		BC1FB5DF1B59613400D06876 /* ThreeSDK */ = {
 			isa = PBXGroup;
 			children = (
-				3F6B719F1C157BAA006CF1F4 /* HSDownloadManager */,
+				3F9672691C15AE8F00A1C71A /* DownloadManager */,
 				3F0E6BCB1BA691240057CB5A /* ios_api */,
 				BC13E4B71B83302D00222CD2 /* Reachability */,
 				BC1FB68B1B5A734700D06876 /* HistoryFMDB */,
@@ -526,7 +544,7 @@
 				3F155CB41BA8381D00C91E25 /* baidumobadsdk.bundle in Resources */,
 				BC1FB6651B59F47400D06876 /* PlayController.xib in Resources */,
 				BC1FB5F21B59684000D06876 /* MainController.xib in Resources */,
-				3F6B71A01C157BAA006CF1F4 /* HSDownloadManager in Resources */,
+				3F9672711C15AEAA00A1C71A /* MD5 in Resources */,
 				BC1FB5C31B595E9C00D06876 /* Main.storyboard in Resources */,
 				BC1FB5C51B595E9C00D06876 /* Images.xcassets in Resources */,
 				BC9CEDBD1B5DFAD3004FC9F3 /* DTTimingViewController.xib in Resources */,
@@ -608,7 +626,9 @@
 				BC1FB65A1B59E69500D06876 /* AFService.m in Sources */,
 				BC1FB5BA1B595E9C00D06876 /* main.m in Sources */,
 				BCCA4C581B5CE8EE00C73442 /* AutoRunLabel.m in Sources */,
+				3F9672701C15AEAA00A1C71A /* HSSessionModel.m in Sources */,
 				BC1FB67E1B5A0BF600D06876 /* LMButton.m in Sources */,
+				3F96726F1C15AEAA00A1C71A /* HSDownloadManager.m in Sources */,
 				BC1FB6911B5A745200D06876 /* SDBManager.m in Sources */,
 				BC1FB6641B59F47400D06876 /* PlayController.m in Sources */,
 				BC1FB67F1B5A0BF600D06876 /* LMImageView.m in Sources */,
