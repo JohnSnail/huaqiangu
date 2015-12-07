@@ -11,7 +11,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>7.0</string>
 	<key>CFBundleName</key>
-	<string>庶女有毒</string>
+	<string>冬吴相对论</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -19,7 +19,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.3</string>
+	<string>1.5</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
