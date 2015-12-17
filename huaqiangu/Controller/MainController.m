@@ -9,6 +9,7 @@
 #import "MainController.h"
 #import "TrackModel.h"
 #import "PlayController.h"
+#import "HSDownloadManager.h"
 
 @interface MainController ()
 {
@@ -154,7 +155,6 @@ static NSInteger i = 0;
             TrackModel *track = [[TrackModel alloc]initWithDict:arr[i]];
 //            NSString *strTitle = [NSString stringWithFormat:@"步步惊心%@",track.title];
 //            track.title = strTitle;
-            
             [bSelf.mainMuArray addObject:track];
         }
         [bSelf.mainTbView reloadData];
@@ -196,6 +196,15 @@ static NSInteger i = 0;
     TrackModel *track = self.mainMuArray[indexPath.row];
     cell.textLabel.font = [UIFont systemFontOfSize:16];
     cell.textLabel.text = track.title;
+    
+//    if (indexPath.row == 0) {
+//        [[HSDownloadManager sharedInstance] download:track.playUrl64 progress:^(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress) {
+//            NSLog(@"progress == %f", progress);
+//            cell.textLabel.text = [NSString stringWithFormat:@"%@-%f",track.title,progress];
+//        } state:^(DownloadState state) {
+//            NSLog(@"state = %d", state);
+//        }];
+//    }
     
     if (indexPath.row == [CommUtils getPlayIndex]) {
         cell.textLabel.textColor = kCommenColor;

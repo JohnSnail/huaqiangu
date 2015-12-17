@@ -16,7 +16,7 @@
 		3F88CDC71B92BB8C00AAF479 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F88CDC51B92BB8C00AAF479 /* Fabric.framework */; };
 		3F96726F1C15AEAA00A1C71A /* HSDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F96726B1C15AEAA00A1C71A /* HSDownloadManager.m */; };
 		3F9672701C15AEAA00A1C71A /* HSSessionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F96726D1C15AEAA00A1C71A /* HSSessionModel.m */; };
-		3F9672711C15AEAA00A1C71A /* MD5 in Resources */ = {isa = PBXBuildFile; fileRef = 3F96726E1C15AEAA00A1C71A /* MD5 */; };
+		3F9672751C15AF2900A1C71A /* NSString+Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9672741C15AF2900A1C71A /* NSString+Hash.m */; };
 		42262C9FD77F0E61345D2EB8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 815A5AE3989CEB41ADA3F948 /* libPods.a */; };
 		BC13E4B31B82D82700222CD2 /* NSMutableDictionary+SafeValue.m in Sources */ = {isa = PBXBuildFile; fileRef = BC13E4B21B82D82700222CD2 /* NSMutableDictionary+SafeValue.m */; };
 		BC13E4B61B82E70D00222CD2 /* KKNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC13E4B51B82E70D00222CD2 /* KKNavigationController.m */; };
@@ -92,7 +92,8 @@
 		3F96726B1C15AEAA00A1C71A /* HSDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSDownloadManager.m; sourceTree = "<group>"; };
 		3F96726C1C15AEAA00A1C71A /* HSSessionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSSessionModel.h; sourceTree = "<group>"; };
 		3F96726D1C15AEAA00A1C71A /* HSSessionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSSessionModel.m; sourceTree = "<group>"; };
-		3F96726E1C15AEAA00A1C71A /* MD5 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MD5; sourceTree = "<group>"; };
+		3F9672731C15AF2900A1C71A /* NSString+Hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Hash.h"; sourceTree = "<group>"; };
+		3F9672741C15AF2900A1C71A /* NSString+Hash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Hash.m"; sourceTree = "<group>"; };
 		73BEAAB2371013C5EC7DF00F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		7C353B9F2465C658A8882D7F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		815A5AE3989CEB41ADA3F948 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -225,13 +226,22 @@
 		3F9672691C15AE8F00A1C71A /* DownloadManager */ = {
 			isa = PBXGroup;
 			children = (
+				3F9672721C15AF1700A1C71A /* MD5 */,
 				3F96726A1C15AEAA00A1C71A /* HSDownloadManager.h */,
 				3F96726B1C15AEAA00A1C71A /* HSDownloadManager.m */,
 				3F96726C1C15AEAA00A1C71A /* HSSessionModel.h */,
 				3F96726D1C15AEAA00A1C71A /* HSSessionModel.m */,
-				3F96726E1C15AEAA00A1C71A /* MD5 */,
 			);
 			path = DownloadManager;
+			sourceTree = "<group>";
+		};
+		3F9672721C15AF1700A1C71A /* MD5 */ = {
+			isa = PBXGroup;
+			children = (
+				3F9672731C15AF2900A1C71A /* NSString+Hash.h */,
+				3F9672741C15AF2900A1C71A /* NSString+Hash.m */,
+			);
+			path = MD5;
 			sourceTree = "<group>";
 		};
 		50937BF299FB3A659205E707 /* Frameworks */ = {
@@ -544,7 +554,6 @@
 				3F155CB41BA8381D00C91E25 /* baidumobadsdk.bundle in Resources */,
 				BC1FB6651B59F47400D06876 /* PlayController.xib in Resources */,
 				BC1FB5F21B59684000D06876 /* MainController.xib in Resources */,
-				3F9672711C15AEAA00A1C71A /* MD5 in Resources */,
 				BC1FB5C31B595E9C00D06876 /* Main.storyboard in Resources */,
 				BC1FB5C51B595E9C00D06876 /* Images.xcassets in Resources */,
 				BC9CEDBD1B5DFAD3004FC9F3 /* DTTimingViewController.xib in Resources */,
@@ -614,6 +623,7 @@
 				BC1FB5F11B59684000D06876 /* MainController.m in Sources */,
 				BC1FB65B1B59E69500D06876 /* NetService.m in Sources */,
 				BC1FB6001B597B0600D06876 /* TrackModel.m in Sources */,
+				3F9672751C15AF2900A1C71A /* NSString+Hash.m in Sources */,
 				BC13E4B61B82E70D00222CD2 /* KKNavigationController.m in Sources */,
 				BC9CEDBC1B5DFAD3004FC9F3 /* DTTimingViewController.m in Sources */,
 				BC1FB6801B5A0BF600D06876 /* LMLable.m in Sources */,
@@ -778,7 +788,7 @@
 					"-ObjC",
 					"-lstdc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.weitingcui.ljsw;
+				PRODUCT_BUNDLE_IDENTIFIER = com.weitingcui.sgyy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "139d5b00-a618-4e6f-929b-be2f6566aa4a";
 			};
@@ -812,7 +822,7 @@
 					"-ObjC",
 					"-lstdc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.weitingcui.ljsw;
+				PRODUCT_BUNDLE_IDENTIFIER = com.weitingcui.sgyy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "139d5b00-a618-4e6f-929b-be2f6566aa4a";
 			};
