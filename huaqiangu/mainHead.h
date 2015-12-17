@@ -49,19 +49,19 @@ return _shared##classname; \
 //替换版本时需更换的内容
 
 //苹果id
-#define AppStoreAppId @"893634380"
+#define AppStoreAppId @"893634704"
 
 #pragma mark -
 #pragma mark - AlbumTitle
 
-#define ALBUMTITLE @"知乎哲野"
+#define ALBUMTITLE @"飞碟说"
 
 #pragma mark -
 #pragma mark - UMengKey
 
-#define umAppKey @"53ac407c56240b86c504821c"
+#define umAppKey @"53ac415b56240b173902a368"
 
-#define kCommenColor RGB(75, 175, 211)
+#define kCommenColor RGB(248, 102, 47)
 //#define kCommenColor RGB(88,185,201)
 
 //**************** 百度广告 ***********************
