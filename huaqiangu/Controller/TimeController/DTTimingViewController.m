@@ -37,6 +37,20 @@
     self.navigationController.navigationBarHidden = NO;
 }
 
+#pragma mark - 给好评
+-(void)pushAppStore
+{
+    NSString * url;
+    if (IS_IOS_7) {
+        url = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%@", AppStoreAppId];
+    }
+    else{
+        url=[NSString stringWithFormat: @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@",AppStoreAppId];
+    }
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -44,6 +58,8 @@
     
     [self initBaiduAdView];
     
+    self.navigationItem.rightBarButtonItem = [LMButton setNavright:@"反馈" andcolor:[UIColor whiteColor] andSelector:@selector(pushAppStore) andTarget:self];
+
     [self layoutUI];
     _timingData = [NSMutableArray arrayWithCapacity:0];
     [_timingData addObject:@{@"content": @"不开启",

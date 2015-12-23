@@ -73,7 +73,6 @@ static NSInteger i = 0;
     // Do any additional setup after loading the view from its nib.
     
 //    self.navigationItem.leftBarButtonItem = [LMButton setNavright:@"反馈" andcolor:[UIColor whiteColor] andSelector:@selector(pushAppStore) andTarget:self];
-//    self.navigationItem.leftBarButtonItem = [LMButton setNavleftButtonWithImg:@"feedback" andSelector:@selector(pushAppStore) andTarget:self];
     self.navigationItem.titleView = [CommUtils navTittle:ALBUMTITLE];
     
     pageId = 1;
@@ -119,20 +118,6 @@ static NSInteger i = 0;
     }else{
         [self pushPlayVC:[CommUtils getPlayIndex]];
     }
-}
-
-#pragma mark - 给好评
--(void)pushAppStore
-{
-    NSString * url;
-    if (IS_IOS_7) {
-        url = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%@", AppStoreAppId];
-    }
-    else{
-        url=[NSString stringWithFormat: @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@",AppStoreAppId];
-    }
-    
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
 }
 
 #pragma mark - 排序
