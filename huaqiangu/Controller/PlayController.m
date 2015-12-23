@@ -305,7 +305,6 @@ SINGLETON_CLASS(PlayController);
     
     [self setupTimer];
     
-    //保存正在播放的节目
     [CommUtils saveIndex:self.playIndex];
     
     [self performSelector:@selector(setLockScreenInfo) withObject:nil afterDelay:2.0];
@@ -347,8 +346,8 @@ SINGLETON_CLASS(PlayController);
     [appDe.PlayingInfoCenter setSafeObject:[NSNumber numberWithDouble:[STKAudioPlayer sharedManager].progress] forKey:MPNowPlayingInfoPropertyElapsedPlaybackTime];
     [appDe.PlayingInfoCenter setSafeObject:[NSNumber numberWithDouble:[STKAudioPlayer sharedManager].duration] forKey:MPMediaItemPropertyPlaybackDuration];
     
-    [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:appDe.PlayingInfoCenter];
-    [MPNowPlayingInfoCenter defaultCenter].nowPlayingInfo = appDe.PlayingInfoCenter;
+//    [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:appDe.PlayingInfoCenter];
+//    [MPNowPlayingInfoCenter defaultCenter].nowPlayingInfo = appDe.PlayingInfoCenter;
     
     [self updateControls];
 }

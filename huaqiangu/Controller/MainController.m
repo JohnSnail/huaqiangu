@@ -17,6 +17,8 @@
     NSInteger totalPage;
     NSString *albumTitle;
     UIButton *playBtn;
+    NSInteger totalTracks;
+    NSString *orderStr;
 }
 
 @end
@@ -70,13 +72,20 @@ static NSInteger i = 0;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.navigationItem.leftBarButtonItem = [LMButton setNavright:@"反馈" andcolor:[UIColor whiteColor] andSelector:@selector(pushAppStore) andTarget:self];
+//    self.navigationItem.leftBarButtonItem = [LMButton setNavright:@"反馈" andcolor:[UIColor whiteColor] andSelector:@selector(pushAppStore) andTarget:self];
+//    self.navigationItem.leftBarButtonItem = [LMButton setNavleftButtonWithImg:@"feedback" andSelector:@selector(pushAppStore) andTarget:self];
     self.navigationItem.titleView = [CommUtils navTittle:ALBUMTITLE];
     
     pageId = 1;
     _mainMuArray = [NSMutableArray arrayWithCapacity:0];
 
     self.mainTbView.frame = CGRectMake(0, 0, mainscreenwidth, mainscreenhight);
+    orderStr = [[NSUserDefaults standardUserDefaults] stringForKey:@"orderStr"];
+    if (!orderStr) {
+        orderStr = @"false";
+    }
+    self.navigationItem.leftBarButtonItem = [LMButton setNavleftButtonWithImg:orderStr andSelector:@selector(orderAction) andTarget:self];
+
     [self getNetData];
 
     self.mainTbView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
@@ -126,6 +135,23 @@ static NSInteger i = 0;
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
 }
 
+#pragma mark - 排序
+-(void)orderAction
+{
+    NSInteger playIndex = [CommUtils getPlayIndex];
+    if ([orderStr isEqualToString:@"false"]) {
+        orderStr = @"true";
+    }else{
+        orderStr = @"false";
+    }
+    [CommUtils saveIndex:(totalTracks - 1 - playIndex)];
+    [[NSUserDefaults standardUserDefaults] setObject:orderStr forKey:@"orderStr"];
+    pageId = 1;
+    [self getNetData];
+    self.navigationItem.leftBarButtonItem = [LMButton setNavleftButtonWithImg:orderStr andSelector:@selector(orderAction) andTarget:self];
+
+}
+
 //上拉刷新
 -(void)loadMoreData
 {
@@ -143,10 +169,13 @@ static NSInteger i = 0;
         [self.mainMuArray removeAllObjects];
     }
     NSString *urlStr = [NSString stringWithFormat:@"%@/30",@(pageId)];
-    NSString *postStr = [NSString stringWithFormat:@"%@%@%@",kMainHeader,urlStr,kDevice];
+    NSString *postStr = [NSString stringWithFormat:@"%@%@/%@%@",kMainHeader,orderStr,urlStr,kDevice];
     
     __weak typeof(self) bSelf = self;
     [AFService postMethod:postStr andDict:nil completion:^(NSDictionary *results,NSError *error){
+        
+        totalTracks = [[[results objectForKey:@"album"] objectForKey:@"tracks"] integerValue];
+        
         totalPage = [[[results objectForKey:@"tracks"] objectForKey:@"maxPageId"] integerValue];
         
         NSArray *arr = [[results objectForKey:@"tracks"] objectForKey:@"list"];
@@ -196,16 +225,6 @@ static NSInteger i = 0;
     TrackModel *track = self.mainMuArray[indexPath.row];
     cell.textLabel.font = [UIFont systemFontOfSize:16];
     cell.textLabel.text = track.title;
-    
-//    if (indexPath.row == 0) {
-//        [[HSDownloadManager sharedInstance] download:track.playUrl64 progress:^(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress) {
-//            NSLog(@"progress == %f", progress);
-//            cell.textLabel.text = [NSString stringWithFormat:@"%@-%f",track.title,progress];
-//        } state:^(DownloadState state) {
-//            NSLog(@"state = %d", state);
-//        }];
-//    }
-    
     if (indexPath.row == [CommUtils getPlayIndex]) {
         cell.textLabel.textColor = kCommenColor;
     }else{
