@@ -12,6 +12,10 @@
 		3F155CB51BA8381D00C91E25 /* libBaiduMobAdSdk64bit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F155CB31BA8381D00C91E25 /* libBaiduMobAdSdk64bit.a */; };
 		3F155CB71BA8388000C91E25 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F155CB61BA8388000C91E25 /* libz.dylib */; };
 		3F155CB91BA83AEF00C91E25 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F155CB81BA83AEF00C91E25 /* StoreKit.framework */; };
+		3F2BBFB71C7C729900D672E3 /* DownController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2BBFB51C7C729900D672E3 /* DownController.m */; };
+		3F2BBFB81C7C729900D672E3 /* DownController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F2BBFB61C7C729900D672E3 /* DownController.xib */; };
+		3F2BBFBC1C7C85C100D672E3 /* DownCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2BBFBA1C7C85C100D672E3 /* DownCell.m */; };
+		3F2BBFBD1C7C85C100D672E3 /* DownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F2BBFBB1C7C85C100D672E3 /* DownCell.xib */; };
 		3F88CDC61B92BB8C00AAF479 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F88CDC41B92BB8C00AAF479 /* Crashlytics.framework */; };
 		3F88CDC71B92BB8C00AAF479 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F88CDC51B92BB8C00AAF479 /* Fabric.framework */; };
 		3F96726F1C15AEAA00A1C71A /* HSDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F96726B1C15AEAA00A1C71A /* HSDownloadManager.m */; };
@@ -86,6 +90,12 @@
 		3F155CB31BA8381D00C91E25 /* libBaiduMobAdSdk64bit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBaiduMobAdSdk64bit.a; sourceTree = "<group>"; };
 		3F155CB61BA8388000C91E25 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		3F155CB81BA83AEF00C91E25 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		3F2BBFB41C7C729900D672E3 /* DownController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownController.h; sourceTree = "<group>"; };
+		3F2BBFB51C7C729900D672E3 /* DownController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownController.m; sourceTree = "<group>"; };
+		3F2BBFB61C7C729900D672E3 /* DownController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DownController.xib; sourceTree = "<group>"; };
+		3F2BBFB91C7C85C100D672E3 /* DownCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownCell.h; sourceTree = "<group>"; };
+		3F2BBFBA1C7C85C100D672E3 /* DownCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownCell.m; sourceTree = "<group>"; };
+		3F2BBFBB1C7C85C100D672E3 /* DownCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DownCell.xib; sourceTree = "<group>"; };
 		3F88CDC41B92BB8C00AAF479 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		3F88CDC51B92BB8C00AAF479 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		3F96726A1C15AEAA00A1C71A /* HSDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSDownloadManager.h; sourceTree = "<group>"; };
@@ -386,6 +396,12 @@
 				BC1FB6611B59F47400D06876 /* PlayController.h */,
 				BC1FB6621B59F47400D06876 /* PlayController.m */,
 				BC1FB6631B59F47400D06876 /* PlayController.xib */,
+				3F2BBFB41C7C729900D672E3 /* DownController.h */,
+				3F2BBFB51C7C729900D672E3 /* DownController.m */,
+				3F2BBFB61C7C729900D672E3 /* DownController.xib */,
+				3F2BBFB91C7C85C100D672E3 /* DownCell.h */,
+				3F2BBFBA1C7C85C100D672E3 /* DownCell.m */,
+				3F2BBFBB1C7C85C100D672E3 /* DownCell.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -554,7 +570,9 @@
 				3F155CB41BA8381D00C91E25 /* baidumobadsdk.bundle in Resources */,
 				BC1FB6651B59F47400D06876 /* PlayController.xib in Resources */,
 				BC1FB5F21B59684000D06876 /* MainController.xib in Resources */,
+				3F2BBFB81C7C729900D672E3 /* DownController.xib in Resources */,
 				BC1FB5C31B595E9C00D06876 /* Main.storyboard in Resources */,
+				3F2BBFBD1C7C85C100D672E3 /* DownCell.xib in Resources */,
 				BC1FB5C51B595E9C00D06876 /* Images.xcassets in Resources */,
 				BC9CEDBD1B5DFAD3004FC9F3 /* DTTimingViewController.xib in Resources */,
 			);
@@ -625,6 +643,7 @@
 				BC1FB6001B597B0600D06876 /* TrackModel.m in Sources */,
 				3F9672751C15AF2900A1C71A /* NSString+Hash.m in Sources */,
 				BC13E4B61B82E70D00222CD2 /* KKNavigationController.m in Sources */,
+				3F2BBFBC1C7C85C100D672E3 /* DownCell.m in Sources */,
 				BC9CEDBC1B5DFAD3004FC9F3 /* DTTimingViewController.m in Sources */,
 				BC1FB6801B5A0BF600D06876 /* LMLable.m in Sources */,
 				BC1FB68E1B5A736500D06876 /* HistoryList.m in Sources */,
@@ -641,6 +660,7 @@
 				3F96726F1C15AEAA00A1C71A /* HSDownloadManager.m in Sources */,
 				BC1FB6911B5A745200D06876 /* SDBManager.m in Sources */,
 				BC1FB6641B59F47400D06876 /* PlayController.m in Sources */,
+				3F2BBFB71C7C729900D672E3 /* DownController.m in Sources */,
 				BC1FB67F1B5A0BF600D06876 /* LMImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

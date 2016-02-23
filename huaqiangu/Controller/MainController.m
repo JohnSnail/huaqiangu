@@ -10,6 +10,7 @@
 #import "TrackModel.h"
 #import "PlayController.h"
 #import "HSDownloadManager.h"
+#import "DownController.h"
 
 @interface MainController ()
 {
@@ -68,11 +69,35 @@ static NSInteger i = 0;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:playBtn];
 }
 
+#pragma mark - 
+#pragma mark - 初始化排序和下载按钮
+-(void)initDownOrderAction
+{
+    [self.downBtn setBackgroundImage:[UIImage imageNamed:@"down"] forState:UIControlStateNormal];
+    [self.orderBtn setBackgroundImage:[UIImage imageNamed:orderStr] forState:UIControlStateNormal];
+    
+    [self.downBtn addTarget:self action:@selector(downAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.orderBtn addTarget:self action:@selector(orderAction) forControlEvents:UIControlEventTouchUpInside];
+}
+
+#pragma mark - 
+#pragma mark - 下载按钮触发方法
+-(void)downAction
+{
+    DownController *downVC = [[DownController alloc]init];
+    KKNavigationController *nacVC = [[KKNavigationController alloc] initWithRootViewController:downVC];
+    [nacVC.navigationBar setBarTintColor:kCommenColor];
+    [self.navigationController presentViewController:nacVC animated:YES completion:^{
+        [downVC sendArray:self.mainMuArray];
+    }];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
 //    self.navigationItem.leftBarButtonItem = [LMButton setNavright:@"反馈" andcolor:[UIColor whiteColor] andSelector:@selector(pushAppStore) andTarget:self];
+    self.navigationItem.leftBarButtonItem = [LMButton setNavleftButtonWithImg:@"feedback" andSelector:@selector(pushAppStore) andTarget:self];
     self.navigationItem.titleView = [CommUtils navTittle:ALBUMTITLE];
     
     pageId = 1;
@@ -84,10 +109,9 @@ static NSInteger i = 0;
     if (!orderStr) {
         orderStr = @"false";
     }
-    self.navigationItem.leftBarButtonItem = [LMButton setNavleftButtonWithImg:orderStr andSelector:@selector(orderAction) andTarget:self];
+//    self.navigationItem.leftBarButtonItem = [LMButton setNavleftButtonWithImg:orderStr andSelector:@selector(orderAction) andTarget:self];
 
     [self getNetData];
-    [self setFrameView];
 
     self.mainTbView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         // 进入刷新状态后会自动调用这个block
@@ -104,13 +128,37 @@ static NSInteger i = 0;
     self.chooseSeg.tintColor = [UIColor whiteColor];
     [self.chooseSeg addTarget:self action:@selector(didClicksegmentedControlAction:)forControlEvents:UIControlEventValueChanged];
     
+    [self initDownOrderAction];
+    
+    [self setFrameView];
+    
     //上下一曲通知更新列表
     [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(reloadMainList) name: @"reloadAction" object: nil];
 }
 
+#pragma mark - 给好评
+
+-(void)pushAppStore
+{
+    NSString * url;
+    if (IS_IOS_7) {
+        url = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%@", AppStoreAppId];
+    }
+    else{
+        url=[NSString stringWithFormat: @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@",AppStoreAppId];
+    }
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+}
+
 -(void)setFrameView
 {
-    self.chooseSeg.frame = CGRectMake(116 * VIEWWITH, 8 * VIEWWITH, 81 * VIEWWITH, 29 * VIEWWITH);
+    [self.downBtn setAdjustsImageWhenHighlighted:NO];
+    [self.orderBtn setAdjustsImageWhenHighlighted:NO];
+    
+    self.downBtn.frame = CGRectMake(10 * VIEWWITH, 8 * VIEWWITH, 30 * VIEWWITH, 30 * VIEWWITH);
+    self.orderBtn.frame = CGRectMake(287 * VIEWWITH, 13 * VIEWWITH, 23 * VIEWWITH, 23 * VIEWWITH);
+    self.chooseSeg.frame = CGRectMake(120 * VIEWWITH, 11 * VIEWWITH, 81 * VIEWWITH, 29 * VIEWWITH);
 }
 
 -(void)reloadMainList
@@ -171,8 +219,8 @@ static NSInteger i = 0;
     [[NSUserDefaults standardUserDefaults] setObject:orderStr forKey:@"orderStr"];
     pageId = 1;
     [self getNetData];
-    self.navigationItem.leftBarButtonItem = [LMButton setNavleftButtonWithImg:orderStr andSelector:@selector(orderAction) andTarget:self];
-
+//    self.navigationItem.leftBarButtonItem = [LMButton setNavleftButtonWithImg:orderStr andSelector:@selector(orderAction) andTarget:self];
+    [self.orderBtn setBackgroundImage:[UIImage imageNamed:orderStr] forState:UIControlStateNormal];
 }
 
 //上拉刷新

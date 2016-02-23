@@ -38,6 +38,8 @@ _shared##classname = [[self alloc] init]; \
 return _shared##classname; \
 }
 
+#define CREAT_XIB(__xibname__)  {[[[NSBundle mainBundle] loadNibNamed:__xibname__ owner:nil options:nil] objectAtIndex:0]}
+
 //RGB颜色宏定义
 #define RGB(red,gre,blu) [UIColor colorWithRed:red/255.0f green:gre/255.0f blue:blu/255.0f alpha:1.0]
 

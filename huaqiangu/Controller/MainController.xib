@@ -8,8 +8,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainController">
             <connections>
                 <outlet property="chooseSeg" destination="GbC-Ml-748" id="xc7-gT-y9h"/>
+                <outlet property="downBtn" destination="kFJ-FY-KPO" id="tbT-XQ-fnz"/>
                 <outlet property="footView" destination="sZv-Mz-KDE" id="wrt-od-VqS"/>
                 <outlet property="mainTbView" destination="842-aS-rf8" id="6Vo-g2-dTk"/>
+                <outlet property="orderBtn" destination="jpV-fD-Kmo" id="E7X-l8-f2E"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -31,14 +33,22 @@
                     <rect key="frame" x="0.0" y="518" width="320" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="kFJ-FY-KPO">
+                            <rect key="frame" x="287" y="13" width="23" height="23"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </button>
                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="GbC-Ml-748">
-                            <rect key="frame" x="120" y="8" width="81" height="29"/>
+                            <rect key="frame" x="120" y="11" width="81" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="在线"/>
                                 <segment title="本地"/>
                             </segments>
                         </segmentedControl>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jpV-fD-Kmo">
+                            <rect key="frame" x="10" y="8" width="30" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>

@@ -15,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UITableView *mainTbView;
 @property (weak, nonatomic) IBOutlet UIView *footView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *chooseSeg;
+@property (weak, nonatomic) IBOutlet UIButton *downBtn;
+@property (weak, nonatomic) IBOutlet UIButton *orderBtn;
 @property (nonatomic, strong) NSMutableArray *mainMuArray;
 @property (nonatomic, strong) NSMutableArray *downMuArray;
 
