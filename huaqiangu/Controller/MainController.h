@@ -13,6 +13,9 @@
 @interface MainController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *mainTbView;
+@property (weak, nonatomic) IBOutlet UIView *footView;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *chooseSeg;
 @property (nonatomic, strong) NSMutableArray *mainMuArray;
+@property (nonatomic, strong) NSMutableArray *downMuArray;
 
 @end

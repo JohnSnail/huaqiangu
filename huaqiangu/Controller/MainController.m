@@ -77,8 +77,9 @@ static NSInteger i = 0;
     
     pageId = 1;
     _mainMuArray = [NSMutableArray arrayWithCapacity:0];
+    _downMuArray = [NSMutableArray arrayWithCapacity:0];
 
-    self.mainTbView.frame = CGRectMake(0, 0, mainscreenwidth, mainscreenhight);
+    self.mainTbView.frame = CGRectMake(0, 0, mainscreenwidth, mainscreenhight - 50);
     orderStr = [[NSUserDefaults standardUserDefaults] stringForKey:@"orderStr"];
     if (!orderStr) {
         orderStr = @"false";
@@ -86,14 +87,30 @@ static NSInteger i = 0;
     self.navigationItem.leftBarButtonItem = [LMButton setNavleftButtonWithImg:orderStr andSelector:@selector(orderAction) andTarget:self];
 
     [self getNetData];
+    [self setFrameView];
 
     self.mainTbView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         // 进入刷新状态后会自动调用这个block
         [self loadMoreData];
     }];
     
+    self.footView.frame = CGRectMake(0, mainscreenhight - 50, mainscreenwidth, 50);
+    self.footView.backgroundColor = kCommenColor;
+    [self.view addSubview:self.footView];
+    
+    UIColor *comColor = [UIColor whiteColor];
+    NSDictionary *colorAttr = [NSDictionary dictionaryWithObject:comColor forKey:UITextAttributeTextColor];
+    [self.chooseSeg setTitleTextAttributes:colorAttr forState:UIControlStateNormal];
+    self.chooseSeg.tintColor = [UIColor whiteColor];
+    [self.chooseSeg addTarget:self action:@selector(didClicksegmentedControlAction:)forControlEvents:UIControlEventValueChanged];
+    
     //上下一曲通知更新列表
     [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(reloadMainList) name: @"reloadAction" object: nil];
+}
+
+-(void)setFrameView
+{
+    self.chooseSeg.frame = CGRectMake(116 * VIEWWITH, 8 * VIEWWITH, 81 * VIEWWITH, 29 * VIEWWITH);
 }
 
 -(void)reloadMainList
@@ -117,6 +134,27 @@ static NSInteger i = 0;
         }];
     }else{
         [self pushPlayVC:[CommUtils getPlayIndex]];
+    }
+}
+
+
+#pragma mark -
+#pragma mark - UISegmentedControl 方法
+
+-(void)didClicksegmentedControlAction:(UISegmentedControl *)Seg{
+    NSInteger Index = Seg.selectedSegmentIndex;
+    NSLog(@"Index %li", (long)Index);
+    switch (Index) {
+        case 0:{
+            
+        }
+            break;
+        case 1:{
+            
+        }
+            break;
+        default:
+            break;
     }
 }
 
