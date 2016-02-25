@@ -52,13 +52,13 @@
 #pragma mark - 
 #pragma mark - 初始化相关参数
 -(void)initDownAction
-{
+{    
     self.downTbView.frame = CGRectMake(0, 0, mainscreenwidth, mainscreenhight - 50);
     self.downFootView.frame = CGRectMake(0, mainscreenhight - 50, mainscreenwidth, 50);
     
     _downMuArray = [NSMutableArray arrayWithCapacity:0];
     self.downTbView.backgroundColor = RGB(230, 227, 219);
-    self.downFootView.backgroundColor = kCommenColor;
+    self.downFootView.backgroundColor = [UIColor darkGrayColor];
     
     [self.downBtn setTitle:@"下载" forState:UIControlStateNormal];
     [self.downBtn addTarget:self action:@selector(downAction) forControlEvents:UIControlEventTouchUpInside];
@@ -84,7 +84,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *MainCellIdentifier = @"DownCell";
-    
     DownCell *cell = [tableView dequeueReusableCellWithIdentifier:MainCellIdentifier];
     if (!cell) {
         cell = (DownCell *)CREAT_XIB(@"DownCell");
@@ -93,14 +92,31 @@
         cell.nameLabel.textColor = [UIColor blackColor];
     }
     TrackModel *track = self.downMuArray[indexPath.row];
-    cell.nameLabel.font = [UIFont systemFontOfSize:16];
-    cell.nameLabel.text = track.title;
+    [cell setDownCell:track];
+    
     return cell;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    DownCell * newCell = (DownCell *)[self.downTbView cellForRowAtIndexPath:indexPath];
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    DownCell *newCell = (DownCell *)[tableView cellForRowAtIndexPath:indexPath];
     newCell.chooseBtn.selected = !newCell.chooseBtn.selected;
+    
+    //更换子类选中状态
+    TrackModel *track = self.downMuArray[indexPath.row];
+    track.isSelected = newCell.chooseBtn.selected;
+    
+    if (indexPath.row == 0) {
+        if (newCell.chooseBtn.selected == YES) {
+            [self.downMuArray enumerateObjectsWithOptions:NSEnumerationConcurrent usingBlock: ^(TrackModel *track,NSUInteger idx, BOOL *stop){
+                track.isSelected = YES;
+            }];
+        }else{
+            [self.downMuArray enumerateObjectsWithOptions:NSEnumerationConcurrent usingBlock: ^(TrackModel *track,NSUInteger idx, BOOL *stop){
+                track.isSelected = NO;
+            }];
+        }
+        [self.downTbView reloadData];
+    }
 }
-
 @end

@@ -24,8 +24,14 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="go1-N0-wg7">
                         <rect key="frame" x="17" y="19" width="22" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <state key="normal" backgroundImage="icon_choose_off"/>
-                        <state key="selected" backgroundImage="icon_choose_on"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <state key="normal" backgroundImage="icon_choose_off">
+                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </state>
+                        <state key="selected" backgroundImage="icon_choose_on">
+                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </state>
                     </button>
                 </subviews>
             </tableViewCellContentView>
@@ -37,7 +43,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="icon_choose_off" width="44" height="44"/>
-        <image name="icon_choose_on" width="44" height="44"/>
+        <image name="icon_choose_off" width="22" height="22"/>
+        <image name="icon_choose_on" width="22" height="22"/>
     </resources>
 </document>

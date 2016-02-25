@@ -119,7 +119,7 @@ static NSInteger i = 0;
     }];
     
     self.footView.frame = CGRectMake(0, mainscreenhight - 50, mainscreenwidth, 50);
-    self.footView.backgroundColor = kCommenColor;
+    self.footView.backgroundColor = [UIColor darkGrayColor];
     [self.view addSubview:self.footView];
     
     UIColor *comColor = [UIColor whiteColor];

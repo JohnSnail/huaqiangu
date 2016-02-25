@@ -12,4 +12,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *chooseBtn;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 
+-(void)setDownCell:(TrackModel *)track;
+
 @end

@@ -14,6 +14,7 @@
 @property (nonatomic, copy) NSString *playUrl64;
 @property (nonatomic, copy) NSString *hisProgress;
 @property (nonatomic, copy) NSString *coverLarge;
+@property BOOL isSelected;
 
 - (instancetype)initWithDict:(NSDictionary *)dict;
 

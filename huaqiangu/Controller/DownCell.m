@@ -10,14 +10,18 @@
 
 @implementation DownCell
 
+
+-(void)setDownCell:(TrackModel *)track{
+    
+    self.nameLabel.font = [UIFont systemFontOfSize:16];
+    self.nameLabel.text = track.title;
+    self.chooseBtn.selected = track.isSelected;
+}
+
 - (void)awakeFromNib {
     // Initialization code
+    self.chooseBtn.userInteractionEnabled = NO;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
 
 @end
