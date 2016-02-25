@@ -46,7 +46,7 @@
         //[AppDelegate showStatusWithText:@"数据库已经存在" duration:2];
     } else {
         // TODO: 插入新的数据库
-        NSString * sql = @"CREATE TABLE MainList (uid INTEGER PRIMARY KEY AUTOINCREMENT  NOT NULL,title VARCHAR(50),playUrl64 VARCHAR(50),hisProgress VARCHAR(100),coverLarge VARCHAR(100))";
+        NSString * sql = @"CREATE TABLE MainList (uid INTEGER PRIMARY KEY AUTOINCREMENT  NOT NULL,title VARCHAR(50),playUrl64 VARCHAR(50),hisProgress VARCHAR(100),coverLarge VARCHAR(100),downStatus VARCHAR(100))";
         BOOL res = [_db executeUpdate:sql];
         if (!res) {
             //[AppDelegate showStatusWithText:@"数据库创建失败" duration:2];
@@ -90,6 +90,11 @@
         [keys appendString:@"coverLarge,"];
         [values appendString:@"?,"];
         [arguments addObject:track.coverLarge];
+    }
+    if (track.downStatus) {
+        [keys appendString:@"downStatus,"];
+        [values appendString:@"?,"];
+        [arguments addObject:track.downStatus];
     }
     
     [keys appendString:@")"];
@@ -135,6 +140,9 @@
     if (track.coverLarge) {
         [temp appendFormat:@" coverLarge = '%@',",track.coverLarge];
     }
+    if (track.downStatus) {
+        [temp appendFormat:@" downStatus = '%@',",track.downStatus];
+    }
     
     [temp appendString:@")"];
     query = [query stringByAppendingFormat:@"%@ WHERE title = '%@'",[temp stringByReplacingOccurrencesOfString:@",)" withString:@""],track.title];
@@ -164,7 +172,7 @@
 
 -(NSArray *)getMainArray
 {
-    NSString * query = @"SELECT  title,playUrl64,hisProgress,coverLarge FROM MainList";
+    NSString * query = @"SELECT title,playUrl64,hisProgress,coverLarge,downStatus FROM MainList";
     
     FMResultSet * rs = [_db executeQuery:query];
     NSMutableArray * array = [NSMutableArray arrayWithCapacity:[rs columnCount]];
@@ -174,6 +182,7 @@
         track.playUrl64 = [rs stringForColumn:@"playUrl64"];
         track.hisProgress = [rs stringForColumn:@"hisProgress"];
         track.coverLarge = [rs stringForColumn:@"coverLarge"];
+        track.downStatus = [rs stringForColumn:@"downStatus"];
         
         if (track.title)
         {

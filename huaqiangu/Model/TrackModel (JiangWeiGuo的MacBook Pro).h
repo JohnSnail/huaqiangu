@@ -14,7 +14,7 @@
 @property (nonatomic, copy) NSString *playUrl64;
 @property (nonatomic, copy) NSString *hisProgress;
 @property (nonatomic, copy) NSString *coverLarge;
-@property (nonatomic, copy) NSString *downStatus;   //下载状态显示，在线：on;正在下载doing；已下载：done;
+@property (nonatomic, copy) NSString *downStatus;       
 @property BOOL isSelected;
 
 - (instancetype)initWithDict:(NSDictionary *)dict;
