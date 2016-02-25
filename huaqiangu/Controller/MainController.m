@@ -11,6 +11,7 @@
 #import "PlayController.h"
 #import "HSDownloadManager.h"
 #import "DownController.h"
+#import "MainList.h"
 
 @interface MainController ()
 {
@@ -109,7 +110,6 @@ static NSInteger i = 0;
     if (!orderStr) {
         orderStr = @"false";
     }
-//    self.navigationItem.leftBarButtonItem = [LMButton setNavleftButtonWithImg:orderStr andSelector:@selector(orderAction) andTarget:self];
 
     [self getNetData];
 
@@ -236,6 +236,11 @@ static NSInteger i = 0;
 
 -(void)getNetData
 {
+    if ([CommUtils checkNetworkStatus] == NotReachable) {
+        self.mainMuArray = [NSMutableArray arrayWithArray:[[MainList sharedManager] getMainArray]];
+        [self.mainTbView reloadData];
+        return;
+    }
     if (pageId == 1) {
         [self.mainMuArray removeAllObjects];
     }
@@ -255,6 +260,9 @@ static NSInteger i = 0;
             TrackModel *track = [[TrackModel alloc]initWithDict:arr[i]];
 //            NSString *strTitle = [NSString stringWithFormat:@"步步惊心%@",track.title];
 //            track.title = strTitle;
+            
+            [[MainList sharedManager] saveContent:track];
+            
             [bSelf.mainMuArray addObject:track];
         }
         [bSelf.mainTbView reloadData];
