@@ -16,8 +16,7 @@
 		3F2BBFB81C7C729900D672E3 /* DownController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F2BBFB61C7C729900D672E3 /* DownController.xib */; };
 		3F2BBFBC1C7C85C100D672E3 /* DownCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2BBFBA1C7C85C100D672E3 /* DownCell.m */; };
 		3F2BBFBD1C7C85C100D672E3 /* DownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F2BBFBB1C7C85C100D672E3 /* DownCell.xib */; };
-		3F7E769D1C7EDFF600AA66A4 /* MainList.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7E769C1C7EDFF600AA66A4 /* MainList.m */; };
-		3F7E76A01C7EE00500AA66A4 /* DownList.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7E769F1C7EE00500AA66A4 /* DownList.m */; };
+		3F7E77411C7EF09900AA66A4 /* MainList.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7E77401C7EF09900AA66A4 /* MainList.m */; };
 		3F88CDC61B92BB8C00AAF479 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F88CDC41B92BB8C00AAF479 /* Crashlytics.framework */; };
 		3F88CDC71B92BB8C00AAF479 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F88CDC51B92BB8C00AAF479 /* Fabric.framework */; };
 		3F96726F1C15AEAA00A1C71A /* HSDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F96726B1C15AEAA00A1C71A /* HSDownloadManager.m */; };
@@ -98,10 +97,8 @@
 		3F2BBFB91C7C85C100D672E3 /* DownCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownCell.h; sourceTree = "<group>"; };
 		3F2BBFBA1C7C85C100D672E3 /* DownCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownCell.m; sourceTree = "<group>"; };
 		3F2BBFBB1C7C85C100D672E3 /* DownCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DownCell.xib; sourceTree = "<group>"; };
-		3F7E769B1C7EDFF600AA66A4 /* MainList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainList.h; sourceTree = "<group>"; };
-		3F7E769C1C7EDFF600AA66A4 /* MainList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainList.m; sourceTree = "<group>"; };
-		3F7E769E1C7EE00500AA66A4 /* DownList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownList.h; sourceTree = "<group>"; };
-		3F7E769F1C7EE00500AA66A4 /* DownList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownList.m; sourceTree = "<group>"; };
+		3F7E773F1C7EF09900AA66A4 /* MainList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainList.h; sourceTree = "<group>"; };
+		3F7E77401C7EF09900AA66A4 /* MainList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainList.m; sourceTree = "<group>"; };
 		3F88CDC41B92BB8C00AAF479 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		3F88CDC51B92BB8C00AAF479 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		3F96726A1C15AEAA00A1C71A /* HSDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSDownloadManager.h; sourceTree = "<group>"; };
@@ -239,17 +236,6 @@
 			path = ios_api;
 			sourceTree = "<group>";
 		};
-		3F7E769A1C7EDFA800AA66A4 /* List */ = {
-			isa = PBXGroup;
-			children = (
-				3F7E769B1C7EDFF600AA66A4 /* MainList.h */,
-				3F7E769C1C7EDFF600AA66A4 /* MainList.m */,
-				3F7E769E1C7EE00500AA66A4 /* DownList.h */,
-				3F7E769F1C7EE00500AA66A4 /* DownList.m */,
-			);
-			path = List;
-			sourceTree = "<group>";
-		};
 		3F9672691C15AE8F00A1C71A /* DownloadManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -340,7 +326,6 @@
 		BC1FB5B61B595E9C00D06876 /* huaqiangu */ = {
 			isa = PBXGroup;
 			children = (
-				3F7E769A1C7EDFA800AA66A4 /* List */,
 				BC1FB5FD1B597AD400D06876 /* Model */,
 				BC1FB5ED1B59680E00D06876 /* Controller */,
 				BC1FB5BB1B595E9C00D06876 /* AppDelegate.h */,
@@ -386,7 +371,7 @@
 				3F9672691C15AE8F00A1C71A /* DownloadManager */,
 				3F0E6BCB1BA691240057CB5A /* ios_api */,
 				BC13E4B71B83302D00222CD2 /* Reachability */,
-				BC1FB68B1B5A734700D06876 /* HistoryFMDB */,
+				BC1FB68B1B5A734700D06876 /* List */,
 				BC1FB6761B5A0BF600D06876 /* LMView */,
 				BC1FB6671B5A093000D06876 /* Common */,
 				BC1FB6541B59E69500D06876 /* NetWorkServer */,
@@ -472,15 +457,17 @@
 			path = LMView;
 			sourceTree = "<group>";
 		};
-		BC1FB68B1B5A734700D06876 /* HistoryFMDB */ = {
+		BC1FB68B1B5A734700D06876 /* List */ = {
 			isa = PBXGroup;
 			children = (
+				3F7E773F1C7EF09900AA66A4 /* MainList.h */,
+				3F7E77401C7EF09900AA66A4 /* MainList.m */,
 				BC1FB68F1B5A745200D06876 /* SDBManager.h */,
 				BC1FB6901B5A745200D06876 /* SDBManager.m */,
 				BC1FB68C1B5A736500D06876 /* HistoryList.h */,
 				BC1FB68D1B5A736500D06876 /* HistoryList.m */,
 			);
-			path = HistoryFMDB;
+			path = List;
 			sourceTree = "<group>";
 		};
 		BC9CEDB51B5DFAB6004FC9F3 /* TimeController */ = {
@@ -662,6 +649,7 @@
 				3F9672751C15AF2900A1C71A /* NSString+Hash.m in Sources */,
 				BC13E4B61B82E70D00222CD2 /* KKNavigationController.m in Sources */,
 				3F2BBFBC1C7C85C100D672E3 /* DownCell.m in Sources */,
+				3F7E77411C7EF09900AA66A4 /* MainList.m in Sources */,
 				BC9CEDBC1B5DFAD3004FC9F3 /* DTTimingViewController.m in Sources */,
 				BC1FB6801B5A0BF600D06876 /* LMLable.m in Sources */,
 				BC1FB68E1B5A736500D06876 /* HistoryList.m in Sources */,
@@ -673,11 +661,9 @@
 				BC1FB65A1B59E69500D06876 /* AFService.m in Sources */,
 				BC1FB5BA1B595E9C00D06876 /* main.m in Sources */,
 				BCCA4C581B5CE8EE00C73442 /* AutoRunLabel.m in Sources */,
-				3F7E76A01C7EE00500AA66A4 /* DownList.m in Sources */,
 				3F9672701C15AEAA00A1C71A /* HSSessionModel.m in Sources */,
 				BC1FB67E1B5A0BF600D06876 /* LMButton.m in Sources */,
 				3F96726F1C15AEAA00A1C71A /* HSDownloadManager.m in Sources */,
-				3F7E769D1C7EDFF600AA66A4 /* MainList.m in Sources */,
 				BC1FB6911B5A745200D06876 /* SDBManager.m in Sources */,
 				BC1FB6641B59F47400D06876 /* PlayController.m in Sources */,
 				3F2BBFB71C7C729900D672E3 /* DownController.m in Sources */,
