@@ -35,6 +35,9 @@ static NSInteger i = 0;
 
     self.mainTbView.backgroundColor = RGB(230, 227, 219);
     self.navigationController.navigationBarHidden = NO;
+    
+    [self getLocalData];
+    
     [self.mainTbView reloadData];
     [self playAnimation];
 }
@@ -234,13 +237,14 @@ static NSInteger i = 0;
     }
 }
 
+-(void)getLocalData
+{
+    self.mainMuArray = [NSMutableArray arrayWithArray:[[MainList sharedManager] getMainArray]];
+    [self.mainTbView reloadData];
+}
+
 -(void)getNetData
 {
-    if ([CommUtils checkNetworkStatus] == NotReachable) {
-        self.mainMuArray = [NSMutableArray arrayWithArray:[[MainList sharedManager] getMainArray]];
-        [self.mainTbView reloadData];
-        return;
-    }
     if (pageId == 1) {
         [self.mainMuArray removeAllObjects];
     }
