@@ -13,6 +13,8 @@
 #import "DownController.h"
 #import "MainList.h"
 
+#define COUNT 20
+
 @interface MainController ()
 {
     NSInteger pageId;
@@ -35,8 +37,6 @@ static NSInteger i = 0;
 
     self.mainTbView.backgroundColor = RGB(230, 227, 219);
     self.navigationController.navigationBarHidden = NO;
-    
-    [self getLocalData];
     
     [self.mainTbView reloadData];
     [self playAnimation];
@@ -114,7 +114,7 @@ static NSInteger i = 0;
         orderStr = @"false";
     }
 
-    [self getNetData];
+    [self getMainData];
 
     self.mainTbView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         // 进入刷新状态后会自动调用这个block
@@ -137,6 +137,22 @@ static NSInteger i = 0;
     
     //上下一曲通知更新列表
     [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(reloadMainList) name: @"reloadAction" object: nil];
+}
+
+#pragma mark - 
+#pragma mark - 获取主页列表数据；本地有获取本地数据，下载加载下一页数据；本地没有直接获取服务器数据；
+
+-(void)getMainData
+{
+    [self.mainMuArray removeAllObjects];
+    self.mainMuArray = [NSMutableArray arrayWithArray:[[MainList sharedManager] getMainArray]];
+    if (self.mainMuArray.count != 0) {
+        pageId = self.mainMuArray.count/COUNT;
+        [self.mainTbView reloadData];
+    }else{
+        [self getNetData];
+    }
+    
 }
 
 #pragma mark - 给好评
@@ -237,18 +253,21 @@ static NSInteger i = 0;
     }
 }
 
--(void)getLocalData
-{
-    self.mainMuArray = [NSMutableArray arrayWithArray:[[MainList sharedManager] getMainArray]];
-    [self.mainTbView reloadData];
-}
+#pragma mark - 
+#pragma mark - 获取本地数据 暂时取消
+
+//-(void)getLocalData
+//{
+//    self.mainMuArray = [NSMutableArray arrayWithArray:[[MainList sharedManager] getMainArray]];
+//    [self.mainTbView reloadData];
+//}
 
 -(void)getNetData
 {
     if (pageId == 1) {
         [self.mainMuArray removeAllObjects];
     }
-    NSString *urlStr = [NSString stringWithFormat:@"%@/30",@(pageId)];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",@(pageId),@(COUNT)];
     NSString *postStr = [NSString stringWithFormat:@"%@%@/%@%@",kMainHeader,orderStr,urlStr,kDevice];
     
     __weak typeof(self) bSelf = self;
