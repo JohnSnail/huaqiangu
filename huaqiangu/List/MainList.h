@@ -27,6 +27,9 @@
 //修改节目信息
 -(void)mergeWithContent:(TrackModel *)track;
 
+//判断是否存在该数据
+-(BOOL)exist:(NSString *)title;
+
 //获取主页面数据
 -(NSArray *)getMainArray;
 

@@ -13,6 +13,8 @@
 #import "DownController.h"
 #import "MainList.h"
 
+#define COUNT 30
+
 @interface MainController ()
 {
     NSInteger pageId;
@@ -114,8 +116,8 @@ static NSInteger i = 0;
         orderStr = @"false";
     }
 
-    [self getNetData];
-
+    [self getMainData];
+    
     self.mainTbView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         // 进入刷新状态后会自动调用这个block
         [self loadMoreData];
@@ -137,6 +139,7 @@ static NSInteger i = 0;
     
     //上下一曲通知更新列表
     [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(reloadMainList) name: @"reloadAction" object: nil];
+    
 }
 
 #pragma mark - 给好评
@@ -237,6 +240,26 @@ static NSInteger i = 0;
     }
 }
 
+
+//#pragma mark - 
+//#pragma mark - 获取首页数据
+
+-(void)getMainData
+{
+     self.mainMuArray = [NSMutableArray arrayWithArray:[[MainList sharedManager] getMainArray]];
+    if (self.mainMuArray.count != 0) {
+        pageId = self.mainMuArray.count / COUNT;
+        totalPage = pageId + 1;
+        
+        [self.mainTbView reloadData];
+        [self scrollViewToIndex];
+        
+    }else{
+        [self getNetData];
+        
+    }
+}
+
 -(void)getLocalData
 {
     self.mainMuArray = [NSMutableArray arrayWithArray:[[MainList sharedManager] getMainArray]];
@@ -248,7 +271,7 @@ static NSInteger i = 0;
     if (pageId == 1) {
         [self.mainMuArray removeAllObjects];
     }
-    NSString *urlStr = [NSString stringWithFormat:@"%@/30",@(pageId)];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",@(pageId),@(COUNT)];
     NSString *postStr = [NSString stringWithFormat:@"%@%@/%@%@",kMainHeader,orderStr,urlStr,kDevice];
     
     __weak typeof(self) bSelf = self;
@@ -267,8 +290,10 @@ static NSInteger i = 0;
             
             [[MainList sharedManager] saveContent:track];
             
+            //折中解决方案：本地判断最后一页时，不新增数据
             [bSelf.mainMuArray addObject:track];
         }
+        
         [bSelf.mainTbView reloadData];
         [bSelf.mainTbView.footer endRefreshing];
         
