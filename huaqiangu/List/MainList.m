@@ -161,7 +161,7 @@
     FMResultSet * rs = [_db executeQuery:query];
     while ([rs next])
     {
-        if ( [title isEqualToString:[rs stringForColumn:@"title"]]) {
+        if ( title == [rs stringForColumn:@"title"]) {
             extst = YES;
             break;
         }

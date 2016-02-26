@@ -9,7 +9,7 @@
 #ifndef ApiHeader_h
 #define ApiHeader_h
 
-//#define kMainHeader   @"http://mobile.ximalaya.com/mobile/others/ca/album/track/239463/true/1?device=iPhone"
+//#define kMainHeader   @"http://mobile.ximalaya.com/mobile/others/ca/album/track/360163/true/1/30?device=iPhone"
 
 #define kMainHeader   @"http://mobile.ximalaya.com/mobile/others/ca/album/track/239463/"
 #define kDevice @"?device=iPhone"
