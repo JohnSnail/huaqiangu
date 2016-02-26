@@ -38,8 +38,6 @@ static NSInteger i = 0;
     self.mainTbView.backgroundColor = RGB(230, 227, 219);
     self.navigationController.navigationBarHidden = NO;
     
-    [self getLocalData];
-    
     [self.mainTbView reloadData];
     [self playAnimation];
 }
@@ -248,7 +246,7 @@ static NSInteger i = 0;
 {
      self.mainMuArray = [NSMutableArray arrayWithArray:[[MainList sharedManager] getMainArray]];
     if (self.mainMuArray.count != 0) {
-        pageId = self.mainMuArray.count / COUNT;
+        pageId = ceilf((float)self.mainMuArray.count / COUNT);
         totalPage = pageId + 1;
         
         [self.mainTbView reloadData];
@@ -260,11 +258,11 @@ static NSInteger i = 0;
     }
 }
 
--(void)getLocalData
-{
-    self.mainMuArray = [NSMutableArray arrayWithArray:[[MainList sharedManager] getMainArray]];
-    [self.mainTbView reloadData];
-}
+//-(void)getLocalData
+//{
+//    self.mainMuArray = [NSMutableArray arrayWithArray:[[MainList sharedManager] getMainArray]];
+//    [self.mainTbView reloadData];
+//}
 
 -(void)getNetData
 {
@@ -291,7 +289,9 @@ static NSInteger i = 0;
             [[MainList sharedManager] saveContent:track];
             
             //折中解决方案：本地判断最后一页时，不新增数据
-            [bSelf.mainMuArray addObject:track];
+            if (pageId < totalPage || pageId == totalPage) {
+                [bSelf.mainMuArray addObject:track];
+            }
         }
         
         [bSelf.mainTbView reloadData];
