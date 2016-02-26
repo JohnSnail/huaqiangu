@@ -36,8 +36,6 @@ static NSInteger i = 0;
     self.mainTbView.backgroundColor = RGB(230, 227, 219);
     self.navigationController.navigationBarHidden = NO;
     
-    [self getLocalData];
-    
     [self.mainTbView reloadData];
     [self playAnimation];
 }
@@ -197,16 +195,31 @@ static NSInteger i = 0;
     NSLog(@"Index %li", (long)Index);
     switch (Index) {
         case 0:{
-            
+            [self getLocalData];
         }
             break;
         case 1:{
-            
+            [self getLocalArray];
         }
             break;
         default:
             break;
     }
+}
+
+//获取本地数据
+-(void)getLocalArray{
+    [self.downMuArray removeAllObjects];
+    
+    [self.mainMuArray enumerateObjectsWithOptions:NSEnumerationConcurrent usingBlock: ^(TrackModel *track,NSUInteger idx, BOOL *stop){
+        if ([track.downStatus isEqualToString:@"done"]) {
+            [self.downMuArray addObject:track];
+        }
+    }];
+    
+    [self.mainMuArray removeAllObjects];
+    self.mainMuArray = self.downMuArray;
+    [self.mainTbView reloadData];
 }
 
 #pragma mark - 排序
@@ -239,6 +252,7 @@ static NSInteger i = 0;
 
 -(void)getLocalData
 {
+    [self.mainMuArray removeAllObjects];
     self.mainMuArray = [NSMutableArray arrayWithArray:[[MainList sharedManager] getMainArray]];
     [self.mainTbView reloadData];
 }
@@ -248,7 +262,7 @@ static NSInteger i = 0;
     if (pageId == 1) {
         [self.mainMuArray removeAllObjects];
     }
-    NSString *urlStr = [NSString stringWithFormat:@"%@/30",@(pageId)];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/20",@(pageId)];
     NSString *postStr = [NSString stringWithFormat:@"%@%@/%@%@",kMainHeader,orderStr,urlStr,kDevice];
     
     __weak typeof(self) bSelf = self;
