@@ -126,7 +126,7 @@ static NSInteger i = 0;
     [self.view addSubview:self.footView];
     
     UIColor *comColor = [UIColor whiteColor];
-    NSDictionary *colorAttr = [NSDictionary dictionaryWithObject:comColor forKey:UITextAttributeTextColor];
+    NSDictionary *colorAttr = [NSDictionary dictionaryWithObject:comColor forKey:NSForegroundColorAttributeName];
     [self.chooseSeg setTitleTextAttributes:colorAttr forState:UIControlStateNormal];
     self.chooseSeg.tintColor = [UIColor whiteColor];
     [self.chooseSeg addTarget:self action:@selector(didClicksegmentedControlAction:)forControlEvents:UIControlEventValueChanged];
