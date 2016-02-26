@@ -9,7 +9,6 @@
 #import "MainController.h"
 #import "TrackModel.h"
 #import "PlayController.h"
-#import "HSDownloadManager.h"
 #import "DownController.h"
 #import "MainList.h"
 
@@ -189,6 +188,22 @@ static NSInteger i = 0;
     }
 }
 
+-(void)getDownArray{
+    
+    NSMutableArray *downArray = [NSMutableArray arrayWithCapacity:0];
+    self.mainMuArray = [NSMutableArray arrayWithArray:[[MainList sharedManager] getMainArray]];
+    [self.mainMuArray enumerateObjectsWithOptions:NSEnumerationConcurrent usingBlock: ^(TrackModel *track,NSUInteger idx, BOOL *stop){
+        
+        NSLog(@"downStatus ==== %@",track.downStatus);
+        
+        if ([track.downStatus isEqualToString:@"done"]) {
+            [downArray addObject:track];
+        }
+    }];
+    [self.mainMuArray removeAllObjects];
+    self.mainMuArray = [NSMutableArray arrayWithArray:downArray];
+    [self.mainTbView reloadData];
+}
 
 #pragma mark -
 #pragma mark - UISegmentedControl 方法
@@ -198,11 +213,11 @@ static NSInteger i = 0;
     NSLog(@"Index %li", (long)Index);
     switch (Index) {
         case 0:{
-            
+            [self getMainData];
         }
             break;
         case 1:{
-            
+            [self getDownArray];
         }
             break;
         default:
@@ -223,7 +238,7 @@ static NSInteger i = 0;
     [[NSUserDefaults standardUserDefaults] setObject:orderStr forKey:@"orderStr"];
     pageId = 1;
     [self getNetData];
-//    self.navigationItem.leftBarButtonItem = [LMButton setNavleftButtonWithImg:orderStr andSelector:@selector(orderAction) andTarget:self];
+    
     [self.orderBtn setBackgroundImage:[UIImage imageNamed:orderStr] forState:UIControlStateNormal];
 }
 
@@ -258,12 +273,6 @@ static NSInteger i = 0;
     }
 }
 
-//-(void)getLocalData
-//{
-//    self.mainMuArray = [NSMutableArray arrayWithArray:[[MainList sharedManager] getMainArray]];
-//    [self.mainTbView reloadData];
-//}
-
 -(void)getNetData
 {
     if (pageId == 1) {
@@ -283,6 +292,7 @@ static NSInteger i = 0;
 
         for (int i = 0; i < arr.count; i++) {
             TrackModel *track = [[TrackModel alloc]initWithDict:arr[i]];
+            track.downStatus = @"on";
 //            NSString *strTitle = [NSString stringWithFormat:@"步步惊心%@",track.title];
 //            track.title = strTitle;
             
@@ -366,5 +376,6 @@ static NSInteger i = 0;
     }
     [self.navigationController pushViewController:playVC animated:YES];
 }
+
 
 @end

@@ -8,6 +8,8 @@
 
 #import "DownController.h"
 #import "DownCell.h"
+#import "HSDownloadManager.h"
+#import "MainList.h"
 
 @interface DownController ()
 
@@ -68,7 +70,15 @@
 #pragma mark - 下载方法
 -(void)downAction{
     NSLog(@"下载");
+    [self.downMuArray enumerateObjectsWithOptions:NSEnumerationConcurrent usingBlock: ^(TrackModel *track,NSUInteger idx, BOOL *stop){
+        track.downStatus = @"done";
+        [[MainList sharedManager] mergeWithContent:track];
+        
+        [self download:track.playUrl64 progressLabel:nil progressView:nil button:nil];
+    }];
 }
+
+
 
 #pragma mark - tableview代理方法
 
@@ -117,6 +127,37 @@
             }];
         }
         [self.downTbView reloadData];
+    }
+}
+
+#pragma mark 开启任务下载资源
+- (void)download:(NSString *)url progressLabel:(UILabel *)progressLabel progressView:(UIProgressView *)progressView button:(UIButton *)button
+{
+    [[HSDownloadManager sharedInstance] download:url progress:^(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            progressLabel.text = [NSString stringWithFormat:@"%.f%%", progress * 100];
+            progressView.progress = progress;
+        });
+    } state:^(DownloadState state) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [button setTitle:[self getTitleWithDownloadState:state] forState:UIControlStateNormal];
+        });
+    }];
+}
+
+#pragma mark 按钮状态
+- (NSString *)getTitleWithDownloadState:(DownloadState)state
+{
+    switch (state) {
+        case DownloadStateStart:
+            return @"暂停";
+        case DownloadStateSuspended:
+        case DownloadStateFailed:
+            return @"开始";
+        case DownloadStateCompleted:
+            return @"完成";
+        default:
+            break;
     }
 }
 @end
