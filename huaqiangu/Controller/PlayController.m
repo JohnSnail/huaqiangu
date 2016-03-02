@@ -10,24 +10,6 @@
 #import "AppDelegate.h"
 #import "DTTimingViewController.h"
 #import "DTTimingManager.h"
-#import "HSDownloadManager.h"
-#import "NSString+hash.h"
-
-// 缓存主目录
-#define HSCachesDirectory [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"HSCache"]
-
-// 保存文件名
-#define HSFileName(url) url.md5String
-
-// 文件的存放路径（caches）
-#define HSFileFullpath(url) [HSCachesDirectory stringByAppendingPathComponent:HSFileName(url)]
-
-// 文件的已下载长度
-#define HSDownloadLength(url) [[[NSFileManager defaultManager] attributesOfItemAtPath:HSFileFullpath(url) error:nil][NSFileSize] integerValue]
-
-// 存储文件总长度的文件路径（caches）
-#define HSTotalLengthFullpath [HSCachesDirectory stringByAppendingPathComponent:@"totalLength.plist"]
-
 
 @interface PlayController ()<BaiduMobAdViewDelegate>
 {
@@ -319,17 +301,7 @@ SINGLETON_CLASS(PlayController);
         self.playTrack.hisProgress = track.hisProgress;
     }
     
-    
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSLog(@"HSFileFullpath == %@", HSFileFullpath(self.playTrack.playUrl64));
-    if ([fileManager fileExistsAtPath:HSFileFullpath(self.playTrack.playUrl64)]){
-        NSLog(@"HSFileFullpath == %@", HSFileFullpath(self.playTrack.playUrl64));
-        NSString *playStr = [NSString stringWithFormat:@"%@.mp3",HSFileFullpath(self.playTrack.playUrl64)];
-        
-        [[STKAudioPlayer sharedManager] play:playStr];
-    }else{
-        [[STKAudioPlayer sharedManager] play:self.playTrack.playUrl64];
-    }
+    [[STKAudioPlayer sharedManager] play:self.playTrack.playUrl64];
     
     [self setupTimer];
     
