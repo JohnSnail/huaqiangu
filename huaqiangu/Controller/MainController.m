@@ -115,11 +115,6 @@ static NSInteger i = 0;
 
     [self getMainData];
     
-    self.mainTbView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        // 进入刷新状态后会自动调用这个block
-        [self loadMoreData];
-    }];
-    
     self.footView.frame = CGRectMake(0, mainscreenhight - 50, mainscreenwidth, 50);
     self.footView.backgroundColor = [UIColor darkGrayColor];
     [self.view addSubview:self.footView];
@@ -190,6 +185,8 @@ static NSInteger i = 0;
 
 -(void)getDownArray{
     
+    self.mainTbView.footer = nil;
+    
     NSMutableArray *downArray = [NSMutableArray arrayWithCapacity:0];
     self.mainMuArray = [NSMutableArray arrayWithArray:[[MainList sharedManager] getMainArray]];
     [self.mainMuArray enumerateObjectsWithOptions:NSEnumerationConcurrent usingBlock: ^(TrackModel *track,NSUInteger idx, BOOL *stop){
@@ -259,6 +256,11 @@ static NSInteger i = 0;
 
 -(void)getMainData
 {
+    self.mainTbView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        // 进入刷新状态后会自动调用这个block
+        [self loadMoreData];
+    }];
+    
      self.mainMuArray = [NSMutableArray arrayWithArray:[[MainList sharedManager] getMainArray]];
     if (self.mainMuArray.count != 0) {
         pageId = ceilf((float)self.mainMuArray.count / COUNT);

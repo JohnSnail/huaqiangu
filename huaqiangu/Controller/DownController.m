@@ -71,10 +71,12 @@
 -(void)downAction{
     NSLog(@"下载");
     [self.downMuArray enumerateObjectsWithOptions:NSEnumerationConcurrent usingBlock: ^(TrackModel *track,NSUInteger idx, BOOL *stop){
-        track.downStatus = @"done";
-        [[MainList sharedManager] mergeWithContent:track];
-        
-        [self download:track.playUrl64 progressLabel:nil progressView:nil button:nil];
+        if (track.isSelected) {
+            track.downStatus = @"done";
+            [[MainList sharedManager] mergeWithContent:track];
+            
+            [self download:track.playUrl64 progressLabel:nil progressView:nil button:nil];
+        }
     }];
 }
 

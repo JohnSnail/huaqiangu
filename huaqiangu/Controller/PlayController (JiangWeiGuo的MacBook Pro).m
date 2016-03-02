@@ -6,11 +6,12 @@
 //  Copyright (c) 2015年 Jiangwei. All rights reserved.
 //
 
+
 // 缓存主目录
 #define HSCachesDirectory [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"HSCache"]
 
 // 保存文件名
-#define HSFileName(url) [NSString stringWithFormat:@"%@.mp3",url.md5String]
+#define HSFileName(url) url.md5String
 
 // 文件的存放路径（caches）
 #define HSFileFullpath(url) [HSCachesDirectory stringByAppendingPathComponent:HSFileName(url)]
@@ -319,12 +320,14 @@ SINGLETON_CLASS(PlayController);
     }
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    if ([fileManager fileExistsAtPath:HSFileFullpath(self.playTrack.playUrl64)]) {
-//        NSLog(@"path = %@", HSFileFullpath(self.playTrack.playUrl64));
-        [[STKAudioPlayer sharedManager] play:HSFileFullpath(self.playTrack.playUrl64)];
-    }else{
-        [[STKAudioPlayer sharedManager] play:self.playTrack.playUrl64];
+    if ([fileManager fileExistsAtPath:HSFileFullpath(url)]) {
+        ;
     }
+    
+//    NSURL *newSuffixPathURL = [NSURL fileURLWithPath:documentFileName];
+//    [[STKAudioPlayer sharedManager] play:newSuffixPathURL];
+    
+    [[STKAudioPlayer sharedManager] play:self.playTrack.playUrl64];
     
     [self setupTimer];
     

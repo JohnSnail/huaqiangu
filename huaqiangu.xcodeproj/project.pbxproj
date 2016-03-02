@@ -22,6 +22,7 @@
 		3F96726F1C15AEAA00A1C71A /* HSDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F96726B1C15AEAA00A1C71A /* HSDownloadManager.m */; };
 		3F9672701C15AEAA00A1C71A /* HSSessionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F96726D1C15AEAA00A1C71A /* HSSessionModel.m */; };
 		3F9672751C15AF2900A1C71A /* NSString+Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9672741C15AF2900A1C71A /* NSString+Hash.m */; };
+		3FAD95C11C86DFEF0094D504 /* PlayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FAD95C01C86DFEF0094D504 /* PlayController.m */; };
 		42262C9FD77F0E61345D2EB8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 815A5AE3989CEB41ADA3F948 /* libPods.a */; };
 		BC13E4B31B82D82700222CD2 /* NSMutableDictionary+SafeValue.m in Sources */ = {isa = PBXBuildFile; fileRef = BC13E4B21B82D82700222CD2 /* NSMutableDictionary+SafeValue.m */; };
 		BC13E4B61B82E70D00222CD2 /* KKNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC13E4B51B82E70D00222CD2 /* KKNavigationController.m */; };
@@ -36,7 +37,6 @@
 		BC1FB6001B597B0600D06876 /* TrackModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1FB5FF1B597B0600D06876 /* TrackModel.m */; };
 		BC1FB65A1B59E69500D06876 /* AFService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1FB6561B59E69500D06876 /* AFService.m */; };
 		BC1FB65B1B59E69500D06876 /* NetService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1FB6591B59E69500D06876 /* NetService.m */; };
-		BC1FB6641B59F47400D06876 /* PlayController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1FB6621B59F47400D06876 /* PlayController.m */; };
 		BC1FB6651B59F47400D06876 /* PlayController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC1FB6631B59F47400D06876 /* PlayController.xib */; };
 		BC1FB66A1B5A097E00D06876 /* CommUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1FB6691B5A097E00D06876 /* CommUtils.m */; };
 		BC1FB67E1B5A0BF600D06876 /* LMButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1FB6781B5A0BF600D06876 /* LMButton.m */; };
@@ -107,6 +107,7 @@
 		3F96726D1C15AEAA00A1C71A /* HSSessionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSSessionModel.m; sourceTree = "<group>"; };
 		3F9672731C15AF2900A1C71A /* NSString+Hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Hash.h"; sourceTree = "<group>"; };
 		3F9672741C15AF2900A1C71A /* NSString+Hash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Hash.m"; sourceTree = "<group>"; };
+		3FAD95C01C86DFEF0094D504 /* PlayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayController.m; sourceTree = "<group>"; };
 		73BEAAB2371013C5EC7DF00F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		7C353B9F2465C658A8882D7F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		815A5AE3989CEB41ADA3F948 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,7 +140,6 @@
 		BC1FB6591B59E69500D06876 /* NetService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = NetService.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		BC1FB6601B59ED2800D06876 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		BC1FB6611B59F47400D06876 /* PlayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayController.h; sourceTree = "<group>"; };
-		BC1FB6621B59F47400D06876 /* PlayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PlayController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		BC1FB6631B59F47400D06876 /* PlayController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayController.xib; sourceTree = "<group>"; };
 		BC1FB6681B5A097E00D06876 /* CommUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommUtils.h; sourceTree = "<group>"; };
 		BC1FB6691B5A097E00D06876 /* CommUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommUtils.m; sourceTree = "<group>"; };
@@ -407,7 +407,7 @@
 				BC1FB5EF1B59684000D06876 /* MainController.m */,
 				BC1FB5F01B59684000D06876 /* MainController.xib */,
 				BC1FB6611B59F47400D06876 /* PlayController.h */,
-				BC1FB6621B59F47400D06876 /* PlayController.m */,
+				3FAD95C01C86DFEF0094D504 /* PlayController.m */,
 				BC1FB6631B59F47400D06876 /* PlayController.xib */,
 				3F2BBFB41C7C729900D672E3 /* DownController.h */,
 				3F2BBFB51C7C729900D672E3 /* DownController.m */,
@@ -672,8 +672,8 @@
 				BC1FB67E1B5A0BF600D06876 /* LMButton.m in Sources */,
 				3F96726F1C15AEAA00A1C71A /* HSDownloadManager.m in Sources */,
 				3F7E769D1C7EDFF600AA66A4 /* MainList.m in Sources */,
+				3FAD95C11C86DFEF0094D504 /* PlayController.m in Sources */,
 				BC1FB6911B5A745200D06876 /* SDBManager.m in Sources */,
-				BC1FB6641B59F47400D06876 /* PlayController.m in Sources */,
 				3F2BBFB71C7C729900D672E3 /* DownController.m in Sources */,
 				BC1FB67F1B5A0BF600D06876 /* LMImageView.m in Sources */,
 			);
