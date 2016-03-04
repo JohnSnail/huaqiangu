@@ -189,14 +189,14 @@ static NSInteger i = 0;
     
     NSMutableArray *downArray = [NSMutableArray arrayWithCapacity:0];
     self.mainMuArray = [NSMutableArray arrayWithArray:[[MainList sharedManager] getMainArray]];
-    [self.mainMuArray enumerateObjectsWithOptions:NSEnumerationConcurrent usingBlock: ^(TrackModel *track,NSUInteger idx, BOOL *stop){
-        
-        NSLog(@"downStatus ==== %@",track.downStatus);
-        
+    
+    for (int i = 0; i < self.mainMuArray.count; i++) {
+        TrackModel *track = self.mainMuArray[i];
         if ([track.downStatus isEqualToString:@"done"]) {
             [downArray addObject:track];
         }
-    }];
+    }
+    
     [self.mainMuArray removeAllObjects];
     self.mainMuArray = [NSMutableArray arrayWithArray:downArray];
     [self.mainTbView reloadData];
@@ -297,6 +297,7 @@ static NSInteger i = 0;
             track.downStatus = @"on";
 //            NSString *strTitle = [NSString stringWithFormat:@"步步惊心%@",track.title];
 //            track.title = strTitle;
+            track.orderStr = [NSString stringWithFormat:@"%d",i];
             
             [[MainList sharedManager] saveContent:track];
             

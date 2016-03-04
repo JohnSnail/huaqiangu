@@ -28,10 +28,13 @@
 #pragma mark - 获取页面数据
 -(void)sendArray:(NSMutableArray *)array
 {
+    
+    NSArray *mainArr = [[MainList sharedManager] getMainArray];
+    
     TrackModel *newModel = [[TrackModel alloc]init];
     newModel.title = @"全选";
     [self.downMuArray addObject:newModel];
-    [self.downMuArray addObjectsFromArray:array];
+    [self.downMuArray addObjectsFromArray:mainArr];
     [self.downTbView reloadData];
 }
 
@@ -76,14 +79,21 @@
 #pragma mark - 下载方法
 -(void)downAction{
     NSLog(@"下载");
+    
+    _downingMuArray = [NSMutableArray arrayWithCapacity:0];
+    
     [self.downMuArray enumerateObjectsWithOptions:NSEnumerationConcurrent usingBlock: ^(TrackModel *track,NSUInteger idx, BOOL *stop){
         if (track.isSelected) {
-            track.downStatus = @"done";
+            track.downStatus = @"doing";
             [[MainList sharedManager] mergeWithContent:track];
-            
-            [self download:track.playUrl64 progressLabel:nil progressView:nil button:nil];
+            [self.downingMuArray addObject:track];
         }
     }];
+    
+    if (self.downingMuArray.count != 0) {
+        TrackModel *track = self.downingMuArray[0];
+        [self download:track.playUrl64 progressLabel:nil progressView:nil button:nil];
+    }
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -143,12 +153,21 @@
 {
     [[HSDownloadManager sharedInstance] download:url progress:^(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress) {
         dispatch_async(dispatch_get_main_queue(), ^{
-//            progressLabel.text = [NSString stringWithFormat:@"%.f%%", progress * 100];
-//            progressView.progress = progress;
+            ;
         });
     } state:^(DownloadState state) {
         dispatch_async(dispatch_get_main_queue(), ^{
-//            [button setTitle:[self getTitleWithDownloadState:state] forState:UIControlStateNormal];
+            if (state == DownloadStateCompleted) {
+                TrackModel *track = self.downingMuArray[0];
+                track.downStatus = @"done";
+                [[MainList sharedManager] mergeWithContent:track];
+                
+                [self.downingMuArray removeObjectAtIndex:0];
+                if (self.downingMuArray.count != 0) {
+                    TrackModel *track = self.downingMuArray[0];
+                    [self download:track.playUrl64 progressLabel:nil progressView:nil button:nil];
+                }
+            }
         });
     }];
 }

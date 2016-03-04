@@ -46,7 +46,7 @@
         //[AppDelegate showStatusWithText:@"数据库已经存在" duration:2];
     } else {
         // TODO: 插入新的数据库
-        NSString * sql = @"CREATE TABLE MainList (uid INTEGER PRIMARY KEY AUTOINCREMENT  NOT NULL,title VARCHAR(50),playUrl64 VARCHAR(50),hisProgress VARCHAR(100),coverLarge VARCHAR(100),downStatus VARCHAR(100))";
+        NSString * sql = @"CREATE TABLE MainList (uid INTEGER PRIMARY KEY AUTOINCREMENT  NOT NULL,title VARCHAR(50),playUrl64 VARCHAR(50),hisProgress VARCHAR(100),coverLarge VARCHAR(100),downStatus VARCHAR(100),orderStr VARCHAR(100))";
         BOOL res = [_db executeUpdate:sql];
         if (!res) {
             //[AppDelegate showStatusWithText:@"数据库创建失败" duration:2];
@@ -63,7 +63,7 @@
 {
     if ([self exist:track.title])
     {
-        //        [self mergeWithContent:trackModel];
+        [self mergeWithContent:track];
         return;
     }
     
@@ -95,6 +95,11 @@
         [keys appendString:@"downStatus,"];
         [values appendString:@"?,"];
         [arguments addObject:track.downStatus];
+    }
+    if (track.orderStr) {
+        [keys appendString:@"orderStr,"];
+        [values appendString:@"?,"];
+        [arguments addObject:track.orderStr];
     }
     
     [keys appendString:@")"];
@@ -143,6 +148,9 @@
     if (track.downStatus) {
         [temp appendFormat:@" downStatus = '%@',",track.downStatus];
     }
+    if (track.orderStr) {
+        [temp appendFormat:@" orderStr = '%@',",track.orderStr];
+    }
     
     [temp appendString:@")"];
     query = [query stringByAppendingFormat:@"%@ WHERE title = '%@'",[temp stringByReplacingOccurrencesOfString:@",)" withString:@""],track.title];
@@ -172,7 +180,7 @@
 
 -(NSArray *)getMainArray
 {
-    NSString * query = @"SELECT title,playUrl64,hisProgress,coverLarge,downStatus FROM MainList";
+    NSString * query = @"SELECT title,playUrl64,hisProgress,coverLarge,downStatus,orderStr FROM MainList";
     
     FMResultSet * rs = [_db executeQuery:query];
     NSMutableArray * array = [NSMutableArray arrayWithCapacity:[rs columnCount]];
@@ -183,6 +191,7 @@
         track.hisProgress = [rs stringForColumn:@"hisProgress"];
         track.coverLarge = [rs stringForColumn:@"coverLarge"];
         track.downStatus = [rs stringForColumn:@"downStatus"];
+        track.orderStr = [rs stringForColumn:@"orderStr"];
         
         if (track.title)
         {
@@ -192,14 +201,17 @@
     [rs close];
     
     //数组排序
-//    NSArray *sortedArray = [array sortedArrayUsingComparator:^(AlbumItem *obj1, AlbumItem *obj2){
-//        NSDate *date1 = obj1.downed_date;
-//        NSDate *date2 = obj2.downed_date;
-//        return [date2 compare:date1];
-//    }];
+    NSArray *sortedArray = [array sortedArrayUsingComparator:^(TrackModel *obj1, TrackModel *obj2){
+        if ([obj1.orderStr intValue] > [obj2.orderStr intValue]){
+            return NSOrderedDescending;
+        }
+        if ([obj1.orderStr intValue]< [obj2.orderStr intValue]){
+            return NSOrderedAscending;
+        }
+        return NSOrderedSame;
+    }];
     
-    return array;
+    return sortedArray;
 }
-
 
 @end

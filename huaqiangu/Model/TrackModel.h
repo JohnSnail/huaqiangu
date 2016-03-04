@@ -17,6 +17,8 @@
 @property (nonatomic, copy) NSString *downStatus;   //下载状态显示，在线：on;正在下载doing；已下载：done;
 @property BOOL isSelected;
 
+@property (nonatomic, copy) NSString *orderStr;
+
 - (instancetype)initWithDict:(NSDictionary *)dict;
 
 @end

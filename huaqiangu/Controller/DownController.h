@@ -14,6 +14,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *downBtn;
 @property (nonatomic, strong) NSMutableArray *downMuArray;
 
+@property (nonatomic, strong) NSMutableArray *downingMuArray;
+
 -(void)sendArray:(NSMutableArray *)array;
 
 @end
