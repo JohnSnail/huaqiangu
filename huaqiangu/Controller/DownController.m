@@ -64,6 +64,12 @@
     
     [self.downBtn setTitle:@"下载" forState:UIControlStateNormal];
     [self.downBtn addTarget:self action:@selector(downAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self setFrame];
+}
+
+-(void)setFrame{
+    self.downBtn.frame = CGRectMake(137 * VIEWWITH, 12 * VIEWWITH, 46 * VIEWWITH, 30 * VIEWWITH);
 }
 
 #pragma mark - 
@@ -78,9 +84,9 @@
             [self download:track.playUrl64 progressLabel:nil progressView:nil button:nil];
         }
     }];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
-
-
 
 #pragma mark - tableview代理方法
 
@@ -137,12 +143,12 @@
 {
     [[HSDownloadManager sharedInstance] download:url progress:^(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            progressLabel.text = [NSString stringWithFormat:@"%.f%%", progress * 100];
-            progressView.progress = progress;
+//            progressLabel.text = [NSString stringWithFormat:@"%.f%%", progress * 100];
+//            progressView.progress = progress;
         });
     } state:^(DownloadState state) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [button setTitle:[self getTitleWithDownloadState:state] forState:UIControlStateNormal];
+//            [button setTitle:[self getTitleWithDownloadState:state] forState:UIControlStateNormal];
         });
     }];
 }
