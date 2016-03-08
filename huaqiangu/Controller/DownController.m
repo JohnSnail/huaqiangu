@@ -39,6 +39,8 @@
 
 -(void)getDownData
 {
+     _downMuArray = [NSMutableArray arrayWithCapacity:0];
+    
     [self.downingMuArray removeAllObjects];
     NSArray *mainArr = [[MainList sharedManager] getMainArray];
     
@@ -71,7 +73,6 @@
     self.downTbView.frame = CGRectMake(0, 0, mainscreenwidth, mainscreenhight - 50);
     self.downFootView.frame = CGRectMake(0, mainscreenhight - 50, mainscreenwidth, 50);
     
-    _downMuArray = [NSMutableArray arrayWithCapacity:0];
     self.downTbView.backgroundColor = RGB(230, 227, 219);
     self.downFootView.backgroundColor = [UIColor darkGrayColor];
     
@@ -89,11 +90,15 @@
 #pragma mark - 下载方法
 -(void)downAction{
     NSLog(@"下载");
-    
+   
     _downingMuArray = [NSMutableArray arrayWithCapacity:0];
     
     [self.downMuArray enumerateObjectsWithOptions:NSEnumerationConcurrent usingBlock: ^(TrackModel *track,NSUInteger idx, BOOL *stop){
-        if (track.isSelected && [track.downStatus isEqualToString:@"on"]) {
+        
+        NSLog(@"title = %@, downStatus = %@, isSelected = %d", track.title, track.downStatus, track.isSelected);
+        
+        
+        if ((track.isSelected && [track.downStatus isEqualToString:@"on"]) || [track.downStatus isEqualToString:@"doing"]) {
             track.downStatus = @"doing";
             [[MainList sharedManager] mergeWithContent:track];
             [self.downingMuArray addObject:track];
