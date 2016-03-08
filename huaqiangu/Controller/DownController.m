@@ -24,11 +24,22 @@
     [self initDownAction];
 }
 
-#pragma mark - 
-#pragma mark - 获取页面数据
--(void)sendArray:(NSMutableArray *)array
+
++ (DownController *)sharedManager
 {
-    
+    static DownController *sharedAccountManagerInstance = nil;
+    static dispatch_once_t predicate;
+    dispatch_once(&predicate, ^{
+        sharedAccountManagerInstance = [[self alloc] init];
+    });
+    return sharedAccountManagerInstance;
+}
+
+#pragma mark - 获取页面数据
+
+-(void)getDownData
+{
+    [self.downingMuArray removeAllObjects];
     NSArray *mainArr = [[MainList sharedManager] getMainArray];
     
     TrackModel *newModel = [[TrackModel alloc]init];
@@ -49,8 +60,7 @@
 -(void)backAction
 {
     [self dismissViewControllerAnimated:YES completion:^{
-        self.downMuArray = nil;
-        self.downTbView = nil;
+        ;
     }];
 }
 
@@ -95,7 +105,7 @@
         [self download:track.playUrl64 progressLabel:nil progressView:nil button:nil];
     }
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self backAction];
 }
 
 #pragma mark - tableview代理方法

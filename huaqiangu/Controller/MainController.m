@@ -87,11 +87,11 @@ static NSInteger i = 0;
 #pragma mark - 下载按钮触发方法
 -(void)downAction
 {
-    DownController *downVC = [[DownController alloc]init];
+    DownController *downVC = [DownController sharedManager];
     KKNavigationController *nacVC = [[KKNavigationController alloc] initWithRootViewController:downVC];
     [nacVC.navigationBar setBarTintColor:kCommenColor];
     [self.navigationController presentViewController:nacVC animated:YES completion:^{
-        [downVC sendArray:self.mainMuArray];
+        [downVC getDownData];
     }];
 }
 

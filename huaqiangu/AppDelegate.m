@@ -13,6 +13,7 @@
 #import <MobClick.h>
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+#import "DownController.h"
 
 @interface AppDelegate ()<BaiduMobAdSplashDelegate>
 {
@@ -128,7 +129,10 @@
     [self lockScrollerView];
     [self umengAtion];
 
-
+    //下载数据
+    [[DownController sharedManager] getDownData];
+    [[DownController sharedManager] downAction];
+    
     [Fabric with:@[CrashlyticsKit]];
     return YES;
 }

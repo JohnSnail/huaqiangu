@@ -16,6 +16,8 @@
 
 @property (nonatomic, strong) NSMutableArray *downingMuArray;
 
--(void)sendArray:(NSMutableArray *)array;
++ (DownController *)sharedManager;
+-(void)getDownData;
+-(void)downAction;
 
 @end
