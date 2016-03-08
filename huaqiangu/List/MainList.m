@@ -211,11 +211,6 @@
         return NSOrderedSame;
     }];
     
-    for (int i = 0; i < sortedArray.count; i++) {
-        TrackModel *track = sortedArray[i];
-        NSLog(@"track.orderStr = %@", track.orderStr);
-    }
-    
     return sortedArray;
 }
 

@@ -77,7 +77,7 @@
     self.downFootView.backgroundColor = [UIColor darkGrayColor];
     
     [self.downBtn setTitle:@"下载" forState:UIControlStateNormal];
-    [self.downBtn addTarget:self action:@selector(downAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.downBtn addTarget:self action:@selector(downMessage) forControlEvents:UIControlEventTouchUpInside];
     
     [self setFrame];
 }
@@ -88,6 +88,15 @@
 
 #pragma mark - 
 #pragma mark - 下载方法
+
+-(void)downMessage
+{
+    if ([CommUtils checkNetworkStatus] != ReachableViaWiFi) {
+        [UIAlertView showWithTitle:@"温馨提示" message:@"为了节省您的流量，目前只支持WIFI下载" cancelButtonTitle:@"我知道了" otherButtonTitles:nil tapBlock:nil];
+    }
+    [self downAction];
+}
+
 -(void)downAction{
     NSLog(@"下载");
    
@@ -103,7 +112,9 @@
     
     if (self.downingMuArray.count != 0) {
         TrackModel *track = self.downingMuArray[0];
-        [self download:track.playUrl64 progressLabel:nil progressView:nil button:nil];
+        if ([CommUtils checkNetworkStatus] == ReachableViaWiFi) {
+            [self download:track.playUrl64 progressLabel:nil progressView:nil button:nil];
+        }
     }
     
     [self backAction];
