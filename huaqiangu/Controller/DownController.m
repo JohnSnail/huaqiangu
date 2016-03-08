@@ -94,10 +94,6 @@
     _downingMuArray = [NSMutableArray arrayWithCapacity:0];
     
     [self.downMuArray enumerateObjectsWithOptions:NSEnumerationConcurrent usingBlock: ^(TrackModel *track,NSUInteger idx, BOOL *stop){
-        
-        NSLog(@"title = %@, downStatus = %@, isSelected = %d", track.title, track.downStatus, track.isSelected);
-        
-        
         if ((track.isSelected && [track.downStatus isEqualToString:@"on"]) || [track.downStatus isEqualToString:@"doing"]) {
             track.downStatus = @"doing";
             [[MainList sharedManager] mergeWithContent:track];
