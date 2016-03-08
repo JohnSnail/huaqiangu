@@ -298,7 +298,7 @@ static NSInteger i = 0;
             track.downStatus = @"on";
 //            NSString *strTitle = [NSString stringWithFormat:@"步步惊心%@",track.title];
 //            track.title = strTitle;
-            track.orderStr = [NSString stringWithFormat:@"%lu",(bSelf.mainMuArray.count + i)];
+            track.orderStr = [NSString stringWithFormat:@"%lu",(pageId-1)*COUNT + (i+1)];
             
             [[MainList sharedManager] saveContent:track];
             
