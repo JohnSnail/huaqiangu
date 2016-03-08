@@ -132,6 +132,7 @@ static NSInteger i = 0;
     //上下一曲通知更新列表
     [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(reloadMainList) name: @"reloadAction" object: nil];
     
+    self.orderBtn.hidden = YES;
 }
 
 #pragma mark - 给好评
@@ -297,7 +298,7 @@ static NSInteger i = 0;
             track.downStatus = @"on";
 //            NSString *strTitle = [NSString stringWithFormat:@"步步惊心%@",track.title];
 //            track.title = strTitle;
-            track.orderStr = [NSString stringWithFormat:@"%d",i];
+            track.orderStr = [NSString stringWithFormat:@"%lu",(bSelf.mainMuArray.count + i)];
             
             [[MainList sharedManager] saveContent:track];
             
