@@ -56,7 +56,7 @@ return _shared##classname; \
 #pragma mark -
 #pragma mark - AlbumTitle
 
-#define ALBUMTITLE @"罗辑思维"
+#define ALBUMTITLE @"Papi酱"
 
 #pragma mark -
 #pragma mark - UMengKey
@@ -64,7 +64,8 @@ return _shared##classname; \
 #define umAppKey @"55ae0ac4e0f55a71c4004ebb"
 
 //#define kCommenColor RGB(248, 102, 47)
-#define kCommenColor RGB(88,185,201)
+//#define kCommenColor RGB(88,185,201)
+#define kCommenColor RGB(245,85,130)
 
 //**************** 百度广告 ***********************
 
