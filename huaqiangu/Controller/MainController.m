@@ -110,7 +110,7 @@ static NSInteger i = 0;
     self.mainTbView.frame = CGRectMake(0, 0, mainscreenwidth, mainscreenhight - 50);
     orderStr = [[NSUserDefaults standardUserDefaults] stringForKey:@"orderStr"];
     if (!orderStr) {
-        orderStr = @"false";
+        orderStr = @"true";
     }
 
     [self getMainData];
