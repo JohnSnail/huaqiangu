@@ -51,7 +51,7 @@ return _shared##classname; \
 //替换版本时需更换的内容
 
 //苹果id
-#define AppStoreAppId @"882520862"
+#define AppStoreAppId @"879096197"
 
 #pragma mark -
 #pragma mark - AlbumTitle
@@ -61,7 +61,7 @@ return _shared##classname; \
 #pragma mark -
 #pragma mark - UMengKey
 
-#define umAppKey @"5383538d56240b348d03074d"
+#define umAppKey @"5374e10e56240b391301d819"
 
 //#define kCommenColor RGB(248, 102, 47)
 #define kCommenColor RGB(88,185,201)

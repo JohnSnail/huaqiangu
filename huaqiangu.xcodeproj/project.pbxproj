@@ -542,7 +542,7 @@
 				TargetAttributes = {
 					BC1FB5B31B595E9C00D06876 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = EKT7TDBE5W;
+						DevelopmentTeam = D3Q94XSJH5;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 0;
@@ -822,7 +822,7 @@
 					"-ObjC",
 					"-lstdc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.weiting.gcbj;
+				PRODUCT_BUNDLE_IDENTIFIER = com.weitingcui.yypjx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -856,7 +856,7 @@
 					"-ObjC",
 					"-lstdc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.weiting.gcbj;
+				PRODUCT_BUNDLE_IDENTIFIER = com.weitingcui.yypjx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
