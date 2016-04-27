@@ -22,8 +22,8 @@
 #import <UIImageView+WebCache.h>
 #import "AutoRunLabel.h"
 #import <UIAlertView+Blocks.h>
-#import "BaiduMobAdView.h"
-#import "BaiduMobAdSplash.h"
+//#import "BaiduMobAdView.h"
+//#import "BaiduMobAdSplash.h"
 #import "NSMutableDictionary+SafeValue.h"
 #import "KKNavigationController.h"
 #import "Reachability.h"
