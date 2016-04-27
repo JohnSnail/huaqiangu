@@ -98,8 +98,7 @@ static NSInteger i = 0;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-//    self.navigationItem.leftBarButtonItem = [LMButton setNavright:@"反馈" andcolor:[UIColor whiteColor] andSelector:@selector(pushAppStore) andTarget:self];
+
     self.navigationItem.leftBarButtonItem = [LMButton setNavleftButtonWithImg:@"feedback" andSelector:@selector(pushAppStore) andTarget:self];
     self.navigationItem.titleView = [CommUtils navTittle:ALBUMTITLE];
     
@@ -270,10 +269,9 @@ static NSInteger i = 0;
         [self.mainTbView reloadData];
         [self scrollViewToIndex];
         
-    }else{
-        [self getNetData];
-        
     }
+    [self getNetData];
+    
 }
 
 -(void)getNetData

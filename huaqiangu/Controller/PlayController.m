@@ -11,12 +11,11 @@
 #import "DTTimingViewController.h"
 #import "DTTimingManager.h"
 
-@interface PlayController ()<BaiduMobAdViewDelegate>
+@interface PlayController ()
 {
     NSString *hisProgress;
     NSTimer *timer;
     AutoRunLabel *trackLabel;
-    BaiduMobAdView *sharedAdView;
 }
 @end
 
@@ -55,77 +54,6 @@ SINGLETON_CLASS(PlayController);
     self.navigationController.navigationBarHidden = YES;
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    sharedAdView.delegate = nil;
-    sharedAdView = nil;
-}
-
-#pragma mark -
-#pragma mark - 百度广告
-
--(void)initBaiduAdView
-{
-    //使用嵌入广告的方法实例。
-    sharedAdView = [[BaiduMobAdView alloc] init];
-    //把在mssp.baidu.com上创建后获得的广告位id写到这里
-    sharedAdView.AdUnitTag = kBaiduBanner;
-    sharedAdView.AdType = BaiduMobAdViewTypeBanner;
-    sharedAdView.frame = CGRectMake(0, (IS_IPHONE_5?420:320) * VIEWWITH - 50 * VIEWWITH, 320 * VIEWWITH, 50 * VIEWWITH);
-    sharedAdView.delegate = self;
-    [self.PlayHeadView addSubview:sharedAdView];
-    [sharedAdView start];
-}
-
-- (NSString *)publisherId {
-    return kBaiduId; //@"your_own_app_id";
-}
-
--(BOOL) enableLocation {
-    //启⽤用location会有⼀一次alert提⽰示,请根据系统进⾏行相关配置
-    return NO;
-}
-/**
- *  广告将要被载入
- */
--(void) willDisplayAd:(BaiduMobAdView*) adview
-{
-    NSLog(@"will display ad");
-}
-
-/**
- *  广告载入失败
- */
--(void) failedDisplayAd:(BaiduMobFailReason) reason;
-{
-    NSLog(@"failedDisplayAd %d", reason);
-}
-
-/**
- *  本次广告展示成功时的回调
- */
--(void) didAdImpressed
-{
-    NSLog(@"didAdImpressed");
-}
-
-/**
- *  本次广告展示被用户点击时的回调
- */
--(void) didAdClicked
-{
-    NSLog(@"didAdClicked");
-}
-
-/**
- *  在用户点击完广告条出现全屏广告页面以后，用户关闭广告时的回调
- */
--(void) didDismissLandingPage
-{
-    NSLog(@"didDismissLandingPage");
-}
-
 -(void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -134,7 +62,6 @@ SINGLETON_CLASS(PlayController);
     [self addHeadView];
     [self setTrackScrollerLabel];
     
-    [self initBaiduAdView];
     [self playMusic];
     
     [DTTimingManager sharedDTTimingManager].timingBlk = ^(NSNumber *timing) {
@@ -249,8 +176,6 @@ SINGLETON_CLASS(PlayController);
 
 -(void)pushArr:(NSArray *)arr andIndex:(NSInteger)index
 {
-    [self initBaiduAdView];
-
     self.playArr = arr;
     self.playIndex = index;
     

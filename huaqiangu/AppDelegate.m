@@ -15,11 +15,10 @@
 #import <Crashlytics/Crashlytics.h>
 #import "DownController.h"
 
-@interface AppDelegate ()<BaiduMobAdSplashDelegate>
-{
+@interface AppDelegate (){
+    
     KKNavigationController *navCtrl;
 }
-@property (nonatomic, strong) BaiduMobAdSplash *splash;
 
 @end
 
@@ -35,72 +34,9 @@
     [MobClick startWithAppkey:umAppKey];
 }
 
-#pragma mark -
-#pragma mark - 百度开屏广告
-
--(void)baiduSplash
-{
-    self.customSplashView = [[UIView alloc]initWithFrame:self.window.frame];
-    self.customSplashView.backgroundColor = [UIColor whiteColor];
-    [self.window addSubview:self.customSplashView];
-    
-    self.splash = [[BaiduMobAdSplash alloc] init];
-    self.splash.delegate = self;
-    self.splash.AdUnitTag = kBaiduSplash;
-    self.splash.canSplashClick = YES;
-//    self.splash.useCache = NO;
-    [self.splash loadAndDisplayUsingContainerView:self.customSplashView];
-//    [self.splash loadAndDisplayUsingKeyWindow:self.window];
-}
-
-- (NSString *)publisherId {
-    return kBaiduId; //your_own_app_id
-}
-
-/**
- *  启动位置信息
- */
--(BOOL) enableLocation{
-    return NO;
-}
-
-
-/**
- *  广告展示成功
- */
-- (void)splashSuccessPresentScreen:(BaiduMobAdSplash *)splash{
-    NSLog(@"广告展示成功");
-//    self.window.rootViewController = navCtrl;
-}
-
-/**
- *  广告展示失败
- */
-- (void)splashlFailPresentScreen:(BaiduMobAdSplash *)splash withError:(BaiduMobFailReason) reason{
-    NSLog(@"广告展示失败%u",reason);
-    
-    [self.customSplashView removeFromSuperview];
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
-
-//    self.window.rootViewController = navCtrl;
-}
-
-/**
- *  广告展示结束
- */
-- (void)splashDidDismissScreen:(BaiduMobAdSplash *)splash{
-    NSLog(@"广告展示结束");
-    
-    [self.customSplashView removeFromSuperview];
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
-
-//    self.window.rootViewController = navCtrl;
-}
-
 - (void)dealloc
 {
     self.customSplashView = nil;
-    self.splash = nil;
     self.window = nil;
 }
 
@@ -123,8 +59,6 @@
     self.window.rootViewController = navCtrl;
     [self.window makeKeyAndVisible];
     //添加百度开屏
-
-    [self baiduSplash];
     
     [self lockScrollerView];
     [self umengAtion];
