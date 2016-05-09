@@ -56,7 +56,7 @@ return _shared##classname; \
 #pragma mark -
 #pragma mark - AlbumTitle
 
-#define ALBUMTITLE @"Papi讲"
+#define ALBUMTITLE @"For Papi酱"
 
 #pragma mark -
 #pragma mark - UMengKey

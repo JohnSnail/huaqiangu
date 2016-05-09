@@ -106,7 +106,7 @@ static NSInteger i = 0;
     _mainMuArray = [NSMutableArray arrayWithCapacity:0];
     _downMuArray = [NSMutableArray arrayWithCapacity:0];
 
-    self.mainTbView.frame = CGRectMake(0, 0, mainscreenwidth, mainscreenhight - 50);
+    self.mainTbView.frame = CGRectMake(0, 0, mainscreenwidth, mainscreenhight);
     orderStr = [[NSUserDefaults standardUserDefaults] stringForKey:@"orderStr"];
     if (!orderStr) {
         orderStr = @"true";
@@ -114,9 +114,9 @@ static NSInteger i = 0;
 
     [self getMainData];
     
-    self.footView.frame = CGRectMake(0, mainscreenhight - 50, mainscreenwidth, 50);
-    self.footView.backgroundColor = [UIColor darkGrayColor];
-    [self.view addSubview:self.footView];
+//    self.footView.frame = CGRectMake(0, mainscreenhight - 50, mainscreenwidth, 50);
+//    self.footView.backgroundColor = [UIColor darkGrayColor];
+//    [self.view addSubview:self.footView];
     
     UIColor *comColor = [UIColor whiteColor];
     NSDictionary *colorAttr = [NSDictionary dictionaryWithObject:comColor forKey:NSForegroundColorAttributeName];
