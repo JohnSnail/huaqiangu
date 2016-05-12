@@ -51,21 +51,21 @@ return _shared##classname; \
 //替换版本时需更换的内容
 
 //苹果id
-#define AppStoreAppId @"879096197"
+#define AppStoreAppId @"1055560827"
 
 #pragma mark -
 #pragma mark - AlbumTitle
 
-#define ALBUMTITLE @"相声精选 For 岳云鹏"
+#define ALBUMTITLE @"For Papi酱"
 
 #pragma mark -
 #pragma mark - UMengKey
 
-#define umAppKey @"5374e10e56240b391301d819"
+#define umAppKey @"53ac2b4656240b97ba07b956"
 
 //#define kCommenColor RGB(248, 102, 47)
-#define kCommenColor RGB(88,185,201)
-//#define kCommenColor RGB(245,85,130)
+//#define kCommenColor RGB(88,185,201)
+#define kCommenColor RGB(245,85,130)
 
 //**************** 百度广告 ***********************
 
