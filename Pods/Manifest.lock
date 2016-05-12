@@ -1,0 +1,63 @@
+PODS:
+  - AFNetworking (2.6.0):
+    - AFNetworking/NSURLConnection (= 2.6.0)
+    - AFNetworking/NSURLSession (= 2.6.0)
+    - AFNetworking/Reachability (= 2.6.0)
+    - AFNetworking/Security (= 2.6.0)
+    - AFNetworking/Serialization (= 2.6.0)
+    - AFNetworking/UIKit (= 2.6.0)
+  - AFNetworking/NSURLConnection (2.6.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.6.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.6.0)
+  - AFNetworking/Security (2.6.0)
+  - AFNetworking/Serialization (2.6.0)
+  - AFNetworking/UIKit (2.6.0):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - FMDB (2.5):
+    - FMDB/standard (= 2.5)
+  - FMDB/common (2.5)
+  - FMDB/standard (2.5):
+    - FMDB/common
+  - JSONKit-NoWarning (1.2)
+  - MJRefresh (2.2.1)
+  - SDWebImage (3.7.3):
+    - SDWebImage/Core (= 3.7.3)
+  - SDWebImage/Core (3.7.3)
+  - SGNavigationProgress (1.2)
+  - StreamingKit (0.1.25)
+  - UIActionSheet+Blocks (0.9)
+  - UIAlertView+Blocks (0.8.1)
+  - UMengAnalytics (3.5.12)
+
+DEPENDENCIES:
+  - AFNetworking (~> 2.6.0)
+  - FMDB (~> 2.3)
+  - JSONKit-NoWarning (~> 1.2)
+  - MJRefresh (~> 2.2.1)
+  - SDWebImage (~> 3.7.1)
+  - SGNavigationProgress (~> 1.2)
+  - StreamingKit (~> 0.1.25)
+  - UIActionSheet+Blocks (~> 0.9)
+  - UIAlertView+Blocks (~> 0.8.1)
+  - UMengAnalytics (~> 3.5.12)
+
+SPEC CHECKSUMS:
+  AFNetworking: 79f7eb1a0fcfa7beb409332b2ca49afe9ce53b05
+  FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
+  JSONKit-NoWarning: 3d27e6f9e6846ecf741e8c64dcadd7d5aa7193cb
+  MJRefresh: c3fa0387e8e97a11a9666639d2f815607edd1c2f
+  SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
+  SGNavigationProgress: f04e3bd0058c53e1172ee020b5239f22aa9e4a0f
+  StreamingKit: f00c054cfd0f59d88c8be7a2270e208302ce48c4
+  UIActionSheet+Blocks: e180b7dad0a721ab7f212ac9742af799008bb358
+  UIAlertView+Blocks: 45c3d3b7194906702d3e9a14c7ece5581505646d
+  UMengAnalytics: 370056af10f202b57b83ff3d0d458ac5183b629f
+
+COCOAPODS: 0.38.2
