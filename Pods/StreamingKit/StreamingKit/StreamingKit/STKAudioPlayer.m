@@ -660,7 +660,7 @@ void audioRouteChangeCallback(void *inClientData, AudioSessionPropertyID inID, U
 {
     STKDataSource* retval = nil;
     
-    if ([url.scheme isEqualToString:@"file"] || !url.scheme)
+    if ([url.scheme isEqualToString:@"file"])
     {
         retval = [[STKLocalFileDataSource alloc] initWithFilePath:url.path];
     }

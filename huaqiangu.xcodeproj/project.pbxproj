@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3EB1504E23118B01BFB5BCBB /* libPods-huaqiangu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F25E0B75CD11B60ACA924764 /* libPods-huaqiangu.a */; };
 		3F155CA41BA8373300C91E25 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F155CA31BA8373300C91E25 /* libstdc++.dylib */; };
 		3F155CB71BA8388000C91E25 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F155CB61BA8388000C91E25 /* libz.dylib */; };
 		3F155CB91BA83AEF00C91E25 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F155CB81BA83AEF00C91E25 /* StoreKit.framework */; };
@@ -21,7 +22,6 @@
 		3F9672701C15AEAA00A1C71A /* HSSessionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F96726D1C15AEAA00A1C71A /* HSSessionModel.m */; };
 		3F9672751C15AF2900A1C71A /* NSString+Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9672741C15AF2900A1C71A /* NSString+Hash.m */; };
 		3FAD95C11C86DFEF0094D504 /* PlayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FAD95C01C86DFEF0094D504 /* PlayController.m */; };
-		42262C9FD77F0E61345D2EB8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 815A5AE3989CEB41ADA3F948 /* libPods.a */; };
 		BC13E4B31B82D82700222CD2 /* NSMutableDictionary+SafeValue.m in Sources */ = {isa = PBXBuildFile; fileRef = BC13E4B21B82D82700222CD2 /* NSMutableDictionary+SafeValue.m */; };
 		BC13E4B61B82E70D00222CD2 /* KKNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC13E4B51B82E70D00222CD2 /* KKNavigationController.m */; };
 		BC13E4BD1B83302D00222CD2 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC13E4BA1B83302D00222CD2 /* Reachability.m */; };
@@ -73,6 +73,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00BF5E1508D78D66CFADD034 /* Pods-huaqiangu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-huaqiangu.release.xcconfig"; path = "Pods/Target Support Files/Pods-huaqiangu/Pods-huaqiangu.release.xcconfig"; sourceTree = "<group>"; };
+		04A81F58139B0C98F36FE597 /* Pods-huaqiangu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-huaqiangu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-huaqiangu/Pods-huaqiangu.debug.xcconfig"; sourceTree = "<group>"; };
 		3F155CA31BA8373300C91E25 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		3F155CB61BA8388000C91E25 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		3F155CB81BA83AEF00C91E25 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -93,9 +95,6 @@
 		3F9672731C15AF2900A1C71A /* NSString+Hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Hash.h"; sourceTree = "<group>"; };
 		3F9672741C15AF2900A1C71A /* NSString+Hash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Hash.m"; sourceTree = "<group>"; };
 		3FAD95C01C86DFEF0094D504 /* PlayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayController.m; sourceTree = "<group>"; };
-		73BEAAB2371013C5EC7DF00F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		7C353B9F2465C658A8882D7F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		815A5AE3989CEB41ADA3F948 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC13E4B11B82D82700222CD2 /* NSMutableDictionary+SafeValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+SafeValue.h"; sourceTree = "<group>"; };
 		BC13E4B21B82D82700222CD2 /* NSMutableDictionary+SafeValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSMutableDictionary+SafeValue.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		BC13E4B41B82E70D00222CD2 /* KKNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKNavigationController.h; sourceTree = "<group>"; };
@@ -160,6 +159,7 @@
 		BC9CEDBA1B5DFAD3004FC9F3 /* DTTimingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DTTimingViewController.xib; sourceTree = "<group>"; };
 		BCCA4C561B5CE8EE00C73442 /* AutoRunLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoRunLabel.h; sourceTree = "<group>"; };
 		BCCA4C571B5CE8EE00C73442 /* AutoRunLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoRunLabel.m; sourceTree = "<group>"; };
+		F25E0B75CD11B60ACA924764 /* libPods-huaqiangu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-huaqiangu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,7 +186,7 @@
 				BC338E631B80875700EC72D4 /* AdSupport.framework in Frameworks */,
 				BC338E611B80874D00EC72D4 /* Security.framework in Frameworks */,
 				BC338E5F1B80874600EC72D4 /* QuartzCore.framework in Frameworks */,
-				42262C9FD77F0E61345D2EB8 /* libPods.a in Frameworks */,
+				3EB1504E23118B01BFB5BCBB /* libPods-huaqiangu.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,16 +252,16 @@
 				BC338E601B80874D00EC72D4 /* Security.framework */,
 				BC338E5E1B80874600EC72D4 /* QuartzCore.framework */,
 				BC1FB6811B5A258E00D06876 /* AVFoundation.framework */,
-				815A5AE3989CEB41ADA3F948 /* libPods.a */,
+				F25E0B75CD11B60ACA924764 /* libPods-huaqiangu.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		AADCBD611DCAE5AD56D7FAE7 /* Pods */ = {
+		527D9078583CE3B2BDDFEFE5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				7C353B9F2465C658A8882D7F /* Pods.debug.xcconfig */,
-				73BEAAB2371013C5EC7DF00F /* Pods.release.xcconfig */,
+				04A81F58139B0C98F36FE597 /* Pods-huaqiangu.debug.xcconfig */,
+				00BF5E1508D78D66CFADD034 /* Pods-huaqiangu.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -282,8 +282,8 @@
 				BC1FB5B61B595E9C00D06876 /* huaqiangu */,
 				BC1FB5D01B595E9C00D06876 /* huaqianguTests */,
 				BC1FB5B51B595E9C00D06876 /* Products */,
-				AADCBD611DCAE5AD56D7FAE7 /* Pods */,
 				50937BF299FB3A659205E707 /* Frameworks */,
+				527D9078583CE3B2BDDFEFE5 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -460,12 +460,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BC1FB5D71B595E9C00D06876 /* Build configuration list for PBXNativeTarget "huaqiangu" */;
 			buildPhases = (
-				719E79BDEFA4891C47415351 /* Check Pods Manifest.lock */,
+				37372EC600F39A11B66AEFBA /* 📦 Check Pods Manifest.lock */,
 				BC1FB5B01B595E9C00D06876 /* Sources */,
 				BC1FB5B11B595E9C00D06876 /* Frameworks */,
 				BC1FB5B21B595E9C00D06876 /* Resources */,
-				515EBB9DB960690C3FA17758 /* Copy Pods Resources */,
 				BC1567291B7DA1F60018F5BE /* ShellScript */,
+				6ED0712A61C5CCC6668FEB81 /* 📦 Embed Pods Frameworks */,
+				29DFCDDB944D9280F5394E0E /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -563,34 +564,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		515EBB9DB960690C3FA17758 /* Copy Pods Resources */ = {
+		29DFCDDB944D9280F5394E0E /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-huaqiangu/Pods-huaqiangu-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		719E79BDEFA4891C47415351 /* Check Pods Manifest.lock */ = {
+		37372EC600F39A11B66AEFBA /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6ED0712A61C5CCC6668FEB81 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-huaqiangu/Pods-huaqiangu-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BC1567291B7DA1F60018F5BE /* ShellScript */ = {
@@ -758,7 +774,7 @@
 		};
 		BC1FB5D81B595E9C00D06876 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7C353B9F2465C658A8882D7F /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 04A81F58139B0C98F36FE597 /* Pods-huaqiangu.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -792,7 +808,7 @@
 		};
 		BC1FB5D91B595E9C00D06876 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 73BEAAB2371013C5EC7DF00F /* Pods.release.xcconfig */;
+			baseConfigurationReference = 00BF5E1508D78D66CFADD034 /* Pods-huaqiangu.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
