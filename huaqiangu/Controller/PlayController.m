@@ -63,13 +63,9 @@ SINGLETON_CLASS(PlayController);
 -(void)addAdmobView{
     adBannerView = [[GADBannerView alloc]init];
     adBannerView.frame = CGRectMake(0, 0, self.bannerView.frame.size.width, self.bannerView.frame.size.height);
-    adBannerView.adUnitID = @"ca-app-pub-5473057868747749/1532248112";
+    adBannerView.adUnitID = KadMobKey;
     adBannerView.rootViewController = self;
-    GADRequest *request = [GADRequest request];
-    request.testDevices = @[
-                            @"2077ef9a63d2b398840261c8221a0c9a"  // Eric's iPod Touch
-                            ];
-    [adBannerView loadRequest:request];
+    [adBannerView loadRequest:[GADRequest request]];
     
     [self.bannerView addSubview:adBannerView];
 }

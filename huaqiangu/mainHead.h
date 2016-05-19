@@ -63,6 +63,8 @@ return _shared##classname; \
 
 #define umAppKey @"53ac2b4656240b97ba07b956"
 
+#define KadMobKey @"ca-app-pub-5473057868747749/1532248112"
+
 //#define kCommenColor RGB(248, 102, 47)
 //#define kCommenColor RGB(88,185,201)
 #define kCommenColor RGB(245,85,130)

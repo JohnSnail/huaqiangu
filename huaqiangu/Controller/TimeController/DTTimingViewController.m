@@ -89,7 +89,7 @@
 -(void)addAdmobView{
     adBannerView = [[GADBannerView alloc]init];
     adBannerView.frame = CGRectMake(0, mainscreenhight - 50, 320 * VIEWWITH, 50 * VIEWWITH);
-    adBannerView.adUnitID = @"ca-app-pub-5473057868747749/1532248112";
+    adBannerView.adUnitID = KadMobKey;
     adBannerView.rootViewController = self;
     GADRequest *request = [GADRequest request];
     request.testDevices = @[
