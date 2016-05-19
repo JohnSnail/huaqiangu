@@ -10,7 +10,9 @@
 #import "DTTimingManager.h"
 #import "PlayController.h"
 
-@interface DTTimingViewController ()
+@interface DTTimingViewController (){
+    GADBannerView *adBannerView;
+}
 @end
 
 @implementation DTTimingViewController
@@ -77,6 +79,25 @@
     self.tbvTiming.backgroundColor = RGB(230, 227, 219);
 
     self.navigationItem.leftBarButtonItem=[LMButton setNavleftComboButtonWithImg:@"back" andSelector:@selector(backMethod) andTarget:self];
+    
+    [self addAdmobView];
+}
+
+#pragma mark -
+#pragma mark - 添加admob广告
+
+-(void)addAdmobView{
+    adBannerView = [[GADBannerView alloc]init];
+    adBannerView.frame = CGRectMake(0, mainscreenhight - 50, 320 * VIEWWITH, 50 * VIEWWITH);
+    adBannerView.adUnitID = @"ca-app-pub-5473057868747749/1532248112";
+    adBannerView.rootViewController = self;
+    GADRequest *request = [GADRequest request];
+    request.testDevices = @[
+                            @"2077ef9a63d2b398840261c8221a0c9a"  // Eric's iPod Touch
+                            ];
+    [adBannerView loadRequest:request];
+    
+    [self.view addSubview:adBannerView];
 }
 
 -(void)backMethod

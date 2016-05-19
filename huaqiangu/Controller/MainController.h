@@ -19,5 +19,4 @@
 @property (weak, nonatomic) IBOutlet UIButton *orderBtn;
 @property (nonatomic, strong) NSMutableArray *mainMuArray;
 @property (nonatomic, strong) NSMutableArray *downMuArray;
-
 @end

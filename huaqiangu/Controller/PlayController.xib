@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F19a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15F31a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlayController">
@@ -11,6 +11,7 @@
                 <outlet property="albTitle" destination="Up0-Cd-xyd" id="2BJ-UK-VXd"/>
                 <outlet property="albumImageView" destination="tND-aQ-yfu" id="a1N-VC-UMW"/>
                 <outlet property="backBtn" destination="mK9-Dg-NBB" id="uPh-lR-cVj"/>
+                <outlet property="bannerView" destination="wWr-hk-cYc" id="5LP-3z-AE6"/>
                 <outlet property="bgImageView" destination="m0N-Wl-W3k" id="yg3-S9-Bf2"/>
                 <outlet property="countLabel" destination="LCa-z7-oYC" id="5Y1-Fz-cof"/>
                 <outlet property="lastBtn" destination="FaP-Qe-WHK" id="UXS-W9-gOj"/>
@@ -114,6 +115,11 @@
                     <color key="textColor" red="0.24313725490196078" green="0.69803921568627447" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" id="wWr-hk-cYc">
+                    <rect key="frame" x="0.0" y="370" width="320" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -129,9 +135,4 @@
         <image name="play" width="62" height="62"/>
         <image name="time" width="18" height="19"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>

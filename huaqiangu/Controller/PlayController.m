@@ -16,6 +16,7 @@
     NSString *hisProgress;
     NSTimer *timer;
     AutoRunLabel *trackLabel;
+    GADBannerView *adBannerView;
 }
 @end
 
@@ -46,12 +47,31 @@ SINGLETON_CLASS(PlayController);
     self.playRightLabel.frame = CGRectMake(278 * VIEWWITH, (IS_IPHONE_5?518:418) * VIEWWITH, 42 * VIEWWITH, 21 * VIEWWITH);
     self.timeBtn.frame = CGRectMake(274 * VIEWWITH, 27 * VIEWWITH, 30 * VIEWWITH, 30 * VIEWWITH);
     self.countLabel.frame = CGRectMake(200 * VIEWWITH, 248 * VIEWWITH, 112 * VIEWWITH, 29 * VIEWWITH);
+    self.bannerView.frame = CGRectMake(0 * VIEWWITH, 370 * VIEWWITH, 320 * VIEWWITH, 50 * VIEWWITH);
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
+}
+
+
+#pragma mark - 
+#pragma mark - 添加admob广告
+
+-(void)addAdmobView{
+    adBannerView = [[GADBannerView alloc]init];
+    adBannerView.frame = CGRectMake(0, 0, self.bannerView.frame.size.width, self.bannerView.frame.size.height);
+    adBannerView.adUnitID = @"ca-app-pub-5473057868747749/1532248112";
+    adBannerView.rootViewController = self;
+    GADRequest *request = [GADRequest request];
+    request.testDevices = @[
+                            @"2077ef9a63d2b398840261c8221a0c9a"  // Eric's iPod Touch
+                            ];
+    [adBannerView loadRequest:request];
+    
+    [self.bannerView addSubview:adBannerView];
 }
 
 -(void)viewDidLoad {
@@ -75,6 +95,8 @@ SINGLETON_CLASS(PlayController);
             self.countLabel.text = [CommUtils formatIntoDateWithSecond:timing];
         }
     };
+    
+    [self addAdmobView];
 }
 
 

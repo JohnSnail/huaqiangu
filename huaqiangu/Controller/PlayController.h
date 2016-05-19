@@ -29,6 +29,9 @@
 @property (nonatomic, strong) NSArray *playArr;
 @property NSInteger playIndex;
 
+@property (weak, nonatomic) IBOutlet UIView *bannerView;
+
+
 +(instancetype)sharedPlayController;
 -(void)pushArr:(NSArray *)arr andIndex:(NSInteger)index;
 -(void)playAction;
