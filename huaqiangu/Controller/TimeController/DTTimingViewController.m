@@ -91,12 +91,7 @@
     adBannerView.frame = CGRectMake(0, mainscreenhight - 50, 320 * VIEWWITH, 50 * VIEWWITH);
     adBannerView.adUnitID = KadMobKey;
     adBannerView.rootViewController = self;
-    GADRequest *request = [GADRequest request];
-    request.testDevices = @[
-                            @"2077ef9a63d2b398840261c8221a0c9a"  // Eric's iPod Touch
-                            ];
-    [adBannerView loadRequest:request];
-    
+    [adBannerView loadRequest:[GADRequest request]];
     [self.view addSubview:adBannerView];
 }
 
