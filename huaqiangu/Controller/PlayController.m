@@ -47,7 +47,7 @@ SINGLETON_CLASS(PlayController);
     self.playRightLabel.frame = CGRectMake(278 * VIEWWITH, (IS_IPHONE_5?518:418) * VIEWWITH, 42 * VIEWWITH, 21 * VIEWWITH);
     self.timeBtn.frame = CGRectMake(274 * VIEWWITH, 27 * VIEWWITH, 30 * VIEWWITH, 30 * VIEWWITH);
     self.countLabel.frame = CGRectMake(200 * VIEWWITH, 248 * VIEWWITH, 112 * VIEWWITH, 29 * VIEWWITH);
-    self.bannerView.frame = CGRectMake(0 * VIEWWITH, 370 * VIEWWITH, 320 * VIEWWITH, 50 * VIEWWITH);
+    self.bannerView.frame = CGRectMake(0, (IS_IPHONE_5?420:320) * VIEWWITH - 50 * VIEWWITH, 320 * VIEWWITH, 50 * VIEWWITH);
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -61,13 +61,15 @@ SINGLETON_CLASS(PlayController);
 #pragma mark - 添加admob广告
 
 -(void)addAdmobView{
+    [adBannerView removeFromSuperview];
+    
     adBannerView = [[GADBannerView alloc]init];
     adBannerView.frame = CGRectMake(0, 0, self.bannerView.frame.size.width, self.bannerView.frame.size.height);
     adBannerView.adUnitID = KadMobKey;
     adBannerView.rootViewController = self;
-    [adBannerView loadRequest:[GADRequest request]];
-    
     [self.bannerView addSubview:adBannerView];
+    
+    [adBannerView loadRequest:[GADRequest request]];
 }
 
 -(void)viewDidLoad {
@@ -124,6 +126,8 @@ SINGLETON_CLASS(PlayController);
 #pragma mark - 下一首
 -(void)nextAction
 {
+    [self addAdmobView];
+    
     if (self.playIndex < self.playArr.count -1) {
         self.playIndex ++;
     }
@@ -136,6 +140,8 @@ SINGLETON_CLASS(PlayController);
 #pragma mark - 上一首
 -(void)laseAction
 {
+    [self addAdmobView];
+
     if (self.playIndex > 0) {
         self.playIndex --;
     }

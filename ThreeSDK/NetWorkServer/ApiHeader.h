@@ -11,7 +11,10 @@
 
 //#define kMainHeader   @"http://mobile.ximalaya.com/mobile/others/ca/album/track/360163/true/1/30?device=iPhone"
 
-#define kMainHeader   @"http://mobile.ximalaya.com/mobile/others/ca/album/track/3822244/"
+#define kMainHeader   @"http://mobile.ximalaya.com/mobile/others/ca/album/track/"
+
+#define kMainIDArr [[NSArray alloc]initWithObjects:@"3592043",@"4360903",@"351428",@"4070125",@"3684", nil]
+
 #define kDevice @"?device=iPhone"
 
 #endif

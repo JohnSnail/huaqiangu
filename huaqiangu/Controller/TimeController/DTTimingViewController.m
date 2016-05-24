@@ -88,11 +88,12 @@
 
 -(void)addAdmobView{
     adBannerView = [[GADBannerView alloc]init];
-    adBannerView.frame = CGRectMake(0, mainscreenhight - 50, 320 * VIEWWITH, 50 * VIEWWITH);
+    adBannerView.frame = CGRectMake(0, mainscreenhight - 50 * VIEWWITH, 320 * VIEWWITH, 50 * VIEWWITH);
     adBannerView.adUnitID = KadMobKey;
     adBannerView.rootViewController = self;
-    [adBannerView loadRequest:[GADRequest request]];
     [self.view addSubview:adBannerView];
+    
+    [adBannerView loadRequest:[GADRequest request]];    
 }
 
 -(void)backMethod

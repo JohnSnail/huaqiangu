@@ -29,6 +29,7 @@
 @implementation MainController
 
 static NSInteger i = 0;
+static NSInteger j = 0;
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -113,6 +114,8 @@ static NSInteger i = 0;
     }
 
     [self getMainData];
+    
+    
     
 //    self.footView.frame = CGRectMake(0, mainscreenhight - 50, mainscreenwidth, 50);
 //    self.footView.backgroundColor = [UIColor darkGrayColor];
@@ -280,10 +283,15 @@ static NSInteger i = 0;
         [self.mainMuArray removeAllObjects];
     }
     NSString *urlStr = [NSString stringWithFormat:@"%@/%@",@(pageId),@(COUNT)];
-    NSString *postStr = [NSString stringWithFormat:@"%@%@/%@%@",kMainHeader,orderStr,urlStr,kDevice];
+    NSString *postStr = [NSString stringWithFormat:@"%@%@/%@/%@%@",kMainHeader,kMainIDArr[j],orderStr,urlStr,kDevice];
     
     __weak typeof(self) bSelf = self;
     [AFService postMethod:postStr andDict:nil completion:^(NSDictionary *results,NSError *error){
+        
+        if([[results objectForKey:@"ret"] integerValue] != 0){
+            j++;
+            [self getNetData];
+        }
         
         totalTracks = [[[results objectForKey:@"album"] objectForKey:@"tracks"] integerValue];
         
