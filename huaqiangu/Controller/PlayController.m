@@ -11,13 +11,16 @@
 #import "DTTimingViewController.h"
 #import "DTTimingManager.h"
 
-@interface PlayController ()
+@interface PlayController ()<GADInterstitialDelegate>
 {
     NSString *hisProgress;
     NSTimer *timer;
     AutoRunLabel *trackLabel;
     GADBannerView *adBannerView;
 }
+
+@property(nonatomic, strong) GADInterstitial *interstitial;
+
 @end
 
 @implementation PlayController
@@ -95,6 +98,10 @@ SINGLETON_CLASS(PlayController);
     };
     
     [self addAdmobView];
+    [self createAndLoadInterstitial];
+    
+    //播放结束代理方法
+//    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(nextAction) name: @"nextAction" object: nil];
 }
 
 
@@ -116,6 +123,9 @@ SINGLETON_CLASS(PlayController);
 {
     if ([STKAudioPlayer sharedManager].state == STKAudioPlayerStatePlaying) {
         [[STKAudioPlayer sharedManager] pause];
+        if (self.interstitial.isReady) {
+            [self.interstitial presentFromRootViewController:self];
+        }
     }else{
         [[STKAudioPlayer sharedManager] resume];
     }
@@ -251,8 +261,16 @@ SINGLETON_CLASS(PlayController);
     }
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSLog(@"path = %@",HSFileFullpath(self.playTrack.playUrl64));
+
     if ([fileManager fileExistsAtPath:HSFileFullpath(self.playTrack.playUrl64)]) {
-        [[STKAudioPlayer sharedManager] play:HSFileFullpath(self.playTrack.playUrl64)];
+        NSLog(@"path = %@",HSFileFullpath(self.playTrack.playUrl64));
+        NSURL* url = [NSURL fileURLWithPath:HSFileFullpath(self.playTrack.playUrl64)];
+        
+        STKDataSource* dataSource = [STKAudioPlayer dataSourceFromURL:url];
+        
+        [[STKAudioPlayer sharedManager] setDataSource:dataSource withQueueItemId:nil];
+        
     }else{
         [[STKAudioPlayer sharedManager] play:self.playTrack.playUrl64];
     }
@@ -359,6 +377,26 @@ SINGLETON_CLASS(PlayController);
 /// Raised when an unexpected and possibly unrecoverable error has occured (usually best to recreate the STKAudioPlauyer)
 -(void) audioPlayer:(STKAudioPlayer*)audioPlayer unexpectedError:(STKAudioPlayerErrorCode)errorCode{
     ;
+}
+
+#pragma mark - 
+#pragma mark - admob 插屏
+
+- (void)createAndLoadInterstitial {
+    self.interstitial =
+    [[GADInterstitial alloc] initWithAdUnitID:kGADInterKey];
+    self.interstitial.delegate = self;
+    [self.interstitial loadRequest:[GADRequest request]];
+}
+
+- (void)interstitial:(GADInterstitial *)interstitial
+didFailToReceiveAdWithError:(GADRequestError *)error {
+    NSLog(@"%s: %@", __PRETTY_FUNCTION__, [error localizedDescription]);
+}
+
+- (void)interstitialDidDismissScreen:(GADInterstitial *)interstitial {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    [self createAndLoadInterstitial];
 }
 
 @end

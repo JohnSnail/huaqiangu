@@ -11,6 +11,8 @@
 #import "PlayController.h"
 #import "DownController.h"
 #import "MainList.h"
+#import "MainCell.h"
+#import "HSDownloadManager.h"
 
 #define COUNT 30
 
@@ -22,6 +24,7 @@
     UIButton *playBtn;
     NSInteger totalTracks;
     NSString *orderStr;
+    DownloadState downStatus;
 }
 
 @end
@@ -100,12 +103,15 @@ static NSInteger j = 0;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 
-    self.navigationItem.leftBarButtonItem = [LMButton setNavleftButtonWithImg:@"feedback" andSelector:@selector(pushAppStore) andTarget:self];
+    downStatus = DownloadStateCompleted;//初始化下载状态
+    self.navigationItem.leftBarButtonItem = [LMButton setNavright:@"吐槽" andcolor:[UIColor whiteColor] andSelector:@selector(pushAppStore) andTarget:self];
+
     self.navigationItem.titleView = [CommUtils navTittle:ALBUMTITLE];
     
     pageId = 1;
     _mainMuArray = [NSMutableArray arrayWithCapacity:0];
     _downMuArray = [NSMutableArray arrayWithCapacity:0];
+    _needDownMuArray = [NSMutableArray arrayWithCapacity:0];
 
     self.mainTbView.frame = CGRectMake(0, 0, mainscreenwidth, mainscreenhight);
     orderStr = [[NSUserDefaults standardUserDefaults] stringForKey:@"orderStr"];
@@ -113,13 +119,11 @@ static NSInteger j = 0;
         orderStr = @"true";
     }
 
-    [self getMainData];
-    
-    
-    
-//    self.footView.frame = CGRectMake(0, mainscreenhight - 50, mainscreenwidth, 50);
-//    self.footView.backgroundColor = [UIColor darkGrayColor];
-//    [self.view addSubview:self.footView];
+    if ([CommUtils checkNetworkStatus] == NotReachable) {
+        [self getDownArray];
+    }else{
+        [self getNetData];
+    }
     
     UIColor *comColor = [UIColor whiteColor];
     NSDictionary *colorAttr = [NSDictionary dictionaryWithObject:comColor forKey:NSForegroundColorAttributeName];
@@ -135,6 +139,11 @@ static NSInteger j = 0;
     [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(reloadMainList) name: @"reloadAction" object: nil];
     
     self.orderBtn.hidden = YES;
+    
+    self.mainTbView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        // 进入刷新状态后会自动调用这个block
+        [self loadMoreData];
+    }];
 }
 
 #pragma mark - 给好评
@@ -188,7 +197,7 @@ static NSInteger j = 0;
 
 -(void)getDownArray{
     
-    self.mainTbView.footer = nil;
+//    self.mainTbView.footer = nil;
     
     NSMutableArray *downArray = [NSMutableArray arrayWithCapacity:0];
     self.mainMuArray = [NSMutableArray arrayWithArray:[[MainList sharedManager] getMainArray]];
@@ -249,7 +258,8 @@ static NSInteger j = 0;
         pageId ++;
         [self getNetData];
     }else{
-        [self.mainTbView.footer noticeNoMoreData];
+//        [self.mainTbView.footer noticeNoMoreData];
+        self.mainTbView.footer = nil;
     }
 }
 
@@ -274,7 +284,6 @@ static NSInteger j = 0;
         
     }
     [self getNetData];
-    
 }
 
 -(void)getNetData
@@ -289,8 +298,10 @@ static NSInteger j = 0;
     [AFService postMethod:postStr andDict:nil completion:^(NSDictionary *results,NSError *error){
         
         if([[results objectForKey:@"ret"] integerValue] != 0){
-            j++;
-            [self getNetData];
+            if(j < kMainIDArr.count){
+                j++;
+                [self getNetData];
+            }
         }
         
         totalTracks = [[[results objectForKey:@"album"] objectForKey:@"tracks"] integerValue];
@@ -302,16 +313,7 @@ static NSInteger j = 0;
         for (int i = 0; i < arr.count; i++) {
             TrackModel *track = [[TrackModel alloc]initWithDict:arr[i]];
             track.downStatus = @"on";
-//            NSString *strTitle = [NSString stringWithFormat:@"步步惊心%@",track.title];
-//            track.title = strTitle;
-            track.orderStr = [NSString stringWithFormat:@"%lu",(pageId-1)*COUNT + (i+1)];
-            
-            [[MainList sharedManager] saveContent:track];
-            
-            //折中解决方案：本地判断最后一页时，不新增数据
-            if (pageId < totalPage || pageId == totalPage) {
-                [bSelf.mainMuArray addObject:track];
-            }
+            [bSelf.mainMuArray addObject:track];
         }
         
         [bSelf.mainTbView reloadData];
@@ -322,6 +324,21 @@ static NSInteger j = 0;
                 [bSelf scrollViewToIndex];
             }else{
                 [self loadMoreData];
+            }
+        }
+        
+        if ([CommUtils checkNetworkStatus] == ReachableViaWiFi) {
+            [self.needDownMuArray removeAllObjects];
+            
+            for (int i = 0; i<self.mainMuArray.count; i++) {
+                TrackModel *track = self.mainMuArray[i];
+                track.orderStr = [NSString stringWithFormat:@"%d",i];
+                if (![track.downStatus isEqualToString:@"done"]) {
+                    [self.needDownMuArray addObject:track];
+                }
+            }
+            if (downStatus !=  DownloadStateStart) {
+                [self automaticDownloads];
             }
         }
     }];
@@ -340,24 +357,43 @@ static NSInteger j = 0;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *identifier = @"UITableViewCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    if (cell == nil)
-    {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
-        cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
-        cell.backgroundColor = RGB(230, 227, 219);
+    static NSString *MainCellIdentifier = @"MainCell";
+    MainCell *cell = [tableView dequeueReusableCellWithIdentifier:MainCellIdentifier];
+    if (!cell) {
+        cell = (MainCell *)CREAT_XIB(@"MainCell");
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.backgroundColor = [UIColor clearColor];
         cell.textLabel.textColor = [UIColor blackColor];
     }
     TrackModel *track = self.mainMuArray[indexPath.row];
-    cell.textLabel.font = [UIFont systemFontOfSize:16];
-    cell.textLabel.text = track.title;
-    if (indexPath.row == [CommUtils getPlayIndex]) {
-        cell.textLabel.textColor = kCommenColor;
-    }else{
-        cell.textLabel.textColor = [UIColor blackColor];
+    TrackModel *newTrack = [[MainList sharedManager] updateModel:track];
+    if (newTrack) {
+        track.downStatus = newTrack.downStatus;
     }
+    cell.titleLabel.text = track.title;
+    
+    if ([track.downStatus isEqualToString:@"done"]) {
+        cell.downLabel.text = @"本地";
+        cell.downLabel.textColor = [UIColor darkGrayColor];
+    }else{
+        cell.downLabel.text = @"在线";
+        cell.downLabel.textColor = kCommenColor;
+    }
+    
+    if (indexPath.row == [CommUtils getPlayIndex]){
+        cell.titleLabel.textColor = kCommenColor;
+
+        NSMutableString *muStr = [NSMutableString stringWithString:track.title];
+        if (muStr.length > 20) {
+            cell.titleLabel.moveSpeech = -50.0f;
+        }else{
+            cell.titleLabel.moveSpeech = 0;
+        }
+    }else{
+        cell.titleLabel.textColor = [UIColor blackColor];
+        cell.titleLabel.moveSpeech = 0;
+    }
+    
     return cell;
 }
 
@@ -390,5 +426,70 @@ static NSInteger j = 0;
     [self.navigationController pushViewController:playVC animated:YES];
 }
 
+
+
+#pragma mark 开启任务下载资源
+- (void)download:(NSString *)url progressLabel:(UILabel *)progressLabel progressView:(UIProgressView *)progressView button:(UIButton *)button
+{
+    [[HSDownloadManager sharedInstance] download:url progress:^(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self updateDownView:progress];
+        });
+    } state:^(DownloadState state) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            downStatus = state;
+            
+            if (state == DownloadStateCompleted) {
+                TrackModel *track = self.needDownMuArray[0];
+                track.downStatus = @"done";
+                [[MainList sharedManager] saveContent:track];
+                
+                [self.mainTbView reloadData];
+                
+                [self.needDownMuArray removeObjectAtIndex:0];
+                [self automaticDownloads];
+            }
+        });
+    }];
+}
+
+#pragma mark 按钮状态
+- (NSString *)getTitleWithDownloadState:(DownloadState)state
+{
+    switch (state) {
+        case DownloadStateStart:
+            return @"暂停";
+        case DownloadStateSuspended:
+        case DownloadStateFailed:
+            return @"开始";
+        case DownloadStateCompleted:
+            return @"完成";
+        default:
+            break;
+    }
+}
+
+-(void)automaticDownloads
+{
+    if (self.needDownMuArray.count != 0 && [CommUtils checkNetworkStatus] == ReachableViaWiFi) {
+        TrackModel *track = self.needDownMuArray[0];
+        NSIndexPath *indexP = [NSIndexPath indexPathForRow:track.orderStr.integerValue inSection:0];
+        MainCell *newCell = [self.mainTbView cellForRowAtIndexPath:indexP];
+        
+        [self download:track.playUrl64 progressLabel:newCell.downLabel progressView:nil button:nil];
+    }
+}
+
+#pragma mark - 下载进度
+
+-(void)updateDownView:(CGFloat)progress
+{
+    TrackModel *track = self.needDownMuArray[0];
+    NSInteger integer = progress * 100;
+    NSIndexPath *indexP = [NSIndexPath indexPathForRow:track.orderStr.integerValue inSection:0];
+    MainCell *newCell = [self.mainTbView cellForRowAtIndexPath:indexP];
+    newCell.downLabel.text =  [NSString stringWithFormat:@"%ld%%",integer];
+}
 
 @end

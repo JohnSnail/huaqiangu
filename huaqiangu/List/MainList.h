@@ -33,4 +33,10 @@
 //获取主页面数据
 -(NSArray *)getMainArray;
 
+//清空数据
+-(void)cleanContent;
+
+//更新节目状态
+-(TrackModel *)updateModel:(TrackModel *)model;
+
 @end

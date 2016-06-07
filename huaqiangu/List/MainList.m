@@ -122,6 +122,13 @@
     [_db executeUpdate:query];
 }
 
+-(void)cleanContent
+{
+    NSString * query = @"DELETE FROM MainList";
+    //[AppDelegate showStatusWithText:@"删除一条数据" duration:2.0];
+    [_db executeUpdate:query];
+}
+
 #pragma mark -
 #pragma mark - 更新数据
 
@@ -212,6 +219,20 @@
     }];
     
     return sortedArray;
+}
+
+-(TrackModel *)updateModel:(TrackModel *)model
+{
+    NSString * query = [NSString stringWithFormat:@"SELECT downStatus FROM MainList WHERE title = '%@'",model.title];
+    
+    FMResultSet * rs = [_db executeQuery:query];
+    while ([rs next]) {
+        TrackModel * newModel = [TrackModel new];
+        newModel.downStatus = [rs stringForColumn:@"downStatus"];
+        return newModel;
+    }
+    [rs close];
+    return nil;
 }
 
 @end

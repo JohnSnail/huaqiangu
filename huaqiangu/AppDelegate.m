@@ -62,6 +62,9 @@
     
     [self lockScrollerView];
     [self umengAtion];
+    
+    
+//    [[MainList sharedManager] cleanContent];
 
     //下载数据
     [[DownController sharedManager] getDownData];

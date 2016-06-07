@@ -1164,6 +1164,9 @@ void audioRouteChangeCallback(void *inClientData, AudioSessionPropertyID inID, U
     
     LOGINFO(([NSString stringWithFormat:@"Finished: %@, Next: %@, buffering.count=%d,upcoming.count=%d", entry ? [entry description] : @"nothing", [next description], (int)bufferingQueue.count, (int)upcomingQueue.count]));
     
+    
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"nextAction" object:nil];
+    
     NSObject* queueItemId = entry.queueItemId;
     double progress = [entry progressInFrames] / canonicalAudioStreamBasicDescription.mSampleRate;
     double duration = [entry duration];

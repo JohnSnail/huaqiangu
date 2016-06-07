@@ -15,6 +15,8 @@
 		3F2BBFB81C7C729900D672E3 /* DownController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F2BBFB61C7C729900D672E3 /* DownController.xib */; };
 		3F2BBFBC1C7C85C100D672E3 /* DownCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2BBFBA1C7C85C100D672E3 /* DownCell.m */; };
 		3F2BBFBD1C7C85C100D672E3 /* DownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F2BBFBB1C7C85C100D672E3 /* DownCell.xib */; };
+		3F2DFFA51D05C48F0085F6BA /* MainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2DFFA31D05C48F0085F6BA /* MainCell.m */; };
+		3F2DFFA61D05C48F0085F6BA /* MainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F2DFFA41D05C48F0085F6BA /* MainCell.xib */; };
 		3F7E769D1C7EDFF600AA66A4 /* MainList.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7E769C1C7EDFF600AA66A4 /* MainList.m */; };
 		3F88CDC61B92BB8C00AAF479 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F88CDC41B92BB8C00AAF479 /* Crashlytics.framework */; };
 		3F88CDC71B92BB8C00AAF479 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F88CDC51B92BB8C00AAF479 /* Fabric.framework */; };
@@ -84,6 +86,9 @@
 		3F2BBFB91C7C85C100D672E3 /* DownCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownCell.h; sourceTree = "<group>"; };
 		3F2BBFBA1C7C85C100D672E3 /* DownCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownCell.m; sourceTree = "<group>"; };
 		3F2BBFBB1C7C85C100D672E3 /* DownCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DownCell.xib; sourceTree = "<group>"; };
+		3F2DFFA21D05C48F0085F6BA /* MainCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainCell.h; sourceTree = "<group>"; };
+		3F2DFFA31D05C48F0085F6BA /* MainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainCell.m; sourceTree = "<group>"; };
+		3F2DFFA41D05C48F0085F6BA /* MainCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainCell.xib; sourceTree = "<group>"; };
 		3F7E769B1C7EDFF600AA66A4 /* MainList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainList.h; sourceTree = "<group>"; };
 		3F7E769C1C7EDFF600AA66A4 /* MainList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainList.m; sourceTree = "<group>"; };
 		3F88CDC41B92BB8C00AAF479 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -378,6 +383,9 @@
 				3F2BBFB91C7C85C100D672E3 /* DownCell.h */,
 				3F2BBFBA1C7C85C100D672E3 /* DownCell.m */,
 				3F2BBFBB1C7C85C100D672E3 /* DownCell.xib */,
+				3F2DFFA21D05C48F0085F6BA /* MainCell.h */,
+				3F2DFFA31D05C48F0085F6BA /* MainCell.m */,
+				3F2DFFA41D05C48F0085F6BA /* MainCell.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -546,6 +554,7 @@
 			files = (
 				BC1FB6651B59F47400D06876 /* PlayController.xib in Resources */,
 				BC1FB5F21B59684000D06876 /* MainController.xib in Resources */,
+				3F2DFFA61D05C48F0085F6BA /* MainCell.xib in Resources */,
 				3F2BBFB81C7C729900D672E3 /* DownController.xib in Resources */,
 				BC1FB5C31B595E9C00D06876 /* Main.storyboard in Resources */,
 				3F2BBFBD1C7C85C100D672E3 /* DownCell.xib in Resources */,
@@ -645,6 +654,7 @@
 				BC13E4B31B82D82700222CD2 /* NSMutableDictionary+SafeValue.m in Sources */,
 				BC1FB65A1B59E69500D06876 /* AFService.m in Sources */,
 				BC1FB5BA1B595E9C00D06876 /* main.m in Sources */,
+				3F2DFFA51D05C48F0085F6BA /* MainCell.m in Sources */,
 				BCCA4C581B5CE8EE00C73442 /* AutoRunLabel.m in Sources */,
 				3F9672701C15AEAA00A1C71A /* HSSessionModel.m in Sources */,
 				BC1FB67E1B5A0BF600D06876 /* LMButton.m in Sources */,
@@ -704,8 +714,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Wei Jiang (JD2W4XYSND)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Wei Jiang (JD2W4XYSND)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -728,7 +738,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "2aab1907-459d-4187-a299-919181d9db04";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -750,8 +760,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Wei Jiang (JD2W4XYSND)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Wei Jiang (JD2W4XYSND)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -766,7 +776,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "2aab1907-459d-4187-a299-919181d9db04";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -800,7 +810,7 @@
 					"-ObjC",
 					"-lstdc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.weitingcui.yyyj;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fojiao.tingting;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -834,7 +844,7 @@
 					"-ObjC",
 					"-lstdc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.weitingcui.yyyj;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fojiao.tingting;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
