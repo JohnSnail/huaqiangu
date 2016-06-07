@@ -261,10 +261,7 @@ SINGLETON_CLASS(PlayController);
     }
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSLog(@"path = %@",HSFileFullpath(self.playTrack.playUrl64));
-
     if ([fileManager fileExistsAtPath:HSFileFullpath(self.playTrack.playUrl64)]) {
-        NSLog(@"path = %@",HSFileFullpath(self.playTrack.playUrl64));
         NSURL* url = [NSURL fileURLWithPath:HSFileFullpath(self.playTrack.playUrl64)];
         
         STKDataSource* dataSource = [STKAudioPlayer dataSourceFromURL:url];

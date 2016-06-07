@@ -43,6 +43,10 @@ static NSInteger j = 0;
     
     [self.mainTbView reloadData];
     [self playAnimation];
+    
+    if (downStatus !=  DownloadStateStart) {
+        [self automaticDownloads];
+    }
 }
 
 -(void)scrollViewToIndex
