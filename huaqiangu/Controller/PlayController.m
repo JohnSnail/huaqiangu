@@ -244,7 +244,6 @@ SINGLETON_CLASS(PlayController);
         trackLabel.text = muStr;
         
         [self.albumImageView sd_setImageWithURL:[NSURL URLWithString:self.playTrack.coverLarge] placeholderImage:[UIImage imageNamed:@"main_otherplace"]];
-//        self.albumImageView.image = [UIImage imageNamed:@"gu"];
     }
     
     NSString *strTrackId = (NSString *)[[STKAudioPlayer sharedManager] currentlyPlayingQueueItemId];

@@ -58,17 +58,11 @@
     [navCtrl.navigationBar setBarTintColor:kCommenColor];
     self.window.rootViewController = navCtrl;
     [self.window makeKeyAndVisible];
-    //添加百度开屏
     
     [self lockScrollerView];
     [self umengAtion];
     
-    
 //    [[MainList sharedManager] cleanContent];
-
-    //下载数据
-    [[DownController sharedManager] getDownData];
-    [[DownController sharedManager] downAction];
     
     [Fabric with:@[CrashlyticsKit]];
     return YES;
