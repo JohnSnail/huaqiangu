@@ -44,6 +44,7 @@ static NSInteger j = 0;
     [self.mainTbView reloadData];
     [self playAnimation];
     
+    NSLog(@"downStatus = %u", downStatus);
     if (downStatus !=  DownloadStateStart) {
         [self automaticDownloads];
     }
@@ -379,6 +380,14 @@ static NSInteger j = 0;
     if ([track.downStatus isEqualToString:@"done"]) {
         cell.downLabel.text = @"本地";
         cell.downLabel.textColor = [UIColor darkGrayColor];
+    }else if([track.downStatus isEqualToString:@"doing"]){
+        if([CommUtils checkNetworkStatus] == ReachableViaWiFi){
+            NSInteger proIndex = [[HSDownloadManager sharedInstance] progress:track.playUrl64] * 100;
+            cell.downLabel.text = [NSString stringWithFormat:@"%ld%%",proIndex];
+        }else{
+            cell.downLabel.text = @"暂停";
+        }
+        cell.downLabel.textColor = kCommenColor;
     }else{
         cell.downLabel.text = @"在线";
         cell.downLabel.textColor = kCommenColor;
@@ -478,6 +487,9 @@ static NSInteger j = 0;
 {
     if (self.needDownMuArray.count != 0 && [CommUtils checkNetworkStatus] == ReachableViaWiFi) {
         TrackModel *track = self.needDownMuArray[0];
+        track.downStatus = @"doing";
+        [[MainList sharedManager] saveContent:track];
+        
         NSIndexPath *indexP = [NSIndexPath indexPathForRow:track.orderStr.integerValue inSection:0];
         MainCell *newCell = [self.mainTbView cellForRowAtIndexPath:indexP];
         

@@ -11,6 +11,7 @@
 		3F155CA41BA8373300C91E25 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F155CA31BA8373300C91E25 /* libstdc++.dylib */; };
 		3F155CB71BA8388000C91E25 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F155CB61BA8388000C91E25 /* libz.dylib */; };
 		3F155CB91BA83AEF00C91E25 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F155CB81BA83AEF00C91E25 /* StoreKit.framework */; };
+		3F1C0C3A1D14257200064C3F /* sample.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 3F1C0C391D14257200064C3F /* sample.m4a */; };
 		3F2BBFB71C7C729900D672E3 /* DownController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2BBFB51C7C729900D672E3 /* DownController.m */; };
 		3F2BBFB81C7C729900D672E3 /* DownController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F2BBFB61C7C729900D672E3 /* DownController.xib */; };
 		3F2BBFBC1C7C85C100D672E3 /* DownCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2BBFBA1C7C85C100D672E3 /* DownCell.m */; };
@@ -80,6 +81,8 @@
 		3F155CA31BA8373300C91E25 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		3F155CB61BA8388000C91E25 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		3F155CB81BA83AEF00C91E25 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		3F1C0C381D14248900064C3F /* airplane.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = airplane.aac; sourceTree = "<group>"; };
+		3F1C0C391D14257200064C3F /* sample.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample.m4a; sourceTree = "<group>"; };
 		3F2BBFB41C7C729900D672E3 /* DownController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownController.h; sourceTree = "<group>"; };
 		3F2BBFB51C7C729900D672E3 /* DownController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownController.m; sourceTree = "<group>"; };
 		3F2BBFB61C7C729900D672E3 /* DownController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DownController.xib; sourceTree = "<group>"; };
@@ -370,6 +373,8 @@
 		BC1FB5ED1B59680E00D06876 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				3F1C0C391D14257200064C3F /* sample.m4a */,
+				3F1C0C381D14248900064C3F /* airplane.aac */,
 				BC9CEDB51B5DFAB6004FC9F3 /* TimeController */,
 				BC1FB5EE1B59684000D06876 /* MainController.h */,
 				BC1FB5EF1B59684000D06876 /* MainController.m */,
@@ -559,6 +564,7 @@
 				BC1FB5F21B59684000D06876 /* MainController.xib in Resources */,
 				3F2DFFA61D05C48F0085F6BA /* MainCell.xib in Resources */,
 				3F2BBFB81C7C729900D672E3 /* DownController.xib in Resources */,
+				3F1C0C3A1D14257200064C3F /* sample.m4a in Resources */,
 				BC1FB5C31B595E9C00D06876 /* Main.storyboard in Resources */,
 				3F2BBFBD1C7C85C100D672E3 /* DownCell.xib in Resources */,
 				BC1FB5C51B595E9C00D06876 /* Images.xcassets in Resources */,

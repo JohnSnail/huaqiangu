@@ -56,7 +56,7 @@ return _shared##classname; \
 #pragma mark -
 #pragma mark - AlbumTitle
 
-#define ALBUMTITLE @"金刚经"
+#define ALBUMTITLE @"罗辑思维"
 
 #pragma mark -
 #pragma mark - UMengKey
@@ -68,10 +68,10 @@ return _shared##classname; \
 #define kGADInterKey @"ca-app-pub-5473057868747749/1127218114"
 
 //#define kCommenColor RGB(248, 102, 47)
-//#define kCommenColor RGB(88,185,201)
+#define kCommenColor RGB(88,185,201)
 //#define kCommenColor RGB(245,85,130)
 //#define kCommenColor RGB(165,180,198)
-#define kCommenColor RGB(183,137,88)
+//#define kCommenColor RGB(183,137,88)
 
 
 
@@ -101,7 +101,8 @@ return _shared##classname; \
 #define HSCachesDirectory [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"HSCache"]
 
 // 保存文件名
-#define HSFileName(url) [NSString stringWithFormat:@"%@.mp3",url.md5String]
+//#define HSFileName(url) [NSString stringWithFormat:@"%@.mp3",url.md5String]
+#define HSFileName(url) url.md5String
 
 // 文件的存放路径（caches）
 #define HSFileFullpath(url) [HSCachesDirectory stringByAppendingPathComponent:HSFileName(url)]

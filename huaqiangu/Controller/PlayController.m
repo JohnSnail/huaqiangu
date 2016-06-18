@@ -14,7 +14,6 @@
 @interface PlayController ()<GADInterstitialDelegate>
 {
     NSString *hisProgress;
-    NSTimer *timer;
     AutoRunLabel *trackLabel;
     GADBannerView *adBannerView;
 }
@@ -100,6 +99,8 @@ SINGLETON_CLASS(PlayController);
     [self addAdmobView];
     [self createAndLoadInterstitial];
     
+    [STKAudioPlayer sharedManager].delegate = self;
+    
     //播放结束代理方法
 //    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(nextAction) name: @"nextAction" object: nil];
 }
@@ -121,16 +122,17 @@ SINGLETON_CLASS(PlayController);
 #pragma mark - 播放暂停
 -(void)playAction
 {
+    NSLog(@"status = %d",[STKAudioPlayer sharedManager].state);
     if ([STKAudioPlayer sharedManager].state == STKAudioPlayerStatePlaying) {
         [[STKAudioPlayer sharedManager] pause];
         if (self.interstitial.isReady) {
             [self.interstitial presentFromRootViewController:self];
         }
-    }else{
+    }else if([STKAudioPlayer sharedManager].state == STKAudioPlayerStatePaused){
         [[STKAudioPlayer sharedManager] resume];
+    }else{
+        [self playMusic];
     }
-    
-    [self updateControls];
 }
 
 #pragma mark - 下一首
@@ -221,8 +223,10 @@ SINGLETON_CLASS(PlayController);
 {
     if ([STKAudioPlayer sharedManager].state == STKAudioPlayerStatePlaying){
         self.playBtn.selected = YES;
+        [self setupTimer:YES];
     }else{
         self.playBtn.selected = NO;
+        [self setupTimer:NO];
     }
 }
 
@@ -247,11 +251,9 @@ SINGLETON_CLASS(PlayController);
     }
     
     NSString *strTrackId = (NSString *)[[STKAudioPlayer sharedManager] currentlyPlayingQueueItemId];
-    if ([strTrackId isEqualToString:self.playTrack.playUrl64]){
+    if ([strTrackId isEqualToString:self.playTrack.playUrl64]&& [STKAudioPlayer sharedManager].state == STKAudioPlayerStatePlaying){
         return;
     }
-    [STKAudioPlayer sharedManager].delegate = self;
-    
     TrackModel *track = [[HistoryList sharedManager] updateModel:self.playTrack];
     
     if (track.hisProgress.doubleValue > 0) {
@@ -262,28 +264,30 @@ SINGLETON_CLASS(PlayController);
     NSFileManager *fileManager = [NSFileManager defaultManager];
     if ([fileManager fileExistsAtPath:HSFileFullpath(self.playTrack.playUrl64)]) {
         NSURL* url = [NSURL fileURLWithPath:HSFileFullpath(self.playTrack.playUrl64)];
-        
-        STKDataSource* dataSource = [STKAudioPlayer dataSourceFromURL:url];
-        
-        [[STKAudioPlayer sharedManager] setDataSource:dataSource withQueueItemId:nil];
-        
+        [[STKAudioPlayer sharedManager] playURL:url withQueueItemID:self.playTrack.playUrl64];
     }else{
         [[STKAudioPlayer sharedManager] play:self.playTrack.playUrl64];
     }
     
-    [self setupTimer];
+    [self setupTimer:YES];
     
     [CommUtils saveIndex:self.playIndex];
+    [[HistoryList sharedManager] saveContent:self.playTrack];
     
     [self performSelector:@selector(setLockScreenInfo) withObject:nil afterDelay:2.0];
 }
 
--(void) setupTimer
+-(void) setupTimer:(BOOL)isBackGround
 {
-    if ([timer isValid]) {
-        [timer invalidate];
+    if(isBackGround == YES){
+        if (![self.timer isValid]){
+            self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(tick) userInfo:nil repeats:YES];
+            [self.timer fire];
+        }
+    }else{
+        [self.timer invalidate];
+        self.timer = nil;
     }
-    timer = [NSTimer scheduledTimerWithTimeInterval:0.25 target:self selector:@selector(tick) userInfo:nil repeats:YES];
 }
 
 -(void) tick
@@ -306,7 +310,7 @@ SINGLETON_CLASS(PlayController);
     self.playLeftLabel.text = [CommUtils progressValue:[STKAudioPlayer sharedManager].progress];
     self.playRightLabel.text = [CommUtils progressValue:[STKAudioPlayer sharedManager].duration];
     self.playTrack.hisProgress = [NSString stringWithFormat:@"%@",@([STKAudioPlayer sharedManager].progress)];
-    [[HistoryList sharedManager] saveContent:self.playTrack];
+    [[HistoryList sharedManager] mergeWithContent:self.playTrack];
     
     
     //锁屏播放
@@ -314,10 +318,7 @@ SINGLETON_CLASS(PlayController);
     [appDe.PlayingInfoCenter setSafeObject:[NSNumber numberWithDouble:[STKAudioPlayer sharedManager].progress] forKey:MPNowPlayingInfoPropertyElapsedPlaybackTime];
     [appDe.PlayingInfoCenter setSafeObject:[NSNumber numberWithDouble:[STKAudioPlayer sharedManager].duration] forKey:MPMediaItemPropertyPlaybackDuration];
     
-//    [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:appDe.PlayingInfoCenter];
-//    [MPNowPlayingInfoCenter defaultCenter].nowPlayingInfo = appDe.PlayingInfoCenter;
-    
-    [self updateControls];
+    [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:appDe.PlayingInfoCenter];
 }
 
 
@@ -346,7 +347,6 @@ SINGLETON_CLASS(PlayController);
     [appDe.PlayingInfoCenter setSafeObject:albumArt forKey:MPMediaItemPropertyArtwork];
     
     [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:appDe.PlayingInfoCenter];
-    [MPNowPlayingInfoCenter defaultCenter].nowPlayingInfo = appDe.PlayingInfoCenter;
 }
 
 #pragma mark - 播放的代理方法
@@ -355,24 +355,35 @@ SINGLETON_CLASS(PlayController);
 -(void) audioPlayer:(STKAudioPlayer*)audioPlayer didStartPlayingQueueItemId:(NSObject*)queueItemId{
     
 }
+
 /// Raised when an item has finished buffering (may or may not be the currently playing item)
 /// This event may be raised multiple times for the same item if seek is invoked on the player
 -(void) audioPlayer:(STKAudioPlayer*)audioPlayer didFinishBufferingSourceWithQueueItemId:(NSObject*)queueItemId{
-    self.playTrack.hisProgress = @"0";
-    [[HistoryList sharedManager] saveContent:self.playTrack];
-    [self nextAction];
+    
 }
 /// Raised when the state of the player has changed
 -(void) audioPlayer:(STKAudioPlayer*)audioPlayer stateChanged:(STKAudioPlayerState)state previousState:(STKAudioPlayerState)previousState{
+//    if (previousState == STKAudioPlayerStatePlaying && state  == STKAudioPlayerStateBuffering) {
+//        [self playAction];
+//    }
+    NSLog(@"state == %u",state);
+
+    NSLog(@"previousState == %u",previousState);
     
+    [self updateControls];
 }
+
 /// Raised when an item has finished playing
 -(void) audioPlayer:(STKAudioPlayer*)audioPlayer didFinishPlayingQueueItemId:(NSObject*)queueItemId withReason:(STKAudioPlayerStopReason)stopReason andProgress:(double)progress andDuration:(double)duration{
-    
+    if ([queueItemId isEqual:self.playTrack.playUrl64] && stopReason == STKAudioPlayerStopReasonEof) {
+        self.playTrack.hisProgress = @"0";
+        [[HistoryList sharedManager] mergeWithContent:self.playTrack];
+        [self nextAction];
+    }
 }
 /// Raised when an unexpected and possibly unrecoverable error has occured (usually best to recreate the STKAudioPlauyer)
 -(void) audioPlayer:(STKAudioPlayer*)audioPlayer unexpectedError:(STKAudioPlayerErrorCode)errorCode{
-    ;
+    NSLog(@"%u错误",errorCode);
 }
 
 #pragma mark - 

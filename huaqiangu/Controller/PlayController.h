@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *albumImageView;
 @property (weak, nonatomic) IBOutlet UIButton *timeBtn;
 @property (weak, nonatomic) IBOutlet UILabel *countLabel;
+@property NSTimer *timer;
 
 @property (nonatomic, strong) NSArray *playArr;
 @property NSInteger playIndex;
@@ -37,5 +38,7 @@
 -(void)playAction;
 -(void)laseAction;
 -(void)nextAction;
+-(void)playMusic;
+-(void) setupTimer:(BOOL)isBackGround;
 
 @end

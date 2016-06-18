@@ -81,7 +81,7 @@ static HSDownloadManager *_downloadManager;
     if (!url) return;
     if ([self isCompletion:url]) {
         stateBlock(DownloadStateCompleted);
-        NSLog(@"----该资源已下载完成");
+//        NSLog(@"----该资源已下载完成");
         return;
     }
     
