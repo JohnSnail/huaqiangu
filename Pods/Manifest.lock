@@ -43,7 +43,7 @@ DEPENDENCIES:
   - MJRefresh (~> 2.2.1)
   - SDWebImage (~> 3.7.1)
   - SGNavigationProgress (~> 1.2)
-  - StreamingKit (~> 0.1.25)
+  - StreamingKit (~> 0.1.29)
   - UIActionSheet+Blocks (~> 0.9)
   - UIAlertView+Blocks (~> 0.8.1)
   - UMengAnalytics (~> 3.5.12)
@@ -61,6 +61,6 @@ SPEC CHECKSUMS:
   UIAlertView+Blocks: 45c3d3b7194906702d3e9a14c7ece5581505646d
   UMengAnalytics: fdf0c0a8c07d8bffc012ffa3c68e5d490af42098
 
-PODFILE CHECKSUM: 25f6a7e2aaf47a822c60c0e5b247950bb56909a5
+PODFILE CHECKSUM: 10d4f8377c7298356131f1f6c803a0dbe48f0a14
 
 COCOAPODS: 1.0.0

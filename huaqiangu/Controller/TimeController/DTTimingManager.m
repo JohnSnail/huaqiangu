@@ -7,6 +7,7 @@
 //
 
 #import "DTTimingManager.h"
+#import "PlayController.h"
 //#import <AppMacro.h>
 //#import <AudioService.h>
 
@@ -61,7 +62,7 @@ NSString *const kTimingClock = @"kTimingClock";
             break;
     }
     if (currentTimingState == TimingStateAfterCurrentFinish) {
-        self.countdownNum = @([[STKAudioPlayer sharedManager] duration] - [[STKAudioPlayer sharedManager] progress]);
+        self.countdownNum = @([[PlayController sharedPlayController].audioPlayer duration] - [[PlayController sharedPlayController].audioPlayer progress]);
     } else {
         self.countdownNum = @(currentTimingState);
     }

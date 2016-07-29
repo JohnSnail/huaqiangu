@@ -819,7 +819,7 @@
 					"-ObjC",
 					"-lstdc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.fojiao.tingting3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.weitingcui.yyky;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -853,7 +853,7 @@
 					"-ObjC",
 					"-lstdc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.fojiao.tingting3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.weitingcui.yyky;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

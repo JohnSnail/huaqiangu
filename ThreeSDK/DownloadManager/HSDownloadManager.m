@@ -73,6 +73,15 @@ static HSDownloadManager *_downloadManager;
     }
 }
 
+#pragma mark -
+#pragma mark - 标识不需备份数据
+
+-(void)addSkipBackupAttributeToItemAtURL:(NSURL *)URL
+{
+    NSError *error = nil;
+    [URL setResourceValue:[NSNumber numberWithBool:YES] forKey:NSURLIsExcludedFromBackupKey error:&error];
+}
+
 /**
  *  开启任务下载资源
  */
@@ -141,6 +150,8 @@ static HSDownloadManager *_downloadManager;
  */
 - (void)start:(NSString *)url
 {
+    [self addSkipBackupAttributeToItemAtURL:[NSURL URLWithString:url]];
+    
     NSURLSessionDataTask *task = [self getTask:url];
     [task resume];
 

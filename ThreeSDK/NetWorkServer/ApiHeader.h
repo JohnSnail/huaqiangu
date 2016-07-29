@@ -13,7 +13,7 @@
 
 #define kMainHeader   @"http://mobile.ximalaya.com/mobile/others/ca/album/track/"
 
-#define kMainIDArr [[NSArray alloc]initWithObjects:@"239463",@"369676",@"293218",@"3838539",@"1547", nil]
+#define kMainIDArr [[NSArray alloc]initWithObjects:@"269179",@"289286",@"3528899",@"4074364",@"4661699", nil]
 
 #define kDevice @"?device=iPhone"
 

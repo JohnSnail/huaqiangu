@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "AFService.h"
 #import "ApiHeader.h"
+#import <MessageUI/MessageUI.h>
 
-@interface MainController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface MainController : UIViewController<UITableViewDataSource,UITableViewDelegate,MFMailComposeViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *mainTbView;
 @property (weak, nonatomic) IBOutlet UIView *footView;

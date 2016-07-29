@@ -7,6 +7,7 @@
 //
 
 #import "CommUtils.h"
+#import "PlayController.h"
 
 @implementation CommUtils
 
@@ -110,7 +111,7 @@
     }
     [btn.imageView setAnimationImages:anImgArr];
     [btn.imageView setAnimationDuration:0.9];
-    if ([STKAudioPlayer sharedManager].state == STKAudioPlayerStatePlaying) {
+    if ([PlayController sharedPlayController].audioPlayer.state == STKAudioPlayerStatePlaying) {
         [btn.imageView startAnimating];
     }else{
         [btn.imageView stopAnimating];

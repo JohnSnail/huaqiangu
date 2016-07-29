@@ -155,16 +155,75 @@ static NSInteger j = 0;
 
 -(void)pushAppStore
 {
-    NSString * url;
-    if (IS_IOS_7) {
-        url = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%@", AppStoreAppId];
+    if ([MFMailComposeViewController canSendMail]) { // 用户已设置邮件账户
+        [self sendEmailAction]; // 调用发送邮件的代码
+    }else{
+        NSString * url;
+        if (IS_IOS_7) {
+            url = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%@", AppStoreAppId];
+        }
+        else{
+            url=[NSString stringWithFormat: @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@",AppStoreAppId];
+        }
+        
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
     }
-    else{
-        url=[NSString stringWithFormat: @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@",AppStoreAppId];
+}
+
+#pragma mark - 
+#pragma mark - 发送邮件
+
+- (void)sendEmailAction
+{
+    // 邮件服务器
+    MFMailComposeViewController *mailCompose = [[MFMailComposeViewController alloc] init];
+    // 设置邮件代理
+    [mailCompose setMailComposeDelegate:self];
+    
+    // 设置邮件主题
+    [mailCompose setSubject:@"我要吐槽"];
+    
+    // 设置收件人
+    [mailCompose setToRecipients:@[@"jason_name@163.com"]];
+    
+    /**
+     *  设置邮件的正文内容
+     */
+    NSString *emailContent = @"我是邮件内容";
+    // 是否为HTML格式
+    [mailCompose setMessageBody:emailContent isHTML:NO];
+    // 如使用HTML格式，则为以下代码
+    //    [mailCompose setMessageBody:@"<html><body><p>Hello</p><p>World！</p></body></html>" isHTML:YES];
+    // 弹出邮件发送视图
+    [self presentViewController:mailCompose animated:YES completion:nil];
+}
+
+#pragma mark - 邮箱代理
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller
+          didFinishWithResult:(MFMailComposeResult)result
+                        error:(NSError *)error
+{
+    switch (result)
+    {
+        case MFMailComposeResultCancelled: // 用户取消编辑
+            NSLog(@"Mail send canceled...");
+            break;
+        case MFMailComposeResultSaved: // 用户保存邮件
+            NSLog(@"Mail saved...");
+            break;
+        case MFMailComposeResultSent: // 用户点击发送
+            NSLog(@"Mail sent...");
+            break;
+        case MFMailComposeResultFailed: // 用户尝试保存或发送邮件失败
+            NSLog(@"Mail send errored: %@...", [error localizedDescription]);
+            break;
     }
     
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+    // 关闭邮件发送视图
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 
 -(void)setFrameView
 {
@@ -376,22 +435,24 @@ static NSInteger j = 0;
         track.downStatus = newTrack.downStatus;
     }
     cell.titleLabel.text = track.title;
-    
-    if ([track.downStatus isEqualToString:@"done"]) {
-        cell.downLabel.text = @"本地";
-        cell.downLabel.textColor = [UIColor darkGrayColor];
-    }else if([track.downStatus isEqualToString:@"doing"]){
-        if([CommUtils checkNetworkStatus] == ReachableViaWiFi){
-            NSInteger proIndex = [[HSDownloadManager sharedInstance] progress:track.playUrl64] * 100;
-            cell.downLabel.text = [NSString stringWithFormat:@"%ld%%",proIndex];
-        }else{
-            cell.downLabel.text = @"暂停";
-        }
-        cell.downLabel.textColor = kCommenColor;
-    }else{
-        cell.downLabel.text = @"在线";
-        cell.downLabel.textColor = kCommenColor;
-    }
+    cell.downLabel.text = @"在线";
+    cell.downLabel.textColor = kCommenColor;
+
+//    if ([track.downStatus isEqualToString:@"done"]) {
+//        cell.downLabel.text = @"本地";
+//        cell.downLabel.textColor = [UIColor darkGrayColor];
+//    }else if([track.downStatus isEqualToString:@"doing"]){
+//        if([CommUtils checkNetworkStatus] == ReachableViaWiFi){
+//            NSInteger proIndex = [[HSDownloadManager sharedInstance] progress:track.playUrl64] * 100;
+//            cell.downLabel.text = [NSString stringWithFormat:@"%ld%%",proIndex];
+//        }else{
+//            cell.downLabel.text = @"暂停";
+//        }
+//        cell.downLabel.textColor = kCommenColor;
+//    }else{
+//        cell.downLabel.text = @"在线";
+//        cell.downLabel.textColor = kCommenColor;
+//    }
     
     if (indexPath.row == [CommUtils getPlayIndex]){
         cell.titleLabel.textColor = kCommenColor;
@@ -485,16 +546,16 @@ static NSInteger j = 0;
 
 -(void)automaticDownloads
 {
-    if (self.needDownMuArray.count != 0 && [CommUtils checkNetworkStatus] == ReachableViaWiFi) {
-        TrackModel *track = self.needDownMuArray[0];
-        track.downStatus = @"doing";
-        [[MainList sharedManager] saveContent:track];
-        
-        NSIndexPath *indexP = [NSIndexPath indexPathForRow:track.orderStr.integerValue inSection:0];
-        MainCell *newCell = [self.mainTbView cellForRowAtIndexPath:indexP];
-        
-        [self download:track.playUrl64 progressLabel:newCell.downLabel progressView:nil button:nil];
-    }
+//    if (self.needDownMuArray.count != 0 && [CommUtils checkNetworkStatus] == ReachableViaWiFi) {
+//        TrackModel *track = self.needDownMuArray[0];
+//        track.downStatus = @"doing";
+//        [[MainList sharedManager] saveContent:track];
+//        
+//        NSIndexPath *indexP = [NSIndexPath indexPathForRow:track.orderStr.integerValue inSection:0];
+//        MainCell *newCell = [self.mainTbView cellForRowAtIndexPath:indexP];
+//        
+//        [self download:track.playUrl64 progressLabel:newCell.downLabel progressView:nil button:nil];
+//    }
 }
 
 #pragma mark - 下载进度
