@@ -355,56 +355,59 @@ static NSInteger j = 0;
     if (pageId == 1) {
         [self.mainMuArray removeAllObjects];
     }
-    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",@(pageId),@(COUNT)];
-    NSString *postStr = [NSString stringWithFormat:@"%@%@/%@/%@%@",kMainHeader,kMainIDArr[j],orderStr,urlStr,kDevice];
+//    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",@(pageId),@(COUNT)];
+//    NSString *postStr = [NSString stringWithFormat:@"%@%@/%@/%@%@",kMainHeader,kMainIDArr[j],orderStr,urlStr,kDevice];
     
     __weak typeof(self) bSelf = self;
-    [AFService postMethod:postStr andDict:nil completion:^(NSDictionary *results,NSError *error){
+    
+    [AFService postMethod:kLOLVedio andDict:nil completion:^(NSDictionary *results,NSError *error){
         
-        if([[results objectForKey:@"ret"] integerValue] != 0){
-            if(j < kMainIDArr.count){
-                j++;
-                [self getNetData];
-            }
-        }
+        NSLog(@"lol == %@", results);
         
-        totalTracks = [[[results objectForKey:@"album"] objectForKey:@"tracks"] integerValue];
-        
-        totalPage = [[[results objectForKey:@"tracks"] objectForKey:@"maxPageId"] integerValue];
-        
-        NSArray *arr = [[results objectForKey:@"tracks"] objectForKey:@"list"];
-
-        for (int i = 0; i < arr.count; i++) {
-            TrackModel *track = [[TrackModel alloc]initWithDict:arr[i]];
-            track.downStatus = @"on";
-            [bSelf.mainMuArray addObject:track];
-        }
-        
-        [bSelf.mainTbView reloadData];
-        [bSelf.mainTbView.footer endRefreshing];
-        
-        if (bSelf.mainMuArray.count != 0) {
-            if (bSelf.mainMuArray.count > [CommUtils getPlayIndex]) {
-                [bSelf scrollViewToIndex];
-            }else{
-                [self loadMoreData];
-            }
-        }
-        
-        if ([CommUtils checkNetworkStatus] == ReachableViaWiFi) {
-            [self.needDownMuArray removeAllObjects];
-            
-            for (int i = 0; i<self.mainMuArray.count; i++) {
-                TrackModel *track = self.mainMuArray[i];
-                track.orderStr = [NSString stringWithFormat:@"%d",i];
-                if (![track.downStatus isEqualToString:@"done"]) {
-                    [self.needDownMuArray addObject:track];
-                }
-            }
-            if (downStatus !=  DownloadStateStart) {
-                [self automaticDownloads];
-            }
-        }
+//        if([[results objectForKey:@"ret"] integerValue] != 0){
+//            if(j < kMainIDArr.count){
+//                j++;
+//                [self getNetData];
+//            }
+//        }
+//        
+//        totalTracks = [[[results objectForKey:@"album"] objectForKey:@"tracks"] integerValue];
+//        
+//        totalPage = [[[results objectForKey:@"tracks"] objectForKey:@"maxPageId"] integerValue];
+//        
+//        NSArray *arr = [[results objectForKey:@"tracks"] objectForKey:@"list"];
+//
+//        for (int i = 0; i < arr.count; i++) {
+//            TrackModel *track = [[TrackModel alloc]initWithDict:arr[i]];
+//            track.downStatus = @"on";
+//            [bSelf.mainMuArray addObject:track];
+//        }
+//        
+//        [bSelf.mainTbView reloadData];
+//        [bSelf.mainTbView.footer endRefreshing];
+//        
+//        if (bSelf.mainMuArray.count != 0) {
+//            if (bSelf.mainMuArray.count > [CommUtils getPlayIndex]) {
+//                [bSelf scrollViewToIndex];
+//            }else{
+//                [self loadMoreData];
+//            }
+//        }
+//        
+//        if ([CommUtils checkNetworkStatus] == ReachableViaWiFi) {
+//            [self.needDownMuArray removeAllObjects];
+//            
+//            for (int i = 0; i<self.mainMuArray.count; i++) {
+//                TrackModel *track = self.mainMuArray[i];
+//                track.orderStr = [NSString stringWithFormat:@"%d",i];
+//                if (![track.downStatus isEqualToString:@"done"]) {
+//                    [self.needDownMuArray addObject:track];
+//                }
+//            }
+//            if (downStatus !=  DownloadStateStart) {
+//                [self automaticDownloads];
+//            }
+//        }
     }];
 }
 
