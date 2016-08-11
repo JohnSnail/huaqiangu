@@ -23,7 +23,7 @@ PODS:
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
-  - Google-Mobile-Ads-SDK (7.8.1)
+  - Google-Mobile-Ads-SDK (7.9.1)
   - JSONKit-NoWarning (1.2)
   - MJRefresh (2.2.1)
   - SDWebImage (3.7.6):
@@ -51,7 +51,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
-  Google-Mobile-Ads-SDK: 3c2a6656117989469bfe7645640aa1de024a4c6c
+  Google-Mobile-Ads-SDK: 575583d7eae25793bb81ad8673737d1b4ecbedc5
   JSONKit-NoWarning: 3d27e6f9e6846ecf741e8c64dcadd7d5aa7193cb
   MJRefresh: c3fa0387e8e97a11a9666639d2f815607edd1c2f
   SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9

@@ -13,7 +13,12 @@
 
 #define kMainHeader   @"http://mobile.ximalaya.com/mobile/others/ca/album/track/"
 
-#define kMainIDArr [[NSArray alloc]initWithObjects:@"269179",@"289286",@"3528899",@"4074364",@"4661699", nil]
+#define kLOLVedio   @"http://box.dwstatic.com/apiVideoesNormalDuowan.php?action=l&tag=newest&p=1"
+
+#define kLOLVedioDetail @"http://box.dwstatic.com/apiVideoesNormalDuowan.php?action=f&vid=2810011"
+
+
+#define kMainIDArr [[NSArray alloc]initWithObjects:@"4297884",@"3544633",@"290506",@"4785742",@"4740660", nil]
 
 #define kDevice @"?device=iPhone"
 
