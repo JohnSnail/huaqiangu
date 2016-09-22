@@ -23,44 +23,41 @@ PODS:
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
-  - Google-Mobile-Ads-SDK (7.9.1)
   - JSONKit-NoWarning (1.2)
   - MJRefresh (2.2.1)
-  - SDWebImage (3.7.6):
-    - SDWebImage/Core (= 3.7.6)
-  - SDWebImage/Core (3.7.6)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
   - SGNavigationProgress (1.2)
   - StreamingKit (0.1.29)
   - UIActionSheet+Blocks (0.9)
   - UIAlertView+Blocks (0.8.1)
-  - UMengAnalytics (3.5.16)
+  - UMengAnalytics (4.1.0)
 
 DEPENDENCIES:
-  - AFNetworking (~> 2.6.0)
+  - AFNetworking (~> 2.6.3)
   - FMDB (~> 2.3)
-  - Google-Mobile-Ads-SDK (~> 7.0)
   - JSONKit-NoWarning (~> 1.2)
   - MJRefresh (~> 2.2.1)
-  - SDWebImage (~> 3.7.1)
+  - SDWebImage (~> 3.8.2)
   - SGNavigationProgress (~> 1.2)
   - StreamingKit (~> 0.1.29)
   - UIActionSheet+Blocks (~> 0.9)
   - UIAlertView+Blocks (~> 0.8.1)
-  - UMengAnalytics (~> 3.5.12)
+  - UMengAnalytics (~> 4.1.0)
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
-  Google-Mobile-Ads-SDK: 575583d7eae25793bb81ad8673737d1b4ecbedc5
   JSONKit-NoWarning: 3d27e6f9e6846ecf741e8c64dcadd7d5aa7193cb
   MJRefresh: c3fa0387e8e97a11a9666639d2f815607edd1c2f
-  SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SGNavigationProgress: f04e3bd0058c53e1172ee020b5239f22aa9e4a0f
   StreamingKit: c329785aaef3ac142d4ae388345bfe1ed23cfd45
   UIActionSheet+Blocks: e180b7dad0a721ab7f212ac9742af799008bb358
   UIAlertView+Blocks: 45c3d3b7194906702d3e9a14c7ece5581505646d
-  UMengAnalytics: fdf0c0a8c07d8bffc012ffa3c68e5d490af42098
+  UMengAnalytics: 19b28253793d77dff10fb7d502faad1fb6b8ce4a
 
-PODFILE CHECKSUM: 10d4f8377c7298356131f1f6c803a0dbe48f0a14
+PODFILE CHECKSUM: 9f11e8961bbcfb8ed3e54b7999ef69ebb68ed263
 
 COCOAPODS: 1.0.0

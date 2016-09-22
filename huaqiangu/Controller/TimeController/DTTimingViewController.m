@@ -10,8 +10,9 @@
 #import "DTTimingManager.h"
 #import "PlayController.h"
 
-@interface DTTimingViewController (){
-    GADBannerView *adBannerView;
+@interface DTTimingViewController ()<BaiduMobAdViewDelegate>{
+//    GADBannerView *adBannerView;
+    BaiduMobAdView *sharedAdView;
 }
 @end
 
@@ -34,6 +35,31 @@
     [super viewWillAppear:animated];
     
     self.navigationController.navigationBarHidden = NO;
+    [self addBaiDuAdView];
+}
+
+#pragma mark -
+#pragma mark - 百度广告bannar
+
+-(void)addBaiDuAdView
+{
+    //使用嵌入干告的方法实例。
+    sharedAdView = [[BaiduMobAdView alloc] init]; //把在mssp.baidu.com上创建后获得的代码位id写到这里
+    sharedAdView.AdUnitTag = ADUNITTAGBANNER;
+    sharedAdView.AdType = BaiduMobAdViewTypeBanner;
+    sharedAdView.frame = CGRectMake(0, mainscreenhight - 50 * VIEWWITH, 320 * VIEWWITH, 50 * VIEWWITH);
+//        sharedAdView.frame = kAdViewPortraitRect;
+    sharedAdView.delegate = self;
+    [self.view addSubview:sharedAdView];
+    [sharedAdView start];
+}
+
+- (NSString *)publisherId {
+    return PUBLISHERID; //@"your_own_app_id";
+}
+
+-(void) willDisplayAd:(BaiduMobAdView*) adview {
+    NSLog(@"delegate: will display ad");
 }
 
 #pragma mark - 给好评
@@ -80,20 +106,20 @@
 
     self.navigationItem.leftBarButtonItem=[LMButton setNavleftComboButtonWithImg:@"back" andSelector:@selector(backMethod) andTarget:self];
     
-    [self addAdmobView];
+//    [self addAdmobView];
 }
 
 #pragma mark -
 #pragma mark - 添加admob广告
 
 -(void)addAdmobView{
-    adBannerView = [[GADBannerView alloc]init];
-    adBannerView.frame = CGRectMake(0, mainscreenhight - 50 * VIEWWITH, 320 * VIEWWITH, 50 * VIEWWITH);
-    adBannerView.adUnitID = KadMobKey;
-    adBannerView.rootViewController = self;
-    [self.view addSubview:adBannerView];
-    
-    [adBannerView loadRequest:[GADRequest request]];    
+//    adBannerView = [[GADBannerView alloc]init];
+//    adBannerView.frame = CGRectMake(0, mainscreenhight - 50 * VIEWWITH, 320 * VIEWWITH, 50 * VIEWWITH);
+//    adBannerView.adUnitID = KadMobKey;
+//    adBannerView.rootViewController = self;
+//    [self.view addSubview:adBannerView];
+//    
+//    [adBannerView loadRequest:[GADRequest request]];    
 }
 
 -(void)backMethod

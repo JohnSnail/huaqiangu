@@ -27,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *countLabel;
 @property NSTimer *timer;
 @property (nonatomic, strong) STKAudioPlayer* audioPlayer;
+@property (nonatomic, copy) NSString *albumTitle;
 
 @property (nonatomic, strong) NSArray *playArr;
 @property NSInteger playIndex;

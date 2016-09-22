@@ -7,11 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AFService.h"
-#import "ApiHeader.h"
-#import <MessageUI/MessageUI.h>
 
-@interface MainController : UIViewController<UITableViewDataSource,UITableViewDelegate,MFMailComposeViewControllerDelegate>
+@interface MainController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *mainTbView;
 @property (weak, nonatomic) IBOutlet UIView *footView;
@@ -21,5 +18,8 @@
 @property (nonatomic, strong) NSMutableArray *mainMuArray;
 @property (nonatomic, strong) NSMutableArray *downMuArray;
 @property (nonatomic, strong) NSMutableArray *needDownMuArray;
+
+@property (nonatomic, copy) NSString *albumID;
+@property (nonatomic, copy) NSString *albumTitle;
 
 @end

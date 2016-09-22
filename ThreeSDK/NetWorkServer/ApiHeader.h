@@ -11,9 +11,13 @@
 
 //#define kMainHeader   @"http://mobile.ximalaya.com/mobile/others/ca/album/track/360163/true/1/30?device=iPhone"
 
+#define kAlbumList @"http://mobile.ximalaya.com/mobile/discovery/v1/category/album"
 #define kMainHeader   @"http://mobile.ximalaya.com/mobile/others/ca/album/track/"
 
-#define kMainIDArr [[NSArray alloc]initWithObjects:@"4297884",@" 3544633", @"290506",@"4785742", @"4740660",nil]
+#define kAlbumID @"12"
+#define kAlbumName @"郭德纲相声"
+
+#define kMainIDArr [[NSArray alloc]initWithObjects:@"4355797",@" 3689163", @"5218428",@"4071527", @"3299517",nil]
 
 
 #define kDevice @"?device=iPhone"

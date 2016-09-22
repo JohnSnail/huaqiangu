@@ -26,6 +26,7 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    
     self.chooseBtn.userInteractionEnabled = NO;
 }
 

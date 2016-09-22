@@ -8,6 +8,7 @@
 
 #import "CommUtils.h"
 #import "PlayController.h"
+#import "AutoRunLabel.h"
 
 @implementation CommUtils
 
@@ -64,15 +65,22 @@
     return (UIView *)navLabel;
 }
 
-+(UILabel *)navTittle:(NSString *)title
++(AutoRunLabel *)navTittle:(NSString *)title
 {
-    UILabel *titleText = [[UILabel alloc] initWithFrame: CGRectMake(0, 0, 200, 44)];
+    AutoRunLabel *titleText = [[AutoRunLabel alloc] initWithFrame: CGRectMake(0, 0, 200, 44)];
     titleText.textAlignment=NSTextAlignmentCenter;
     titleText.backgroundColor = [UIColor clearColor];
     titleText.textColor=[UIColor whiteColor];
     titleText.text= title;
     titleText.font=[UIFont fontWithName:@"Helvetica-Bold" size:20.0];
+    NSMutableString *muStr = [NSMutableString stringWithString:title];
+    if (muStr.length > 5) {
+        titleText.moveSpeech = -50.0f;
+    }else{
+        titleText.moveSpeech = 0;
+    }
     [titleText sizeToFit];
+    
     return titleText;
 }
 

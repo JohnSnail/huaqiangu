@@ -33,7 +33,7 @@
 +(UIBarButtonItem *)setNavleftButtonWithImg:(NSString *)img andSelector:(SEL)action andTarget:(id)target{
     //导航左侧返回按钮
     UIButton *bt = [UIButton buttonWithType:UIButtonTypeCustom];
-    bt.frame=CGRectMake(0, 0, 23, 23);
+    bt.frame=CGRectMake(0, 0, 44, 44);
     [bt setBackgroundImage:[UIImage imageNamed:img] forState:UIControlStateNormal];
     [bt addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
     

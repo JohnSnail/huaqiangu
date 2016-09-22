@@ -11,14 +11,12 @@
 #import "DTTimingViewController.h"
 #import "DTTimingManager.h"
 
-@interface PlayController ()<GADInterstitialDelegate>
+@interface PlayController ()<BaiduMobAdViewDelegate>
 {
     NSString *hisProgress;
     AutoRunLabel *trackLabel;
-    GADBannerView *adBannerView;
+    BaiduMobAdView *sharedAdView;
 }
-
-@property(nonatomic, strong) GADInterstitial *interstitial;
 
 @end
 
@@ -56,22 +54,11 @@ SINGLETON_CLASS(PlayController);
 {
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
+    [self addBaiDuAdView];
 }
 
-
-#pragma mark - 
-#pragma mark - 添加admob广告
-
--(void)addAdmobView{
-    [adBannerView removeFromSuperview];
-    
-    adBannerView = [[GADBannerView alloc]init];
-    adBannerView.frame = CGRectMake(0, 0, self.bannerView.frame.size.width, self.bannerView.frame.size.height);
-    adBannerView.adUnitID = KadMobKey;
-    adBannerView.rootViewController = self;
-    [self.bannerView addSubview:adBannerView];
-    
-    [adBannerView loadRequest:[GADRequest request]];
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
 }
 
 -(void)viewDidLoad {
@@ -97,13 +84,34 @@ SINGLETON_CLASS(PlayController);
         }
     };
     
-    [self addAdmobView];
-    [self createAndLoadInterstitial];
-    
     self.audioPlayer.delegate = self;
     
     //播放结束代理方法
 //    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(nextAction) name: @"nextAction" object: nil];
+}
+
+#pragma mark -
+#pragma mark - 百度广告bannar
+
+-(void)addBaiDuAdView
+{
+    //使用嵌入干告的方法实例。
+    sharedAdView = [[BaiduMobAdView alloc] init]; //把在mssp.baidu.com上创建后获得的代码位id写到这里
+    sharedAdView.AdUnitTag = ADUNITTAGBANNER;
+    sharedAdView.AdType = BaiduMobAdViewTypeBanner;
+    sharedAdView.frame = CGRectMake(0, 0, self.bannerView.frame.size.width, self.bannerView.frame.size.height);
+//    sharedAdView.frame = kAdViewPortraitRect;
+    sharedAdView.delegate = self;
+    [self.bannerView addSubview:sharedAdView];
+    [sharedAdView start];
+}
+
+- (NSString *)publisherId {
+    return PUBLISHERID; //@"your_own_app_id";
+}
+
+-(void) willDisplayAd:(BaiduMobAdView*) adview {
+    NSLog(@"delegate: will display ad");
 }
 
 
@@ -139,8 +147,6 @@ SINGLETON_CLASS(PlayController);
 #pragma mark - 下一首
 -(void)nextAction
 {
-    [self addAdmobView];
-    
     if (self.playIndex < self.playArr.count -1) {
         self.playIndex ++;
     }
@@ -148,19 +154,21 @@ SINGLETON_CLASS(PlayController);
     [self playMusic];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadAction" object:nil];
+    
+    [self addBaiDuAdView];
 }
 
 #pragma mark - 上一首
 -(void)laseAction
 {
-    [self addAdmobView];
-
     if (self.playIndex > 0) {
         self.playIndex --;
     }
     [self playMusic];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadAction" object:nil];
+    
+    [self addBaiDuAdView];
 }
 
 -(void)addHeadView
@@ -209,6 +217,7 @@ SINGLETON_CLASS(PlayController);
 -(void)backMethod
 {
     LM_POP;
+//    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)pushArr:(NSArray *)arr andIndex:(NSInteger)index
@@ -236,7 +245,7 @@ SINGLETON_CLASS(PlayController);
     if (self.playArr.count != 0) {
         self.playTrack = self.playArr[self.playIndex];
         
-        self.albTitle.text = ALBUMTITLE;
+        self.albTitle.text = self.albumTitle;
         NSMutableString *muStr = nil;
         if (self.playTrack.title) {
             muStr = [NSMutableString stringWithString:self.playTrack.title];
@@ -338,7 +347,7 @@ SINGLETON_CLASS(PlayController);
     [appDe.PlayingInfoCenter setSafeObject:lockContent forKey:MPMediaItemPropertyTitle];
     
     //锁屏专辑名称
-    lockContent = ALBUMTITLE;
+    lockContent = self.albumTitle;
     [appDe.PlayingInfoCenter setSafeObject:lockContent forKey:MPMediaItemPropertyAlbumTitle];
     
     //锁屏图片
@@ -381,26 +390,6 @@ SINGLETON_CLASS(PlayController);
 /// Raised when an unexpected and possibly unrecoverable error has occured (usually best to recreate the STKAudioPlauyer)
 -(void) audioPlayer:(STKAudioPlayer*)audioPlayer unexpectedError:(STKAudioPlayerErrorCode)errorCode{
     NSLog(@"%ld错误",(long)errorCode);
-}
-
-#pragma mark - 
-#pragma mark - admob 插屏
-
-- (void)createAndLoadInterstitial {
-    self.interstitial =
-    [[GADInterstitial alloc] initWithAdUnitID:kGADInterKey];
-    self.interstitial.delegate = self;
-    [self.interstitial loadRequest:[GADRequest request]];
-}
-
-- (void)interstitial:(GADInterstitial *)interstitial
-didFailToReceiveAdWithError:(GADRequestError *)error {
-    NSLog(@"%s: %@", __PRETTY_FUNCTION__, [error localizedDescription]);
-}
-
-- (void)interstitialDidDismissScreen:(GADInterstitial *)interstitial {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
-    [self createAndLoadInterstitial];
 }
 
 @end

@@ -20,11 +20,11 @@
 {
     NSInteger pageId;
     NSInteger totalPage;
-    NSString *albumTitle;
-    UIButton *playBtn;
+//    NSString *albumTitle;
     NSInteger totalTracks;
     NSString *orderStr;
     DownloadState downStatus;
+    UIButton *playBtn;
 }
 
 @end
@@ -32,35 +32,27 @@
 @implementation MainController
 
 static NSInteger i = 0;
-static NSInteger j = 0;
+//static NSInteger j = 0;
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-
+    
     self.mainTbView.backgroundColor = RGB(230, 227, 219);
     self.navigationController.navigationBarHidden = NO;
     
     [self.mainTbView reloadData];
-    [self playAnimation];
     
     NSLog(@"downStatus = %u", downStatus);
     if (downStatus !=  DownloadStateStart) {
         [self automaticDownloads];
     }
+    
+    [self playAnimation];
+
 }
 
--(void)scrollViewToIndex
-{
-    if (i == 0) {
-        NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:[CommUtils getPlayIndex] inSection:0];
-        [self.mainTbView scrollToRowAtIndexPath:scrollIndexPath
-                               atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
-        i++;
-    }
-}
-
-#pragma mark - 
+#pragma mark -
 #pragma mark - 播放动画
 
 -(void)playAnimation
@@ -79,6 +71,17 @@ static NSInteger j = 0;
     
     [playBtn addTarget:self action:@selector(playingAction) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:playBtn];
+
+}
+
+-(void)scrollViewToIndex
+{
+    if (i == 0) {
+        NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:[CommUtils getPlayIndex] inSection:0];
+        [self.mainTbView scrollToRowAtIndexPath:scrollIndexPath
+                               atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+        i++;
+    }
 }
 
 #pragma mark - 
@@ -104,14 +107,22 @@ static NSInteger j = 0;
     }];
 }
 
+-(void)backAction
+{
+    LM_POP;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    self.navigationItem.titleView = [CommUtils navTittle:self.albumTitle];
+    
+    self.navigationItem.leftBarButtonItem = [LMButton setNavleftButtonWithImg:@"back" andSelector:@selector(backAction) andTarget:self];
 
+
+//    [self registerLocalNotification:2016];
     downStatus = DownloadStateCompleted;//初始化下载状态
-    self.navigationItem.leftBarButtonItem = [LMButton setNavright:@"吐槽" andcolor:[UIColor whiteColor] andSelector:@selector(pushAppStore) andTarget:self];
-
-    self.navigationItem.titleView = [CommUtils navTittle:ALBUMTITLE];
     
     pageId = 1;
     _mainMuArray = [NSMutableArray arrayWithCapacity:0];
@@ -150,80 +161,6 @@ static NSInteger j = 0;
         [self loadMoreData];
     }];
 }
-
-#pragma mark - 给好评
-
--(void)pushAppStore
-{
-    if ([MFMailComposeViewController canSendMail]) { // 用户已设置邮件账户
-        [self sendEmailAction]; // 调用发送邮件的代码
-    }else{
-        NSString * url;
-        if (IS_IOS_7) {
-            url = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%@", AppStoreAppId];
-        }
-        else{
-            url=[NSString stringWithFormat: @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@",AppStoreAppId];
-        }
-        
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
-    }
-}
-
-#pragma mark - 
-#pragma mark - 发送邮件
-
-- (void)sendEmailAction
-{
-    // 邮件服务器
-    MFMailComposeViewController *mailCompose = [[MFMailComposeViewController alloc] init];
-    // 设置邮件代理
-    [mailCompose setMailComposeDelegate:self];
-    
-    // 设置邮件主题
-    [mailCompose setSubject:@"我要吐槽"];
-    
-    // 设置收件人
-    [mailCompose setToRecipients:@[@"jason_name@163.com"]];
-    
-    /**
-     *  设置邮件的正文内容
-     */
-    NSString *emailContent = @"我是邮件内容";
-    // 是否为HTML格式
-    [mailCompose setMessageBody:emailContent isHTML:NO];
-    // 如使用HTML格式，则为以下代码
-    //    [mailCompose setMessageBody:@"<html><body><p>Hello</p><p>World！</p></body></html>" isHTML:YES];
-    // 弹出邮件发送视图
-    [self presentViewController:mailCompose animated:YES completion:nil];
-}
-
-#pragma mark - 邮箱代理
-
-- (void)mailComposeController:(MFMailComposeViewController *)controller
-          didFinishWithResult:(MFMailComposeResult)result
-                        error:(NSError *)error
-{
-    switch (result)
-    {
-        case MFMailComposeResultCancelled: // 用户取消编辑
-            NSLog(@"Mail send canceled...");
-            break;
-        case MFMailComposeResultSaved: // 用户保存邮件
-            NSLog(@"Mail saved...");
-            break;
-        case MFMailComposeResultSent: // 用户点击发送
-            NSLog(@"Mail sent...");
-            break;
-        case MFMailComposeResultFailed: // 用户尝试保存或发送邮件失败
-            NSLog(@"Mail send errored: %@...", [error localizedDescription]);
-            break;
-    }
-    
-    // 关闭邮件发送视图
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
 
 -(void)setFrameView
 {
@@ -298,6 +235,84 @@ static NSInteger j = 0;
     }
 }
 
+- (NSString *)fixStringForDate:(NSDate *)date
+
+{
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc]init];
+    
+    [dateFormatter setDateStyle:kCFDateFormatterFullStyle];
+    
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    
+    NSString *fixString = [dateFormatter stringFromDate:date];
+    
+    return fixString;
+    
+}
+
+#pragma mark - 注册本地通知
+
+- (void)registerLocalNotification:(NSInteger)alertTime {
+    UILocalNotification *notification = [[UILocalNotification alloc] init];
+    // 设置触发通知的时间
+    NSDate *fireDate = [NSDate dateWithTimeIntervalSinceNow:alertTime];
+    NSLog(@"fireDate=%@",fireDate);
+    NSLog(@"dateFormatter===%@",[self fixStringForDate:[NSDate date]]);
+    
+//    notification.fireDate = fireDate;
+    notification.fireDate = [NSDate dateWithTimeIntervalSinceNow:60.0];
+
+    // 时区
+    notification.timeZone = [NSTimeZone defaultTimeZone];
+    // 设置重复的间隔
+    notification.repeatInterval = kCFCalendarUnitSecond;
+    
+    // 通知内容
+    notification.alertBody =  @"该起床了...";
+    notification.applicationIconBadgeNumber = 1;
+    // 通知被触发时播放的声音
+    notification.soundName = UILocalNotificationDefaultSoundName;
+    // 通知参数
+    NSDictionary *userDict = [NSDictionary dictionaryWithObject:@"开始学习iOS开发了" forKey:@"key"];
+    notification.userInfo = userDict;
+    
+    // ios8后，需要添加这个注册，才能得到授权
+    if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+        UIUserNotificationType type =  UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound;
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:type
+                                                                                 categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+        // 通知重复提示的单位，可以是天、周、月
+        notification.repeatInterval = NSCalendarUnitDay;
+    } else {
+        // 通知重复提示的单位，可以是天、周、月
+        notification.repeatInterval = NSDayCalendarUnit;
+    }
+    
+    // 执行通知注册
+    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+}
+
+// 取消某个本地推送通知
+- (void)cancelLocalNotificationWithKey:(NSString *)key {
+    // 获取所有本地通知数组
+    NSArray *localNotifications = [UIApplication sharedApplication].scheduledLocalNotifications;
+    
+    for (UILocalNotification *notification in localNotifications) {
+        NSDictionary *userInfo = notification.userInfo;
+        if (userInfo) {
+            // 根据设置通知参数时指定的key来获取通知参数
+            NSString *info = userInfo[key];
+            
+            // 如果找到需要取消的通知，则取消
+            if (info != nil) {
+                [[UIApplication sharedApplication] cancelLocalNotification:notification];
+                break;  
+            }  
+        }  
+    }  
+}  
+
 #pragma mark - 排序
 -(void)orderAction
 {
@@ -344,7 +359,7 @@ static NSInteger j = 0;
         totalPage = pageId + 1;
         
         [self.mainTbView reloadData];
-        [self scrollViewToIndex];
+//        [self scrollViewToIndex];
         
     }
     [self getNetData];
@@ -355,14 +370,12 @@ static NSInteger j = 0;
     if (pageId == 1) {
         [self.mainMuArray removeAllObjects];
     }
-//    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",@(pageId),@(COUNT)];
-//    NSString *postStr = [NSString stringWithFormat:@"%@%@/%@/%@%@",kMainHeader,kMainIDArr[j],orderStr,urlStr,kDevice];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",@(pageId),@(COUNT)];
+    NSString *postStr = [NSString stringWithFormat:@"%@%@/%@/%@%@",kMainHeader,self.albumID,orderStr,urlStr,kDevice];
     
     __weak typeof(self) bSelf = self;
     
-    [AFService postMethod:kLOLVedio andDict:nil completion:^(NSDictionary *results,NSError *error){
-        
-        NSLog(@"lol == %@", results);
+    [AFService postMethod:postStr andDict:nil completion:^(NSDictionary *results,NSError *error){
         
 //        if([[results objectForKey:@"ret"] integerValue] != 0){
 //            if(j < kMainIDArr.count){
@@ -370,44 +383,44 @@ static NSInteger j = 0;
 //                [self getNetData];
 //            }
 //        }
-//        
-//        totalTracks = [[[results objectForKey:@"album"] objectForKey:@"tracks"] integerValue];
-//        
-//        totalPage = [[[results objectForKey:@"tracks"] objectForKey:@"maxPageId"] integerValue];
-//        
-//        NSArray *arr = [[results objectForKey:@"tracks"] objectForKey:@"list"];
-//
-//        for (int i = 0; i < arr.count; i++) {
-//            TrackModel *track = [[TrackModel alloc]initWithDict:arr[i]];
-//            track.downStatus = @"on";
-//            [bSelf.mainMuArray addObject:track];
-//        }
-//        
-//        [bSelf.mainTbView reloadData];
-//        [bSelf.mainTbView.footer endRefreshing];
-//        
-//        if (bSelf.mainMuArray.count != 0) {
-//            if (bSelf.mainMuArray.count > [CommUtils getPlayIndex]) {
+        
+        totalTracks = [[[results objectForKey:@"album"] objectForKey:@"tracks"] integerValue];
+        
+        totalPage = [[[results objectForKey:@"tracks"] objectForKey:@"maxPageId"] integerValue];
+        
+        NSArray *arr = [[results objectForKey:@"tracks"] objectForKey:@"list"];
+
+        for (int i = 0; i < arr.count; i++) {
+            TrackModel *track = [[TrackModel alloc]initWithDict:arr[i]];
+            track.downStatus = @"on";
+            [bSelf.mainMuArray addObject:track];
+        }
+        
+        [bSelf.mainTbView reloadData];
+        [bSelf.mainTbView.footer endRefreshing];
+        
+        if (bSelf.mainMuArray.count != 0) {
+            if (bSelf.mainMuArray.count > [CommUtils getPlayIndex]) {
 //                [bSelf scrollViewToIndex];
-//            }else{
-//                [self loadMoreData];
-//            }
-//        }
-//        
-//        if ([CommUtils checkNetworkStatus] == ReachableViaWiFi) {
-//            [self.needDownMuArray removeAllObjects];
-//            
-//            for (int i = 0; i<self.mainMuArray.count; i++) {
-//                TrackModel *track = self.mainMuArray[i];
-//                track.orderStr = [NSString stringWithFormat:@"%d",i];
-//                if (![track.downStatus isEqualToString:@"done"]) {
-//                    [self.needDownMuArray addObject:track];
-//                }
-//            }
-//            if (downStatus !=  DownloadStateStart) {
-//                [self automaticDownloads];
-//            }
-//        }
+            }else{
+                [self loadMoreData];
+            }
+        }
+        
+        if ([CommUtils checkNetworkStatus] == ReachableViaWiFi) {
+            [self.needDownMuArray removeAllObjects];
+            
+            for (int i = 0; i<self.mainMuArray.count; i++) {
+                TrackModel *track = self.mainMuArray[i];
+                track.orderStr = [NSString stringWithFormat:@"%d",i];
+                if (![track.downStatus isEqualToString:@"done"]) {
+                    [self.needDownMuArray addObject:track];
+                }
+            }
+            if (downStatus !=  DownloadStateStart) {
+                [self automaticDownloads];
+            }
+        }
     }];
 }
 
@@ -440,22 +453,6 @@ static NSInteger j = 0;
     cell.titleLabel.text = track.title;
     cell.downLabel.text = @"在线";
     cell.downLabel.textColor = kCommenColor;
-
-//    if ([track.downStatus isEqualToString:@"done"]) {
-//        cell.downLabel.text = @"本地";
-//        cell.downLabel.textColor = [UIColor darkGrayColor];
-//    }else if([track.downStatus isEqualToString:@"doing"]){
-//        if([CommUtils checkNetworkStatus] == ReachableViaWiFi){
-//            NSInteger proIndex = [[HSDownloadManager sharedInstance] progress:track.playUrl64] * 100;
-//            cell.downLabel.text = [NSString stringWithFormat:@"%ld%%",proIndex];
-//        }else{
-//            cell.downLabel.text = @"暂停";
-//        }
-//        cell.downLabel.textColor = kCommenColor;
-//    }else{
-//        cell.downLabel.text = @"在线";
-//        cell.downLabel.textColor = kCommenColor;
-//    }
     
     if (indexPath.row == [CommUtils getPlayIndex]){
         cell.titleLabel.textColor = kCommenColor;
@@ -476,11 +473,12 @@ static NSInteger j = 0;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    TrackModel *track = self.mainMuArray[indexPath.row];
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    if ([fileManager fileExistsAtPath:HSFileFullpath(track.playUrl64)]){
-        [self pushPlayVC:indexPath.row];
-    }else if ([CommUtils checkNetworkStatus] != ReachableViaWiFi) {
+//    TrackModel *track = self.mainMuArray[indexPath.row];
+//    NSFileManager *fileManager = [NSFileManager defaultManager];
+//    if ([fileManager fileExistsAtPath:HSFileFullpath(track.playUrl64)]){
+//        [self pushPlayVC:indexPath.row];
+//    }else
+    if ([CommUtils checkNetworkStatus] != ReachableViaWiFi) {
         [UIAlertView showWithTitle:@"温馨提示" message:@"当前处于非Wi-Fi网络，在线播放可能会消耗您的流量，是否继续？" cancelButtonTitle:@"取消" otherButtonTitles:@[@"继续"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
             if (buttonIndex == [alertView cancelButtonIndex]) {
                 return ;
@@ -497,9 +495,12 @@ static NSInteger j = 0;
 {
     PlayController *playVC = [PlayController sharedPlayController];
     playVC.hidesBottomBarWhenPushed = YES;
+    playVC.albumTitle = self.albumTitle;
+    
     if (self.mainMuArray.count != 0) {
         [playVC pushArr:self.mainMuArray andIndex:indexPlay];
     }
+//    [self.navigationController presentViewController:playVC animated:YES completion:nil];
     [self.navigationController pushViewController:playVC animated:YES];
 }
 

@@ -7,11 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AutoRunLabel.h"
 
 @interface CommUtils : NSObject
 
 //定制navigation的title
-+(UILabel *)navTittle:(NSString *)title;
++(AutoRunLabel *)navTittle:(NSString *)title;
 +(NSString *)progressValue:(double)value;
 
 //保存正在播放的节目
