@@ -38,6 +38,7 @@
 {
     //友盟统计
     UMConfigInstance.appKey = umAppKey;
+    [MobClick startWithConfigure:UMConfigInstance];
 }
 
 - (void)dealloc
