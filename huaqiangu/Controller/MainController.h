@@ -21,5 +21,6 @@
 
 @property (nonatomic, copy) NSString *albumID;
 @property (nonatomic, copy) NSString *albumTitle;
+@property (nonatomic, copy) NSString *albumImage;
 
 @end

@@ -16,7 +16,7 @@
 
 #define COUNT 30
 
-@interface MainController ()
+@interface MainController ()<BaiduMobAdViewDelegate>
 {
     NSInteger pageId;
     NSInteger totalPage;
@@ -25,6 +25,7 @@
     NSString *orderStr;
     DownloadState downStatus;
     UIButton *playBtn;
+    BaiduMobAdView *sharedAdView;
 }
 
 @end
@@ -38,7 +39,6 @@ static NSInteger i = 0;
 {
     [super viewWillAppear:animated];
     
-    self.mainTbView.backgroundColor = RGB(230, 227, 219);
     self.navigationController.navigationBarHidden = NO;
     
     [self.mainTbView reloadData];
@@ -49,7 +49,44 @@ static NSInteger i = 0;
     }
     
     [self playAnimation];
+    
+    [self addBaiDuAdView];
+}
 
+-(void)dealloc
+{
+    [sharedAdView removeFromSuperview];
+    sharedAdView.delegate = nil;
+    sharedAdView = nil;
+}
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    sharedAdView = nil;
+}
+
+-(void)addBaiDuAdView
+{
+    if (!sharedAdView) {
+        //使用嵌入干告的方法实例。
+        sharedAdView = [[BaiduMobAdView alloc] init]; //把在mssp.baidu.com上创建后获得的代码位id写到这里
+        sharedAdView.AdUnitTag = ADUNITTAGBANNER;
+        sharedAdView.AdType = BaiduMobAdViewTypeBanner;
+        sharedAdView.frame = CGRectMake(0, mainscreenhight - 50, mainscreenwidth, 50);
+        //    sharedAdView.frame = kAdViewPortraitRect;
+        sharedAdView.delegate = self;
+        [self.view addSubview:sharedAdView];
+        [sharedAdView start];
+    }
+}
+
+- (NSString *)publisherId {
+    return PUBLISHERID; //@"your_own_app_id";
+}
+
+-(void) willDisplayAd:(BaiduMobAdView*) adview {
+    NSLog(@"delegate: will display ad");
 }
 
 #pragma mark -
@@ -116,6 +153,9 @@ static NSInteger i = 0;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    self.view.backgroundColor = RGB(230, 227, 219);
+    self.mainTbView.backgroundColor = RGB(230, 227, 219);
+
     self.navigationItem.titleView = [CommUtils navTittle:self.albumTitle];
     
     self.navigationItem.leftBarButtonItem = [LMButton setNavleftButtonWithImg:@"back" andSelector:@selector(backAction) andTarget:self];
@@ -129,7 +169,7 @@ static NSInteger i = 0;
     _downMuArray = [NSMutableArray arrayWithCapacity:0];
     _needDownMuArray = [NSMutableArray arrayWithCapacity:0];
 
-    self.mainTbView.frame = CGRectMake(0, 0, mainscreenwidth, mainscreenhight);
+    self.mainTbView.frame = CGRectMake(0, 0, mainscreenwidth, mainscreenhight- 50);
     orderStr = [[NSUserDefaults standardUserDefaults] stringForKey:@"orderStr"];
     if (!orderStr) {
         orderStr = @"true";
@@ -155,6 +195,14 @@ static NSInteger i = 0;
     [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(reloadMainList) name: @"reloadAction" object: nil];
     
     self.orderBtn.hidden = YES;
+    
+    self.mainTbView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        //Call this Block When enter the refresh status automatically
+        pageId = 1;
+        [self getNetData];
+    }];
+    
+    [self.mainTbView.header beginRefreshing];
     
     self.mainTbView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         // 进入刷新状态后会自动调用这个block
@@ -367,36 +415,35 @@ static NSInteger i = 0;
 
 -(void)getNetData
 {
-    if (pageId == 1) {
-        [self.mainMuArray removeAllObjects];
-    }
-    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",@(pageId),@(COUNT)];
-    NSString *postStr = [NSString stringWithFormat:@"%@%@/%@/%@%@",kMainHeader,self.albumID,orderStr,urlStr,kDevice];
+//    if (pageId == 1) {
+//        [self.mainMuArray removeAllObjects];
+//    }
+//    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",@(pageId),@(COUNT)];
+//    NSString *postStr = [NSString stringWithFormat:@"%@%@/%@/%@%@",kMainHeader,self.albumID,orderStr,urlStr,kDevice];
+    
+    NSString *urlStr = [NSString stringWithFormat:@"%@&id=%@",xContentList,self.albumID];
     
     __weak typeof(self) bSelf = self;
     
-    [AFService postMethod:postStr andDict:nil completion:^(NSDictionary *results,NSError *error){
+    [AFService getMethod:urlStr andDict:nil completion:^(NSDictionary *results,NSError *error){
         
-//        if([[results objectForKey:@"ret"] integerValue] != 0){
-//            if(j < kMainIDArr.count){
-//                j++;
-//                [self getNetData];
-//            }
-//        }
+//        totalTracks = [[[results objectForKey:@"album"] objectForKey:@"tracks"] integerValue];
+//        
+//        totalPage = [[[results objectForKey:@"tracks"] objectForKey:@"maxPageId"] integerValue];
+//        
+//        NSArray *arr = [[results objectForKey:@"tracks"] objectForKey:@"list"];
         
-        totalTracks = [[[results objectForKey:@"album"] objectForKey:@"tracks"] integerValue];
-        
-        totalPage = [[[results objectForKey:@"tracks"] objectForKey:@"maxPageId"] integerValue];
-        
-        NSArray *arr = [[results objectForKey:@"tracks"] objectForKey:@"list"];
+        NSArray *arr = (NSArray *) results ;
 
         for (int i = 0; i < arr.count; i++) {
             TrackModel *track = [[TrackModel alloc]initWithDict:arr[i]];
+            track.coverLarge = bSelf.albumImage;
             track.downStatus = @"on";
             [bSelf.mainMuArray addObject:track];
         }
         
         [bSelf.mainTbView reloadData];
+        [self.mainTbView.header endRefreshing];
         [bSelf.mainTbView.footer endRefreshing];
         
         if (bSelf.mainMuArray.count != 0) {

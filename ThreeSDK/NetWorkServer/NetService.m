@@ -72,7 +72,7 @@
         
         if (httpResponse.statusCode==200) {
             dispatch_async(dispatch_get_main_queue(),^{
-                TLog(@"输出返回的内容%@",responseObject);
+//                TLog(@"输出返回的内容%@",responseObject);
                 completion(responseObject,nil);
             });
         }else

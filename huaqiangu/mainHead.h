@@ -51,24 +51,24 @@ return _shared##classname; \
 //替换版本时需更换的内容
 
 //苹果id
-#define AppStoreAppId @"863190534"
+#define AppStoreAppId @"879059095"
 
 #pragma mark -
 #pragma mark - AlbumTitle
 
-#define ALBUMTITLE @"郭德纲相声"
+#define ALBUMTITLE @"庶女有毒"
 
 #pragma mark -
 #pragma mark - BaiDSSP
 
-#define PUBLISHERID @"e8e6f45e"
-#define ADUNITTAG @"2376487"
-#define ADUNITTAGBANNER @"2376486"
+#define PUBLISHERID @"f9131424"
+#define ADUNITTAG @"2937996"
+#define ADUNITTAGBANNER @"2937994"
 
 #pragma mark -
 #pragma mark - UMengKey
 
-#define umAppKey @"53a2e6bd56240b39d20056a2"
+#define umAppKey @"5399ab8356240b396d0460e2"
 
 #define KadMobKey @"ca-app-pub-5473057868747749/7439180910"
 
@@ -77,7 +77,7 @@ return _shared##classname; \
 //#define kCommenColor RGB(248, 102, 47)
 #define kCommenColor RGB(88,185,201)
 //#define kCommenColor RGB(245,85,130)
-//#define kCommenColor RGB(165,180,198)
+//#define kCommenColor RGB(106,126,144)
 //#define kCommenColor RGB(183,137,88)
 //#define kCommenColor RGB(36,132,144)
 
