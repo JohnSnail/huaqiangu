@@ -51,24 +51,24 @@ return _shared##classname; \
 //替换版本时需更换的内容
 
 //苹果id
-#define AppStoreAppId @"879059095"
+#define AppStoreAppId @"882529956"
 
 #pragma mark -
 #pragma mark - AlbumTitle
 
-#define ALBUMTITLE @"庶女有毒"
+#define ALBUMTITLE @"郭德纲相声"
 
 #pragma mark -
 #pragma mark - BaiDSSP
 
-#define PUBLISHERID @"f9131424"
-#define ADUNITTAG @"2937996"
-#define ADUNITTAGBANNER @"2937994"
+#define PUBLISHERID @"e89aefee"
+#define ADUNITTAG @"2934610"
+#define ADUNITTAGBANNER @"2010416"
 
 #pragma mark -
 #pragma mark - UMengKey
 
-#define umAppKey @"5399ab8356240b396d0460e2"
+#define umAppKey @"53a2e6bd56240b39d20056a2"
 
 #define KadMobKey @"ca-app-pub-5473057868747749/7439180910"
 

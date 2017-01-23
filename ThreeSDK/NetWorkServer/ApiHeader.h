@@ -32,8 +32,8 @@
 
 
 #define kAlbumID @"12"
-#define kAlbumName @"庶女有毒"
-#define kVersion @"5.4.45"
+#define kAlbumName @"郭德纲"
+#define kVersion @"5.4.75"
 #define kRankingListId  @"21"
 
 #define kMainIDArr [[NSArray alloc]initWithObjects:@"4355797",@" 3689163", @"5218428",@"4071527", @"3299517",nil]
