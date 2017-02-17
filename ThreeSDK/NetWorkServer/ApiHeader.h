@@ -30,6 +30,9 @@
 
 #define xContentList @"http://ts.pk2game.com/TsService.asmx/GetTsContent?apikey=lygames_0953"
 
+#define xBOOK @"http://appwk.baidu.com/nahome/novel/recdetail?na_uncheck=1&opid=wk_na&bid=7&fr=7&listId=2551&wh=480%2C800&summary=0&pn=0&rn=20&pid=1&_=1486608646403&callback=jsonp1"
+
+#define xBOOKCONTENT @"http://api.bifong.com/t/follow_book/351506?devicetype=IOS&apptype=xs&uuid=0EDE2A52-0215-433E-ABC3-24574C1E6A9E&appid=sqmfxs_new2&net_status=1&open_udid=89d054cb5764db6ea827b96e895b6caf94f0d72c&ver=1.0&format=json&deviceinfo=iPhone9,1&sversion=10.2.1&invite_code=21711107"
 
 #define kAlbumID @"12"
 #define kAlbumName @"郭德纲"

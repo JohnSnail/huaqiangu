@@ -215,7 +215,8 @@
     
     [AFService getMethod:kAlbumList andDict:params completion:^(NSDictionary *results,NSError *error){
         
-        totalPage = [[results objectForKey:@"maxPageId"] integerValue];
+//        totalPage = [[results objectForKey:@"maxPageId"] integerValue];
+        
         NSArray *arr = [results objectForKey:@"list"];
         for (int i=0; i<arr.count; i++) {
             NSDictionary *dic = [arr objectAtIndex:i];
