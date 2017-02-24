@@ -56,7 +56,11 @@ return _shared##classname; \
 #pragma mark -
 #pragma mark - AlbumTitle
 
+<<<<<<< HEAD
 #define ALBUMTITLE @"三生三世十里桃花"
+=======
+#define ALBUMTITLE @"郭德纲"
+>>>>>>> origin
 
 #pragma mark -
 #pragma mark - BaiDSSP
