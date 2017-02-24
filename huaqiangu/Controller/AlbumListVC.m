@@ -213,11 +213,12 @@
     
 //    NSDictionary *params = @{@"pageId":@(pageId),@"pageSize":@(pageSize)};//庶女
     
-    [AFService getMethod:kAlbumList andDict:params completion:^(NSDictionary *results,NSError *error){
+    [AFService getMethod:sAlbumList andDict:nil completion:^(NSDictionary *results,NSError *error){
         
 //        totalPage = [[results objectForKey:@"maxPageId"] integerValue];
         
-        NSArray *arr = [results objectForKey:@"list"];
+//        NSArray *arr = [results objectForKey:@"list"];
+        NSArray *arr = [NSArray arrayWithArray:(NSArray *)results];
         for (int i=0; i<arr.count; i++) {
             NSDictionary *dic = [arr objectAtIndex:i];
             AlbumModel *album = [[AlbumModel alloc]initWithDict:dic];

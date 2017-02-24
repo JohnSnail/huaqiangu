@@ -11,15 +11,15 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>7.0</string>
 	<key>CFBundleName</key>
-	<string>郭德纲相声</string>
+	<string>三生三世</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>3.5</string>
+	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>3.5</string>
+	<string>1.0</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>

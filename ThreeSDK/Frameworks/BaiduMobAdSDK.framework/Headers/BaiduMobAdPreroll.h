@@ -28,6 +28,15 @@
  */
 @property(nonatomic, retain) UIView *renderBaseView;
 /**
+ *  是否显示倒计时
+ */
+@property BOOL supportTimeLabel;
+/**
+ *  是否显示详情按钮
+ */
+@property BOOL supportActImage;
+
+/**
  *  请求广告
  */
 - (void)request;

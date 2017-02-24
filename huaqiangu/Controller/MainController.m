@@ -418,20 +418,22 @@ static NSInteger i = 0;
     if (pageId == 1) {
         [self.mainMuArray removeAllObjects];
     }
-    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",@(pageId),@(COUNT)];
-    NSString *postStr = [NSString stringWithFormat:@"%@%@/%@/%@%@",kMainHeader,self.albumID,orderStr,urlStr,kDevice];
+//    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",@(pageId),@(COUNT)];
+//    NSString *postStr = [NSString stringWithFormat:@"%@%@/%@/%@%@",kMainHeader,self.albumID,orderStr,urlStr,kDevice];
     
-//    NSString *urlStr = [NSString stringWithFormat:@"%@&id=%@",xContentList,self.albumID];
+    NSString *urlStr = [NSString stringWithFormat:@"%@&id=%@",sContent,self.albumID];
     
     __weak typeof(self) bSelf = self;
     
-    [AFService postMethod:postStr andDict:nil completion:^(NSDictionary *results,NSError *error){
+    [AFService getMethod:urlStr andDict:nil completion:^(NSDictionary *results,NSError *error){
         
-        totalTracks = [[[results objectForKey:@"album"] objectForKey:@"tracks"] integerValue];
+//        totalTracks = [[[results objectForKey:@"album"] objectForKey:@"tracks"] integerValue];
+////
+//        totalPage = [[[results objectForKey:@"tracks"] objectForKey:@"maxPageId"] integerValue];
 //
-        totalPage = [[[results objectForKey:@"tracks"] objectForKey:@"maxPageId"] integerValue];
-//
-        NSArray *arr = [[results objectForKey:@"tracks"] objectForKey:@"list"];
+//        NSArray *arr = [[results objectForKey:@"tracks"] objectForKey:@"list"];
+        
+        NSArray *arr = (NSArray *) results;
 
         for (int i = 0; i < arr.count; i++) {
             TrackModel *track = [[TrackModel alloc]initWithDict:arr[i]];
