@@ -76,7 +76,7 @@
     
     [self.window makeKeyAndVisible];
     
-    [self baiduSplashView];
+//    [self baiduSplashView];
     
     [self umengAtion];
     

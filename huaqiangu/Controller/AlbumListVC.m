@@ -215,10 +215,15 @@
     
     [AFService getMethod:sAlbumList andDict:nil completion:^(NSDictionary *results,NSError *error){
         
+<<<<<<< HEAD
 //        totalPage = [[results objectForKey:@"maxPageId"] integerValue];
         
 //        NSArray *arr = [results objectForKey:@"list"];
         NSArray *arr = [NSArray arrayWithArray:(NSArray *)results];
+=======
+        totalPage = [[results objectForKey:@"maxPageId"] integerValue];
+        NSArray *arr = [results objectForKey:@"list"];
+>>>>>>> parent of 5b3450b... 提交全屏广告
         for (int i=0; i<arr.count; i++) {
             NSDictionary *dic = [arr objectAtIndex:i];
             AlbumModel *album = [[AlbumModel alloc]initWithDict:dic];
