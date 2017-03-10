@@ -18,13 +18,16 @@
     NSInteger currentPage;
 }
 
+
 @end
 
 @implementation AlbumListVC
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
     currentPage = 1;
     self.albumTbview.backgroundColor = RGB(230, 227, 219);
     self.navigationItem.titleView = [CommUtils navTittle:ALBUMTITLE];
@@ -209,16 +212,14 @@
     
 //    NSDictionary *params = @{@"device":@"ios",@"pageId":@(pageId),@"pageSize":@(pageSize),@"calcDimension":@"hot",@"categoryId":kAlbumID,@"status":@(0),@"tagName":kAlbumName};
 //    NSDictionary *params = @{@"page":@(pageId)};
-//    NSDictionary *params = @{@"device":@"iPhone",@"pageId":@(pageId),@"pageSize":@(pageSize),@"rankingListId":kRankingListId,@"scale":@"3",@"target":@"main",@"version":kVersion};
-    
-    
+    NSDictionary *params = @{@"device":@"iPhone",@"pageId":@(pageId),@"pageSize":@(pageSize),@"rankingListId":kRankingListId,@"scale":@"3",@"target":@"main",@"version":kVersion};
     
 //    NSDictionary *params = @{@"pageId":@(pageId),@"pageSize":@(pageSize)};//庶女
     
-    [AFService getMethod:xAlbumList andDict:nil completion:^(NSDictionary *results,NSError *error){
+    [AFService getMethod:kRankList andDict:params completion:^(NSDictionary *results,NSError *error){
         
-//        totalPage = [[results objectForKey:@"maxPageId"] integerValue];
-        NSArray *arr = [NSArray arrayWithArray:(NSArray *)results];
+        totalPage = [[results objectForKey:@"maxPageId"] integerValue];
+        NSArray *arr = [results objectForKey:@"list"];
         for (int i=0; i<arr.count; i++) {
             NSDictionary *dic = [arr objectAtIndex:i];
             AlbumModel *album = [[AlbumModel alloc]initWithDict:dic];

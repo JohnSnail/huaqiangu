@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PlayController : UIViewController<STKAudioPlayerDelegate>
+@interface PlayController : UIViewController<STKAudioPlayerDelegate,GADBannerViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView *PlayHeadView;
 @property (weak, nonatomic) IBOutlet UIImageView *bgImageView;

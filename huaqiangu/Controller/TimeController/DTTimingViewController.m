@@ -10,9 +10,10 @@
 #import "DTTimingManager.h"
 #import "PlayController.h"
 
-@interface DTTimingViewController ()<BaiduMobAdViewDelegate>{
+@interface DTTimingViewController ()<BaiduMobAdViewDelegate,GADBannerViewDelegate>{
 //    GADBannerView *adBannerView;
     BaiduMobAdView *sharedAdView;
+    GADBannerView *adBannerView;
 }
 @end
 
@@ -64,6 +65,33 @@
     NSLog(@"delegate: will display ad");
 }
 
+#pragma mark - admob广告
+
+-(void)admobAD
+{
+    adBannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait];
+    adBannerView.frame = CGRectMake(0, mainscreenhight - 50, mainscreenwidth, 50);
+    adBannerView.adUnitID = @"ca-app-pub-5473057868747749/2846237312";
+    adBannerView.delegate = self;
+    adBannerView.rootViewController = self;
+    [self.view addSubview:adBannerView];
+    
+    GADRequest *request = [GADRequest request];
+    // Requests test ads on devices you specify. Your test device ID is printed to the console when
+    // an ad request is made. GADBannerView automatically returns test ads when running on a
+    // simulator.
+    
+    [adBannerView loadRequest:request];
+}
+
+- (void)adViewDidReceiveAd:(GADBannerView *)bannerView {
+    bannerView.hidden = NO;
+}
+
+- (void)adView:(GADBannerView *)adView didFailToReceiveAdWithError:(GADRequestError *)error {
+    NSLog(@"adView:didFailToReceiveAdWithError: %@", error.localizedDescription);
+}
+
 #pragma mark - 给好评
 -(void)pushAppStore
 {
@@ -93,7 +121,8 @@
     self.tbvTiming.backgroundColor = RGB(230, 227, 219);
     self.view.backgroundColor = RGB(230, 227, 219);
     
-    [self addBaiDuAdView];
+//    [self addBaiDuAdView];
+    [self admobAD];
     
     self.navigationItem.rightBarButtonItem = [LMButton setNavright:@"反馈" andcolor:[UIColor whiteColor] andSelector:@selector(pushAppStore) andTarget:self];
 

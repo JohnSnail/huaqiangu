@@ -1,4 +1,10 @@
 target 'huaqiangu' do
+pod 'Firebase', '~> 3.14.0'
+source 'https://github.com/CocoaPods/Specs.git'
+
+platform :ios, '7.0'
+pod 'Firebase/Core'
+pod 'Firebase/AdMob'
 pod 'SDWebImage', '~> 3.8.2'
 pod 'AFNetworking', '~> 2.6.3'
 pod 'FMDB', '~> 2.3'

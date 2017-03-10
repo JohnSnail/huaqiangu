@@ -33,6 +33,7 @@
 		3FA8B0C71D8E8567007A8D58 /* AlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA8B0C51D8E8567007A8D58 /* AlbumCell.m */; };
 		3FA8B0C81D8E8567007A8D58 /* AlbumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FA8B0C61D8E8567007A8D58 /* AlbumCell.xib */; };
 		3FAD95C11C86DFEF0094D504 /* PlayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FAD95C01C86DFEF0094D504 /* PlayController.m */; };
+		9AF873E01E7000D9006D5A4B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9AF873DF1E7000D9006D5A4B /* GoogleService-Info.plist */; };
 		BC13E4B31B82D82700222CD2 /* NSMutableDictionary+SafeValue.m in Sources */ = {isa = PBXBuildFile; fileRef = BC13E4B21B82D82700222CD2 /* NSMutableDictionary+SafeValue.m */; };
 		BC13E4B61B82E70D00222CD2 /* KKNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC13E4B51B82E70D00222CD2 /* KKNavigationController.m */; };
 		BC13E4BD1B83302D00222CD2 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC13E4BA1B83302D00222CD2 /* Reachability.m */; };
@@ -123,6 +124,7 @@
 		3FA8B0C51D8E8567007A8D58 /* AlbumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumCell.m; sourceTree = "<group>"; };
 		3FA8B0C61D8E8567007A8D58 /* AlbumCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumCell.xib; sourceTree = "<group>"; };
 		3FAD95C01C86DFEF0094D504 /* PlayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayController.m; sourceTree = "<group>"; };
+		9AF873DF1E7000D9006D5A4B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BC13E4B11B82D82700222CD2 /* NSMutableDictionary+SafeValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+SafeValue.h"; sourceTree = "<group>"; };
 		BC13E4B21B82D82700222CD2 /* NSMutableDictionary+SafeValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSMutableDictionary+SafeValue.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		BC13E4B41B82E70D00222CD2 /* KKNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKNavigationController.h; sourceTree = "<group>"; };
@@ -360,6 +362,7 @@
 		BC1FB5B71B595E9C00D06876 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9AF873DF1E7000D9006D5A4B /* GoogleService-Info.plist */,
 				BC1FB5B81B595E9C00D06876 /* Info.plist */,
 				BC1FB5B91B595E9C00D06876 /* main.m */,
 				BC1FB5FB1B59776D00D06876 /* mainHead.h */,
@@ -522,13 +525,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BC1FB5D71B595E9C00D06876 /* Build configuration list for PBXNativeTarget "huaqiangu" */;
 			buildPhases = (
-				37372EC600F39A11B66AEFBA /* 📦 Check Pods Manifest.lock */,
+				37372EC600F39A11B66AEFBA /* [CP] Check Pods Manifest.lock */,
 				BC1FB5B01B595E9C00D06876 /* Sources */,
 				BC1FB5B11B595E9C00D06876 /* Frameworks */,
 				BC1FB5B21B595E9C00D06876 /* Resources */,
 				BC1567291B7DA1F60018F5BE /* ShellScript */,
-				6ED0712A61C5CCC6668FEB81 /* 📦 Embed Pods Frameworks */,
-				29DFCDDB944D9280F5394E0E /* 📦 Copy Pods Resources */,
+				6ED0712A61C5CCC6668FEB81 /* [CP] Embed Pods Frameworks */,
+				29DFCDDB944D9280F5394E0E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -568,7 +571,7 @@
 				TargetAttributes = {
 					BC1FB5B31B595E9C00D06876 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = EKT7TDBE5W;
+						DevelopmentTeam = JD2W4XYSND;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -609,6 +612,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AF873E01E7000D9006D5A4B /* GoogleService-Info.plist in Resources */,
 				3F8854951D8E62D100E3E6A2 /* AlbumListVC.xib in Resources */,
 				BC1FB6651B59F47400D06876 /* PlayController.xib in Resources */,
 				BC1FB5F21B59684000D06876 /* MainController.xib in Resources */,
@@ -634,14 +638,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		29DFCDDB944D9280F5394E0E /* 📦 Copy Pods Resources */ = {
+		29DFCDDB944D9280F5394E0E /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -649,29 +653,29 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-huaqiangu/Pods-huaqiangu-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		37372EC600F39A11B66AEFBA /* 📦 Check Pods Manifest.lock */ = {
+		37372EC600F39A11B66AEFBA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		6ED0712A61C5CCC6668FEB81 /* 📦 Embed Pods Frameworks */ = {
+		6ED0712A61C5CCC6668FEB81 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -859,7 +863,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = EKT7TDBE5W;
+				DEVELOPMENT_TEAM = JD2W4XYSND;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -881,7 +885,7 @@
 					"-ObjC",
 					"-lstdc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.weiting.sngl;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jasondis.ljsw;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -895,7 +899,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = EKT7TDBE5W;
+				DEVELOPMENT_TEAM = JD2W4XYSND;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -917,7 +921,7 @@
 					"-ObjC",
 					"-lstdc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.weiting.sngl;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jasondis.ljsw;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

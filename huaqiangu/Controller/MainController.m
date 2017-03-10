@@ -39,6 +39,8 @@ static NSInteger i = 0;
 {
     [super viewWillAppear:animated];
     
+    [self admobAD];
+    
     self.navigationController.navigationBarHidden = NO;
     
     [self.mainTbView reloadData];
@@ -50,7 +52,7 @@ static NSInteger i = 0;
     
     [self playAnimation];
     
-    [self addBaiDuAdView];
+//    [self addBaiDuAdView];
 }
 
 -(void)dealloc
@@ -64,6 +66,7 @@ static NSInteger i = 0;
 {
     [super viewDidDisappear:animated];
     sharedAdView = nil;
+    adBannerView = nil;
 }
 
 -(void)addBaiDuAdView
@@ -80,6 +83,37 @@ static NSInteger i = 0;
         [sharedAdView start];
     }
 }
+
+#pragma mark - admob广告
+
+-(void)admobAD
+{
+    adBannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait];
+    adBannerView.frame = CGRectMake(0, mainscreenhight - 50, mainscreenwidth, 50);
+    adBannerView.adUnitID = @"ca-app-pub-5473057868747749/2846237312";
+    adBannerView.delegate = self;
+    adBannerView.rootViewController = self;
+    [self.view addSubview:adBannerView];
+    
+    GADRequest *request = [GADRequest request];
+    // Requests test ads on devices you specify. Your test device ID is printed to the console when
+    // an ad request is made. GADBannerView automatically returns test ads when running on a
+    // simulator.
+//    request.testDevices = @[
+//                            @"2077ef9a63d2b398840261c8221a0c9a"  // Eric's iPod Touch
+//                            ];
+    [adBannerView loadRequest:request];
+}
+
+- (void)adViewDidReceiveAd:(GADBannerView *)bannerView {
+    bannerView.hidden = NO;
+}
+
+- (void)adView:(GADBannerView *)adView didFailToReceiveAdWithError:(GADRequestError *)error {
+    NSLog(@"adView:didFailToReceiveAdWithError: %@", error.localizedDescription);
+}
+
+
 
 - (NSString *)publisherId {
     return PUBLISHERID; //@"your_own_app_id";
@@ -152,7 +186,8 @@ static NSInteger i = 0;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+    [self admobAD];
+
     self.view.backgroundColor = RGB(230, 227, 219);
     self.mainTbView.backgroundColor = RGB(230, 227, 219);
 
@@ -415,25 +450,25 @@ static NSInteger i = 0;
 
 -(void)getNetData
 {
-//    if (pageId == 1) {
-//        [self.mainMuArray removeAllObjects];
-//    }
-//    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",@(pageId),@(COUNT)];
-//    NSString *postStr = [NSString stringWithFormat:@"%@%@/%@/%@%@",kMainHeader,self.albumID,orderStr,urlStr,kDevice];
+    if (pageId == 1) {
+        [self.mainMuArray removeAllObjects];
+    }
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@",@(pageId),@(COUNT)];
+    NSString *postStr = [NSString stringWithFormat:@"%@%@/%@/%@%@",kMainHeader,self.albumID,orderStr,urlStr,kDevice];
     
-    NSString *urlStr = [NSString stringWithFormat:@"%@&id=%@",xContentList,self.albumID];
+//    NSString *urlStr = [NSString stringWithFormat:@"%@&id=%@",xContentList,self.albumID];
     
     __weak typeof(self) bSelf = self;
     
-    [AFService getMethod:urlStr andDict:nil completion:^(NSDictionary *results,NSError *error){
+    [AFService getMethod:postStr andDict:nil completion:^(NSDictionary *results,NSError *error){
         
-//        totalTracks = [[[results objectForKey:@"album"] objectForKey:@"tracks"] integerValue];
-//        
-//        totalPage = [[[results objectForKey:@"tracks"] objectForKey:@"maxPageId"] integerValue];
-//        
-//        NSArray *arr = [[results objectForKey:@"tracks"] objectForKey:@"list"];
+        totalTracks = [[[results objectForKey:@"album"] objectForKey:@"tracks"] integerValue];
         
-        NSArray *arr = (NSArray *) results ;
+        totalPage = [[[results objectForKey:@"tracks"] objectForKey:@"maxPageId"] integerValue];
+        
+        NSArray *arr = [[results objectForKey:@"tracks"] objectForKey:@"list"];
+        
+//        NSArray *arr = (NSArray *) results ;
 
         for (int i = 0; i < arr.count; i++) {
             TrackModel *track = [[TrackModel alloc]initWithDict:arr[i]];

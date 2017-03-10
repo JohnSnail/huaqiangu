@@ -56,7 +56,7 @@ return _shared##classname; \
 #pragma mark -
 #pragma mark - AlbumTitle
 
-#define ALBUMTITLE @"庶女有毒"
+#define ALBUMTITLE @"罗辑思维"
 
 #pragma mark -
 #pragma mark - BaiDSSP
@@ -68,7 +68,7 @@ return _shared##classname; \
 #pragma mark -
 #pragma mark - UMengKey
 
-#define umAppKey @"5399ab8356240b396d0460e2"
+#define umAppKey @"55ae0ac4e0f55a71c4004ebb"
 
 #define KadMobKey @"ca-app-pub-5473057868747749/7439180910"
 
@@ -117,5 +117,7 @@ return _shared##classname; \
 #import "NSString+Hash.h"
 #import "BaiduMobAdSDK/BaiduMobAdDelegateProtocol.h"
 #import "BaiduMobAdSDK/BaiduMobAdView.h"
+#import <GoogleMobileAds/GoogleMobileAds.h>
+#import <Firebase.h>
 
 #endif

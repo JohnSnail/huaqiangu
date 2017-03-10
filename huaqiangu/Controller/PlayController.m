@@ -17,6 +17,7 @@
     AutoRunLabel *trackLabel;
     BaiduMobAdView *sharedAdView;
 //    BaiduMobAdInterstitial *interstitialView;
+    GADBannerView *adBannerView;
 }
 
 @end
@@ -56,7 +57,36 @@ SINGLETON_CLASS(PlayController);
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
 //    [self addBaiDuAdView];
+    [self admobAD];
 }
+
+#pragma mark - admob广告
+
+-(void)admobAD
+{
+    adBannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait];
+    adBannerView.frame = CGRectMake(0, 0, self.bannerView.frame.size.width, self.bannerView.frame.size.height);;
+    adBannerView.adUnitID = @"ca-app-pub-5473057868747749/2846237312";
+    adBannerView.delegate = self;
+    adBannerView.rootViewController = self;
+    [self.bannerView addSubview:adBannerView];
+    
+    GADRequest *request = [GADRequest request];
+    // Requests test ads on devices you specify. Your test device ID is printed to the console when
+    // an ad request is made. GADBannerView automatically returns test ads when running on a
+    // simulator.
+    
+    [adBannerView loadRequest:request];
+}
+
+- (void)adViewDidReceiveAd:(GADBannerView *)bannerView {
+    bannerView.hidden = NO;
+}
+
+- (void)adView:(GADBannerView *)adView didFailToReceiveAdWithError:(GADRequestError *)error {
+    NSLog(@"adView:didFailToReceiveAdWithError: %@", error.localizedDescription);
+}
+
 
 -(void)viewDidLoad {
     [super viewDidLoad];
@@ -65,7 +95,7 @@ SINGLETON_CLASS(PlayController);
     [self addHeadView];
     [self setTrackScrollerLabel];
     _audioPlayer = [[STKAudioPlayer alloc] init];
-    [self addBaiDuAdView];
+//    [self addBaiDuAdView];
     [self playMusic];
     
     [DTTimingManager sharedDTTimingManager].timingBlk = ^(NSNumber *timing) {

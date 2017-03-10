@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MainController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface MainController : UIViewController<UITableViewDataSource,UITableViewDelegate,GADBannerViewDelegate>{
+    GADBannerView *adBannerView;
+}
 
 @property (weak, nonatomic) IBOutlet UITableView *mainTbView;
 @property (weak, nonatomic) IBOutlet UIView *footView;

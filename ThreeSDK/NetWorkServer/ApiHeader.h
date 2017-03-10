@@ -16,7 +16,7 @@
 
 //http://mobile.ximalaya.com/mobile/discovery/v3/rankingList/album?device=iPhone&pageId=1&pageSize=20&rankingListId=21&scale=2&target=main&version=5.4.33
 
-//#define kRankList @"http://mobile.ximalaya.com/mobile/discovery/v3/rankingList/album"
+#define kRankList @"http://mobile.ximalaya.com/mobile/discovery/v3/rankingList/album"
 
 #define kList @"http://mobile.ximalaya.com/mobile/v1/artist/albums?device=iPhone&toUid=34299871"
 
@@ -32,8 +32,8 @@
 
 
 #define kAlbumID @"12"
-#define kAlbumName @"庶女有毒"
-#define kVersion @"5.4.45"
+#define kAlbumName @"罗辑思维"
+#define kVersion @"5.4.87"
 #define kRankingListId  @"21"
 
 #define kMainIDArr [[NSArray alloc]initWithObjects:@"4355797",@" 3689163", @"5218428",@"4071527", @"3299517",nil]
