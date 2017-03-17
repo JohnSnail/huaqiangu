@@ -327,6 +327,7 @@
 		4ACE08C70E9DC9489142538786A97E23 /* AFURLSessionManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLSessionManager.h; path = AFNetworking/AFURLSessionManager.h; sourceTree = "<group>"; };
 		4BDC7D373C221C566AD679CED476F65E /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Frameworks/FirebaseAnalytics.framework; sourceTree = "<group>"; };
 		4C38BC1B4EC14A5CF03EFF7CE9D9E447 /* MJRefreshAutoNormalFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshAutoNormalFooter.h; path = MJRefresh/Custom/Footer/Auto/MJRefreshAutoNormalFooter.h; sourceTree = "<group>"; };
+		4CA8DEE380DE7621EC236EE1C5A6A8C3 /* UMMobClick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UMMobClick.framework; path = umsdk_IOS_analyics_idfa_v4.2.4/UMMobClick.framework; sourceTree = "<group>"; };
 		504D139AB8FB9537A0AE5ABD1D98AF63 /* SGNavigationProgress-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SGNavigationProgress-dummy.m"; sourceTree = "<group>"; };
 		504E9EDE2541B79EC39F3B2AA5999C87 /* STKCoreFoundationDataSource.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STKCoreFoundationDataSource.h; path = StreamingKit/StreamingKit/STKCoreFoundationDataSource.h; sourceTree = "<group>"; };
 		52334BBA69B341720FD40EFDA18D2B13 /* SGNavigationProgress-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SGNavigationProgress-prefix.pch"; sourceTree = "<group>"; };
@@ -438,7 +439,6 @@
 		C68B2A344646EA8F2618A3E15E68FAD9 /* STKDataSourceWrapper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STKDataSourceWrapper.h; path = StreamingKit/StreamingKit/STKDataSourceWrapper.h; sourceTree = "<group>"; };
 		CD88CCC5D5852D1A32B71D0678FF01BB /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Frameworks/FirebaseInstanceID.framework; sourceTree = "<group>"; };
 		CF307FE63B417B1FAD12AC101C7680E7 /* libGoogleToolboxForMac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libGoogleToolboxForMac.a; path = libGoogleToolboxForMac.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		CFCDACB0DE00667AE4D4C4E25895776D /* UMMobClick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UMMobClick.framework; path = umsdk_IOS_analyics_idfa_v4.1.10/UMMobClick.framework; sourceTree = "<group>"; };
 		D13A44B398144F1DA4F15B5A2EC58080 /* MJRefreshGifHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshGifHeader.m; path = MJRefresh/Custom/Header/MJRefreshGifHeader.m; sourceTree = "<group>"; };
 		D21D187262DAAFF4F0B68F096735F2C7 /* SDWebImageDownloaderOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageDownloaderOperation.h; path = SDWebImage/SDWebImageDownloaderOperation.h; sourceTree = "<group>"; };
 		D28CD38A3AF6E3D2F165C27458F647A5 /* SDWebImageManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageManager.h; path = SDWebImage/SDWebImageManager.h; sourceTree = "<group>"; };
@@ -666,7 +666,7 @@
 		23F5EED5E4FDA4E7C71E15B7F1E4C771 /* UMengAnalytics */ = {
 			isa = PBXGroup;
 			children = (
-				486F49559F6330B43172B224494FE10C /* Frameworks */,
+				C75C3B867DCC82D2786ACBAD7E4E2B30 /* Frameworks */,
 			);
 			name = UMengAnalytics;
 			path = UMengAnalytics;
@@ -771,14 +771,6 @@
 			);
 			name = FirebaseInstanceID;
 			path = FirebaseInstanceID;
-			sourceTree = "<group>";
-		};
-		486F49559F6330B43172B224494FE10C /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				CFCDACB0DE00667AE4D4C4E25895776D /* UMMobClick.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		493E710D22809DECA80098245F541B58 /* StreamingKit */ = {
@@ -1104,6 +1096,14 @@
 				6098E5E074C4BEAEFF00D93C409C3FA0 /* FMResultSet.m */,
 			);
 			name = standard;
+			sourceTree = "<group>";
+		};
+		C75C3B867DCC82D2786ACBAD7E4E2B30 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4CA8DEE380DE7621EC236EE1C5A6A8C3 /* UMMobClick.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		CBD6D10234B115EE54BCA95C6A4B9707 /* Frameworks */ = {

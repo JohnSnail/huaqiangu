@@ -210,13 +210,13 @@
     
     //http://mobile.ximalaya.com/mobile/discovery/v1/category/album?calcDimension=hot&categoryId=12&device=ios&pageId=1&pageSize=20&status=0&tagName=%E9%83%AD%E5%BE%B7%E7%BA%B2%E7%9B%B8%E5%A3%B0
     
-//    NSDictionary *params = @{@"device":@"ios",@"pageId":@(pageId),@"pageSize":@(pageSize),@"calcDimension":@"hot",@"categoryId":kAlbumID,@"status":@(0),@"tagName":kAlbumName};
+    NSDictionary *params = @{@"device":@"ios",@"pageId":@(pageId),@"pageSize":@(pageSize),@"calcDimension":@"hot",@"categoryId":kAlbumID,@"status":@(0),@"tagName":kAlbumName};
 //    NSDictionary *params = @{@"page":@(pageId)};
-    NSDictionary *params = @{@"device":@"iPhone",@"pageId":@(pageId),@"pageSize":@(pageSize),@"rankingListId":kRankingListId,@"scale":@"3",@"target":@"main",@"version":kVersion};
+//    NSDictionary *params = @{@"device":@"iPhone",@"pageId":@(pageId),@"pageSize":@(pageSize),@"rankingListId":kRankingListId,@"scale":@"3",@"target":@"main",@"version":kVersion};
     
 //    NSDictionary *params = @{@"pageId":@(pageId),@"pageSize":@(pageSize)};//庶女
     
-    [AFService getMethod:kRankList andDict:params completion:^(NSDictionary *results,NSError *error){
+    [AFService getMethod:kAlbumList andDict:params completion:^(NSDictionary *results,NSError *error){
         
         totalPage = [[results objectForKey:@"maxPageId"] integerValue];
         NSArray *arr = [results objectForKey:@"list"];

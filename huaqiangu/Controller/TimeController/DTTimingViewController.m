@@ -71,7 +71,7 @@
 {
     adBannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait];
     adBannerView.frame = CGRectMake(0, mainscreenhight - 50, mainscreenwidth, 50);
-    adBannerView.adUnitID = @"ca-app-pub-5473057868747749/2846237312";
+    adBannerView.adUnitID = KadMobKey;
     adBannerView.delegate = self;
     adBannerView.rootViewController = self;
     [self.view addSubview:adBannerView];

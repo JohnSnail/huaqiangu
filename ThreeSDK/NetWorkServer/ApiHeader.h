@@ -32,7 +32,7 @@
 
 
 #define kAlbumID @"12"
-#define kAlbumName @"罗辑思维"
+#define kAlbumName @"相声大全"
 #define kVersion @"5.4.87"
 #define kRankingListId  @"21"
 

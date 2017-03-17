@@ -51,12 +51,12 @@ return _shared##classname; \
 //替换版本时需更换的内容
 
 //苹果id
-#define AppStoreAppId @"879059095"
+#define AppStoreAppId @"879096197"
 
 #pragma mark -
 #pragma mark - AlbumTitle
 
-#define ALBUMTITLE @"罗辑思维"
+#define ALBUMTITLE @"岳云鹏"
 
 #pragma mark -
 #pragma mark - BaiDSSP
@@ -68,9 +68,9 @@ return _shared##classname; \
 #pragma mark -
 #pragma mark - UMengKey
 
-#define umAppKey @"55ae0ac4e0f55a71c4004ebb"
+#define umAppKey @"5374e10e56240b391301d819"
 
-#define KadMobKey @"ca-app-pub-5473057868747749/7439180910"
+#define KadMobKey @"ca-app-pub-5473057868747749/8937006511"
 
 #define kGADInterKey @"ca-app-pub-5473057868747749/1127218114"
 

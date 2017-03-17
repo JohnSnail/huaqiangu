@@ -66,7 +66,7 @@ SINGLETON_CLASS(PlayController);
 {
     adBannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait];
     adBannerView.frame = CGRectMake(0, 0, self.bannerView.frame.size.width, self.bannerView.frame.size.height);;
-    adBannerView.adUnitID = @"ca-app-pub-5473057868747749/2846237312";
+    adBannerView.adUnitID = KadMobKey;
     adBannerView.delegate = self;
     adBannerView.rootViewController = self;
     [self.bannerView addSubview:adBannerView];
