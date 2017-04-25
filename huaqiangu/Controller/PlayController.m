@@ -295,7 +295,7 @@ SINGLETON_CLASS(PlayController);
         }
         trackLabel.text = muStr;
         
-        [self.albumImageView sd_setImageWithURL:[NSURL URLWithString:self.playTrack.coverLarge] placeholderImage:[UIImage imageNamed:@"main_otherplace"]];
+        [self.albumImageView sd_setImageWithURL:[NSURL URLWithString:self.playTrack.coverLarge] placeholderImage:[UIImage imageNamed:@"renmin"]];
     }
     
     NSString *strTrackId = (NSString *)[self.audioPlayer currentlyPlayingQueueItemId];

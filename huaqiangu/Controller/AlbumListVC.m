@@ -12,10 +12,11 @@
 #import "MainController.h"
 #import "PlayController.h"
 
-@interface AlbumListVC ()<UITableViewDelegate,UITableViewDataSource>{
+@interface AlbumListVC ()<UITableViewDelegate,UITableViewDataSource,GADBannerViewDelegate>{
     UIButton *playBtn;
     NSInteger totalPage;
     NSInteger currentPage;
+    GADBannerView *adBannerView;
 }
 
 
@@ -29,12 +30,17 @@
     // Do any additional setup after loading the view from its nib.
     
     currentPage = 1;
+    self.view.backgroundColor = RGB(230, 227, 219);
     self.albumTbview.backgroundColor = RGB(230, 227, 219);
     self.navigationItem.titleView = [CommUtils navTittle:ALBUMTITLE];
 
     self.navigationItem.leftBarButtonItem = [LMButton setNavright:@"反馈" andcolor:[UIColor whiteColor] andSelector:@selector(pushAppStore) andTarget:self];
     
-    self.albumTbview.frame = CGRectMake(0, 0, mainscreenwidth, mainscreenhight);
+    self.albumTbview.frame = CGRectMake(0, 0, mainscreenwidth, mainscreenhight - 50);
+    
+    //添加admob广告
+    [self admobAD];
+    
     _albumMuArray = [NSMutableArray arrayWithCapacity:0];
 //    [self getAlbumListData:currentPage andPageSize:20 andTagName:kAlbumName];
     
@@ -210,13 +216,13 @@
     
     //http://mobile.ximalaya.com/mobile/discovery/v1/category/album?calcDimension=hot&categoryId=12&device=ios&pageId=1&pageSize=20&status=0&tagName=%E9%83%AD%E5%BE%B7%E7%BA%B2%E7%9B%B8%E5%A3%B0
     
-    NSDictionary *params = @{@"device":@"ios",@"pageId":@(pageId),@"pageSize":@(pageSize),@"calcDimension":@"hot",@"categoryId":kAlbumID,@"status":@(0),@"tagName":kAlbumName};
+//    NSDictionary *params = @{@"device":@"ios",@"pageId":@(pageId),@"pageSize":@(pageSize),@"calcDimension":@"hot",@"categoryId":kAlbumID,@"status":@(0),@"tagName":kAlbumName};
 //    NSDictionary *params = @{@"page":@(pageId)};
 //    NSDictionary *params = @{@"device":@"iPhone",@"pageId":@(pageId),@"pageSize":@(pageSize),@"rankingListId":kRankingListId,@"scale":@"3",@"target":@"main",@"version":kVersion};
     
 //    NSDictionary *params = @{@"pageId":@(pageId),@"pageSize":@(pageSize)};//庶女
     
-    [AFService getMethod:kAlbumList andDict:params completion:^(NSDictionary *results,NSError *error){
+    [AFService getMethod:kAlbumList andDict:nil completion:^(NSDictionary *results,NSError *error){
         
         totalPage = [[results objectForKey:@"maxPageId"] integerValue];
         NSArray *arr = [results objectForKey:@"list"];
@@ -225,6 +231,15 @@
             AlbumModel *album = [[AlbumModel alloc]initWithDict:dic];
             [bSelf.albumMuArray addObject:album];
         }
+//        //添加时效性内容
+//        AlbumModel *album = [[AlbumModel alloc]init];
+//        album.title = @"罗辑思维全集";
+//        album.albumId = @"239463";
+//        album.intro = @"在知识中寻找独立的见识，您在把玩知识中寻找思维的乐趣";
+//        album.coverLarge = @"renmin";
+//        [bSelf.albumMuArray insertObject:album atIndex:0];
+//        //添加时效性内容 end
+        
         [self.albumTbview reloadData];
         [self.albumTbview.header endRefreshing];
         [self.albumTbview.footer endRefreshing];
@@ -293,6 +308,45 @@
     mainVC.albumTitle = album.title;
     mainVC.albumImage = album.coverLarge;
     [self.navigationController pushViewController:mainVC animated:YES];
+}
+
+#pragma mark - admob广告
+
+-(void)admobAD
+{
+    adBannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait];
+    adBannerView.frame = CGRectMake(0, mainscreenhight - 50, mainscreenwidth, 50);
+    adBannerView.adUnitID = KadMobKey;
+    adBannerView.delegate = self;
+    adBannerView.rootViewController = self;
+    [self.view addSubview:adBannerView];
+    
+    GADRequest *request = [GADRequest request];
+    // Requests test ads on devices you specify. Your test device ID is printed to the console when
+    // an ad request is made. GADBannerView automatically returns test ads when running on a
+    // simulator.
+    //    request.testDevices = @[
+    //                            @"2077ef9a63d2b398840261c8221a0c9a"  // Eric's iPod Touch
+    //                            ];
+    [adBannerView loadRequest:request];
+}
+
+- (void)adViewDidReceiveAd:(GADBannerView *)bannerView {
+    bannerView.hidden = NO;
+}
+
+- (void)adView:(GADBannerView *)adView didFailToReceiveAdWithError:(GADRequestError *)error {
+    NSLog(@"adView:didFailToReceiveAdWithError: %@", error.localizedDescription);
+}
+
+
+
+- (NSString *)publisherId {
+    return PUBLISHERID; //@"your_own_app_id";
+}
+
+-(void) willDisplayAd:(BaiduMobAdView*) adview {
+    NSLog(@"delegate: will display ad");
 }
 
 @end
