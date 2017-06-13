@@ -51,12 +51,12 @@ return _shared##classname; \
 //替换版本时需更换的内容
 
 //苹果id
-#define AppStoreAppId @"1022277645"
+#define AppStoreAppId @"1117248180"
 
 #pragma mark -
 #pragma mark - AlbumTitle
 
-#define ALBUMTITLE @"人民的名义"
+#define ALBUMTITLE @"罗辑思维"
 
 #pragma mark -
 #pragma mark - BaiDSSP
@@ -66,9 +66,14 @@ return _shared##classname; \
 #define ADUNITTAGBANNER @"2937994"
 
 #pragma mark -
+#pragma mark - Adview
+
+#define AdLink @"http://www.liujingongchang.com/aym/#/list3rdcard/APPLY/APPLY_RECOMMEND?p=1010&bar=2"
+
+#pragma mark -
 #pragma mark - UMengKey
 
-#define umAppKey @"55b0a856e0f55a5f1f0027c0"
+#define umAppKey @"55ae0ac4e0f55a71c4004ebb"
 
 #define KadMobKey @"ca-app-pub-5473057868747749/8937006511"
 

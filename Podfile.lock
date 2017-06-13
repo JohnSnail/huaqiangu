@@ -44,6 +44,11 @@ PODS:
     - GoogleToolboxForMac/Defines (= 2.1.1)
   - JSONKit-NoWarning (1.2)
   - MJRefresh (2.2.1)
+  - NJKWebViewProgress (0.2.3):
+    - NJKWebViewProgress/Core (= 0.2.3)
+    - NJKWebViewProgress/ProgressView (= 0.2.3)
+  - NJKWebViewProgress/Core (0.2.3)
+  - NJKWebViewProgress/ProgressView (0.2.3)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
@@ -61,6 +66,7 @@ DEPENDENCIES:
   - FMDB (~> 2.3)
   - JSONKit-NoWarning (~> 1.2)
   - MJRefresh (~> 2.2.1)
+  - NJKWebViewProgress
   - SDWebImage (~> 3.8.2)
   - SGNavigationProgress (~> 1.2)
   - StreamingKit (~> 0.1.29)
@@ -79,6 +85,7 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   JSONKit-NoWarning: 3d27e6f9e6846ecf741e8c64dcadd7d5aa7193cb
   MJRefresh: c3fa0387e8e97a11a9666639d2f815607edd1c2f
+  NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SGNavigationProgress: f04e3bd0058c53e1172ee020b5239f22aa9e4a0f
   StreamingKit: c329785aaef3ac142d4ae388345bfe1ed23cfd45
@@ -86,6 +93,6 @@ SPEC CHECKSUMS:
   UIAlertView+Blocks: 45c3d3b7194906702d3e9a14c7ece5581505646d
   UMengAnalytics: ef8d45f94c0e5771dc364cf6a5731d9d3b101da2
 
-PODFILE CHECKSUM: af03e40a42bf5b6582ad5ab2441811fb8ea0b6b2
+PODFILE CHECKSUM: 67ab310006cb400d5b312f3c571900ccdb2be656
 
 COCOAPODS: 1.2.0

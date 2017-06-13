@@ -15,4 +15,5 @@ pod 'UIAlertView+Blocks', '~> 0.8.1'
 pod 'SGNavigationProgress', '~> 1.2'
 pod 'UMengAnalytics', '~> 4.2.4'
 pod 'StreamingKit', '~> 0.1.29'
+pod 'NJKWebViewProgress'
 end

@@ -33,6 +33,8 @@
 		3FA8B0C71D8E8567007A8D58 /* AlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA8B0C51D8E8567007A8D58 /* AlbumCell.m */; };
 		3FA8B0C81D8E8567007A8D58 /* AlbumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FA8B0C61D8E8567007A8D58 /* AlbumCell.xib */; };
 		3FAD95C11C86DFEF0094D504 /* PlayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FAD95C01C86DFEF0094D504 /* PlayController.m */; };
+		9AAF2FF71EEE73BA00F29BCB /* WebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAF2FF51EEE73BA00F29BCB /* WebVC.m */; };
+		9AAF2FF81EEE73BA00F29BCB /* WebVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AAF2FF61EEE73BA00F29BCB /* WebVC.xib */; };
 		9AF873E01E7000D9006D5A4B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9AF873DF1E7000D9006D5A4B /* GoogleService-Info.plist */; };
 		BC13E4B31B82D82700222CD2 /* NSMutableDictionary+SafeValue.m in Sources */ = {isa = PBXBuildFile; fileRef = BC13E4B21B82D82700222CD2 /* NSMutableDictionary+SafeValue.m */; };
 		BC13E4B61B82E70D00222CD2 /* KKNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC13E4B51B82E70D00222CD2 /* KKNavigationController.m */; };
@@ -124,6 +126,9 @@
 		3FA8B0C51D8E8567007A8D58 /* AlbumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumCell.m; sourceTree = "<group>"; };
 		3FA8B0C61D8E8567007A8D58 /* AlbumCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumCell.xib; sourceTree = "<group>"; };
 		3FAD95C01C86DFEF0094D504 /* PlayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayController.m; sourceTree = "<group>"; };
+		9AAF2FF41EEE73BA00F29BCB /* WebVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebVC.h; sourceTree = "<group>"; };
+		9AAF2FF51EEE73BA00F29BCB /* WebVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebVC.m; sourceTree = "<group>"; };
+		9AAF2FF61EEE73BA00F29BCB /* WebVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebVC.xib; sourceTree = "<group>"; };
 		9AF873DF1E7000D9006D5A4B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BC13E4B11B82D82700222CD2 /* NSMutableDictionary+SafeValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+SafeValue.h"; sourceTree = "<group>"; };
 		BC13E4B21B82D82700222CD2 /* NSMutableDictionary+SafeValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSMutableDictionary+SafeValue.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -441,6 +446,9 @@
 				3FA8B0C41D8E8567007A8D58 /* AlbumCell.h */,
 				3FA8B0C51D8E8567007A8D58 /* AlbumCell.m */,
 				3FA8B0C61D8E8567007A8D58 /* AlbumCell.xib */,
+				9AAF2FF41EEE73BA00F29BCB /* WebVC.h */,
+				9AAF2FF51EEE73BA00F29BCB /* WebVC.m */,
+				9AAF2FF61EEE73BA00F29BCB /* WebVC.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -621,6 +629,7 @@
 				3F1C0C3A1D14257200064C3F /* sample.m4a in Resources */,
 				3F9ADCF41DA6810600A391B3 /* baidumobadsdk.bundle in Resources */,
 				BC1FB5C31B595E9C00D06876 /* Main.storyboard in Resources */,
+				9AAF2FF81EEE73BA00F29BCB /* WebVC.xib in Resources */,
 				3FA8B0C81D8E8567007A8D58 /* AlbumCell.xib in Resources */,
 				3F2BBFBD1C7C85C100D672E3 /* DownCell.xib in Resources */,
 				BC1FB5C51B595E9C00D06876 /* Images.xcassets in Resources */,
@@ -712,6 +721,7 @@
 				BC9CEDBC1B5DFAD3004FC9F3 /* DTTimingViewController.m in Sources */,
 				BC1FB6801B5A0BF600D06876 /* LMLable.m in Sources */,
 				BC1FB68E1B5A736500D06876 /* HistoryList.m in Sources */,
+				9AAF2FF71EEE73BA00F29BCB /* WebVC.m in Sources */,
 				BC1FB66A1B5A097E00D06876 /* CommUtils.m in Sources */,
 				BC9CEDBB1B5DFAD3004FC9F3 /* DTTimingManager.m in Sources */,
 				3FA8B0C71D8E8567007A8D58 /* AlbumCell.m in Sources */,
@@ -885,7 +895,7 @@
 					"-ObjC",
 					"-lstdc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.jasondis.gcd;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jasondis.ljsw;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -921,7 +931,7 @@
 					"-ObjC",
 					"-lstdc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.jasondis.gcd;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jasondis.ljsw;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

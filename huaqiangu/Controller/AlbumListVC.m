@@ -11,8 +11,9 @@
 #import "AlbumCell.h"
 #import "MainController.h"
 #import "PlayController.h"
+#import "WebVC.h"
 
-@interface AlbumListVC ()<UITableViewDelegate,UITableViewDataSource,GADBannerViewDelegate>{
+@interface AlbumListVC ()<UITableViewDelegate,UITableViewDataSource,GADBannerViewDelegate,SKStoreProductViewControllerDelegate>{
     UIButton *playBtn;
     NSInteger totalPage;
     NSInteger currentPage;
@@ -36,10 +37,11 @@
 
     self.navigationItem.leftBarButtonItem = [LMButton setNavright:@"反馈" andcolor:[UIColor whiteColor] andSelector:@selector(pushAppStore) andTarget:self];
     
-    self.albumTbview.frame = CGRectMake(0, 0, mainscreenwidth, mainscreenhight - 50);
+    self.albumTbview.frame = CGRectMake(0, 0, mainscreenwidth, mainscreenhight);
+    self.albumTbview.tableHeaderView = [self addAdView];
     
     //添加admob广告
-    [self admobAD];
+//    [self admobAD];
     
     _albumMuArray = [NSMutableArray arrayWithCapacity:0];
 //    [self getAlbumListData:currentPage andPageSize:20 andTagName:kAlbumName];
@@ -231,14 +233,14 @@
             AlbumModel *album = [[AlbumModel alloc]initWithDict:dic];
             [bSelf.albumMuArray addObject:album];
         }
-//        //添加时效性内容
-//        AlbumModel *album = [[AlbumModel alloc]init];
-//        album.title = @"罗辑思维全集";
-//        album.albumId = @"239463";
-//        album.intro = @"在知识中寻找独立的见识，您在把玩知识中寻找思维的乐趣";
-//        album.coverLarge = @"renmin";
-//        [bSelf.albumMuArray insertObject:album atIndex:0];
-//        //添加时效性内容 end
+        //添加时效性内容
+        AlbumModel *album = [[AlbumModel alloc]init];
+        album.title = @"罗辑思维全集";
+        album.albumId = @"239463";
+        album.intro = @"在知识中寻找独立的见识，您在把玩知识中寻找思维的乐趣";
+        album.coverLarge = @"renmin";
+        [bSelf.albumMuArray insertObject:album atIndex:0];
+        //添加时效性内容 end
         
         [self.albumTbview reloadData];
         [self.albumTbview.header endRefreshing];
@@ -246,6 +248,26 @@
     }];
 
 }
+
+-(UIImageView *)addAdView{
+    
+    UIImageView *adView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, mainscreenwidth, 100* VIEWWITH)];
+    adView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+    [adView addGestureRecognizer:singleTap];
+    
+    [adView setImage:[UIImage imageNamed:@"ad"]];
+    
+    return adView;
+}
+
+- (void)handleSingleTap:(UIGestureRecognizer *)gestureRecognizer {
+    WebVC *adVC = [[WebVC alloc]init];
+    [self.navigationController pushViewController:adVC animated:YES];
+//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:AdLink]];
+
+}
+
 
 -(void)getAlbumListData:(NSInteger)pageId andPageSize:(NSInteger)pageSize andTagName:(NSString *)tagName
 {
@@ -308,7 +330,15 @@
     mainVC.albumTitle = album.title;
     mainVC.albumImage = album.coverLarge;
     [self.navigationController pushViewController:mainVC animated:YES];
+    
 }
+
+#pragma mark - 评分取消按钮监听
+//取消按钮监听
+- (void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 #pragma mark - admob广告
 
@@ -322,12 +352,6 @@
     [self.view addSubview:adBannerView];
     
     GADRequest *request = [GADRequest request];
-    // Requests test ads on devices you specify. Your test device ID is printed to the console when
-    // an ad request is made. GADBannerView automatically returns test ads when running on a
-    // simulator.
-    //    request.testDevices = @[
-    //                            @"2077ef9a63d2b398840261c8221a0c9a"  // Eric's iPod Touch
-    //                            ];
     [adBannerView loadRequest:request];
 }
 

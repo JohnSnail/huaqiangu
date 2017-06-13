@@ -15,7 +15,10 @@
 //http://mobile.ximalaya.com/mobile/discovery/v2/category/keyword/albums?calcDimension=hot&categoryId=3&device=iPhone&keywordId=407&pageId=1&pageSize=20&statEvent=pageview%2Fcategory%40%E6%9C%89%E5%A3%B0%E4%B9%A6&statModule=%E6%9C%89%E5%A3%B0%E4%B9%A6&statPage=tab%40%E5%8F%91%E7%8E%B0_%E5%88%86%E7%B1%BB&status=0&version=5.4.93
 
 //#define kAlbumList @"http://mobile.ximalaya.com/mobile/discovery/v1/category/album"
-#define kAlbumList @"http://mobile.ximalaya.com/mobile/discovery/v2/category/keyword/albums?calcDimension=hot&categoryId=3&device=iPhone&keywordId=407&pageId=1&pageSize=20&statEvent=pageview%2Fcategory%40%E6%9C%89%E5%A3%B0%E4%B9%A6&statModule=%E6%9C%89%E5%A3%B0%E4%B9%A6&statPage=tab%40%E5%8F%91%E7%8E%B0_%E5%88%86%E7%B1%BB&status=0&version=5.4.93"
+
+#define kAlbumList @"http://mobile.ximalaya.com/mobile/discovery/v3/rankingList/album?device=iPad&pageId=1&pageSize=20&rankingListId=21&scale=3&target=main&version=6.3.6"
+
+//#define kAlbumList @"http://mobile.ximalaya.com/mobile/discovery/v2/category/keyword/albums?calcDimension=hot&categoryId=3&device=iPhone&keywordId=407&pageId=1&pageSize=20&statEvent=pageview%2Fcategory%40%E6%9C%89%E5%A3%B0%E4%B9%A6&statModule=%E6%9C%89%E5%A3%B0%E4%B9%A6&statPage=tab%40%E5%8F%91%E7%8E%B0_%E5%88%86%E7%B1%BB&status=0&version=5.4.93"
 #define kMainHeader   @"http://mobile.ximalaya.com/mobile/others/ca/album/track/"
 
 //http://mobile.ximalaya.com/mobile/discovery/v3/rankingList/album?device=iPhone&pageId=1&pageSize=20&rankingListId=21&scale=2&target=main&version=5.4.33
