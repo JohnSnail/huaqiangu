@@ -40,13 +40,17 @@
 @property (nonatomic, retain) UITapGestureRecognizer *tapGesture;//点击视频区域隐藏和显示控制条
 @property (nonatomic, assign) UIView *originSuperView;//非全屏superview
 @property (nonatomic)       id playbackObserver;
+@property (nonatomic, strong)   NSTimer *countTimer;
+@property (nonatomic)           int remainTimeValue;
+@property (nonatomic, strong)   UILabel *timecountLabel;//倒计时
+
 //创建和调整ui布局，全屏和恢复时调用，添加播放暂停，进度条，全屏，回退按钮
 - (void)setupUI;
 
 #warning 重要，当视频区域可见时才开始播放，当不可见时停止播放
 - (void)checkVisible;
 
-//点击监控，当点击视频区域时展现和隐藏进度条
+//点击监控，当点击视频区域, 当时展现和隐藏进度条
 - (void)handleTapGesture:(UIGestureRecognizer*)sender;
 
 //resize 视频区域
@@ -124,6 +128,8 @@
         _isFirstTimePlay = YES;
         self.hidden = YES;
         _isAutoPlay = YES;
+        _supportActImage = YES;
+        _supportControllerView = YES;
     }
     return self;
 }
@@ -151,7 +157,7 @@
 
 
 - (void)cleanUp {
-    self.hidden = YES;
+//    self.hidden = YES;
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(checkVisible) object:nil];
 
     if (self.player && _state != COMPLETE) {
@@ -175,36 +181,52 @@
     }
     [self.displayView addSubview:self.indicatorView];
 
+    if ( !self.timecountLabel) {
+        self.timecountLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.displayView.bounds.size.width - 40, 6, 30, 16)];
+        _timecountLabel.textAlignment = NSTextAlignmentCenter;
+        _timecountLabel.font = [UIFont boldSystemFontOfSize:11];
+        _timecountLabel.textColor = [UIColor whiteColor];
+        _timecountLabel.hidden = YES;
+    } else  {
+        [_timecountLabel removeFromSuperview];
+    }
+    [self.displayView addSubview:_timecountLabel];
     
-    if (!self.controlView) {
-        self.controlView = [[UIView alloc]init];
-        self.controlView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4];
-        self.controlView.hidden = YES;
-        [self.displayView addSubview:self.controlView];
-    } else {
-        [self.controlView removeFromSuperview];
-        [self.displayView addSubview:self.controlView];
+    
+    if (self.supportControllerView) {
+        if (!self.controlView) {
+            self.controlView = [[UIView alloc]init];
+            self.controlView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4];
+            self.controlView.hidden = YES;
+            [self.displayView addSubview:self.controlView];
+        } else {
+            [self.controlView removeFromSuperview];
+            [self.displayView addSubview:self.controlView];
+        }
+        
+        
+        self.controlView.frame = CGRectMake(0, self.displayView.frame.size.height - 32, self.displayView.frame.size.width, 32);
+        
+        if (!self.btnPlayOrPause) {
+            self.btnPlayOrPause = [[UIButton alloc]initWithFrame:CGRectMake(10, 2, 32, 32)];
+            [_btnPlayOrPause setImage:[self imageResoureForName:@"player_play"] forState:UIControlStateNormal];
+            [_btnPlayOrPause addTarget:self action:@selector(playClick:) forControlEvents:UIControlEventTouchUpInside];
+            [self.controlView addSubview:_btnPlayOrPause];
+        }
+        
+        if (!self.btnFullScreen) {
+            self.btnFullScreen = [[UIButton alloc]init];
+            [_btnFullScreen setImage:[self imageResoureForName:@"fullscreen"] forState:UIControlStateNormal];
+            [_btnFullScreen addTarget:self action:@selector(clickFullScreen:) forControlEvents:UIControlEventTouchUpInside];
+            [_controlView addSubview:_btnFullScreen];
+        }
+        _btnFullScreen.frame = CGRectMake(self.controlView.frame.size.width - 36, 2, 32, 32);
+        
+        [self addProgressObserver];
     }
     
     
-    self.controlView.frame = CGRectMake(0, self.displayView.frame.size.height - 32, self.displayView.frame.size.width, 32);
-
-    if (!self.btnPlayOrPause) {
-        self.btnPlayOrPause = [[UIButton alloc]initWithFrame:CGRectMake(10, 2, 32, 32)];
-        [_btnPlayOrPause setImage:[self imageResoureForName:@"player_play"] forState:UIControlStateNormal];
-        [_btnPlayOrPause addTarget:self action:@selector(playClick:) forControlEvents:UIControlEventTouchUpInside];
-        [self.controlView addSubview:_btnPlayOrPause];
-    }
     
-    if (!self.btnFullScreen) {
-        self.btnFullScreen = [[UIButton alloc]init];
-        [_btnFullScreen setImage:[self imageResoureForName:@"fullscreen"] forState:UIControlStateNormal];
-        [_btnFullScreen addTarget:self action:@selector(clickFullScreen:) forControlEvents:UIControlEventTouchUpInside];
-        [_controlView addSubview:_btnFullScreen];
-    }
-    _btnFullScreen.frame = CGRectMake(self.controlView.frame.size.width - 36, 2, 32, 32);
-    
-    [self addProgressObserver];
     
     if (!self.btnDone) {
         self.btnDone = [[UIButton alloc]initWithFrame:CGRectMake(15, 5, 32, 32)];
@@ -217,26 +239,24 @@
         [self.displayView addSubview:_btnDone];
     }
     
-    
-    if (!self.btnLP) {
-        self.btnLP = [[UIButton alloc]init];
-
-        BaiduMobNativeAdActionType type = _associatedObject.actType;
-        if (type == BaiduMobNativeAdActionTypeDL) {
-            [_btnLP setImage:[self imageResoureForName:@"click_download"] forState:UIControlStateNormal];
-        } else if (type == BaiduMobNativeAdActionTypeLP){
-            [_btnLP setImage:[self imageResoureForName:@"click_lp"] forState:UIControlStateNormal];
+    if (self.supportActImage) {
+        if (!self.btnLP) {
+            self.btnLP = [[UIButton alloc]init];
+            BaiduMobNativeAdActionType type = _associatedObject.actType;
+            if (type == BaiduMobNativeAdActionTypeDL) {
+                [_btnLP setImage:[self imageResoureForName:@"click_download"] forState:UIControlStateNormal];
+            } else if (type == BaiduMobNativeAdActionTypeLP){
+                [_btnLP setImage:[self imageResoureForName:@"click_lp"] forState:UIControlStateNormal];
+            }
+            [_btnLP addTarget:self action:@selector(videoAdClick) forControlEvents:UIControlEventTouchUpInside];
+            _btnLP.hidden = YES;
+            [self.displayView addSubview:_btnLP];
+        } else {
+            [_btnLP removeFromSuperview];
+            [self.displayView addSubview:_btnLP];
+            
         }
-        
-        [_btnLP addTarget:self action:@selector(videoAdClick) forControlEvents:UIControlEventTouchUpInside];
-        _btnLP.hidden = YES;
-        [self.displayView addSubview:_btnLP];
-    } else {
-        [_btnLP removeFromSuperview];
-        [self.displayView addSubview:_btnLP];
-    
     }
-    
     if (self.isFullScreen) {
         _btnFullScreen.hidden = YES;
         _btnDone.hidden = NO;
@@ -283,15 +303,19 @@
 }
 
 - (void)handleTapGesture:(UIGestureRecognizer*)sender {
-    CGPoint point = [sender locationInView:self.controlView];
-    CGPoint point2 = [sender locationInView:self.btnDone];
-
-    if (!CGRectContainsPoint(self.controlView.bounds, point) &&
-        !CGRectContainsPoint(self.btnDone.bounds, point2)) {
-        self.controlView.hidden = !self.controlView.isHidden;
-        if (self.isFullScreen){
-            self.btnDone.hidden = self.controlView.isHidden;
+    if (self.supportControllerView) {
+        CGPoint point = [sender locationInView:self.controlView];
+        CGPoint point2 = [sender locationInView:self.btnDone];
+        
+        if (!CGRectContainsPoint(self.controlView.bounds, point) &&
+            !CGRectContainsPoint(self.btnDone.bounds, point2)) {
+            self.controlView.hidden = !self.controlView.isHidden;
+            if (self.isFullScreen){
+                self.btnDone.hidden = self.controlView.isHidden;
+            }
         }
+    } else {
+        [self videoAdClick];
     }
 }
 
@@ -445,10 +469,26 @@
     }
 }
 
+- (void)setRemainTime {
+    if (_timecountLabel.hidden) {
+        _timecountLabel.hidden = NO;
+        self.remainTimeValue = (int)[self duration];
+        self.countTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(setRemainTime) userInfo:nil repeats:YES];
+        [self.countTimer fire];
+    }
+    
+    self.remainTimeValue =  (int)([self duration]- [self currentTime]);
+    if (self.remainTimeValue == 0 && _state == COMPLETE) {
+        [self.countTimer invalidate];
+    }
+    _timecountLabel.text = [NSString stringWithFormat:@"%@",[NSNumber numberWithInt:self.remainTimeValue]];
+}
+
 - (void)onPlayerRateChange {
     if (_state == INIT && self.player.rate > 0) {
         _state = PLAYING;
         _btnLP.hidden = NO;
+        [self setRemainTime];
         [self sendVideoEvent:onStart currentTime:0];
     }
 

@@ -10,6 +10,8 @@
 
 @class BaiduMobAdNativeAdObject;
 @interface BaiduMobAdNativeVideoView : BaiduMobAdNativeVideoBaseView
+@property BOOL supportControllerView;
+@property BOOL supportActImage;
 
 @property (nonatomic, retain)   UIButton *btnLP;//点击查看详情按钮
 /* 视频是否自动播放

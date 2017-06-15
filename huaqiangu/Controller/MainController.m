@@ -457,6 +457,7 @@ static NSInteger i = 0;
     NSString *postStr = [NSString stringWithFormat:@"%@%@/%@/%@%@",kMainHeader,self.albumID,orderStr,urlStr,kDevice];
     
 //    NSString *urlStr = [NSString stringWithFormat:@"%@&id=%@",xContentList,self.albumID];
+
     
     __weak typeof(self) bSelf = self;
     

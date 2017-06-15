@@ -53,6 +53,7 @@ return _shared##classname; \
 //苹果id
 #define AppStoreAppId @"1117248180"
 
+
 #pragma mark -
 #pragma mark - AlbumTitle
 
@@ -61,9 +62,9 @@ return _shared##classname; \
 #pragma mark -
 #pragma mark - BaiDSSP
 
-#define PUBLISHERID @"f9131424"
-#define ADUNITTAG @"2937996"
-#define ADUNITTAGBANNER @"2937994"
+#define PUBLISHERID @"e89aefee"
+#define ADUNITTAG @"2934610"
+#define ADUNITTAGBANNER @"2010416"
 
 #pragma mark -
 #pragma mark - Adview
