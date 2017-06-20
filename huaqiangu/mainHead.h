@@ -120,7 +120,7 @@ return _shared##classname; \
 // 存储文件总长度的文件路径（caches）
 #define HSTotalLengthFullpath [HSCachesDirectory stringByAppendingPathComponent:@"totalLength.plist"]
 
-//#import "NSString+Hash.h"
+#import "NSString+Hash.h"
 #import "BaiduMobAdSDK/BaiduMobAdDelegateProtocol.h"
 #import "BaiduMobAdSDK/BaiduMobAdView.h"
 #import <GoogleMobileAds/GoogleMobileAds.h>

@@ -216,7 +216,7 @@
     
     //http://mobile.ximalaya.com/mobile/discovery/v1/category/album?calcDimension=hot&categoryId=12&device=ios&pageId=1&pageSize=20&status=0&tagName=%E9%83%AD%E5%BE%B7%E7%BA%B2%E7%9B%B8%E5%A3%B0
     
-    NSDictionary *params = @{@"device":@"ios",@"pageId":@(pageId),@"pageSize":@(pageSize),@"calcDimension":@"hot",@"categoryId":kAlbumID,@"status":@(0),@"tagName":kAlbumName};
+//    NSDictionary *params = @{@"device":@"ios",@"pageId":@(pageId),@"pageSize":@(pageSize),@"calcDimension":@"hot",@"categoryId":kAlbumID,@"status":@(0),@"tagName":kAlbumName};
 //    NSDictionary *params = @{@"page":@(pageId)};
 //    NSDictionary *params = @{@"device":@"iPhone",@"pageId":@(pageId),@"pageSize":@(pageSize),@"rankingListId":kRankingListId,@"scale":@"3",@"target":@"main",@"version":kVersion};
     
@@ -272,23 +272,23 @@
     if (pageId == 1) {
         [self.albumMuArray removeAllObjects];
     }
-    __weak typeof(self) bSelf = self;
+//    __weak typeof(self) bSelf = self;
 //    NSDictionary *params = @{@"calcDimension":@"hot",@"categoryId":kAlbumID,@"device":@"ios",@"pageId":@(pageId),@"pageSize":@(pageSize),@"status":@(0),@"tagName":tagName};
     
     //&pageId=1&pageSize=30
     
-    NSDictionary *params = @{@"pageId":@(pageId),@"pageSize":@(pageSize)};//庶女
-    
-    [AFService postMethod:kList andDict:params completion:^(NSDictionary *results,NSError *error){
-        for (int i=0; i<arr.count; i++) {
-            NSDictionary *dic = [arr objectAtIndex:i];
-            AlbumModel *album = [[AlbumModel alloc]initWithDict:dic];
-            [bSelf.albumMuArray addObject:album];
-        }
-        [self.albumTbview reloadData];
-        [self.albumTbview.header endRefreshing];
-        [self.albumTbview.footer endRefreshing];
-    }];
+//    NSDictionary *params = @{@"pageId":@(pageId),@"pageSize":@(pageSize)};//庶女
+//    
+//    [AFService postMethod:kList andDict:params completion:^(NSDictionary *results,NSError *error){
+//        for (int i=0; i<arr.count; i++) {
+//            NSDictionary *dic = [arr objectAtIndex:i];
+//            AlbumModel *album = [[AlbumModel alloc]initWithDict:dic];
+//            [bSelf.albumMuArray addObject:album];
+//        }
+//        [self.albumTbview reloadData];
+//        [self.albumTbview.header endRefreshing];
+//        [self.albumTbview.footer endRefreshing];
+//    }];
 
 }
 
