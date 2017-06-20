@@ -28,6 +28,7 @@
 		3FA8B0C81D8E8567007A8D58 /* AlbumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FA8B0C61D8E8567007A8D58 /* AlbumCell.xib */; };
 		3FAD95C11C86DFEF0094D504 /* PlayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FAD95C01C86DFEF0094D504 /* PlayController.m */; };
 		9A006B171EF8CE7D007304FD /* ThreeSDK in Resources */ = {isa = PBXBuildFile; fileRef = 9A006B161EF8CE7D007304FD /* ThreeSDK */; };
+		9A006B191EF8CF18007304FD /* ThreeSDK in Resources */ = {isa = PBXBuildFile; fileRef = 9A006B181EF8CF18007304FD /* ThreeSDK */; };
 		9AAF2FF71EEE73BA00F29BCB /* WebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAF2FF51EEE73BA00F29BCB /* WebVC.m */; };
 		9AAF2FF81EEE73BA00F29BCB /* WebVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AAF2FF61EEE73BA00F29BCB /* WebVC.xib */; };
 		9AF873E01E7000D9006D5A4B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9AF873DF1E7000D9006D5A4B /* GoogleService-Info.plist */; };
@@ -100,6 +101,7 @@
 		3FA8B0C61D8E8567007A8D58 /* AlbumCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumCell.xib; sourceTree = "<group>"; };
 		3FAD95C01C86DFEF0094D504 /* PlayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayController.m; sourceTree = "<group>"; };
 		9A006B161EF8CE7D007304FD /* ThreeSDK */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ThreeSDK; sourceTree = "<group>"; };
+		9A006B181EF8CF18007304FD /* ThreeSDK */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ThreeSDK; sourceTree = "<group>"; };
 		9AAF2FF41EEE73BA00F29BCB /* WebVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebVC.h; sourceTree = "<group>"; };
 		9AAF2FF51EEE73BA00F29BCB /* WebVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebVC.m; sourceTree = "<group>"; };
 		9AAF2FF61EEE73BA00F29BCB /* WebVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebVC.xib; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 		BC1FB5AB1B595E9C00D06876 = {
 			isa = PBXGroup;
 			children = (
+				9A006B181EF8CF18007304FD /* ThreeSDK */,
 				BC1FB5B61B595E9C00D06876 /* huaqiangu */,
 				BC1FB5D01B595E9C00D06876 /* huaqianguTests */,
 				BC1FB5B51B595E9C00D06876 /* Products */,
@@ -445,6 +448,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AF873E01E7000D9006D5A4B /* GoogleService-Info.plist in Resources */,
+				9A006B191EF8CF18007304FD /* ThreeSDK in Resources */,
 				3F8854951D8E62D100E3E6A2 /* AlbumListVC.xib in Resources */,
 				BC1FB6651B59F47400D06876 /* PlayController.xib in Resources */,
 				BC1FB5F21B59684000D06876 /* MainController.xib in Resources */,

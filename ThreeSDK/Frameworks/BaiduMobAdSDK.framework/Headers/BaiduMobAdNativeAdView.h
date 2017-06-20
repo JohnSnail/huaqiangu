@@ -13,6 +13,8 @@
 @class BaiduMobAdNativeWebView;
 @interface BaiduMobAdNativeAdView : UIView 
 
+typedef void (^BaiduMobAdViewCompletionBlock)(NSArray *errors);
+
 /**
  * 初始化，非视频信息流，MaterialType是NORMAL的初始化方法
  * 添加品牌名称brandName
