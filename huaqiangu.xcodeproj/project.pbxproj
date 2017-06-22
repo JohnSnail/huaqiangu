@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3EB1504E23118B01BFB5BCBB /* libPods-huaqiangu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F25E0B75CD11B60ACA924764 /* libPods-huaqiangu.a */; };
-		3F155CA41BA8373300C91E25 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F155CA31BA8373300C91E25 /* libstdc++.dylib */; };
-		3F155CB71BA8388000C91E25 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F155CB61BA8388000C91E25 /* libz.dylib */; };
 		3F155CB91BA83AEF00C91E25 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F155CB81BA83AEF00C91E25 /* StoreKit.framework */; };
 		3F1C0C3A1D14257200064C3F /* sample.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 3F1C0C391D14257200064C3F /* sample.m4a */; };
 		3F2BBFB71C7C729900D672E3 /* DownController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2BBFB51C7C729900D672E3 /* DownController.m */; };
@@ -46,6 +43,8 @@
 		9A006B5A1EF8D09F007304FD /* AFService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A006B431EF8D09F007304FD /* AFService.m */; };
 		9A006B5B1EF8D09F007304FD /* NetService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A006B461EF8D09F007304FD /* NetService.m */; };
 		9A006B5C1EF8D09F007304FD /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A006B491EF8D09F007304FD /* Reachability.m */; };
+		9A006B5E1EFBA80C007304FD /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A006B5D1EFBA80C007304FD /* libz.1.2.5.tbd */; };
+		9A006B601EFBA82C007304FD /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A006B5F1EFBA82C007304FD /* libstdc++.tbd */; };
 		9AAF2FF71EEE73BA00F29BCB /* WebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAF2FF51EEE73BA00F29BCB /* WebVC.m */; };
 		9AAF2FF81EEE73BA00F29BCB /* WebVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AAF2FF61EEE73BA00F29BCB /* WebVC.xib */; };
 		9AF873E01E7000D9006D5A4B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9AF873DF1E7000D9006D5A4B /* GoogleService-Info.plist */; };
@@ -90,8 +89,6 @@
 /* Begin PBXFileReference section */
 		00BF5E1508D78D66CFADD034 /* Pods-huaqiangu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-huaqiangu.release.xcconfig"; path = "Pods/Target Support Files/Pods-huaqiangu/Pods-huaqiangu.release.xcconfig"; sourceTree = "<group>"; };
 		04A81F58139B0C98F36FE597 /* Pods-huaqiangu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-huaqiangu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-huaqiangu/Pods-huaqiangu.debug.xcconfig"; sourceTree = "<group>"; };
-		3F155CA31BA8373300C91E25 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
-		3F155CB61BA8388000C91E25 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		3F155CB81BA83AEF00C91E25 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		3F1C0C381D14248900064C3F /* airplane.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = airplane.aac; sourceTree = "<group>"; };
 		3F1C0C391D14257200064C3F /* sample.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample.m4a; sourceTree = "<group>"; };
@@ -154,6 +151,8 @@
 		9A006B461EF8D09F007304FD /* NetService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetService.m; sourceTree = "<group>"; };
 		9A006B481EF8D09F007304FD /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		9A006B491EF8D09F007304FD /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		9A006B5D1EFBA80C007304FD /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
+		9A006B5F1EFBA82C007304FD /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		9AAF2FF41EEE73BA00F29BCB /* WebVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebVC.h; sourceTree = "<group>"; };
 		9AAF2FF51EEE73BA00F29BCB /* WebVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebVC.m; sourceTree = "<group>"; };
 		9AAF2FF61EEE73BA00F29BCB /* WebVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebVC.xib; sourceTree = "<group>"; };
@@ -196,7 +195,6 @@
 		BC9CEDB81B5DFAD3004FC9F3 /* DTTimingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTTimingViewController.h; sourceTree = "<group>"; };
 		BC9CEDB91B5DFAD3004FC9F3 /* DTTimingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTTimingViewController.m; sourceTree = "<group>"; };
 		BC9CEDBA1B5DFAD3004FC9F3 /* DTTimingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DTTimingViewController.xib; sourceTree = "<group>"; };
-		F25E0B75CD11B60ACA924764 /* libPods-huaqiangu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-huaqiangu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,9 +202,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A006B601EFBA82C007304FD /* libstdc++.tbd in Frameworks */,
+				9A006B5E1EFBA80C007304FD /* libz.1.2.5.tbd in Frameworks */,
 				3F155CB91BA83AEF00C91E25 /* StoreKit.framework in Frameworks */,
-				3F155CB71BA8388000C91E25 /* libz.dylib in Frameworks */,
-				3F155CA41BA8373300C91E25 /* libstdc++.dylib in Frameworks */,
 				BC338E7D1B8087D300EC72D4 /* CoreGraphics.framework in Frameworks */,
 				BC338E7B1B8087CA00EC72D4 /* Foundation.framework in Frameworks */,
 				BC338E791B8087C500EC72D4 /* UIKit.framework in Frameworks */,
@@ -224,7 +222,6 @@
 				BC338E631B80875700EC72D4 /* AdSupport.framework in Frameworks */,
 				BC338E611B80874D00EC72D4 /* Security.framework in Frameworks */,
 				BC338E5F1B80874600EC72D4 /* QuartzCore.framework in Frameworks */,
-				3EB1504E23118B01BFB5BCBB /* libPods-huaqiangu.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,9 +247,9 @@
 		50937BF299FB3A659205E707 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9A006B5F1EFBA82C007304FD /* libstdc++.tbd */,
+				9A006B5D1EFBA80C007304FD /* libz.1.2.5.tbd */,
 				3F155CB81BA83AEF00C91E25 /* StoreKit.framework */,
-				3F155CB61BA8388000C91E25 /* libz.dylib */,
-				3F155CA31BA8373300C91E25 /* libstdc++.dylib */,
 				3F88CDC41B92BB8C00AAF479 /* Crashlytics.framework */,
 				3F88CDC51B92BB8C00AAF479 /* Fabric.framework */,
 				BC338E7C1B8087D300EC72D4 /* CoreGraphics.framework */,
@@ -269,7 +266,6 @@
 				BC338E601B80874D00EC72D4 /* Security.framework */,
 				BC338E5E1B80874600EC72D4 /* QuartzCore.framework */,
 				BC1FB6811B5A258E00D06876 /* AVFoundation.framework */,
-				F25E0B75CD11B60ACA924764 /* libPods-huaqiangu.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -893,13 +889,10 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ThreeSDK/ios_api",
+					"$(PROJECT_DIR)/build/Release-iphoneos",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-					"-lstdc++",
-				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jasondis.ljsw;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -931,13 +924,10 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ThreeSDK/ios_api",
+					"$(PROJECT_DIR)/build/Release-iphoneos",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-					"-lstdc++",
-				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jasondis.ljsw;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
