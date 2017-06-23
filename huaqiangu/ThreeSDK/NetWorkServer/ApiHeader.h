@@ -13,6 +13,7 @@
 
 #define kAlbumList @"http://mobile.ximalaya.com/mobile/discovery/v1/category/album"
 #define kMainHeader   @"http://mobile.ximalaya.com/mobile/others/ca/album/track/"
+#define kListAlbum @"http://mobile.ximalaya.com/mobile/discovery/v3/rankingList/album"
 
 #define kAlbumID @"12"
 #define kAlbumName @"郭德纲相声"

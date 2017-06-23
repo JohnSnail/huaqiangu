@@ -218,11 +218,11 @@
     
 //    NSDictionary *params = @{@"device":@"ios",@"pageId":@(pageId),@"pageSize":@(pageSize),@"calcDimension":@"hot",@"categoryId":kAlbumID,@"status":@(0),@"tagName":kAlbumName};
 //    NSDictionary *params = @{@"page":@(pageId)};
-//    NSDictionary *params = @{@"device":@"iPhone",@"pageId":@(pageId),@"pageSize":@(pageSize),@"rankingListId":kRankingListId,@"scale":@"3",@"target":@"main",@"version":kVersion};
+    NSDictionary *params = @{@"device":@"iPhone",@"pageId":@(pageId),@"pageSize":@(pageSize),@"rankingListId":@"21",@"scale":@"3",@"target":@"main",@"version":@"6.3.6"};
     
 //    NSDictionary *params = @{@"pageId":@(pageId),@"pageSize":@(pageSize)};//庶女
     
-    [AFService getMethod:kAlbumList andDict:nil completion:^(NSDictionary *results,NSError *error){
+    [AFService getMethod:kListAlbum andDict:params completion:^(NSDictionary *results,NSError *error){
         
         totalPage = [[results objectForKey:@"maxPageId"] integerValue];
         NSArray *arr = [results objectForKey:@"list"];
@@ -272,23 +272,24 @@
     if (pageId == 1) {
         [self.albumMuArray removeAllObjects];
     }
-//    __weak typeof(self) bSelf = self;
+    __weak typeof(self) bSelf = self;
 //    NSDictionary *params = @{@"calcDimension":@"hot",@"categoryId":kAlbumID,@"device":@"ios",@"pageId":@(pageId),@"pageSize":@(pageSize),@"status":@(0),@"tagName":tagName};
     
     //&pageId=1&pageSize=30
     
-//    NSDictionary *params = @{@"pageId":@(pageId),@"pageSize":@(pageSize)};//庶女
-//    
-//    [AFService postMethod:kList andDict:params completion:^(NSDictionary *results,NSError *error){
-//        for (int i=0; i<arr.count; i++) {
-//            NSDictionary *dic = [arr objectAtIndex:i];
-//            AlbumModel *album = [[AlbumModel alloc]initWithDict:dic];
-//            [bSelf.albumMuArray addObject:album];
-//        }
-//        [self.albumTbview reloadData];
-//        [self.albumTbview.header endRefreshing];
-//        [self.albumTbview.footer endRefreshing];
-//    }];
+    NSDictionary *params = @{@"pageId":@(pageId),@"pageSize":@(pageSize)};//庶女
+    
+    [AFService postMethod:kAlbumList andDict:params completion:^(NSDictionary *results,NSError *error){
+        NSArray *arr = [NSArray array];
+        for (int i=0; i<arr.count; i++) {
+            NSDictionary *dic = [arr objectAtIndex:i];
+            AlbumModel *album = [[AlbumModel alloc]initWithDict:dic];
+            [bSelf.albumMuArray addObject:album];
+        }
+        [self.albumTbview reloadData];
+        [self.albumTbview.header endRefreshing];
+        [self.albumTbview.footer endRefreshing];
+    }];
 
 }
 
