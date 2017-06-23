@@ -16,9 +16,13 @@
     if (self) {
         [dict enumerateKeysAndObjectsUsingBlock:^(NSString *key, id obj, BOOL *stop) {
             if (![obj isKindOfClass:[NSNull class]]) {
-                SEL se = NSSelectorFromString(key);
-                if ([self respondsToSelector:se]) {
-                    [self setValue:obj forKey:key];
+                if ([key isEqualToString:@"url"]) {
+                    [self setValue:obj forKey:@"playUrl64"];
+                }else{
+                    SEL se = NSSelectorFromString(key);
+                    if ([self respondsToSelector:se]) {
+                        [self setValue:obj forKey:key];
+                    }
                 }
             }
         }];

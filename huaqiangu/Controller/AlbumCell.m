@@ -23,7 +23,7 @@
 
     self.albumTitle.text = model.title;
     self.albumInfo.text = model.intro;
-    [self.albumImage sd_setImageWithURL:[NSURL URLWithString:model.coverLarge] placeholderImage:[UIImage imageNamed:@"main_otherplace"]];
+    [self.albumImage sd_setImageWithURL:[NSURL URLWithString:model.coverLarge] placeholderImage:[UIImage imageNamed:@"renmin"]];
     self.albumInfo.userInteractionEnabled = NO;
 }
 

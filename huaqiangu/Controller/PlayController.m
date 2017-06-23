@@ -16,6 +16,8 @@
     NSString *hisProgress;
     AutoRunLabel *trackLabel;
     BaiduMobAdView *sharedAdView;
+//    BaiduMobAdInterstitial *interstitialView;
+    GADBannerView *adBannerView;
 }
 
 @end
@@ -47,29 +49,53 @@ SINGLETON_CLASS(PlayController);
     self.playRightLabel.frame = CGRectMake(278 * VIEWWITH, (IS_IPHONE_5?518:418) * VIEWWITH, 42 * VIEWWITH, 21 * VIEWWITH);
     self.timeBtn.frame = CGRectMake(274 * VIEWWITH, 27 * VIEWWITH, 30 * VIEWWITH, 30 * VIEWWITH);
     self.countLabel.frame = CGRectMake(200 * VIEWWITH, 248 * VIEWWITH, 112 * VIEWWITH, 29 * VIEWWITH);
-    self.bannerView.frame = CGRectMake(0, (IS_IPHONE_5?420:320) * VIEWWITH - 50 * VIEWWITH, 320 * VIEWWITH, 50 * VIEWWITH);
+    self.bannerView.frame = CGRectMake(0, (IS_IPHONE_5?420:320) * VIEWWITH - 50, mainscreenwidth, 50);
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
-    [self addBaiDuAdView];
+//    [self addBaiDuAdView];
+    [self admobAD];
 }
 
--(void)viewDidDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];
+#pragma mark - admob广告
+
+-(void)admobAD
+{
+    adBannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait];
+    adBannerView.frame = CGRectMake(0, 0, self.bannerView.frame.size.width, self.bannerView.frame.size.height);;
+    adBannerView.adUnitID = KadMobKey;
+    adBannerView.delegate = self;
+    adBannerView.rootViewController = self;
+    [self.bannerView addSubview:adBannerView];
+    
+    GADRequest *request = [GADRequest request];
+    // Requests test ads on devices you specify. Your test device ID is printed to the console when
+    // an ad request is made. GADBannerView automatically returns test ads when running on a
+    // simulator.
+    
+    [adBannerView loadRequest:request];
 }
+
+- (void)adViewDidReceiveAd:(GADBannerView *)bannerView {
+    bannerView.hidden = NO;
+}
+
+- (void)adView:(GADBannerView *)adView didFailToReceiveAdWithError:(GADRequestError *)error {
+    NSLog(@"adView:didFailToReceiveAdWithError: %@", error.localizedDescription);
+}
+
 
 -(void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
     [self setFrameView];
     [self addHeadView];
     [self setTrackScrollerLabel];
     _audioPlayer = [[STKAudioPlayer alloc] init];
-    
+//    [self addBaiDuAdView];
     [self playMusic];
     
     [DTTimingManager sharedDTTimingManager].timingBlk = ^(NSNumber *timing) {
@@ -85,9 +111,23 @@ SINGLETON_CLASS(PlayController);
     };
     
     self.audioPlayer.delegate = self;
-    
-    //播放结束代理方法
-//    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(nextAction) name: @"nextAction" object: nil];
+}
+
+#pragma mark - 插屏广告
+
+-(void)baiduChaAD
+{
+//    self.interstitialView = [[[BaiduMobAdInterstitial alloc] init] autorelease]; self.interstitialView.delegate = self; //把在mssp.baidu.com上创建后获得的代码位id写到这里 self.interstitialView.AdUnitTag = @"2058554"
+//    self.interstitialView.interstitialType = BaiduMobAdViewTypeInterstitialOther;
+//    // 加载全屏插屏. 每次仅加载一个干告的物料,若需多次使用请在下次展示前重
+//    新执行load方法 [self.interstitialView load];
+}
+
+-(void)dealloc
+{
+    [sharedAdView removeFromSuperview];
+    sharedAdView.delegate = nil;
+    sharedAdView = nil;
 }
 
 #pragma mark -
@@ -95,15 +135,16 @@ SINGLETON_CLASS(PlayController);
 
 -(void)addBaiDuAdView
 {
-    //使用嵌入干告的方法实例。
-    sharedAdView = [[BaiduMobAdView alloc] init]; //把在mssp.baidu.com上创建后获得的代码位id写到这里
-    sharedAdView.AdUnitTag = ADUNITTAGBANNER;
-    sharedAdView.AdType = BaiduMobAdViewTypeBanner;
-    sharedAdView.frame = CGRectMake(0, 0, self.bannerView.frame.size.width, self.bannerView.frame.size.height);
-//    sharedAdView.frame = kAdViewPortraitRect;
-    sharedAdView.delegate = self;
-    [self.bannerView addSubview:sharedAdView];
-    [sharedAdView start];
+     if (!sharedAdView) {
+        //使用嵌入干告的方法实例。
+        sharedAdView = [[BaiduMobAdView alloc] init]; //把在mssp.baidu.com上创建后获得的代码位id写到这里
+        sharedAdView.AdUnitTag = ADUNITTAGBANNER;
+        sharedAdView.AdType = BaiduMobAdViewTypeBanner;
+        sharedAdView.frame = CGRectMake(0, 0, self.bannerView.frame.size.width, self.bannerView.frame.size.height);
+        sharedAdView.delegate = self;
+        [self.bannerView addSubview:sharedAdView];
+        [sharedAdView start];
+     }
 }
 
 - (NSString *)publisherId {
@@ -134,9 +175,6 @@ SINGLETON_CLASS(PlayController);
     NSLog(@"status = %ld",(long)self.audioPlayer.state);
     if (self.audioPlayer.state == STKAudioPlayerStatePlaying) {
         [self.audioPlayer pause];
-//        if (self.interstitial.isReady) {
-//            [self.interstitial presentFromRootViewController:self];
-//        }
     }else if(self.audioPlayer.state == STKAudioPlayerStatePaused){
         [self.audioPlayer resume];
     }else{
@@ -155,7 +193,7 @@ SINGLETON_CLASS(PlayController);
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadAction" object:nil];
     
-    [self addBaiDuAdView];
+//    [self addBaiDuAdView];
 }
 
 #pragma mark - 上一首
@@ -168,7 +206,7 @@ SINGLETON_CLASS(PlayController);
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadAction" object:nil];
     
-    [self addBaiDuAdView];
+//    [self addBaiDuAdView];
 }
 
 -(void)addHeadView
@@ -200,7 +238,7 @@ SINGLETON_CLASS(PlayController);
 
 -(void)timeAction
 {
-    DTTimingViewController *timeVC = [[DTTimingViewController alloc] initWithNibName:@"DTTimingViewController" bundle:nil];
+    DTTimingViewController *timeVC = [[DTTimingViewController alloc] init];
     timeVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:timeVC animated:YES];
 }
@@ -247,7 +285,7 @@ SINGLETON_CLASS(PlayController);
         
         self.albTitle.text = self.albumTitle;
         NSMutableString *muStr = nil;
-        if (self.playTrack.title) {
+        if (self.playTrack.title && ![self.playTrack.title isEqualToString:@""]) {
             muStr = [NSMutableString stringWithString:self.playTrack.title];
         }
         if (muStr.length > 8) {
@@ -257,7 +295,7 @@ SINGLETON_CLASS(PlayController);
         }
         trackLabel.text = muStr;
         
-        [self.albumImageView sd_setImageWithURL:[NSURL URLWithString:self.playTrack.coverLarge] placeholderImage:[UIImage imageNamed:@"main_otherplace"]];
+        [self.albumImageView sd_setImageWithURL:[NSURL URLWithString:self.playTrack.coverLarge] placeholderImage:[UIImage imageNamed:@"renmin"]];
     }
     
     NSString *strTrackId = (NSString *)[self.audioPlayer currentlyPlayingQueueItemId];
@@ -352,10 +390,11 @@ SINGLETON_CLASS(PlayController);
     
     //锁屏图片
     //锁屏显示的其他内容
-    MPMediaItemArtwork *albumArt = [[MPMediaItemArtwork alloc] initWithImage:self.albumImageView.image];
-    
-    [appDe.PlayingInfoCenter setSafeObject:albumArt forKey:MPMediaItemPropertyArtwork];
-    
+    if (self.albumImageView.image) {
+        MPMediaItemArtwork *albumArt = [[MPMediaItemArtwork alloc] initWithImage:self.albumImageView.image];
+        
+        [appDe.PlayingInfoCenter setSafeObject:albumArt forKey:MPMediaItemPropertyArtwork];
+    }
     [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:appDe.PlayingInfoCenter];
 }
 

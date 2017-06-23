@@ -51,33 +51,39 @@ return _shared##classname; \
 //替换版本时需更换的内容
 
 //苹果id
-#define AppStoreAppId @"863190534"
+#define AppStoreAppId @"1117248180"
+
 
 #pragma mark -
 #pragma mark - AlbumTitle
 
-#define ALBUMTITLE @"郭德纲"
+#define ALBUMTITLE @"罗辑思维"
 
 #pragma mark -
 #pragma mark - BaiDSSP
 
-#define PUBLISHERID @"e8e6f45e"
-#define ADUNITTAG @"2376487"
-#define ADUNITTAGBANNER @"2376486"
+#define PUBLISHERID @"e89aefee"
+#define ADUNITTAG @"2934610"
+#define ADUNITTAGBANNER @"2010416"
+
+#pragma mark -
+#pragma mark - Adview
+
+#define AdLink @"http://www.liujingongchang.com/aym/#/list3rdcard/APPLY/APPLY_RECOMMEND?p=1010&bar=2"
 
 #pragma mark -
 #pragma mark - UMengKey
 
-#define umAppKey @"53a2e6bd56240b39d20056a2"
+#define umAppKey @"55ae0ac4e0f55a71c4004ebb"
 
-#define KadMobKey @"ca-app-pub-5473057868747749/7439180910"
+#define KadMobKey @"ca-app-pub-5473057868747749/8937006511"
 
 #define kGADInterKey @"ca-app-pub-5473057868747749/1127218114"
 
 //#define kCommenColor RGB(248, 102, 47)
 #define kCommenColor RGB(88,185,201)
 //#define kCommenColor RGB(245,85,130)
-//#define kCommenColor RGB(165,180,198)
+//#define kCommenColor RGB(106,126,144)
 //#define kCommenColor RGB(183,137,88)
 //#define kCommenColor RGB(36,132,144)
 
@@ -117,5 +123,7 @@ return _shared##classname; \
 #import "NSString+Hash.h"
 #import "BaiduMobAdSDK/BaiduMobAdDelegateProtocol.h"
 #import "BaiduMobAdSDK/BaiduMobAdView.h"
+#import <GoogleMobileAds/GoogleMobileAds.h>
+#import <Firebase.h>
 
 #endif

@@ -10,9 +10,10 @@
 #import "DTTimingManager.h"
 #import "PlayController.h"
 
-@interface DTTimingViewController ()<BaiduMobAdViewDelegate>{
+@interface DTTimingViewController ()<BaiduMobAdViewDelegate,GADBannerViewDelegate>{
 //    GADBannerView *adBannerView;
     BaiduMobAdView *sharedAdView;
+    GADBannerView *adBannerView;
 }
 @end
 
@@ -35,7 +36,6 @@
     [super viewWillAppear:animated];
     
     self.navigationController.navigationBarHidden = NO;
-    [self addBaiDuAdView];
 }
 
 #pragma mark -
@@ -44,14 +44,17 @@
 -(void)addBaiDuAdView
 {
     //使用嵌入干告的方法实例。
-    sharedAdView = [[BaiduMobAdView alloc] init]; //把在mssp.baidu.com上创建后获得的代码位id写到这里
-    sharedAdView.AdUnitTag = ADUNITTAGBANNER;
-    sharedAdView.AdType = BaiduMobAdViewTypeBanner;
-    sharedAdView.frame = CGRectMake(0, mainscreenhight - 50 * VIEWWITH, 320 * VIEWWITH, 50 * VIEWWITH);
-//        sharedAdView.frame = kAdViewPortraitRect;
-    sharedAdView.delegate = self;
-    [self.view addSubview:sharedAdView];
-    [sharedAdView start];
+    if (!sharedAdView) {
+        sharedAdView = [[BaiduMobAdView alloc] init]; //把在mssp.baidu.com上创建后获得的代码位id写到这里
+        sharedAdView.backgroundColor = [UIColor clearColor];
+        sharedAdView.AdUnitTag = ADUNITTAGBANNER;
+        sharedAdView.AdType = BaiduMobAdViewTypeBanner;
+        sharedAdView.frame = CGRectMake(0, mainscreenhight - 50, mainscreenwidth, 50);
+        //        sharedAdView.frame = kAdViewPortraitRect;
+        sharedAdView.delegate = self;
+        [self.view addSubview:sharedAdView];
+        [sharedAdView start];
+    }
 }
 
 - (NSString *)publisherId {
@@ -60,6 +63,33 @@
 
 -(void) willDisplayAd:(BaiduMobAdView*) adview {
     NSLog(@"delegate: will display ad");
+}
+
+#pragma mark - admob广告
+
+-(void)admobAD
+{
+    adBannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait];
+    adBannerView.frame = CGRectMake(0, mainscreenhight - 50, mainscreenwidth, 50);
+    adBannerView.adUnitID = KadMobKey;
+    adBannerView.delegate = self;
+    adBannerView.rootViewController = self;
+    [self.view addSubview:adBannerView];
+    
+    GADRequest *request = [GADRequest request];
+    // Requests test ads on devices you specify. Your test device ID is printed to the console when
+    // an ad request is made. GADBannerView automatically returns test ads when running on a
+    // simulator.
+    
+    [adBannerView loadRequest:request];
+}
+
+- (void)adViewDidReceiveAd:(GADBannerView *)bannerView {
+    bannerView.hidden = NO;
+}
+
+- (void)adView:(GADBannerView *)adView didFailToReceiveAdWithError:(GADRequestError *)error {
+    NSLog(@"adView:didFailToReceiveAdWithError: %@", error.localizedDescription);
 }
 
 #pragma mark - 给好评
@@ -76,11 +106,24 @@
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
 }
 
+-(void)dealloc
+{
+    [sharedAdView removeFromSuperview];
+    sharedAdView.delegate = nil;
+    sharedAdView = nil;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-        
+    
+    self.tbvTiming.backgroundColor = RGB(230, 227, 219);
+    self.view.backgroundColor = RGB(230, 227, 219);
+    
+//    [self addBaiDuAdView];
+    [self admobAD];
+    
     self.navigationItem.rightBarButtonItem = [LMButton setNavright:@"反馈" andcolor:[UIColor whiteColor] andSelector:@selector(pushAppStore) andTarget:self];
 
     [self layoutUI];
@@ -102,7 +145,6 @@
     
     [self.tbvTiming performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:YES];
     
-    self.tbvTiming.backgroundColor = RGB(230, 227, 219);
 
     self.navigationItem.leftBarButtonItem=[LMButton setNavleftComboButtonWithImg:@"back" andSelector:@selector(backMethod) andTarget:self];
     
