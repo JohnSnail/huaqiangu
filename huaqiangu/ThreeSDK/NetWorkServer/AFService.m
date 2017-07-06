@@ -19,12 +19,12 @@
     manager.requestSerializer=[AFJSONRequestSerializer serializer];
     [manager GET:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         dispatch_async(dispatch_get_main_queue(),^{
-            TLog(@"输出返回的内容%@",responseObject);
+//            TLog(@"输出返回的内容%@",responseObject);
             completion(responseObject,nil);
         });
 
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        TLog(@"Error: %@", error);
+//        TLog(@"Error: %@", error);
         dispatch_async(dispatch_get_main_queue(), ^{
             completion(nil,error);
         });
@@ -65,11 +65,11 @@
     [manager PUT:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         TLog(@"%@", responseObject);
         dispatch_async(dispatch_get_main_queue(),^{
-            TLog(@"输出返回的内容%@",responseObject);
+//            TLog(@"输出返回的内容%@",responseObject);
             completion(responseObject,nil);
         });
     } failure:^(AFHTTPRequestOperation *operation, NSError *error){
-        TLog(@"Error: %@", error);
+//        TLog(@"Error: %@", error);
         dispatch_async(dispatch_get_main_queue(), ^{
             completion(nil,error);
         });

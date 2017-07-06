@@ -25,6 +25,40 @@
 
 @implementation AlbumListVC
 
+#pragma mark -得到当前时间
+- (NSDate *)getCurrentTime{
+    NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
+    [formatter setDateFormat:@"dd-MM-yyyy-HHmmss"];
+    NSString *dateTime=[formatter stringFromDate:[NSDate date]];
+    NSDate *date = [formatter dateFromString:dateTime];
+    
+    NSLog(@"---------- currentDate == %@",date);
+    return date;
+}
+
+- (int)compareOneDay:(NSDate *)oneDay withAnotherDay:(NSDate *)anotherDay
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd-MM-yyyy-HHmmss"];
+    NSString *oneDayStr = [dateFormatter stringFromDate:oneDay];
+    NSString *anotherDayStr = [dateFormatter stringFromDate:anotherDay];
+    NSDate *dateA = [dateFormatter dateFromString:oneDayStr];
+    NSDate *dateB = [dateFormatter dateFromString:anotherDayStr];
+    NSComparisonResult result = [dateA compare:dateB];
+    NSLog(@"date1 : %@, date2 : %@", oneDay, anotherDay);
+    if (result == NSOrderedDescending) {
+        //NSLog(@"Date1  is in the future");
+        return 1;
+    }
+    else if (result == NSOrderedAscending){
+        //NSLog(@"Date1 is in the past");
+        return -1;
+    }
+    //NSLog(@"Both dates are the same");
+    return 0;
+    
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -38,7 +72,15 @@
     self.navigationItem.leftBarButtonItem = [LMButton setNavright:@"反馈" andcolor:[UIColor whiteColor] andSelector:@selector(pushAppStore) andTarget:self];
     
     self.albumTbview.frame = CGRectMake(0, 0, mainscreenwidth, mainscreenhight);
-    self.albumTbview.tableHeaderView = [self addAdView];
+    
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd-MM-yyyy-HHmmss"];
+    NSDate *date = [dateFormatter dateFromString:@"07-07-2017-000000"];
+    
+    if([self compareOneDay:[self getCurrentTime] withAnotherDay:date] != -1){
+        self.albumTbview.tableHeaderView = [self addAdView];
+    }
     
     //添加admob广告
 //    [self admobAD];
@@ -233,9 +275,9 @@
         }
         //添加时效性内容
         AlbumModel *album = [[AlbumModel alloc]init];
-        album.title = @"罗辑思维全集";
-        album.albumId = @"239463";
-        album.intro = @"在知识中寻找独立的见识，您在把玩知识中寻找思维的乐趣";
+        album.title = @"楚乔传";
+        album.albumId = @"5372320";
+        album.intro = @"西魏年间乱世混战，大批平民在战乱中沦为奴隶，命如草芥。奴籍少女楚乔被送入人猎 场供贵族娱乐射杀，幸得西凉世子燕洵暗中相救……";
         album.coverLarge = @"renmin";
         [bSelf.albumMuArray insertObject:album atIndex:0];
         //添加时效性内容 end
