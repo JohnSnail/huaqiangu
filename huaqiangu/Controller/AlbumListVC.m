@@ -375,7 +375,7 @@
     AlbumModel *album = [self.albumMuArray objectAtIndex:indexPath.row];
     if ([album.title isEqualToString:@"楚乔传"]) {
         LSYReadPageViewController *pageView = [[LSYReadPageViewController alloc] init];
-        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"11处特工王妃"withExtension:@"txt"];
+        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"1-精绝古城"withExtension:@"txt"];
         pageView.resourceURL = fileURL;    //文件位置
         
         dispatch_async(dispatch_get_global_queue(0, 0), ^{

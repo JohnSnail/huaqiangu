@@ -45,6 +45,14 @@
 		9A006B5A1EF8D09F007304FD /* AFService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A006B431EF8D09F007304FD /* AFService.m */; };
 		9A006B5B1EF8D09F007304FD /* NetService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A006B461EF8D09F007304FD /* NetService.m */; };
 		9A006B5C1EF8D09F007304FD /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A006B491EF8D09F007304FD /* Reachability.m */; };
+		9AA076B41F25DE1900F04B42 /* 1-精绝古城.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9AA076AC1F25DE1900F04B42 /* 1-精绝古城.txt */; };
+		9AA076B51F25DE1900F04B42 /* 2-龙岭迷窟.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9AA076AD1F25DE1900F04B42 /* 2-龙岭迷窟.txt */; };
+		9AA076B61F25DE1900F04B42 /* 3-云南虫谷.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9AA076AE1F25DE1900F04B42 /* 3-云南虫谷.txt */; };
+		9AA076B71F25DE1900F04B42 /* 4-昆仑神宫.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9AA076AF1F25DE1900F04B42 /* 4-昆仑神宫.txt */; };
+		9AA076B81F25DE1900F04B42 /* 5-黄皮子坟.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9AA076B01F25DE1900F04B42 /* 5-黄皮子坟.txt */; };
+		9AA076B91F25DE1900F04B42 /* 6-南海归墟.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9AA076B11F25DE1900F04B42 /* 6-南海归墟.txt */; };
+		9AA076BA1F25DE1900F04B42 /* 7-湘西尸王.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9AA076B21F25DE1900F04B42 /* 7-湘西尸王.txt */; };
+		9AA076BB1F25DE1900F04B42 /* 8-巫峡棺山.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9AA076B31F25DE1900F04B42 /* 8-巫峡棺山.txt */; };
 		9AAF2FF71EEE73BA00F29BCB /* WebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAF2FF51EEE73BA00F29BCB /* WebVC.m */; };
 		9AAF2FF81EEE73BA00F29BCB /* WebVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AAF2FF61EEE73BA00F29BCB /* WebVC.xib */; };
 		9AC0F5BE1F18988900D75C9A /* LSYChapterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC0F5521F18988900D75C9A /* LSYChapterVC.m */; };
@@ -207,6 +215,14 @@
 		9A006B461EF8D09F007304FD /* NetService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetService.m; sourceTree = "<group>"; };
 		9A006B481EF8D09F007304FD /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		9A006B491EF8D09F007304FD /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		9AA076AC1F25DE1900F04B42 /* 1-精绝古城.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "1-精绝古城.txt"; sourceTree = "<group>"; };
+		9AA076AD1F25DE1900F04B42 /* 2-龙岭迷窟.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "2-龙岭迷窟.txt"; sourceTree = "<group>"; };
+		9AA076AE1F25DE1900F04B42 /* 3-云南虫谷.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "3-云南虫谷.txt"; sourceTree = "<group>"; };
+		9AA076AF1F25DE1900F04B42 /* 4-昆仑神宫.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "4-昆仑神宫.txt"; sourceTree = "<group>"; };
+		9AA076B01F25DE1900F04B42 /* 5-黄皮子坟.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "5-黄皮子坟.txt"; sourceTree = "<group>"; };
+		9AA076B11F25DE1900F04B42 /* 6-南海归墟.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "6-南海归墟.txt"; sourceTree = "<group>"; };
+		9AA076B21F25DE1900F04B42 /* 7-湘西尸王.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "7-湘西尸王.txt"; sourceTree = "<group>"; };
+		9AA076B31F25DE1900F04B42 /* 8-巫峡棺山.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "8-巫峡棺山.txt"; sourceTree = "<group>"; };
 		9AAF2FF41EEE73BA00F29BCB /* WebVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebVC.h; sourceTree = "<group>"; };
 		9AAF2FF51EEE73BA00F29BCB /* WebVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebVC.m; sourceTree = "<group>"; };
 		9AAF2FF61EEE73BA00F29BCB /* WebVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebVC.xib; sourceTree = "<group>"; };
@@ -630,6 +646,14 @@
 		9AC0F5711F18988900D75C9A /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				9AA076AC1F25DE1900F04B42 /* 1-精绝古城.txt */,
+				9AA076AD1F25DE1900F04B42 /* 2-龙岭迷窟.txt */,
+				9AA076AE1F25DE1900F04B42 /* 3-云南虫谷.txt */,
+				9AA076AF1F25DE1900F04B42 /* 4-昆仑神宫.txt */,
+				9AA076B01F25DE1900F04B42 /* 5-黄皮子坟.txt */,
+				9AA076B11F25DE1900F04B42 /* 6-南海归墟.txt */,
+				9AA076B21F25DE1900F04B42 /* 7-湘西尸王.txt */,
+				9AA076B31F25DE1900F04B42 /* 8-巫峡棺山.txt */,
 				9AC0F5721F18988900D75C9A /* 11处特工王妃.txt */,
 				9AC0F5731F18988900D75C9A /* bg_back_white.png */,
 				9AC0F5741F18988900D75C9A /* bg_back_white@2x.png */,
@@ -982,7 +1006,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AC0F5D61F18988900D75C9A /* 细说明朝.epub in Resources */,
+				9AA076B41F25DE1900F04B42 /* 1-精绝古城.txt in Resources */,
+				9AA076B91F25DE1900F04B42 /* 6-南海归墟.txt in Resources */,
 				9AC0F5EE1F18988900D75C9A /* bt_tjcp_no@2x.png in Resources */,
+				9AA076BB1F25DE1900F04B42 /* 8-巫峡棺山.txt in Resources */,
 				9AF873E01E7000D9006D5A4B /* GoogleService-Info.plist in Resources */,
 				3F8854951D8E62D100E3E6A2 /* AlbumListVC.xib in Resources */,
 				9AC0F5D31F18988900D75C9A /* reader_more@2x.png in Resources */,
@@ -992,6 +1019,7 @@
 				3F2DFFA61D05C48F0085F6BA /* MainCell.xib in Resources */,
 				3F2BBFB81C7C729900D672E3 /* DownController.xib in Resources */,
 				3F1C0C3A1D14257200064C3F /* sample.m4a in Resources */,
+				9AA076B71F25DE1900F04B42 /* 4-昆仑神宫.txt in Resources */,
 				BC1FB5C31B595E9C00D06876 /* Main.storyboard in Resources */,
 				9AAF2FF81EEE73BA00F29BCB /* WebVC.xib in Resources */,
 				9AC0F5D21F18988900D75C9A /* reader_cover@2x.png in Resources */,
@@ -1000,11 +1028,15 @@
 				3F2BBFBD1C7C85C100D672E3 /* DownCell.xib in Resources */,
 				BC1FB5C51B595E9C00D06876 /* Images.xcassets in Resources */,
 				9AC0F5D01F18988900D75C9A /* ic_add.png in Resources */,
+				9AA076BA1F25DE1900F04B42 /* 7-湘西尸王.txt in Resources */,
 				9AC0F5D11F18988900D75C9A /* r_drag-dot@2x.png in Resources */,
 				9AC0F5D41F18988900D75C9A /* sale_discount_yellow.png in Resources */,
+				9AA076B81F25DE1900F04B42 /* 5-黄皮子坟.txt in Resources */,
 				9AC0F5CD1F18988900D75C9A /* 11处特工王妃.txt in Resources */,
+				9AA076B51F25DE1900F04B42 /* 2-龙岭迷窟.txt in Resources */,
 				9AC0F5CE1F18988900D75C9A /* bg_back_white.png in Resources */,
 				9A006B4A1EF8D09F007304FD /* baidumobadsdk.bundle in Resources */,
+				9AA076B61F25DE1900F04B42 /* 3-云南虫谷.txt in Resources */,
 				BC9CEDBD1B5DFAD3004FC9F3 /* DTTimingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
