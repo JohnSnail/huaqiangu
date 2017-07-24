@@ -120,10 +120,25 @@ return _shared##classname; \
 // 存储文件总长度的文件路径（caches）
 #define HSTotalLengthFullpath [HSCachesDirectory stringByAppendingPathComponent:@"totalLength.plist"]
 
-#import "NSString+Hash.h"
-#import "BaiduMobAdSDK/BaiduMobAdDelegateProtocol.h"
-#import "BaiduMobAdSDK/BaiduMobAdView.h"
-#import <GoogleMobileAds/GoogleMobileAds.h>
-#import <Firebase.h>
+#define TopSpacing 40.0f
+#define BottomSpacing 40.0f
+#define LeftSpacing 20.0f
+#define RightSpacing  20.0f
+#define DELAYEXECUTE(delayTime,func) (dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{func;}))
+#define DistanceFromTopGuiden(view) (view.frame.origin.y + view.frame.size.height)
+#define DistanceFromLeftGuiden(view) (view.frame.origin.x + view.frame.size.width)
+#define ViewOrigin(view)   (view.frame.origin)
+#define ViewSize(view)  (view.frame.size)
+#define ScreenSize [UIScreen mainScreen].bounds.size
+
+
+#define LSYNoteNotification @"LSYNoteNotification"
+#define LSYThemeNotification @"LSYThemeNotification"
+#define LSYEditingNotification @"LSYEditingNotification"
+#define LSYEndEditNotification @"LSYEndEditNotification"
+
+#define MinFontSize 11.0f
+#define MaxFontSize 20.0f
+
 
 #endif

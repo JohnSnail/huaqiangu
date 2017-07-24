@@ -9,6 +9,8 @@
 #ifndef huaqiangu_PrefixHeader_pch
 #define huaqiangu_PrefixHeader_pch
 
+#ifdef __OBJC__
+
 #import "mainHead.h"
 
 #import "TrackModel.h"
@@ -29,5 +31,14 @@
 #import "LBLaunchImageAdView.h"
 #import "AFService.h"
 #import "ApiHeader.h"
+#import "NSString+Hash.h"
+#import "BaiduMobAdSDK/BaiduMobAdDelegateProtocol.h"
+#import "BaiduMobAdSDK/BaiduMobAdView.h"
+#import <GoogleMobileAds/GoogleMobileAds.h>
+#import <Firebase.h>
+#import "LSYReadUtilites.h"
+#import "LSYReadModel.h"
+#import "LSYReadParser.h"
 
+#endif
 #endif

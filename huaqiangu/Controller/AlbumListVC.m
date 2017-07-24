@@ -12,6 +12,7 @@
 #import "MainController.h"
 #import "PlayController.h"
 #import "WebVC.h"
+#import "LSYReadPageViewController.h"
 
 @interface AlbumListVC ()<UITableViewDelegate,UITableViewDataSource,GADBannerViewDelegate,SKStoreProductViewControllerDelegate>{
     UIButton *playBtn;
@@ -76,7 +77,7 @@
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"dd-MM-yyyy-HHmmss"];
-    NSDate *date = [dateFormatter dateFromString:@"07-07-2017-000000"];
+    NSDate *date = [dateFormatter dateFromString:@"21-07-2017-000000"];
     
     if([self compareOneDay:[self getCurrentTime] withAnotherDay:date] != -1){
         self.albumTbview.tableHeaderView = [self addAdView];
@@ -273,14 +274,22 @@
             AlbumModel *album = [[AlbumModel alloc]initWithDict:dic];
             [bSelf.albumMuArray addObject:album];
         }
-        //添加时效性内容
-        AlbumModel *album = [[AlbumModel alloc]init];
-        album.title = @"楚乔传";
-        album.albumId = @"5372320";
-        album.intro = @"西魏年间乱世混战，大批平民在战乱中沦为奴隶，命如草芥。奴籍少女楚乔被送入人猎 场供贵族娱乐射杀，幸得西凉世子燕洵暗中相救……";
-        album.coverLarge = @"renmin";
-        [bSelf.albumMuArray insertObject:album atIndex:0];
-        //添加时效性内容 end
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"dd-MM-yyyy-HHmmss"];
+        NSDate *date = [dateFormatter dateFromString:@"20-07-2017-000000"];
+        
+        if([bSelf compareOneDay:[bSelf getCurrentTime] withAnotherDay:date] != -1){
+            //添加时效性内容
+            AlbumModel *album = [[AlbumModel alloc]init];
+            album.title = @"楚乔传";
+            album.albumId = @"5372320";
+            album.intro = @"西魏年间乱世混战，大批平民在战乱中沦为奴隶，命如草芥。奴籍少女楚乔被送入人猎 场供贵族娱乐射杀，幸得西凉世子燕洵暗中相救……";
+            album.coverLarge = @"renmin";
+            [bSelf.albumMuArray insertObject:album atIndex:0];
+            //添加时效性内容 end
+        }
+        
         
         [self.albumTbview reloadData];
         [self.albumTbview.header endRefreshing];
@@ -364,12 +373,30 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     AlbumModel *album = [self.albumMuArray objectAtIndex:indexPath.row];
-    MainController *mainVC = [[MainController alloc]init];
-    mainVC.albumID = album.albumId;
-    mainVC.albumTitle = album.title;
-    mainVC.albumImage = album.coverLarge;
-    [self.navigationController pushViewController:mainVC animated:YES];
-    
+    if ([album.title isEqualToString:@"楚乔传"]) {
+        LSYReadPageViewController *pageView = [[LSYReadPageViewController alloc] init];
+        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"11处特工王妃"withExtension:@"txt"];
+        pageView.resourceURL = fileURL;    //文件位置
+        
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            
+            pageView.model = [LSYReadModel getLocalModelWithURL:fileURL];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                //            [_activity stopAnimating];
+                //            [_begin setTitle:@"开始阅读" forState:UIControlStateNormal];
+                //            [_beginEpub setEnabled:YES];
+                
+                [self presentViewController:pageView animated:YES completion:nil];
+            });
+        });
+    }else{
+        MainController *mainVC = [[MainController alloc]init];
+        mainVC.albumID = album.albumId;
+        mainVC.albumTitle = album.title;
+        mainVC.albumImage = album.coverLarge;
+        [self.navigationController pushViewController:mainVC animated:YES];
+    }
 }
 
 #pragma mark - 评分取消按钮监听
