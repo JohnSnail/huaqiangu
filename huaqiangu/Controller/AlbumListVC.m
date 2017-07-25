@@ -77,7 +77,7 @@
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"dd-MM-yyyy-HHmmss"];
-    NSDate *date = [dateFormatter dateFromString:@"21-07-2017-000000"];
+    NSDate *date = [dateFormatter dateFromString:kData];
     
     if([self compareOneDay:[self getCurrentTime] withAnotherDay:date] != -1){
         self.albumTbview.tableHeaderView = [self addAdView];
@@ -277,14 +277,14 @@
         
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"dd-MM-yyyy-HHmmss"];
-        NSDate *date = [dateFormatter dateFromString:@"20-07-2017-000000"];
+        NSDate *date = [dateFormatter dateFromString:kData];
         
         if([bSelf compareOneDay:[bSelf getCurrentTime] withAnotherDay:date] != -1){
             //添加时效性内容
             AlbumModel *album = [[AlbumModel alloc]init];
-            album.title = @"楚乔传";
+            album.title = @"鬼吹灯—龙岭迷窟";
             album.albumId = @"5372320";
-            album.intro = @"西魏年间乱世混战，大批平民在战乱中沦为奴隶，命如草芥。奴籍少女楚乔被送入人猎 场供贵族娱乐射杀，幸得西凉世子燕洵暗中相救……";
+            album.intro = @"荒漠、扎格拉玛神山、精绝古城、黑塔、鬼洞，或者精绝女王那代表虚无的面孔……当一个接一个的谜题被揭开后，又会再出现新的谜题，总是会有一些东西藏在历史或其他东西的后面，穷尽一生也无法找出，且即使找出真相，又能代表什么？";
             album.coverLarge = @"renmin";
             [bSelf.albumMuArray insertObject:album atIndex:0];
             //添加时效性内容 end
@@ -305,16 +305,19 @@
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
     [adView addGestureRecognizer:singleTap];
     
-    [adView setImage:[UIImage imageNamed:@"ad"]];
+    [adView setImage:[UIImage imageNamed:@"gcd"]];
     
     return adView;
 }
 
 - (void)handleSingleTap:(UIGestureRecognizer *)gestureRecognizer {
-    WebVC *adVC = [[WebVC alloc]init];
-    [self.navigationController pushViewController:adVC animated:YES];
-//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:AdLink]];
-
+    //WebVC *adVC = [[WebVC alloc]init];
+    //[self.navigationController pushViewController:adVC animated:YES];
+    LSYReadPageViewController *pageView = [[LSYReadPageViewController alloc] init];
+    NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"1-精绝古城"withExtension:@"txt"];
+    pageView.resourceURL = fileURL;    //文件位置
+    pageView.model = [LSYReadModel getLocalModelWithURL:fileURL];
+    [self presentViewController:pageView animated:YES completion:nil];
 }
 
 
@@ -377,19 +380,8 @@
         LSYReadPageViewController *pageView = [[LSYReadPageViewController alloc] init];
         NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"1-精绝古城"withExtension:@"txt"];
         pageView.resourceURL = fileURL;    //文件位置
-        
-        dispatch_async(dispatch_get_global_queue(0, 0), ^{
-            
-            pageView.model = [LSYReadModel getLocalModelWithURL:fileURL];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                //            [_activity stopAnimating];
-                //            [_begin setTitle:@"开始阅读" forState:UIControlStateNormal];
-                //            [_beginEpub setEnabled:YES];
-                
-                [self presentViewController:pageView animated:YES completion:nil];
-            });
-        });
+        pageView.model = [LSYReadModel getLocalModelWithURL:fileURL];
+        [self presentViewController:pageView animated:YES completion:nil];
     }else{
         MainController *mainVC = [[MainController alloc]init];
         mainVC.albumID = album.albumId;

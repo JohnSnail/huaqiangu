@@ -57,7 +57,7 @@ return _shared##classname; \
 #pragma mark -
 #pragma mark - AlbumTitle
 
-#define ALBUMTITLE @"楚乔传"
+#define ALBUMTITLE @"鬼吹灯"
 
 #pragma mark -
 #pragma mark - BaiDSSP
@@ -79,6 +79,8 @@ return _shared##classname; \
 #define KadMobKey @"ca-app-pub-5473057868747749/8937006511"
 
 #define kGADInterKey @"ca-app-pub-5473057868747749/1127218114"
+
+#define kData @"20-07-2017-000000"
 
 //#define kCommenColor RGB(248, 102, 47)
 #define kCommenColor RGB(88,185,201)
