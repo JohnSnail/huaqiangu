@@ -51,7 +51,7 @@ return _shared##classname; \
 //替换版本时需更换的内容
 
 //苹果id
-#define AppStoreAppId @"1141273084"
+#define AppStoreAppId @"1258052977"
 
 
 #pragma mark -
@@ -74,13 +74,13 @@ return _shared##classname; \
 #pragma mark -
 #pragma mark - UMengKey
 
-#define umAppKey @"55b0a856e0f55a5f1f0027c0"
+#define umAppKey @"53da6569fd98c555780061e0"
 
 #define KadMobKey @"ca-app-pub-5473057868747749/8937006511"
 
 #define kGADInterKey @"ca-app-pub-5473057868747749/1127218114"
 
-#define kData @"20-07-2017-000000"
+#define kData @"31-07-2017-000000"
 
 //#define kCommenColor RGB(248, 102, 47)
 #define kCommenColor RGB(88,185,201)

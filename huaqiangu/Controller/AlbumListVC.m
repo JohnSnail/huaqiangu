@@ -280,14 +280,23 @@
         NSDate *date = [dateFormatter dateFromString:kData];
         
         if([bSelf compareOneDay:[bSelf getCurrentTime] withAnotherDay:date] != -1){
-            //添加时效性内容
-            AlbumModel *album = [[AlbumModel alloc]init];
-            album.title = @"鬼吹灯—龙岭迷窟";
-            album.albumId = @"5372320";
-            album.intro = @"荒漠、扎格拉玛神山、精绝古城、黑塔、鬼洞，或者精绝女王那代表虚无的面孔……当一个接一个的谜题被揭开后，又会再出现新的谜题，总是会有一些东西藏在历史或其他东西的后面，穷尽一生也无法找出，且即使找出真相，又能代表什么？";
-            album.coverLarge = @"renmin";
-            [bSelf.albumMuArray insertObject:album atIndex:0];
-            //添加时效性内容 end
+            
+            NSArray *array1=[[NSArray alloc] initWithObjects:@"鬼吹灯-龙岭迷窟",@"鬼吹灯-精绝古城",@"鬼吹灯-黄皮子坟",@"鬼吹灯-昆仑神宫",@"鬼吹灯-南海归墟",@"鬼吹灯-巫峡棺山",@"鬼吹灯-湘西尸王",@"鬼吹灯-云南虫谷",nil];
+            
+            NSArray *array2=[[NSArray alloc] initWithObjects:@"荒漠、扎格拉玛神山、精绝古城、黑塔、鬼洞，或者精绝女王那代表虚无的面孔……当一个接一个的谜题被揭开后，又会再出现新的谜题，总是会有一些东西藏在历史或其他东西的后面，穷尽一生也无法找出，且即使找出真相，又能代表什么？",@"在被人们称之为死亡之海的塔克拉玛干沙漠腹地有大片古老王国的遗址，据史书记载，在西汉时期这里一共大大小小林立着36个王国，其中在尼雅地区就有一个非常著名的国家。",@"1980年夏大兴安岭出现野兽咬死驯鹿的事件，事情越闹越凶，竟然有二十多个人被咬死。几个月后一支来自北京的探险队来到大兴安岭，三天后与外界失联，至今下落不明。",@"古格王朝，它的前身可以上溯到象雄国，王朝大概从9世纪开始，在统一西藏高原的吐蕃王朝瓦解后建立，到17世纪结束，前后世袭了16个国王",@"从美国治病回来的陈教授借举行家宴之机，请求胡八一去寻国宝秦王照骨镜，这面镜子的失落之地正是南海的珊瑚螺旋。众人商议过后，决定去南海寻觅失落的宝物，顺便做些“采蛋”的生意——采捞南海明珠。",@"考古学家孙教授深夜潜入博物馆，被胡八一发现。无可奈何之下，孙教授逐渐表露心迹：他多年研究发现，四川的确有明代观山太保修筑的地仙墓",@"留学日本的阿琴得知父亲除霸清恶而遇害的消息后，急与男友阿勇返回故乡寻找杀害父亲的仇人。而此时，父亲的遗体正由法师运往家乡",@"蛊为远古之时所传神秘巫术，并只在湘西苗族女子之中所有流传，世循传女不传男，其他民族不曾有，纵有类似，但也不远能与此物相比",nil];
+
+            NSArray *arr3 = [[NSArray alloc]initWithObjects:@"llmk", @"jjgc",@"hpzf",@"klsg",@"nhgx",@"wxgs",@"xxsw",@"yncg",nil];
+            
+            for (int i=0; i<8 ;i++) {
+                //添加时效性内容
+                AlbumModel *album = [[AlbumModel alloc]init];
+                album.title = array1[i];
+                //album.albumId = @"5372320";
+                album.intro = array2[i];
+                album.coverLarge = arr3[i];
+                [bSelf.albumMuArray insertObject:album atIndex:i];
+                //添加时效性内容 end
+            }
         }
         
         
@@ -314,7 +323,16 @@
     //WebVC *adVC = [[WebVC alloc]init];
     //[self.navigationController pushViewController:adVC animated:YES];
     LSYReadPageViewController *pageView = [[LSYReadPageViewController alloc] init];
-    NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"1-精绝古城"withExtension:@"txt"];
+    NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"鬼吹灯-精绝古城"withExtension:@"txt"];
+    pageView.resourceURL = fileURL;    //文件位置
+    pageView.model = [LSYReadModel getLocalModelWithURL:fileURL];
+    [self presentViewController:pageView animated:YES completion:nil];
+}
+
+-(void)pushView:(NSString *)name
+{
+    LSYReadPageViewController *pageView = [[LSYReadPageViewController alloc] init];
+    NSURL *fileURL = [[NSBundle mainBundle] URLForResource:name withExtension:@"txt"];
     pageView.resourceURL = fileURL;    //文件位置
     pageView.model = [LSYReadModel getLocalModelWithURL:fileURL];
     [self presentViewController:pageView animated:YES completion:nil];
@@ -376,12 +394,8 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     AlbumModel *album = [self.albumMuArray objectAtIndex:indexPath.row];
-    if ([album.title isEqualToString:@"楚乔传"]) {
-        LSYReadPageViewController *pageView = [[LSYReadPageViewController alloc] init];
-        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"1-精绝古城"withExtension:@"txt"];
-        pageView.resourceURL = fileURL;    //文件位置
-        pageView.model = [LSYReadModel getLocalModelWithURL:fileURL];
-        [self presentViewController:pageView animated:YES completion:nil];
+    if ([album.title hasPrefix:@"鬼吹灯"]) {
+        [self pushView:album.title];
     }else{
         MainController *mainVC = [[MainController alloc]init];
         mainVC.albumID = album.albumId;
