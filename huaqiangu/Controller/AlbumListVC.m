@@ -96,21 +96,22 @@
     
     [self.albumTbview.header beginRefreshing];
     
-    self.albumTbview.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        // 进入刷新状态后会自动调用这个block
-        [self loadMoreData];
-    }];
+//    self.albumTbview.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+//        // 进入刷新状态后会自动调用这个block
+//        [self loadMoreData];
+//    }];
 }
 
 -(void)loadMoreData
 {
-    if (currentPage > totalPage || currentPage == totalPage) {
-        self.albumTbview.footer = nil;
-        return;
-    }else{
-        currentPage ++;
-        [self getRankListData:currentPage andPageSize:20];
-    }
+//    if (currentPage > totalPage || currentPage == totalPage) {
+//        self.albumTbview.footer = nil;
+//        return;
+//    }else{
+//        currentPage ++;
+//        [self getRankListData:currentPage andPageSize:20];
+//    }
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -268,12 +269,12 @@
     [AFService getMethod:kListAlbum andDict:params completion:^(NSDictionary *results,NSError *error){
         
         totalPage = [[results objectForKey:@"maxPageId"] integerValue];
-        NSArray *arr = [results objectForKey:@"list"];
-        for (int i=0; i<arr.count; i++) {
-            NSDictionary *dic = [arr objectAtIndex:i];
-            AlbumModel *album = [[AlbumModel alloc]initWithDict:dic];
-            [bSelf.albumMuArray addObject:album];
-        }
+        //NSArray *arr = [results objectForKey:@"list"];
+        //for (int i=0; i<arr.count; i++) {
+        //    NSDictionary *dic = [arr objectAtIndex:i];
+        //    AlbumModel *album = [[AlbumModel alloc]initWithDict:dic];
+        //    [bSelf.albumMuArray addObject:album];
+        //}
         
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"dd-MM-yyyy-HHmmss"];

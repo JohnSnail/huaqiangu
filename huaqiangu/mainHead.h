@@ -80,7 +80,7 @@ return _shared##classname; \
 
 #define kGADInterKey @"ca-app-pub-5473057868747749/1127218114"
 
-#define kData @"31-07-2017-000000"
+#define kData @"21-07-2017-000000"
 
 //#define kCommenColor RGB(248, 102, 47)
 #define kCommenColor RGB(88,185,201)

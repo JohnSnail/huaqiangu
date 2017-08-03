@@ -45,6 +45,9 @@
 		9A006B5A1EF8D09F007304FD /* AFService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A006B431EF8D09F007304FD /* AFService.m */; };
 		9A006B5B1EF8D09F007304FD /* NetService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A006B461EF8D09F007304FD /* NetService.m */; };
 		9A006B5C1EF8D09F007304FD /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A006B491EF8D09F007304FD /* Reachability.m */; };
+		9A22AA541F32CE07003AC736 /* 春风十里不如你.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9A22AA511F32CE07003AC736 /* 春风十里不如你.txt */; };
+		9A22AA551F32CE07003AC736 /* 河神.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9A22AA521F32CE07003AC736 /* 河神.txt */; };
+		9A22AA561F32CE07003AC736 /* 三生三世.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9A22AA531F32CE07003AC736 /* 三生三世.txt */; };
 		9AA076C41F27503C00F04B42 /* 鬼吹灯-黄皮子坟.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9AA076BC1F27503C00F04B42 /* 鬼吹灯-黄皮子坟.txt */; };
 		9AA076C51F27503C00F04B42 /* 鬼吹灯-精绝古城.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9AA076BD1F27503C00F04B42 /* 鬼吹灯-精绝古城.txt */; };
 		9AA076C61F27503C00F04B42 /* 鬼吹灯-昆仑神宫.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9AA076BE1F27503C00F04B42 /* 鬼吹灯-昆仑神宫.txt */; };
@@ -215,6 +218,9 @@
 		9A006B461EF8D09F007304FD /* NetService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetService.m; sourceTree = "<group>"; };
 		9A006B481EF8D09F007304FD /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		9A006B491EF8D09F007304FD /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		9A22AA511F32CE07003AC736 /* 春风十里不如你.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "春风十里不如你.txt"; sourceTree = "<group>"; };
+		9A22AA521F32CE07003AC736 /* 河神.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "河神.txt"; sourceTree = "<group>"; };
+		9A22AA531F32CE07003AC736 /* 三生三世.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "三生三世.txt"; sourceTree = "<group>"; };
 		9AA076BC1F27503C00F04B42 /* 鬼吹灯-黄皮子坟.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "鬼吹灯-黄皮子坟.txt"; sourceTree = "<group>"; };
 		9AA076BD1F27503C00F04B42 /* 鬼吹灯-精绝古城.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "鬼吹灯-精绝古城.txt"; sourceTree = "<group>"; };
 		9AA076BE1F27503C00F04B42 /* 鬼吹灯-昆仑神宫.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "鬼吹灯-昆仑神宫.txt"; sourceTree = "<group>"; };
@@ -647,6 +653,9 @@
 			isa = PBXGroup;
 			children = (
 				9AA076BC1F27503C00F04B42 /* 鬼吹灯-黄皮子坟.txt */,
+				9A22AA511F32CE07003AC736 /* 春风十里不如你.txt */,
+				9A22AA521F32CE07003AC736 /* 河神.txt */,
+				9A22AA531F32CE07003AC736 /* 三生三世.txt */,
 				9AA076BD1F27503C00F04B42 /* 鬼吹灯-精绝古城.txt */,
 				9AA076BE1F27503C00F04B42 /* 鬼吹灯-昆仑神宫.txt */,
 				9AA076BF1F27503C00F04B42 /* 鬼吹灯-龙岭迷窟.txt */,
@@ -1005,6 +1014,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A22AA551F32CE07003AC736 /* 河神.txt in Resources */,
 				9AA076C81F27503C00F04B42 /* 鬼吹灯-南海归墟.txt in Resources */,
 				9AC0F5D61F18988900D75C9A /* 细说明朝.epub in Resources */,
 				9AC0F5EE1F18988900D75C9A /* bt_tjcp_no@2x.png in Resources */,
@@ -1027,6 +1037,7 @@
 				3FA8B0C81D8E8567007A8D58 /* AlbumCell.xib in Resources */,
 				9AC0F5CF1F18988900D75C9A /* bg_back_white@2x.png in Resources */,
 				3F2BBFBD1C7C85C100D672E3 /* DownCell.xib in Resources */,
+				9A22AA541F32CE07003AC736 /* 春风十里不如你.txt in Resources */,
 				9AA076CB1F27503C00F04B42 /* 鬼吹灯-云南虫谷.txt in Resources */,
 				BC1FB5C51B595E9C00D06876 /* Images.xcassets in Resources */,
 				9AC0F5D01F18988900D75C9A /* ic_add.png in Resources */,
@@ -1036,6 +1047,7 @@
 				9AC0F5CD1F18988900D75C9A /* 11处特工王妃.txt in Resources */,
 				9AA076C41F27503C00F04B42 /* 鬼吹灯-黄皮子坟.txt in Resources */,
 				9AC0F5CE1F18988900D75C9A /* bg_back_white.png in Resources */,
+				9A22AA561F32CE07003AC736 /* 三生三世.txt in Resources */,
 				9A006B4A1EF8D09F007304FD /* baidumobadsdk.bundle in Resources */,
 				BC9CEDBD1B5DFAD3004FC9F3 /* DTTimingViewController.xib in Resources */,
 			);
