@@ -74,7 +74,7 @@ return _shared##classname; \
 #pragma mark -
 #pragma mark - UMengKey
 
-#define umAppKey @"53da6569fd98c555780061e0"
+#define umAppKey @"55b0a856e0f55a5f1f0027c0"
 
 #define KadMobKey @"ca-app-pub-5473057868747749/8937006511"
 

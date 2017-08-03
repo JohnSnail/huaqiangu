@@ -48,6 +48,7 @@
 		9A22AA541F32CE07003AC736 /* 春风十里不如你.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9A22AA511F32CE07003AC736 /* 春风十里不如你.txt */; };
 		9A22AA551F32CE07003AC736 /* 河神.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9A22AA521F32CE07003AC736 /* 河神.txt */; };
 		9A22AA561F32CE07003AC736 /* 三生三世.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9A22AA531F32CE07003AC736 /* 三生三世.txt */; };
+		9A22AA581F33100D003AC736 /* 楚乔传.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9A22AA571F33100D003AC736 /* 楚乔传.txt */; };
 		9AA076C41F27503C00F04B42 /* 鬼吹灯-黄皮子坟.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9AA076BC1F27503C00F04B42 /* 鬼吹灯-黄皮子坟.txt */; };
 		9AA076C51F27503C00F04B42 /* 鬼吹灯-精绝古城.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9AA076BD1F27503C00F04B42 /* 鬼吹灯-精绝古城.txt */; };
 		9AA076C61F27503C00F04B42 /* 鬼吹灯-昆仑神宫.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9AA076BE1F27503C00F04B42 /* 鬼吹灯-昆仑神宫.txt */; };
@@ -73,7 +74,6 @@
 		9AC0F5CA1F18988900D75C9A /* LSYNoteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC0F56C1F18988900D75C9A /* LSYNoteModel.m */; };
 		9AC0F5CB1F18988900D75C9A /* LSYReadModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC0F56E1F18988900D75C9A /* LSYReadModel.m */; };
 		9AC0F5CC1F18988900D75C9A /* LSYRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC0F5701F18988900D75C9A /* LSYRecordModel.m */; };
-		9AC0F5CD1F18988900D75C9A /* 11处特工王妃.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9AC0F5721F18988900D75C9A /* 11处特工王妃.txt */; };
 		9AC0F5CE1F18988900D75C9A /* bg_back_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AC0F5731F18988900D75C9A /* bg_back_white.png */; };
 		9AC0F5CF1F18988900D75C9A /* bg_back_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AC0F5741F18988900D75C9A /* bg_back_white@2x.png */; };
 		9AC0F5D01F18988900D75C9A /* ic_add.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AC0F5751F18988900D75C9A /* ic_add.png */; };
@@ -221,6 +221,7 @@
 		9A22AA511F32CE07003AC736 /* 春风十里不如你.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "春风十里不如你.txt"; sourceTree = "<group>"; };
 		9A22AA521F32CE07003AC736 /* 河神.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "河神.txt"; sourceTree = "<group>"; };
 		9A22AA531F32CE07003AC736 /* 三生三世.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "三生三世.txt"; sourceTree = "<group>"; };
+		9A22AA571F33100D003AC736 /* 楚乔传.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "楚乔传.txt"; sourceTree = "<group>"; };
 		9AA076BC1F27503C00F04B42 /* 鬼吹灯-黄皮子坟.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "鬼吹灯-黄皮子坟.txt"; sourceTree = "<group>"; };
 		9AA076BD1F27503C00F04B42 /* 鬼吹灯-精绝古城.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "鬼吹灯-精绝古城.txt"; sourceTree = "<group>"; };
 		9AA076BE1F27503C00F04B42 /* 鬼吹灯-昆仑神宫.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "鬼吹灯-昆仑神宫.txt"; sourceTree = "<group>"; };
@@ -262,7 +263,6 @@
 		9AC0F56E1F18988900D75C9A /* LSYReadModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSYReadModel.m; sourceTree = "<group>"; };
 		9AC0F56F1F18988900D75C9A /* LSYRecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSYRecordModel.h; sourceTree = "<group>"; };
 		9AC0F5701F18988900D75C9A /* LSYRecordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSYRecordModel.m; sourceTree = "<group>"; };
-		9AC0F5721F18988900D75C9A /* 11处特工王妃.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "11处特工王妃.txt"; sourceTree = "<group>"; };
 		9AC0F5731F18988900D75C9A /* bg_back_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_back_white.png; sourceTree = "<group>"; };
 		9AC0F5741F18988900D75C9A /* bg_back_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_back_white@2x.png"; sourceTree = "<group>"; };
 		9AC0F5751F18988900D75C9A /* ic_add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_add.png; sourceTree = "<group>"; };
@@ -652,6 +652,7 @@
 		9AC0F5711F18988900D75C9A /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				9A22AA571F33100D003AC736 /* 楚乔传.txt */,
 				9AA076BC1F27503C00F04B42 /* 鬼吹灯-黄皮子坟.txt */,
 				9A22AA511F32CE07003AC736 /* 春风十里不如你.txt */,
 				9A22AA521F32CE07003AC736 /* 河神.txt */,
@@ -663,7 +664,6 @@
 				9AA076C11F27503C00F04B42 /* 鬼吹灯-巫峡棺山.txt */,
 				9AA076C21F27503C00F04B42 /* 鬼吹灯-湘西尸王.txt */,
 				9AA076C31F27503C00F04B42 /* 鬼吹灯-云南虫谷.txt */,
-				9AC0F5721F18988900D75C9A /* 11处特工王妃.txt */,
 				9AC0F5731F18988900D75C9A /* bg_back_white.png */,
 				9AC0F5741F18988900D75C9A /* bg_back_white@2x.png */,
 				9AC0F5751F18988900D75C9A /* ic_add.png */,
@@ -1017,6 +1017,7 @@
 				9A22AA551F32CE07003AC736 /* 河神.txt in Resources */,
 				9AA076C81F27503C00F04B42 /* 鬼吹灯-南海归墟.txt in Resources */,
 				9AC0F5D61F18988900D75C9A /* 细说明朝.epub in Resources */,
+				9A22AA581F33100D003AC736 /* 楚乔传.txt in Resources */,
 				9AC0F5EE1F18988900D75C9A /* bt_tjcp_no@2x.png in Resources */,
 				9AF873E01E7000D9006D5A4B /* GoogleService-Info.plist in Resources */,
 				3F8854951D8E62D100E3E6A2 /* AlbumListVC.xib in Resources */,
@@ -1044,7 +1045,6 @@
 				9AC0F5D11F18988900D75C9A /* r_drag-dot@2x.png in Resources */,
 				9AA076C51F27503C00F04B42 /* 鬼吹灯-精绝古城.txt in Resources */,
 				9AC0F5D41F18988900D75C9A /* sale_discount_yellow.png in Resources */,
-				9AC0F5CD1F18988900D75C9A /* 11处特工王妃.txt in Resources */,
 				9AA076C41F27503C00F04B42 /* 鬼吹灯-黄皮子坟.txt in Resources */,
 				9AC0F5CE1F18988900D75C9A /* bg_back_white.png in Resources */,
 				9A22AA561F32CE07003AC736 /* 三生三世.txt in Resources */,
@@ -1360,7 +1360,7 @@
 					"-ObjC",
 					"-lstdc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.jasondis.cqz;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jasondis.lolzb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1402,7 +1402,7 @@
 					"-ObjC",
 					"-lstdc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.jasondis.cqz;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jasondis.lolzb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -282,13 +282,13 @@
         
         if([bSelf compareOneDay:[bSelf getCurrentTime] withAnotherDay:date] != -1){
             
-            NSArray *array1=[[NSArray alloc] initWithObjects:@"鬼吹灯-龙岭迷窟",@"鬼吹灯-精绝古城",@"鬼吹灯-黄皮子坟",@"鬼吹灯-昆仑神宫",@"鬼吹灯-南海归墟",@"鬼吹灯-巫峡棺山",@"鬼吹灯-湘西尸王",@"鬼吹灯-云南虫谷",nil];
+            NSArray *array1=[[NSArray alloc] initWithObjects:@"楚乔传",@"河神",@"三生三世",@"春风十里不如你",@"鬼吹灯-龙岭迷窟",@"鬼吹灯-精绝古城",@"鬼吹灯-黄皮子坟",@"鬼吹灯-昆仑神宫",@"鬼吹灯-南海归墟",@"鬼吹灯-巫峡棺山",@"鬼吹灯-湘西尸王",@"鬼吹灯-云南虫谷",nil];
             
-            NSArray *array2=[[NSArray alloc] initWithObjects:@"荒漠、扎格拉玛神山、精绝古城、黑塔、鬼洞，或者精绝女王那代表虚无的面孔……当一个接一个的谜题被揭开后，又会再出现新的谜题，总是会有一些东西藏在历史或其他东西的后面，穷尽一生也无法找出，且即使找出真相，又能代表什么？",@"在被人们称之为死亡之海的塔克拉玛干沙漠腹地有大片古老王国的遗址，据史书记载，在西汉时期这里一共大大小小林立着36个王国，其中在尼雅地区就有一个非常著名的国家。",@"1980年夏大兴安岭出现野兽咬死驯鹿的事件，事情越闹越凶，竟然有二十多个人被咬死。几个月后一支来自北京的探险队来到大兴安岭，三天后与外界失联，至今下落不明。",@"古格王朝，它的前身可以上溯到象雄国，王朝大概从9世纪开始，在统一西藏高原的吐蕃王朝瓦解后建立，到17世纪结束，前后世袭了16个国王",@"从美国治病回来的陈教授借举行家宴之机，请求胡八一去寻国宝秦王照骨镜，这面镜子的失落之地正是南海的珊瑚螺旋。众人商议过后，决定去南海寻觅失落的宝物，顺便做些“采蛋”的生意——采捞南海明珠。",@"考古学家孙教授深夜潜入博物馆，被胡八一发现。无可奈何之下，孙教授逐渐表露心迹：他多年研究发现，四川的确有明代观山太保修筑的地仙墓",@"留学日本的阿琴得知父亲除霸清恶而遇害的消息后，急与男友阿勇返回故乡寻找杀害父亲的仇人。而此时，父亲的遗体正由法师运往家乡",@"蛊为远古之时所传神秘巫术，并只在湘西苗族女子之中所有流传，世循传女不传男，其他民族不曾有，纵有类似，但也不远能与此物相比",nil];
+            NSArray *array2=[[NSArray alloc] initWithObjects:@"西魏年间乱世混战，大批平民在战乱中沦为奴隶，命如草芥。奴籍少女楚乔（赵丽颖饰）被送入人猎场供贵族娱乐射杀，幸得西凉世子燕洵暗中相救，随后她被带进权倾朝野的门阀宇文家。目睹兄姐相继惨死，立誓要带妹妹逃出牢笼。楚乔受到开明贵族宇文玥关注，被迫接受严厉训练的同时，更与燕洵结下深厚友谊",@"民国年间的天津卫水患频发，河中怪力乱神之事不绝。警察局外编五河捞尸队队长郭得友深得师傅“老河神”的真传，一手点烟辨冤的绝技，告慰冤魂无数。",@"上帝赐给她三朵玫瑰，一朵粉红，一朵浅紫，一朵雪白。第一世，她选择美貌，却因家贫被卖入青楼，成为浣花楼最当红的花魁。富商、豪客过眼无数，但谁才能与她共度岁月静好？第二世，她选择财富，生于江南官宦人家，长于锦衣玉食之中，见惯上流社会的浮华奢侈，却忘不了一夜邂逅，让她挂念一生的平凡男子……余生也长，他还会记得她吗？第三世，她选择了智慧，天生聪明过人，对她来说世无难题，哪怕爱上的人不爱她。略施小技就从好友手中抢到一生所爱。只是机关算尽后，她的美满爱情，还能保持完整吗？",@"二十世纪九十年代，文学青年秋水遵从父母的意愿考入医学院，遇到性格截然不同却一样爱他的小红和赵英男。面对两个女孩的追求，秋水虽然选择了自己认为应该喜欢的赵英男，但心里一直住着小红",@"荒漠、扎格拉玛神山、精绝古城、黑塔、鬼洞，或者精绝女王那代表虚无的面孔……当一个接一个的谜题被揭开后，又会再出现新的谜题，总是会有一些东西藏在历史或其他东西的后面，穷尽一生也无法找出，且即使找出真相，又能代表什么？",@"在被人们称之为死亡之海的塔克拉玛干沙漠腹地有大片古老王国的遗址，据史书记载，在西汉时期这里一共大大小小林立着36个王国，其中在尼雅地区就有一个非常著名的国家。",@"1980年夏大兴安岭出现野兽咬死驯鹿的事件，事情越闹越凶，竟然有二十多个人被咬死。几个月后一支来自北京的探险队来到大兴安岭，三天后与外界失联，至今下落不明。",@"古格王朝，它的前身可以上溯到象雄国，王朝大概从9世纪开始，在统一西藏高原的吐蕃王朝瓦解后建立，到17世纪结束，前后世袭了16个国王",@"从美国治病回来的陈教授借举行家宴之机，请求胡八一去寻国宝秦王照骨镜，这面镜子的失落之地正是南海的珊瑚螺旋。众人商议过后，决定去南海寻觅失落的宝物，顺便做些“采蛋”的生意——采捞南海明珠。",@"考古学家孙教授深夜潜入博物馆，被胡八一发现。无可奈何之下，孙教授逐渐表露心迹：他多年研究发现，四川的确有明代观山太保修筑的地仙墓",@"留学日本的阿琴得知父亲除霸清恶而遇害的消息后，急与男友阿勇返回故乡寻找杀害父亲的仇人。而此时，父亲的遗体正由法师运往家乡",@"蛊为远古之时所传神秘巫术，并只在湘西苗族女子之中所有流传，世循传女不传男，其他民族不曾有，纵有类似，但也不远能与此物相比",nil];
 
-            NSArray *arr3 = [[NSArray alloc]initWithObjects:@"llmk", @"jjgc",@"hpzf",@"klsg",@"nhgx",@"wxgs",@"xxsw",@"yncg",nil];
+            NSArray *arr3 = [[NSArray alloc]initWithObjects:@"cqz",@"hs",@"ssss",@"cfsl",@"llmk", @"jjgc",@"hpzf",@"klsg",@"nhgx",@"wxgs",@"xxsw",@"yncg",nil];
             
-            for (int i=0; i<8 ;i++) {
+            for (int i=0; i<array1.count ;i++) {
                 //添加时效性内容
                 AlbumModel *album = [[AlbumModel alloc]init];
                 album.title = array1[i];
@@ -395,15 +395,15 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     AlbumModel *album = [self.albumMuArray objectAtIndex:indexPath.row];
-    if ([album.title hasPrefix:@"鬼吹灯"]) {
+//    if ([album.title hasPrefix:@"鬼吹灯"]) {
         [self pushView:album.title];
-    }else{
-        MainController *mainVC = [[MainController alloc]init];
-        mainVC.albumID = album.albumId;
-        mainVC.albumTitle = album.title;
-        mainVC.albumImage = album.coverLarge;
-        [self.navigationController pushViewController:mainVC animated:YES];
-    }
+//    }else{
+//        MainController *mainVC = [[MainController alloc]init];
+//        mainVC.albumID = album.albumId;
+//        mainVC.albumTitle = album.title;
+//        mainVC.albumImage = album.coverLarge;
+//        [self.navigationController pushViewController:mainVC animated:YES];
+//    }
 }
 
 #pragma mark - 评分取消按钮监听
