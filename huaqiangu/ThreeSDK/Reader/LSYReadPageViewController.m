@@ -65,6 +65,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addNotes:) name:LSYNoteNotification object:nil];
     
     [self admobAD];
+    
+//    self.readView.view.frame = CGRectMake(0, 0, mainscreenwidth, mainscreenhight - 50);
+    
 }
 
 #pragma mark - admob广告

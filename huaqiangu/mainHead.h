@@ -51,13 +51,13 @@ return _shared##classname; \
 //替换版本时需更换的内容
 
 //苹果id
-#define AppStoreAppId @"1258052977"
+#define AppStoreAppId @"1141273084"
 
 
 #pragma mark -
 #pragma mark - AlbumTitle
 
-#define ALBUMTITLE @"鬼吹灯"
+#define ALBUMTITLE @"热门小说"
 
 #pragma mark -
 #pragma mark - BaiDSSP
